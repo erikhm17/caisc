@@ -66,31 +66,6 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-													{{ HTML::image('assets/img/avatar2.png','User Image',array('class'=>'img-circle')) }}
-
-                                                </div>
-                                                <h4>
-                                                    AdminLTE Design Team
-                                                    <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    {{ HTML::image('assets/img/avatar2.png','User Image',array('class'=>'img-circle')) }}
-                                                </div>
-                                                <h4>
-                                                    Developers
-                                                    <small><i class="fa fa-clock-o"></i> Today</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="pull-left">
                                                     {{ HTML::image('assets/img/avatar2.png','User Image',array('class'=>'img-circle')) }}
                                                 </div>
                                                 <h4>
@@ -141,17 +116,6 @@
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-users warning"></i> 5 new members joined
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#">
-                                                <i class="ion ion-ios7-cart success"></i> 25 sales made
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ion ion-ios7-person danger"></i> You changed your username
                                             </a>
                                         </li>
                                     </ul>
@@ -233,14 +197,14 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>Jane Doe <i class="caret"></i></span>
+                                <span>Juan <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
 									{{ HTML::image('assets/img/avatar3.png','User Image',array('class'=>'img-circle')) }}
                                     <p>
-                                        Jane Doe - Web Developer
+                                        Juan - Web Developer
                                         <small>Miembro desde oct. 2014</small>
                                     </p>
                                 </li>
