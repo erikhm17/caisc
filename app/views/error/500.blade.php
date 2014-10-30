@@ -1,6 +1,6 @@
 @extends('layouts.base_admin')
 @section('title')
-PAGINA ERROR 404<small>ISC</small>
+PAGINA ERROR 500<small>ISC</small>
 @stop
 @section('content')
 <div class="error-page">

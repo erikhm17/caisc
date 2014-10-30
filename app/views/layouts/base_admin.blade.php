@@ -30,7 +30,7 @@
     </head>
     <body class="skin-blue">
         <header class="header">
-            <a href="index.html" class="logo">ISC - Panel</a>
+            <a href="/" class="logo">ISC - Panel</a>
             <nav class="navbar navbar-static-top" role="navigation">
                 <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -54,7 +54,7 @@
                                         <li><!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-													{{ HTML::image('assets/img/avatar3.png','User Image',array('class'=>'img-circle')) }}
+													{{ HTML::image('assets/img/avatar4.png','User Image',array('class'=>'img-circle')) }}
                                                 </div>
                                                 <h4>
                                                     Support Team
@@ -202,7 +202,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-									{{ HTML::image('assets/img/avatar3.png','User Image',array('class'=>'img-circle')) }}
+									{{ HTML::image('assets/img/avatar4.png','User Image',array('class'=>'img-circle')) }}
                                     <p>
                                         Juan - Web Developer
                                         <small>Miembro desde oct. 2014</small>
@@ -243,7 +243,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-							{{ HTML::image('assets/img/avatar3.png','User Image',array('class'=>'img-circle')) }}
+							{{ HTML::image('assets/img/avatar4.png','User Image',array('class'=>'img-circle')) }}
                         </div>
                         <div class="pull-left info">
                             <p>Hello, Juan</p>
@@ -269,6 +269,17 @@
                             </a>
                         </li>
                         <li class="treeview">
+                            <a href="docente">
+                                <i class="fa fa-folder"></i> <span>Docente</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+								<li><i class="fa fa-angle-double-right"></i> {{ HTML::link('docente/nuevo.html','Agregar') }}</li>
+                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('docente','Buscar') }}</li>
+                                <li><a href="404.html"><i class="fa fa-angle-double-right"></i> Actualizar</a></li>
+                            </ul>
+                        </li>
+<li class="treeview">
                             <a href="#">
                                 <i class="fa fa-folder"></i> <span>Examples</span>
                                 <i class="fa fa-angle-left pull-right"></i>
