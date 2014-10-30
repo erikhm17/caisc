@@ -15,6 +15,12 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+// Errors
 Route::get('404.html',array('uses'=>'ErrorController@mostrar404'));
 Route::get('500.html',array('uses'=>'ErrorController@mostrar500'));
 Route::get('blank.html',array('uses'=>'ErrorController@blank'));
+// Docente
+Route::get('docente',array('uses'=>'DocenteController@index'));
+Route::get('docente/nuevo.html',array('uses'=>'DocenteController@nuevo'));
+Route::get('docente/actualizar.html',array('uses'=>'DocenteController@actualizar'));
+Route::post('docente/crear',array('uses'=>'DocenteController@crear'));
