@@ -15,3 +15,6 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+Route::get('404.html',array('uses'=>'ErrorController@mostrar404'));
+Route::get('500.html',array('uses'=>'ErrorController@mostrar500'));
+Route::get('blank.html',array('uses'=>'ErrorController@blank'));
