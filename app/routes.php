@@ -24,3 +24,9 @@ Route::get('docente',array('uses'=>'DocenteController@index'));
 Route::get('docente/nuevo.html',array('uses'=>'DocenteController@nuevo'));
 Route::get('docente/actualizar.html',array('uses'=>'DocenteController@actualizar'));
 Route::post('docente/crear',array('uses'=>'DocenteController@crear'));
+
+//Modulos mantenimiento
+Route::get('modulo',array('uses'=>'ModuloController@index'));
+Route::get('modulo/nuevo.html',array('uses'=>'ModuloController@nuevo'));
+Route::get('modulo/actualizar.html',array('uses'=>'ModuloController@actualizar'));
+Route::post('modulo/crear',array('uses'=>'ModuloController@crear'));
