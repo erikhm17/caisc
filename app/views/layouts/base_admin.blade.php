@@ -223,10 +223,10 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        {{ HTML::link('docente/profile/123456','Profile',array('class'=>'btn btn-default btn-flat')) }}
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        {{ HTML::link('docente/logout.html','Sign out', array('class'=>'btn btn-default btn-flat')) }}
                                     </div>
                                 </li>
                             </ul>
@@ -274,9 +274,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-								<li><i class="fa fa-angle-double-right"></i> {{ HTML::link('docente/nuevo.html','Agregar') }}</li>
-                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('docente','Buscar') }}</li>
-                                <li><a href="404.html"><i class="fa fa-angle-double-right"></i> Actualizar</a></li>
+                                <li>{{ HTML::link('docente/add.html','Agregar') }}</li>
+                                <li>{{ HTML::link('docentes','Listar Docentes') }}</li>
                             </ul>
                         </li>
 <li class="treeview">
@@ -304,11 +303,16 @@
                     <h1>@section('title') PANEL CONTROL<small>Instituto Sistima Cusco </small>@show</h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Dashboard</li>
+                        @section('breadcrumb')
+                        <li class="active"> Dashboard</li>
+                        @show
                     </ol>
                 </section>
                 <!-- Main content -->
                 <section class="content">
+                @if (Session::get('mensaje'))
+                    <div class="alert alert-success">{{ Session::get('mensaje')}}</div>
+                @endif
 				@yield('content')
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
