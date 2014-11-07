@@ -1,39 +1,24 @@
 <?php
 
-class DocenteController extends BaseController
+class CargoController extends BaseController
 {
 	public function index()
 	{
-		$docentes = Docente::all();
-		return View::make('docente.index',array('docentes'=>$docentes));
-	}
-	public function profile($cod = null)
-	{
-		if (is_null($cod) or ! is_numeric($cod))
-		{
-			return Redirect::to('404.html');
-		} else {
-			$docente = Docente::where('codDocente','=',$cod)->firstOrFail();
-			if (is_object($docente))
-			{
-				return View::make('docente.profile',array('docente'=>$docente));
-			} else {
-				return Redirect::to('404.html');
-			}
-		}
+		$cargos = Cargo::all();
+		return View::make('personal.cargo.index',array('cargos'=>$cargos));
 	}
 	public function add()
 	{
-		return View::make('docente.add');
+		return View::make('personal.cargo.add');
 	}
 	public function insert()
 	{
-		$respuesta = Docente::agregar(Input::all());
+		$respuesta = Cargo::agregar(Input::all());
 		if($respuesta['error']==true)
 		{
-			return Redirect::to('docente/add')->with('mensaje',$respuesta['mensaje'])->withInput();
+			return Redirect::to('personal/cargo/add')->with('mensaje',$respuesta['mensaje'])->withInput();
 		} else {
-			return Redirect::to('docentes')->with('mensaje',$respuesta['mensaje']);
+			return Redirect::to('personal/cargos')->with('mensaje',$respuesta['mensaje']);
 		}
 	}
 	public function edit($cod=null)
@@ -81,27 +66,5 @@ class DocenteController extends BaseController
 				return Redirect::to('docentes');
 			}
 		}
-	}
-	public function login()
-	{
-		$email = null;
-		if(is_null($email))
-		{
-			return View::make('docente/login');
-		} else {
-			$docente = Docente::where('email','=',$email)->first();
-			// Activar sessión
-			return Redirect::to('docente/profile/'.$docente->codDocente);
-		}
-	}
-	public function loginInit()
-	{
-
-	}
-	public function logout()
-	{
-		// Destruir sessión
-		// Redirigir a Login
-		return Redirect::to('docente/login.html');
 	}
 }
