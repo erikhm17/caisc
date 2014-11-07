@@ -20,6 +20,7 @@ Perfil <small>Docente</small>
 		<p><b>Dirección:</b> {{ $docente->direccion }}</p>
 		<p><b>Teléfono:</b> {{ $docente->telefono}}</p>
 		<p><b>E-mail:</b> {{ $docente->email }}</p>
+		<p><b>Estado:</b> {{ $docente->estado }}</p>
 	</div>
 </div>
 @stop
