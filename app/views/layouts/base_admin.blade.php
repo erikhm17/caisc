@@ -223,7 +223,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        {{ HTML::link('docente/profile/123456','Profile',array('class'=>'btn btn-default btn-flat')) }}
+                                        {{ HTML::link('docente/profile/12345','Profile',array('class'=>'btn btn-default btn-flat')) }}
                                     </div>
                                     <div class="pull-right">
                                         {{ HTML::link('docente/logout.html','Sign out', array('class'=>'btn btn-default btn-flat')) }}
@@ -268,6 +268,9 @@
                                 <i class="fa fa-dashboard"></i> <span>Inicio</span>
                             </a>
                         </li>
+						<li>{{ HTML::link('personal','Personal') }}
+                        </li>
+
                         <li class="treeview">
                             <a href="docente">
                                 <i class="fa fa-folder"></i> <span>Docente</span>
@@ -284,11 +287,11 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="login.html"><i class="fa fa-angle-double-right"></i> Login</a></li>
-                                <li><a href="register.html"><i class="fa fa-angle-double-right"></i> Register</a></li>
-                                <li><a href="404.html"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
-                                <li><a href="500.html"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>
-                                <li><a href="blank.html"><i class="fa fa-angle-double-right"></i> Blank Page</a></li>
+                                <li><a href="/login.html"><i class="fa fa-angle-double-right"></i> Login</a></li>
+                                <li><a href="/register.html"><i class="fa fa-angle-double-right"></i> Register</a></li>
+                                <li><a href="/404.html"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
+                                <li><a href="/500.html"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>
+                                <li><a href="/blank.html"><i class="fa fa-angle-double-right"></i> Blank Page</a></li>
                             </ul>
                         </li>
                     </ul>
