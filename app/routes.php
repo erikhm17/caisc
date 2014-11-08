@@ -25,11 +25,11 @@ Route::get('docente/add.html',array('uses'=>'DocenteController@add'));
 Route::get('docente/login.html',array('uses'=>'DocenteController@login'));
 Route::post('docente/login',array('uses'=>'DocenteController@loginInit'));
 Route::get('docente/logout.html',array('uses'=>'DocenteController@logout'));
-Route::get('docente/edit/{cod}',array('uses'=>'DocenteController@edit'))->where('cod','[0-9]+');
+Route::get('docente/edit/{id}',array('uses'=>'DocenteController@edit'))->where('id','[0-9]+');
 Route::post('docente/update.html',array('uses'=>'DocenteController@update'));
 Route::post('docente/insert.html',array('uses'=>'DocenteController@insert'));
-Route::get('docente/profile/{cod}',array('uses'=>'DocenteController@profile'))->where('cod','[0-9]+');
-Route::get('docente/delete/{cod}',array('uses'=>'DocenteController@delete'))->where('cod','[0-9]+');
+Route::get('docente/profile/{id}',array('uses'=>'DocenteController@profile'))->where('id','[0-9]+');
+Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
 // Personal
 Route::get('personal/cargos',array('uses'=>'CargoController@index'));
 Route::get('personal/cargo/add.html',array('uses'=>'CargoController@add'));

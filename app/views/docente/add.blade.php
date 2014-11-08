@@ -10,12 +10,6 @@ Agregar docente <small> NUEVO DOCENTE </small>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 {{ Form::open(array('method'=> 'POST','url'=> 'docente/insert.html','class'=>'form-horizontal','role'=>'form')) }}
 	<div class="form-group">
-		{{ Form::label('DocDocente','Código Docente:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::text('codDocente','',array('class'=>'form-control','placeholder'=>'123445'))}}
-		</div>
-	</div>
-	<div class="form-group">
 		{{ Form::label('nombre','Nombre(s):',array('class'=>'col-sm-4 control-label')) }}
 		<div class="col-sm-8">
 			{{ Form::text('nombre','',array('class'=>'form-control','placeholder'=>'Juan'))}}

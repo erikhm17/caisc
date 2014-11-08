@@ -7,13 +7,13 @@ class DocenteController extends BaseController
 		$docentes = Docente::all();
 		return View::make('docente.index',array('docentes'=>$docentes));
 	}
-	public function profile($cod = null)
+	public function profile($id = null)
 	{
-		if (is_null($cod) or ! is_numeric($cod))
+		if (is_null($id) or ! is_numeric($id))
 		{
 			return Redirect::to('404.html');
 		} else {
-			$docente = Docente::where('codDocente','=',$cod)->firstOrFail();
+			$docente = Docente::where('id','=',$id)->firstOrFail();
 			if (is_object($docente))
 			{
 				return View::make('docente.profile',array('docente'=>$docente));
@@ -36,13 +36,13 @@ class DocenteController extends BaseController
 			return Redirect::to('docentes')->with('mensaje',$respuesta['mensaje']);
 		}
 	}
-	public function edit($cod=null)
+	public function edit($id=null)
 	{
-		if(is_null($cod))
+		if(is_null($id) or ! is_numeric($id))
 		{
 			return Redirect::to('404.html');
 		} else {
-			$docente = Docente::where('codDocente','=',$cod)->firstOrFail();
+			$docente = Docente::where('id','=',$id)->firstOrFail();
 			return View::make('docente.edit',array('docente'=>$docente));
 		}
 	}
@@ -53,7 +53,7 @@ class DocenteController extends BaseController
 		{
 			Redirect::to('404.html');
 		} else {
-			$docente = Docente::where('codDocente','=',$cod)->firstOrFail();
+			$docente = Docente::where('id','=',$id)->firstOrFail();
 			if(is_object($docente))
 			{
 				$docente->nombre = Input::get('nombre');
@@ -67,13 +67,13 @@ class DocenteController extends BaseController
 			}
 		}
 	}
-	public function delete($cod = null)
+	public function delete($id = null)
 	{
-		if(is_null($cod))
+		if(is_null($id))
 		{
 			Redirect::to('404.html');
 		} else {
-			$docente = Docente::where('codDocente','=',$cod)->firstOrFail();
+			$docente = Docente::where('id','=',$id)->firstOrFail();
 			if(is_object($docente))
 			{
 				$docente->estado = '0';

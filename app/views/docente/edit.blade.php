@@ -11,12 +11,6 @@ Editar Docente <small> {{$docente->nombre}} </small>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 {{ Form::open(array('method'=> 'POST','url'=> 'docente/update.html','class'=>'form-horizontal','role'=>'form')) }}
 	<div class="form-group">
-		{{ Form::label('DocDocente','Código Docente:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::text('codDocente',$docente->codDocente,array('class'=>'form-control','placeholder'=>'123445'))}}
-		</div>
-	</div>
-	<div class="form-group">
 		{{ Form::label('nombre','Nombre(s):',array('class'=>'col-sm-4 control-label')) }}
 		<div class="col-sm-8">
 			{{ Form::text('nombre',$docente->nombre,array('class'=>'form-control','placeholder'=>'Juan'))}}
