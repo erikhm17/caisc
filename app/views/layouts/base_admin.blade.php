@@ -5,7 +5,8 @@
         <title>Panel de Administración | Instituto de Sistemas Cusco</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         {{ HTML::style('assets/css/bootstrap.min.css') }}
-        <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        {{ HTML::style('assets/css/font-awesome.min.css') }}
+        <!--<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />-->
         <!-- Ionicons -->
         {{ HTML::style('assets/css/ionicons.min.css') }}
         <!-- Morris chart -->
