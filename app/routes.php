@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('Inicio');
 });
 // Errors
 Route::get('404.html',array('uses'=>'ErrorController@mostrar404'));
