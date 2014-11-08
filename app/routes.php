@@ -30,6 +30,8 @@ Route::post('docente/update.html',array('uses'=>'DocenteController@update'));
 Route::post('docente/insert.html',array('uses'=>'DocenteController@insert'));
 Route::get('docente/profile/{id}',array('uses'=>'DocenteController@profile'))->where('id','[0-9]+');
 Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
+Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changePass'))->where('id','[0-9]+');
+
 // Personal
 Route::get('personal/cargos',array('uses'=>'CargoController@index'));
 Route::get('personal/cargo/add.html',array('uses'=>'CargoController@add'));

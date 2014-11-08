@@ -104,4 +104,20 @@ class DocenteController extends BaseController
 		// Redirigir a Login
 		return Redirect::to('docente/login.html');
 	}
+
+	public function changePass($id = null)
+	{
+		if (is_null($id) or ! is_numeric($id))
+		{
+			return Redirect::to('404.html');
+		} else {
+			$docente = Docente::where('id','=',$id)->firstOrFail();
+			if (is_object($docente))
+			{
+				return View::make('docente.change_pass',array('docente'=>$docente));
+			} else {
+				return Redirect::to('404.html');
+			}
+		}
+	}
 }
