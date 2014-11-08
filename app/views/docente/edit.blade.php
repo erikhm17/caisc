@@ -4,7 +4,7 @@ Editar Docente <small> {{$docente->nombre}} </small>
 @stop
 @section('breadcrumb')
 <li>{{ HTML::link('docentes','Docentes')}} </li>
-<li>{{ HTML::link('docente/profile/'.$docente->codDocente,$docente->nombre)}}</li>
+<li>{{ HTML::link('docente/profile/'.$docente->id,$docente->nombre)}}</li>
 <li>Editar</li>
 @stop
 @section('content')

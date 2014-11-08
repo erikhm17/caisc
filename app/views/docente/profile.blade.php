@@ -10,10 +10,10 @@ Perfil <small>Docente</small>
 <div class="row">
 	<div class="col-lg-3">
 		{{ HTML::image('assets/img/avatar4.png','User Image',array('class'=>'')) }}
-		<p align="center"><b>código:</b>{{ $docente->codDocente }}</p>
+		<p align="center"><b>código:</b>{{ $docente->id }}</p>
 	</div>
 	<div class="col-lg-7">
-		<p>{{ HTML::link('docente/edit/'.$docente->codDocente,'Editar') }} {{ HTML::link('docente/delete/'.$docente->codDocente,'Eliminar') }}</p>
+		<p>{{ HTML::link('docente/edit/'.$docente->id,'Editar') }} {{ HTML::link('docente/delete/'.$docente->id,'Eliminar') }} {{ HTML::link('docente/change-pass/'.$docente->id,'Cambiar Contraseña') }}</p>
 		<p><b>DNI:</b>{{ $docente->dni }}</p>
 		<p><b>Nombre:</b> {{ $docente->nombre }}</p>
 		<p><b>Apellidos:</b> {{ $docente->apellidos }}</p>

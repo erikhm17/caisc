@@ -52,14 +52,14 @@ Lista de Docentes
             <tbody aria-relevant="all" aria-live="polite" role="alert">
             	@foreach( $docentes as $docente)
             	<tr class="odd">
-                        <td class="  sorting_1">{{ HTML::link('docente/profile/'.$docente->codDocente,$docente->codDocente) }}</td>
+                        <td class="  sorting_1">{{ HTML::link('docente/profile/'.$docente->id,$docente->id) }}</td>
                         <td class=" "><b>{{ $docente->apellidos }}</b> {{ $docente->nombre }}</td>
                         <td class=" ">{{ $docente->email }}</td>
                         <td class=" ">{{ $docente->telefono }}</td>
                         <td class=" ">
-                        	{{ HTML::link('docente/edit/'.$docente->codDocente,'Actualizar') }}
-                        	{{ HTML::link('docente/delete/'.$docente->codDocente,'Eliminar') }}
-                        	{{ HTML::link('docente/profile/'.$docente->codDocente,'Detalles') }}
+                        	{{ HTML::link('docente/edit/'.$docente->id,'Actualizar') }}
+                        	{{ HTML::link('docente/delete/'.$docente->id,'Eliminar') }}
+                        	{{ HTML::link('docente/profile/'.$docente->id,'Detalles') }}
                         </td>
                 </tr>
                 @endforeach
