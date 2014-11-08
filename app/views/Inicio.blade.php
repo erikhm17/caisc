@@ -51,7 +51,7 @@
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="docente/login.html" class="small-box-footer">
                                     Click <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -74,7 +74,7 @@
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="docente/login.html" class="small-box-footer">
                                     Click <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -97,7 +97,7 @@
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="docente/login.html" class="small-box-footer">
                                     Click <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
