@@ -4,12 +4,12 @@ Cambiar Contraseña <small> {{$personal->nombre}} </small>
 @stop
 @section('breadcrumb')
 <li>{{ HTML::link('personal','Personal')}} </li>
-<li>{{ HTML::link('personal/profile/'.$docente->id,$personal->nombre)}}</li>
+<li>{{ HTML::link('personal/profile/'.$personal->id,$personal->nombre)}}</li>
 <li>Editar</li>
 @stop
 @section('content')
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-{{ Form::open(array('method'=> 'POST','url'=> 'docente/update.html','class'=>'form-horizontal','role'=>'form')) }}
+{{ Form::open(array('method'=> 'POST','url'=> 'personal/update.html','class'=>'form-horizontal','role'=>'form')) }}
 	<p>{{$personal->nombre}} </p>
 	<p>{{$personal->apellidos}}</p>
 	
