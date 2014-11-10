@@ -23,7 +23,7 @@ Route::get('blank.html',array('uses'=>'ErrorController@blank'));
 
 
 // Docente
-Route::get('docentes',array('uses'=>'DocenteController@index'));
+Route::get('docentes',array('uses'=>'DocenteController@pag'));
 Route::get('docente/add.html',array('uses'=>'DocenteController@add'));
 Route::get('docente/login.html',array('uses'=>'DocenteController@login'));
 Route::post('docente/login',array('uses'=>'DocenteController@loginInit'));

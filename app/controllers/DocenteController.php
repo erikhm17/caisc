@@ -120,4 +120,11 @@ class DocenteController extends BaseController
 			}
 		}
 	}
+
+	public function pag()
+	{
+		$datos = Docente::paginate(2);
+		$docentes = Docente::all();
+		return View::make('docente.index',compact("datos"),array('docentes'=>$docentes));
+	}
 }
