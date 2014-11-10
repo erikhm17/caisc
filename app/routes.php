@@ -13,12 +13,15 @@
 
 Route::get('/', function()
 {
-	return View::make('Inicio');
+	return View::make('login');
 });
 // Errors
 Route::get('404.html',array('uses'=>'ErrorController@mostrar404'));
 Route::get('500.html',array('uses'=>'ErrorController@mostrar500'));
 Route::get('blank.html',array('uses'=>'ErrorController@blank'));
+//login
+
+
 // Docente
 Route::get('docentes',array('uses'=>'DocenteController@index'));
 Route::get('docente/add.html',array('uses'=>'DocenteController@add'));
