@@ -269,7 +269,16 @@
                                 <i class="fa fa-dashboard"></i> <span>Inicio</span>
                             </a>
                         </li>
-						<li>{{ HTML::link('personal','Personal') }}
+						<li class ="treeview">
+                            <a href="personal">
+                                <i class="fa fa-folder"></i> <span>Personal</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('personal','Personal') }}</li>
+                                <li>{{ HTML::link('personal/change-pass-personal/1122','Cambiar Contraseña') }}</li>
+                            </ul>
                         </li>
 
                         <li class="treeview">
@@ -279,6 +288,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li>{{ HTML::link('docente/add.html','Agregar') }}</li>
+                                <li>{{ HTML::link('docente/change-pass/2141','Cambiar Contraseña') }}</li>
                                 <li>{{ HTML::link('docentes','Listar Docentes') }}</li>
                             </ul>
                         </li>

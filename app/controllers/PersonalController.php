@@ -82,4 +82,19 @@ class PersonalController extends BaseController
 			}
 		}
 	}
+	public function changePassPersonal($id = null)
+	{
+		if (is_null($id) or ! is_numeric($id))
+		{
+			return Redirect::to('404.html');
+		} else {
+			$personal = Personal::where('id','=',$id)->firstOrFail();
+			if (is_object($personal))
+			{
+				return View::make('personal.change_pass_personal',array('personal'=>$personal));
+			} else {
+				return Redirect::to('404.html');
+			}
+		}
+	}
 }
