@@ -4,8 +4,10 @@ class PersonalController extends BaseController
 {
 	public function index()
 	{
+
+		$datos = Personal::paginate(2);
 		$personal = Personal::all();
-		return View::make('personal.index',array('personal'=>$personal));
+		return View::make('personal.index',compact("datos"),array('personal'=>$personal));
 	}
 	public function profile($id = null)
 	{

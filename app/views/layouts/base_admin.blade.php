@@ -276,8 +276,10 @@
                             </a>
 
                             <ul class="treeview-menu">
-                                <li>{{ HTML::link('personal','Personal') }}</li>
+                                <li>{{ HTML::link('personal/add.html','Agregar') }}</li>
                                 <li>{{ HTML::link('personal/change-pass-personal/1122','Cambiar Contraseña') }}</li>
+                                <li>{{ HTML::link('personal','Listar Personal') }}</li>
+ 
                             </ul>
                         </li>
 

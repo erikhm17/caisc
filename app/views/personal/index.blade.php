@@ -40,51 +40,25 @@ Lista de Personal <small>Usuarios con privilegios</small>
                     	<th aria-label="CSS grade: activate to sort column ascending" style="width: 114px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" role="columnheader" class="sorting">Actions</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                    	<th colspan="1" rowspan="1">Id</th>
-                    	<th colspan="1" rowspan="1">Apellidos y Nombres</th>
-                    	<th colspan="1" rowspan="1">E-mail</th>
-                    	<th colspan="1" rowspan="1">Teléfono</th>
-                    	<th colspan="1" rowspan="1">Action</th>
-                    </tr>
-                </tfoot>
             <tbody aria-relevant="all" aria-live="polite" role="alert">
-            	@foreach( $personal as $persona)
+            	@foreach( $datos as $dato)
             	<tr class="odd">
-                        <td class="  sorting_1">{{ HTML::link('personal/profile/'.$persona->id,$persona->id) }}</td>
-                        <td class=" "><b>{{ $persona->apellidos }}</b> {{ $persona->nombre }}</td>
-                        <td class=" ">{{ $persona->email }}</td>
-                        <td class=" ">{{ $persona->telefono }}</td>
+                        <td class="  sorting_1">{{ HTML::link('personal/profile/'.$dato->id,$dato->id) }}</td>
+                        <td class=" "><b>{{ $dato->apellidos }}</b> {{ $dato->nombre }}</td>
+                        <td class=" ">{{ $dato->email }}</td>
+                        <td class=" ">{{ $dato->telefono }}</td>
                         <td class=" ">
-                        	{{ HTML::link('personal/edit/'.$persona->id,'Actualizar') }}
-                        	{{ HTML::link('personal/delete/'.$persona->id,'Eliminar') }}
-                        	{{ HTML::link('personal/profile/'.$persona->id,'Detalles') }}
+                        	{{ HTML::link('personal/edit/'.$dato->id,'Actualizar') }}
+                        	{{ HTML::link('personal/delete/'.$dato->id,'Eliminar') }}
+                        	{{ HTML::link('personal/profile/'.$dato->id,'Detalles') }}
                         </td>
                 </tr>
                 @endforeach
                 </tbody>
             </table>
-            <div class="row">
-            	<div class="col-xs-6">
-            		<div id="example1_info" class="dataTables_info">Showing 1 to 10 of 57 entries</div>
-            	</div>
-            	<div class="col-xs-6">
-            		<div class="dataTables_paginate paging_bootstrap">
-            			<ul class="pagination">
-            				<li class="prev disabled"><a href="#">← Previous</a></li>
-            				<li class="active"><a href="#">1</a></li>
-            				<li><a href="#">2</a></li>
-            				<li><a href="#">3</a></li>
-            				<li><a href="#">4</a></li>
-            				<li><a href="#">5</a></li>
-            				<li class="next"><a href="#">Next → </a>
-            				</li>
-            			</ul>
-            		</div>
-            	</div>
-            </div>
+             Pagina Actual:{{ $datos->getCurrentPage()}}
         </div>
+            {{ $datos->links()}}    
     </div><!-- /.box-body -->
 </div>
 @stop

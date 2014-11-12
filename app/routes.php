@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('login');
+	return View::make('inicio');
 });
 // Errors
 Route::get('404.html',array('uses'=>'ErrorController@mostrar404'));
@@ -35,10 +35,10 @@ Route::get('docente/profile/{id}',array('uses'=>'DocenteController@profile'))->w
 Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
 Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changePass'))->where('id','[0-9]+');
 // Personal
+Route::get('personal',array('uses'=>'PersonalController@index'));
 Route::get('personal/cargos',array('uses'=>'CargoController@index'));
 Route::get('personal/cargo/add.html',array('uses'=>'CargoController@add'));
 Route::post('personal/cargo/insert.html',array('uses'=>'CargoController@insert'));
-Route::get('personal',array('uses'=>'PersonalController@index'));
 Route::get('personal/add.html',array('uses'=>'PersonalController@add'));
 Route::post('personal/insert.html',array('uses'=>'PersonalController@insert'));
 Route::get('personal/profile/{id}',array('uses'=>'PersonalController@profile'))->where('id','[0-9]+');

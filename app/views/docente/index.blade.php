@@ -51,20 +51,14 @@ Lista de Docentes
                             {{ HTML::link('docente/edit/'.$dato->id,'Actualizar') }}
                             {{ HTML::link('docente/delete/'.$dato->id,'Eliminar') }}
                             {{ HTML::link('docente/profile/'.$dato->id,'Detalles') }}
-
-                            </td>
-         
+                        </td>
                 </tr>
                 @endforeach
-   
                 </tbody>
-
             </table>
                  Pagina Actual:{{ $datos->getCurrentPage()}}
-
             </div>
                 {{ $datos->links()}}
-
     </div><!-- /.box-body -->
 </div>
 @stop
