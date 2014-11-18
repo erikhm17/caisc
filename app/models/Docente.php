@@ -11,7 +11,6 @@ class Docente extends Eloquent {
 		$reglas = array(
 			'nombre'=>array('required','max:50'),
 			'apellidos'=>array('required','max:100'),
-			'codDocente'=>array('required','max:10'),
 			'dni'=>array('required','max:10')
 		);
 		$validador = Validator::make($input,$reglas);
