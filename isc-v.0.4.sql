@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS curso_ct(
 
 CREATE TABLE IF NOT EXISTS docente(
     `id` INT AUTO_INCREMENT NOT NULL,
-    `codDocente` VARCHAR(10) NOT NULL,
     `nombre` VARCHAR(50) NOT NULL,
     `apellidos` VARCHAR(50) NOT NULL,
     `dni` VARCHAR(8) NOT NULL,
