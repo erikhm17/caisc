@@ -30,3 +30,26 @@ Route::get('modulo',array('uses'=>'ModuloController@index'));
 Route::get('modulo/nuevo.html',array('uses'=>'ModuloController@nuevo'));
 Route::get('modulo/actualizar.html',array('uses'=>'ModuloController@actualizar'));
 Route::post('modulo/crear',array('uses'=>'ModuloController@crear'));
+
+Route::get('mi/pagina', function() {
+	return '¡Hola mundo!';
+});
+
+
+//Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModuloController@nuevo'));
+
+Route::get('modalidad_pago',array('uses'=>'ModalidadPagoController@index'));
+Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModalidadPagoController@nuevo'));
+Route::get('modalidad_pago/actualizar.html',array('uses'=>'ModalidadPagoController@actualizar'));
+Route::post('modalidad_pago/crear',array('uses'=>'ModalidadPagoController@crear'));
+
+
+
+
+Route::post('modalidad/store','ModalidadController@store');
+Route::post('modalidad/update/{id}','ModalidadController@update');
+Route::get('/caisc/public/modalidad/destroy/{id}','ModalidadController@destroy');
+Route::post('/caisc/public/modalidad/index','ModalidadController@index');
+
+
+Route::controller('modalidad','ModalidadController');

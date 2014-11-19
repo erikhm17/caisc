@@ -3,7 +3,7 @@
 class Docente extends Eloquent {
 
 	protected $table = 'docente';
-	protected $fillable = array('codDocente','nombre','apellidos','dni','direccion','email','password','telefono');
+	protected $fillable = array('codDocente','nombre','apellidos','dni','direccion','telefono','email','password');
 	
 	public static function agregar($input)
 	{

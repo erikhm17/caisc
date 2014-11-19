@@ -279,7 +279,20 @@
                                 <li><a href="404.html"><i class="fa fa-angle-double-right"></i> Actualizar</a></li>
                             </ul>
                         </li>
-<li class="treeview">
+
+                        <li class="treeview">
+                            <a href="docente">
+                                <i class="fa fa-folder"></i> <span>Modalidad de Pago</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><i class="fa fa-angle-double-right"></i> {{ HTML::link('/modalidad/create','Agregar') }}</li>
+                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('#','Buscar') }}</li>
+                                <li><a href="/caisc/public/modalidad"><i class="fa fa-angle-double-right"></i> Listar</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-folder"></i> <span>Examples</span>
                                 <i class="fa fa-angle-left pull-right"></i>
