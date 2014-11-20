@@ -13,17 +13,38 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('inicio');
 });
 // Errors
 Route::get('404.html',array('uses'=>'ErrorController@mostrar404'));
 Route::get('500.html',array('uses'=>'ErrorController@mostrar500'));
 Route::get('blank.html',array('uses'=>'ErrorController@blank'));
+//login
+
+
 // Docente
-Route::get('docente',array('uses'=>'DocenteController@index'));
-Route::get('docente/nuevo.html',array('uses'=>'DocenteController@nuevo'));
-Route::get('docente/actualizar.html',array('uses'=>'DocenteController@actualizar'));
-Route::post('docente/crear',array('uses'=>'DocenteController@crear'));
+Route::get('docentes',array('uses'=>'DocenteController@pag'));
+Route::get('docente/add.html',array('uses'=>'DocenteController@add'));
+Route::get('docente/login.html',array('uses'=>'DocenteController@login'));
+Route::post('docente/login',array('uses'=>'DocenteController@loginInit'));
+Route::get('docente/logout.html',array('uses'=>'DocenteController@logout'));
+Route::get('docente/edit/{id}',array('uses'=>'DocenteController@edit'))->where('id','[0-9]+');
+Route::post('docente/update.html',array('uses'=>'DocenteController@update'));
+Route::post('docente/insert.html',array('uses'=>'DocenteController@insert'));
+Route::get('docente/profile/{id}',array('uses'=>'DocenteController@profile'))->where('id','[0-9]+');
+Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
+Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changePass'))->where('id','[0-9]+');
+// Personal
+Route::get('personal',array('uses'=>'PersonalController@index'));
+Route::get('personal/cargos',array('uses'=>'CargoController@index'));
+Route::get('personal/cargo/add.html',array('uses'=>'CargoController@add'));
+Route::post('personal/cargo/insert.html',array('uses'=>'CargoController@insert'));
+Route::get('personal/add.html',array('uses'=>'PersonalController@add'));
+Route::post('personal/insert.html',array('uses'=>'PersonalController@insert'));
+Route::get('personal/profile/{id}',array('uses'=>'PersonalController@profile'))->where('id','[0-9]+');
+Route::get('personal/edit/{id}',array('uses'=>'PersonalController@edit'))->where('id','[0-9]+');
+Route::post('personal/update.html',array('uses'=>'PersonalController@update'));
+Route::get('personal/change-pass-personal/{id}',array('uses'=>'PersonalController@changePassPersonal'))->where('id','[0-9]+');
 
 //Modulos mantenimiento
 Route::get('modulo',array('uses'=>'ModuloController@index'));
@@ -50,6 +71,4 @@ Route::post('modalidad/store','ModalidadController@store');
 Route::post('modalidad/update/{id}','ModalidadController@update');
 Route::get('/caisc/public/modalidad/destroy/{id}','ModalidadController@destroy');
 Route::post('/caisc/public/modalidad/index','ModalidadController@index');
-
-
 Route::controller('modalidad','ModalidadController');

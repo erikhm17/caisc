@@ -1,9 +1,9 @@
 <?php
 
-class Docente extends Eloquent {
+class Personal extends Eloquent {
 
-	protected $table = 'docente';
-	protected $fillable = array('codDocente','nombre','apellidos','dni','direccion','telefono','email','password');
+	protected $table = 'personal';
+	protected $fillable = array('nombre','apellidos','dni','direccion','email','password','telefono');
 	
 	public static function agregar($input)
 	{
@@ -20,10 +20,10 @@ class Docente extends Eloquent {
 			$respuesta['error'] = true;
 		} else
 		{
-			$docente = static::create($input);
-			$respuesta['mensaje'] = 'Docente Creado';
+			$personal = static::create($input);
+			$respuesta['mensaje'] = 'Personal Creado';
 			$respuesta['error'] = false;
-			$respuesta['data'] = $docente;
+			$respuesta['data'] = $personal;
 		}
 		return $respuesta;
 	}

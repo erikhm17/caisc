@@ -1,5 +1,6 @@
 CREATE DATABASE isc_test8;
 use isc_test8;
+
 CREATE TABLE IF NOT EXISTS carrera(
 	`codCarrera` VARCHAR(10) NOT NULL,
 	`nombre` VARCHAR(50) NOT NULL,
@@ -35,32 +36,59 @@ CREATE TABLE IF NOT EXISTS curso_ct(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS docente(
-	`codDocente` VARCHAR(10) NOT NULL,
-	`nombre` VARCHAR(50) NOT NULL,
-	`apellidos` VARCHAR(50) NOT NULL,
-	`dni` VARCHAR(8) NOT NULL,
-	`direccion` VARCHAR(120) NOT NULL,
-	`urlImagen` VARCHAR(120) DEFAULT null,
-	`telefono` VARCHAR(120) NOT NULL,
-	`email` VARCHAR(120) NOT NULL,
-	`password` VARCHAR(120) NOT NULL,
-	`estado` INT(2) null,
-	`updated_at` DATETIME NOT NULL,
-	`updated_at` DATETIME NOT NULL,
-	PRIMARY KEY (`codDocente`)	
-) CHARSET=utf8;
+    `id` INT AUTO_INCREMENT NOT NULL,
+    `nombre` VARCHAR(50) NOT NULL,
+    `apellidos` VARCHAR(50) NOT NULL,
+    `dni` VARCHAR(8) NOT NULL,
+    `direccion` VARCHAR(120) NOT NULL,
+    `urlImagen` VARCHAR(120) DEFAULT null,
+    `telefono` VARCHAR(120) NOT NULL,
+    `email` VARCHAR(120) NOT NULL,
+    `password` VARCHAR(120) NOT NULL,
+    `estado` INT(2) DEFAULT '1',
+    `updated_at` DATETIME NOT NULL,
+    `created_at` DATETIME NOT NULL,
+    PRIMARY KEY (`id`)  
+) CHARSET=utf8 AUTO_INCREMENT=2141 ;
 
+CREATE TABLE IF NOT EXISTS cargo(
+    `id` INT AUTO_INCREMENT NOT NULL,
+    `nombre` VARCHAR(50) NOT NULL,
+    `privilegios` VARCHAR(50) NOT NULL,
+    `descripcion` text DEFAULT NULL,
+    `updated_at` DATETIME NOT NULL,
+    `created_at` DATETIME NOT NULL,
+    PRIMARY KEY (`id`)
+) CHARSET=utf8 ;
+
+CREATE TABLE IF NOT EXISTS personal(
+    `id` INT AUTO_INCREMENT NOT NULL,
+    `nombre` VARCHAR(50) NOT NULL,
+    `apellidos` VARCHAR(50) NOT NULL,
+    `dni` VARCHAR(8) NOT NULL,
+    `direccion` VARCHAR(120) NOT NULL,
+    `urlImagen` VARCHAR(120) DEFAULT null,
+    `telefono` VARCHAR(120) NOT NULL,
+    `email` VARCHAR(120) NOT NULL,
+    `password` VARCHAR(120) NOT NULL,
+    `estado` INT(2) DEFAULT '1',
+    `cargo_id` INT NOT NULL,
+    `updated_at` DATETIME NOT NULL,
+    `created_at` DATETIME NOT NULL,
+    PRIMARY KEY (`id`),
+	FOREIGN KEY (`cargo_id`) REFERENCES cargo(`id`)
+) CHARSET=utf8 AUTO_INCREMENT=214 ;
 
 CREATE TABLE IF NOT EXISTS carga_academica_ct(
 	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
 	`codCurso_ct` VARCHAR(10) NOT NULL,
-	`codDocente` VARCHAR(10) NOT NULL,
+	`docente_id` INT NOT NULL,
 	`semestre` VARCHAR(10) NOT NULL,
 	`turno` VARCHAR(10) NOT NULL,
 	`grupo` VARCHAR(10) NOT NULL,
 	PRIMARY KEY (`codCargaAcademica_ct`),
-	FOREIGN KEY (`codCurso_ct`) REFERENCES curso_ct(`codCurso_ct`),	
-	FOREIGN KEY (`codDocente`) REFERENCES docente(`codDocente`)
+	FOREIGN KEY (`codCurso_ct`) REFERENCES curso_ct(`codCurso_ct`),
+	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS silabus_ct(
@@ -111,7 +139,7 @@ CREATE TABLE IF NOT EXISTS curso_cl(
 CREATE TABLE IF NOT EXISTS carga_academica_cl(
 	`codCargaAcademica_cl` VARCHAR(10) NOT NULL,
 	`codCurso_cl` VARCHAR(10) NOT NULL,
-	`codDocente` VARCHAR(10) NOT NULL,
+	`docente_id` INT NOT NULL,
 	`turno` VARCHAR(10) NOT NULL,
 	`grupo` VARCHAR(10) NOT NULL,
 	`codHorarioAula` VARCHAR(10) NOT NULL,
@@ -121,7 +149,7 @@ CREATE TABLE IF NOT EXISTS carga_academica_cl(
 	`minimo` INT NOT NULL,
 	PRIMARY KEY (`codCargaAcademica_cl`),
 	FOREIGN KEY (`codCurso_cl`) REFERENCES curso_cl(`codCurso_cl`),
-	FOREIGN KEY (`codDocente`) REFERENCES docente(`codDocente`)
+	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS silabus_cl(
