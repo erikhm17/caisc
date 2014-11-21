@@ -34,8 +34,6 @@ Route::post('docente/insert.html',array('uses'=>'DocenteController@insert'));
 Route::get('docente/profile/{id}',array('uses'=>'DocenteController@profile'))->where('id','[0-9]+');
 Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
 Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changePass'))->where('id','[0-9]+');
-Route::post('docente/update_pass.html',array('uses'=>'DocenteController@cambiarContrasenia'));
-
 // Personal
 Route::get('personal',array('uses'=>'PersonalController@index'));
 Route::get('personal/cargos',array('uses'=>'CargoController@index'));
