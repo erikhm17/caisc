@@ -120,7 +120,28 @@ class DocenteController extends BaseController
 			}
 		}
 	}
-
+	public function cambiarContrasenia()
+	{
+		//averiguar encriptar, primeramente en agregar
+		$cod=Input::post('id');
+		if(is_null($cod))
+		{
+			Redirect::to('404.html');
+		} else {
+			$docente = Docente::where('id','=',$id)->firstOrFail();
+			if(is_object($docente))
+			{
+				$docente->nombre = Input::get('nombre');
+				$docente->apellidos = Input::get('apellidos');
+				$docente->email = Input::get('email');
+				$docente->telefono = Input::get('telefono');
+				$docente->save();
+				return Redirect::to('docentes');
+			} else {
+				Redirect::to('500.html');
+			}
+		}
+	}
 	public function pag()
 	{
 		$datos = Docente::paginate(2);
