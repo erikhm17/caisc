@@ -67,11 +67,14 @@ Route::get('modalidad_pago/actualizar.html',array('uses'=>'ModalidadPagoControll
 Route::post('modalidad_pago/crear',array('uses'=>'ModalidadPagoController@crear'));
 
 
-
-
 Route::post('modalidad/store','ModalidadController@store');
 Route::post('modalidad/update/{id}','ModalidadController@update');
 Route::get('/caisc/public/modalidad/destroy/{id}','ModalidadController@destroy');
 Route::post('/caisc/public/modalidad/index','ModalidadController@index');
 
 Route::controller('modalidad','ModalidadController');
+
+
+// Modulos Asistencia: Docentes y Alumnos
+Route::post('create','AsistenciaController');
+
