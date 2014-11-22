@@ -240,30 +240,27 @@ CREATE TABLE IF NOT EXISTS detalle_asistencia_cl(
 ) CHARSET=utf8;
 
 -- PAGOS
-CREATE TABLE IF NOT EXISTS concepto(
-	`codConcepto` INT NOT NULL,
-	`nombre` VARCHAR(100) NOT NULL,
-	`descripcion` text NOT NULL,
-	`costo` float(7,4) NOT NULL,
-	PRIMARY KEY (`codConcepto`)
+CREATE TABLE IF NOT EXISTS modalidad_pago(
+	`id` varchar(30) NOT NULL,
+	`descripcion` VARCHAR(50),
+	`monto` real,
+	PRIMARY KEY (`id`)
 ) CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS pago(
-	`codPago` INT AUTO_INCREMENT NOT NULL,
-	`nroSerie` VARCHAR(10) NOT NULL,
-	`fecha` DATE NOT NULL,
-	`codAlumno` VARCHAR(10) NOT NULL,
-	PRIMARY KEY (`codPago`),
-	FOREIGN KEY (`codAlumno`) REFERENCES alumno(`codAlumno`)
+CREATE TABLE IF NOT EXISTS pagos(
+	`nro_boleta` int AUTO_INCREMENT NOT NULL,
+	`nro_serie` varchar(3),
+	`id_alumno` VARCHAR(10),
+	`fecha` DATE,
+	`total_pago` real,
+	PRIMARY KEY (`nro_boleta`),
+	FOREIGN KEY (`alumno`) REFERENCES alumno(`codAlumno`)
 ) CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS pago_detalle(
-	`codPago` INT NOT NULL,
-	`codConcepto` INT NOT NULL,
-	`costo` float(7,4) NOT NULL,
-	PRIMARY KEY (`codPago`,`codConcepto`),
-	FOREIGN KEY (`codPago`) REFERENCES pago(`codPago`),
-	FOREIGN KEY (`codConcepto`) REFERENCES concepto(`codConcepto`)
+CREATE TABLE IF NOT EXISTS detalle_pagos(
+	`id` int AUTO_INCREMENT not null,
+	`nro_boleta` int NOT NULL,
+	`id_curso` varchar(10),
+	`id_mmodalidad` VARCHAR(30),
+	FOREIGN KEY (`nro_boleta`) REFERENCES pagos(`nro_boleta`)
 ) CHARSET=utf8;
 
 -- Flotantes

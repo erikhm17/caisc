@@ -59,7 +59,7 @@ Route::get('mi/pagina', function() {
 });
 
 
-//Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModuloController@nuevo'));
+Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModuloController@nuevo'));
 
 Route::get('modalidad_pago',array('uses'=>'ModalidadPagoController@index'));
 Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModalidadPagoController@nuevo'));
@@ -73,4 +73,5 @@ Route::post('modalidad/store','ModalidadController@store');
 Route::post('modalidad/update/{id}','ModalidadController@update');
 Route::get('/caisc/public/modalidad/destroy/{id}','ModalidadController@destroy');
 Route::post('/caisc/public/modalidad/index','ModalidadController@index');
+
 Route::controller('modalidad','ModalidadController');
