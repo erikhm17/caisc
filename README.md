@@ -1,4 +1,0 @@
-caisc
-=====
-
-Control academico
