@@ -314,11 +314,12 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="/login.html"><i class="fa fa-angle-double-right"></i> Login</a></li>
-                                <li><a href="/register.html"><i class="fa fa-angle-double-right"></i> Register</a></li>
-                                <li><a href="/404.html"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
-                                <li><a href="/500.html"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>
-                                <li><a href="/blank.html"><i class="fa fa-angle-double-right"></i> Blank Page</a></li>
+                                <li>{{ HTML::link('login.html','Login') }}</li>
+                                <li>{{ HTML::link('register.html','Register') }}</li>
+                                <li>{{ HTML::link('404.html','404 Error') }}</li>
+                                <li>{{ HTML::link('500.html','500 Error') }}</li>
+                                <li>{{ HTML::link('blank.html','Blank Page') }}</li>
+                                <li>{{ HTML::link('carga.html','Carga Academica pro') }}</li>
                             </ul>
                         </li>
                     </ul>
