@@ -76,7 +76,7 @@ Route::controller('modalidad','ModalidadController');
 
 
 // Modulos Asistencia: Docentes y Alumnos
-Route::post('create','AsistenciaController');
+Route::get('asistencia/add_ct',array('uses'=>'AsistenciaController@add_ct'));
 
 // carga academica
 Route::get('carga.html',array('uses'=>'CargaAcademicaController@MostrarCargaAcademica'));

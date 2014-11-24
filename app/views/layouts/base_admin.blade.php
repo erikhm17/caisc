@@ -269,6 +269,7 @@
                                 <i class="fa fa-dashboard"></i> <span>Inicio</span>
                             </a>
                         </li>
+
 						<li class ="treeview">
                             <a href="personal">
                                 <i class="fa fa-folder"></i> <span>Personal</span>
@@ -279,7 +280,6 @@
                                 <li>{{ HTML::link('personal/add.html','Agregar') }}</li>
                                 <li>{{ HTML::link('personal/change-pass-personal/1122','Cambiar Contraseña') }}</li>
                                 <li>{{ HTML::link('personal','Listar Personal') }}</li>
- 
                             </ul>
                         </li>
 
@@ -292,7 +292,17 @@
                                 <li>{{ HTML::link('docente/add.html','Agregar') }}</li>
                                 <li>{{ HTML::link('docente/change-pass/2141','Cambiar Contraseña') }}</li>
                                 <li>{{ HTML::link('docentes','Listar Docentes') }}</li>
-                                <li>{{ HTML::link('docentes', 'Registrar Asistencia')}}</li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="RegistroAsistencias">
+                                <i class="fa fa-folder"></i> <span>Registro Asistencias</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('asistencia/add_ct', 'Registrar Asistencia Carrera Tecnica')}}</li>
+                                <li>{{ HTML::link('asistencia/add_cl', 'Registrar Asistencia Cursos Libre')}}</li>
                             </ul>
                         </li>
 
