@@ -2,10 +2,9 @@
 
 class PersonalController extends BaseController
 {
-	public function index()
+	public function index($registros = 5)
 	{
-
-		$datos = Personal::paginate(2);
+		$datos = Personal::paginate($registros);
 		$personal = Personal::all();
 		return View::make('personal.index',compact("datos"),array('personal'=>$personal));
 	}
@@ -26,14 +25,15 @@ class PersonalController extends BaseController
 	}
 	public function add()
 	{
-		return View::make('personal.add');
+		$cargos = array('1'=>'Tesorero');
+		return View::make('personal.add',array('cargos'=>$cargos));
 	}
 	public function insert()
 	{
 		$respuesta = Personal::agregar(Input::all());
 		if($respuesta['error']==true)
 		{
-			return Redirect::to('personal/add')->with('mensaje',$respuesta['mensaje'])->withInput();
+			return Redirect::to('personal/add.html')->withErrors($respuesta['mensaje'] )->withInput();
 		} else {
 			return Redirect::to('personal')->with('mensaje',$respuesta['mensaje']);
 		}
@@ -48,9 +48,8 @@ class PersonalController extends BaseController
 			return View::make('personal.edit',array('personal'=>$personal));
 		}
 	}
-	public function update()
+	public function update($id = null)
 	{
-		$id=Input::get('id');
 		if(is_null($id))
 		{
 			Redirect::to('404.html');
