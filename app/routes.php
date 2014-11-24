@@ -59,7 +59,7 @@ Route::get('mi/pagina', function() {
 });
 
 
-//Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModuloController@nuevo'));
+Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModuloController@nuevo'));
 
 Route::get('modalidad_pago',array('uses'=>'ModalidadPagoController@index'));
 Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModalidadPagoController@nuevo'));
@@ -67,10 +67,25 @@ Route::get('modalidad_pago/actualizar.html',array('uses'=>'ModalidadPagoControll
 Route::post('modalidad_pago/crear',array('uses'=>'ModalidadPagoController@crear'));
 
 
-
-
 Route::post('modalidad/store','ModalidadController@store');
 Route::post('modalidad/update/{id}','ModalidadController@update');
 Route::get('/caisc/public/modalidad/destroy/{id}','ModalidadController@destroy');
 Route::post('/caisc/public/modalidad/index','ModalidadController@index');
+
 Route::controller('modalidad','ModalidadController');
+
+
+// Modulos Asistencia: Docentes y Alumnos
+Route::get('asistencia/add_ct',array('uses'=>'AsistenciaController@add_ct'));
+
+// carga academica
+Route::get('carga.html',array('uses'=>'CargaAcademicaController@MostrarCargaAcademica'));
+Route::get('crear.html',array('uses'=>'CargaAcademicaController@MostrarCrearCarga'));
+
+//mantenimiento de tablas libres
+Route::resource('dia','DiaController');
+Route::resource('grupo','GrupoController');
+Route::resource('horario','HorarioController');
+Route::resource('modulo','ModuloController');
+Route::resource('semestre','SemestreController');
+Route::resource('turno','TurnoController');

@@ -269,6 +269,7 @@
                                 <i class="fa fa-dashboard"></i> <span>Inicio</span>
                             </a>
                         </li>
+
 						<li class ="treeview">
                             <a href="personal">
                                 <i class="fa fa-folder"></i> <span>Personal</span>
@@ -279,7 +280,6 @@
                                 <li>{{ HTML::link('personal/add.html','Agregar') }}</li>
                                 <li>{{ HTML::link('personal/change-pass-personal/1122','Cambiar Contraseña') }}</li>
                                 <li>{{ HTML::link('personal','Listar Personal') }}</li>
- 
                             </ul>
                         </li>
 
@@ -292,7 +292,17 @@
                                 <li>{{ HTML::link('docente/add.html','Agregar') }}</li>
                                 <li>{{ HTML::link('docente/change-pass/2141','Cambiar Contraseña') }}</li>
                                 <li>{{ HTML::link('docentes','Listar Docentes') }}</li>
-                                <li>{{ HTML::link('docentes', 'Registrar Asistencia')}}</li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="RegistroAsistencias">
+                                <i class="fa fa-folder"></i> <span>Registro Asistencias</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('asistencia/add_ct', 'Registrar Asistencia Carrera Tecnica')}}</li>
+                                <li>{{ HTML::link('asistencia/add_cl', 'Registrar Asistencia Cursos Libre')}}</li>
                             </ul>
                         </li>
 
@@ -307,18 +317,31 @@
                                 <li><a href="/caisc/public/modalidad"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                             </ul>
                         </li>
-
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Mantenimientos TL</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{HTML::linkAction('DiaController@index', 'Dia')}}</li>
+                                <li>{{HTML::linkAction('GrupoController@index', 'Grupo')}}</li>
+                                <li>{{HTML::linkAction('ModuloController@index', 'Modulo')}}</li>
+                                <li>{{HTML::linkAction('SemestreController@index', 'Semestre')}}</li>
+                                <li>{{HTML::linkAction('TurnoController@index', 'Turno')}}</li>
+                            </ul>
+                        </li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-folder"></i> <span>Examples</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="/login.html"><i class="fa fa-angle-double-right"></i> Login</a></li>
-                                <li><a href="/register.html"><i class="fa fa-angle-double-right"></i> Register</a></li>
-                                <li><a href="/404.html"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
-                                <li><a href="/500.html"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>
-                                <li><a href="/blank.html"><i class="fa fa-angle-double-right"></i> Blank Page</a></li>
+                                <li>{{ HTML::link('login.html','Login') }}</li>
+                                <li>{{ HTML::link('register.html','Register') }}</li>
+                                <li>{{ HTML::link('404.html','404 Error') }}</li>
+                                <li>{{ HTML::link('500.html','500 Error') }}</li>
+                                <li>{{ HTML::link('blank.html','Blank Page') }}</li>
+                                <li>{{ HTML::link('carga.html','Carga Academica pro') }}</li>
                             </ul>
                         </li>
                     </ul>
@@ -332,8 +355,8 @@
                 <section class="content-header">
                     <h1>@section('title') PANEL CONTROL<small>Instituto Sistima Cusco </small>@show</h1>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                         @section('breadcrumb')
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li class="active"> Dashboard</li>
                         @show
                     </ol>
