@@ -25,7 +25,7 @@ class PersonalController extends BaseController
 	}
 	public function add()
 	{
-		$cargos = array('1'=>'Tesorero');
+		$cargos = Cargo::lists('nombre','id');
 		return View::make('personal.add',array('cargos'=>$cargos));
 	}
 	public function insert()
