@@ -91,7 +91,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
 	<div class="form-group">
 		{{ Form::label('cargo_id','cargo:',array('class'=>'col-sm-2 control-label')) }}
 		<div class="col-sm-6 col-md-4">
-			{{ Form::select('cargo_id',$cargos,array('class'=>'form-control'))}}
+			{{ Form::select('cargo_id',$cargos,null,array('class'=>'form-control'))}}
 			{{ HTML::link('personal/cargo/add.html','Agregar Cargo') }}
 		</div>
 		<div class="errores">
