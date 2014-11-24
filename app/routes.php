@@ -82,3 +82,10 @@ Route::get('asistencia/add_ct',array('uses'=>'AsistenciaController@add_ct'));
 Route::get('carga.html',array('uses'=>'CargaAcademicaController@MostrarCargaAcademica'));
 Route::get('crear.html',array('uses'=>'CargaAcademicaController@MostrarCrearCarga'));
 
+//mantenimiento de tablas libres
+Route::resource('dia','DiaController');
+Route::resource('grupo','GrupoController');
+Route::resource('horario','HorarioController');
+Route::resource('modulo','ModuloController');
+Route::resource('semestre','SemestreController');
+Route::resource('turno','TurnoController');

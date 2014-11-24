@@ -317,7 +317,19 @@
                                 <li><a href="/caisc/public/modalidad"><i class="fa fa-angle-double-right"></i> Listar</a></li>
                             </ul>
                         </li>
-
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>Mantenimientos TL</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{HTML::linkAction('DiaController@index', 'Dia')}}</li>
+                                <li>{{HTML::linkAction('GrupoController@index', 'Grupo')}}</li>
+                                <li>{{HTML::linkAction('ModuloController@index', 'Modulo')}}</li>
+                                <li>{{HTML::linkAction('SemestreController@index', 'Semestre')}}</li>
+                                <li>{{HTML::linkAction('TurnoController@index', 'Turno')}}</li>
+                            </ul>
+                        </li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-folder"></i> <span>Examples</span>
@@ -343,8 +355,8 @@
                 <section class="content-header">
                     <h1>@section('title') PANEL CONTROL<small>Instituto Sistima Cusco </small>@show</h1>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                         @section('breadcrumb')
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li class="active"> Dashboard</li>
                         @show
                     </ol>
