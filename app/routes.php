@@ -74,3 +74,5 @@ Route::post('modalidad/update/{id}','ModalidadController@update');
 Route::get('/caisc/public/modalidad/destroy/{id}','ModalidadController@destroy');
 Route::post('/caisc/public/modalidad/index','ModalidadController@index');
 Route::controller('modalidad','ModalidadController');
+
+
