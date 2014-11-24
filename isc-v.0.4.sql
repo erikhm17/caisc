@@ -301,3 +301,14 @@ CREATE TABLE IF NOT EXISTS grupo(
 	`nombre` VARCHAR(10),
 	PRIMARY KEY (`id`)
 ) CHARSET=utf8;
+
+-- Cambiar definer : 'root por usuario asignado' @ 'localhost por tu servidor o ip del servidor'
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `listarCargaAcademica_ct`()
+BEGIN
+    select c.codCargaAcademica_ct,dia,horaInicio,horaFin,d1.nombre as "NombreDocente",d1.apellidos as "ApellidoDocente",codAula,cct1.nombre as "curso",grupo,c.semestre 
+	from (((horario_aula h inner join carga_academica_ct c
+	on h.codCargaAcademica_ct = c.codCargaAcademica_ct) inner join 
+	horario h1 on h.Horario = h1.codHorario) inner join curso_ct cct1 on c.codCurso_ct = cct1.codCurso_ct) inner join docente d1 on c.docente_id= d1.id;
+END
