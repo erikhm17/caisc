@@ -295,6 +295,7 @@
                             </ul>
                         </li>
 
+                        <!-- modulo Asistencias -->
                         <li class="treeview">
                             <a href="RegistroAsistencias">
                                 <i class="fa fa-folder"></i> <span>Registro Asistencias</span>
