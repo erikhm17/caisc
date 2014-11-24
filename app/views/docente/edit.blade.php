@@ -9,7 +9,7 @@ Editar Docente <small> {{$docente->nombre}} </small>
 @stop
 @section('content')
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-{{ Form::open(array('method'=> 'POST','url'=> 'docente/update.html','class'=>'form-horizontal','role'=>'form')) }}
+{{ Form::model($docente,array('url'=>array('docente/update',$docente->id),'method'=> 'POST','class'=>'form-horizontal','role'=>'form'))}}
 	<div class="form-group">
 		{{ Form::label('nombre','Nombre(s):',array('class'=>'col-sm-4 control-label')) }}
 		<div class="col-sm-8">
