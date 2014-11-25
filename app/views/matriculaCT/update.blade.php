@@ -1,4 +1,4 @@
 @extends('layouts.base')
 @section('content')
-<h1>Actualizar Información Modulo</h1>
+<h1>Actualizar Información Matrícula</h1>
 @stop

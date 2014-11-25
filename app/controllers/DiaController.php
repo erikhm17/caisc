@@ -1,18 +1,18 @@
 <?php
 
-class ModuloController extends \BaseController {
+class DiaController extends \BaseController {
 
 	public function index()
 	{
 		//MUESTRA TODOS LOS SEMESTRES
-		$modulos = Modulo::all();
-		return View::make('modulo.index')->with('modulos', $modulos);
+		$dias = Dia::all();
+		return View::make('dia.index')->with('dias', $dias);
 	}
 
 	public function create()
 	{
 		//MUESTRA EL FORMULARIO PARA INSERTAR UN NUEVO SEMESTRE
-		return View::make('modulo.create');
+		return View::make('dia.create');
 	}
 
 	public function store()
@@ -20,54 +20,53 @@ class ModuloController extends \BaseController {
 		//RECUPERAR LOS DATOS  DE CREATE Y GUARDAR LOS DATOS EN LA BASE DE DATOS
  		$nombre = Input::get('nombre');
  		$a = '[{"nombre":"'.$nombre.'"}]';
- 		$b = Modulo::select('nombre')->where('nombre', $nombre)->get();
+ 		$b = Dia::select('nombre')->where('nombre', $nombre)->get();
  		if($a==$b){
- 			Session::flash('message',"El modulo ($nombre) ya existe en la base de datos!");
+ 			Session::flash('message',"El dia ($nombre) ya existe en la base de datos!");
 			Session::flash('class','danger');;
  		}
  		else{
- 			$modulo = new Modulo;
-			$modulo->nombre = Input::get('nombre');
-			$modulo->save();
+ 			$dia = new Dia;
+			$dia->nombre = Input::get('nombre');
+			$dia->save();
 			Session::flash('message','Guardado correctamente!');
 			Session::flash('class','success');
  		}
- 		return Redirect::to('modulo/create');
+ 		return Redirect::to('dia/create');
 	}
 
 	public function show($id)
 	{
 		//RECUPERAMOS LOS DATOS DE ID QUE LE PASEMOS Y MOSTRAMOS TODO EL REGISTRO DEL ID
-		$modulo = Modulo::find($id);
-		return View::make('modulo.show')->with('modulo', $modulo);
+		$dia = Dia::find($id);
+		return View::make('dia.show')->with('dia', $dia);
 	}
 
 	public function edit($id)
 	{
 		//RECUPERAMOS LOS DATOS DEL ID QUE LE PASEMOS
-		$modulo = Modulo::find($id);
-		return View::make('modulo.edit')->with('modulo', $modulo);
+		$dia = Dia::find($id);
+		return View::make('dia.edit')->with('dia', $dia);
 	}
-
 	public function update($id)
 	{
 		//RECIBE EL CONTENIDO DEL TEX
 		$input = Input::all();
-		$modulo = Modulo::find($id);
-		$modulo->nombre = $input['nombre'];
+		$dia = Dia::find($id);
+		$dia->nombre = $input['nombre'];
 		$nombre = $input['nombre'];
  		$a = '[{"nombre":"'.$nombre.'"}]';
- 		$b = Modulo::select('nombre')->where('nombre', $nombre)->get();
+ 		$b = Dia::select('nombre')->where('nombre', $nombre)->get();
  		if($a==$b){
- 			Session::flash('message',"El modulo ($nombre) ya existe en la base de datos!");
+ 			Session::flash('message',"El dia ($nombre) ya existe en la base de datos!");
 			Session::flash('class','danger');;
-			return Redirect::to('modulo/'.$id.'/edit');
+			return Redirect::to('dia/'.$id.'/edit');
  		}
  		else{
-			$modulo->save();
+			$dia->save();
 			Session::flash('message','Modificado correctamente!');
 			Session::flash('class','success');
-			return Redirect::to('modulo/'.$id);
+			return Redirect::to('dia/'.$id);
  		};
 		//if()
 		//$semestre->save();
@@ -76,11 +75,11 @@ class ModuloController extends \BaseController {
 
 	public function destroy($id)
 	{
-		$modulo = Modulo::find($id);
-		$modulo->delete();
-		Session::flash('message',"El modulo Eliminado Correctamente...!");
+		$dia = Dia::find($id);
+		$dia->delete();
+		Session::flash('message',"El Dia Eliminado Correctamente...!");
 		Session::flash('class','success');;
-		return Redirect::to('modulo');
+		return Redirect::to('dia');
 	}
 
 }

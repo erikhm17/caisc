@@ -1,11 +1,11 @@
 @extends('layouts.base_admin')
 @section('title')
-MATENIMIENTO DE MODULO
+MATENIMIENTO DE SEMESTRE
 @stop
 
 @section('breadcrumb')
 	<li class="active todos"><i class="fa fa-fw fa-th-list"></i>Listar</li>
-	<li class="nuevo"><i class="fa fa-fw fa-plus"></i>{{HTML::linkAction('ModuloController@create', 'Nuevo')}}</li>
+	<li class="nuevo"><i class="fa fa-fw fa-plus"></i>{{HTML::linkAction('SemestreController@create', 'Nuevo')}}</li>
 @stop
 @section('content')
     @if(Session::has('message'))
@@ -17,13 +17,13 @@ MATENIMIENTO DE MODULO
             <div class="panel panel-success">
                 <div class="panel-body" align="">
                     <div class="panel-default" align="center">
-                        <h3 class="text-muted" align="center">Lista de Modulos</h3>
+                        <h3 class="text-muted" align="center">Lista de Semestres</h3>
                     </div>
                     <table id="example1" class="table table-bordered table-striped dataTable" aria-describedby="example1_info">
                         <thead>
                             <tr role="row">
                                 <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 100px;" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                    Modulo
+                                    Semestre
                                 </th>
                                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 100px;" aria-label="Browser: activate to sort column ascending">
                                     Accion(Editar)
@@ -33,22 +33,20 @@ MATENIMIENTO DE MODULO
                                 </th>
                             </tr>
                         </thead>
-						@foreach($modulos as $modulo)
-							<tr>
-								<td align = "center">
-									<a href="modulo/{{ $modulo->id }}">{{ $modulo->nombre }}</a>  
-								</td>
-								<td  align = "center">
-									<a href="modulo/{{ $modulo->id }}/edit"><span class="label label-success">Editar</a>
-								</td>
-								<td align = "center"> 
-									{{ Form::open(array('url'=>'modulo/'.$modulo->id, 'method'=>'delete')) }}
-									{{ Form::submit('Eliminar') }}
-									{{ Form::close() }}
-								</td>
-							</tr>
-						@endforeach
-					</table>
+                        <tbody role="alert" aria-live="polite" aria-relevant="all">
+                            @foreach($semestres as $semestre)
+                            <tr class="odd">
+                                <td class=" sorting_1" align="center"><a href="semestre/{{ $semestre->id }}">{{ $semestre->nombre }}</a>  </td>
+                                <td class="" align="center"><a href="semestre/{{ $semestre->id }}/edit"><span class="label label-success">Editar</a></td>
+                                <td class=" " align="center">
+                                    {{ Form::open(array('url'=>'semestre/'.$semestre->id, 'method'=>'delete')) }}
+                                    {{ Form::submit('Eliminar') }}
+                                    {{ Form::close() }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

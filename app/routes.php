@@ -23,13 +23,13 @@ Route::get('blank.html',array('uses'=>'ErrorController@blank'));
 
 
 // Docente
-Route::get('docentes',array('uses'=>'DocenteController@pag'));
+Route::get('docentes',array('uses'=>'DocenteController@index'));
 Route::get('docente/add.html',array('uses'=>'DocenteController@add'));
 Route::get('docente/login.html',array('uses'=>'DocenteController@login'));
 Route::post('docente/login',array('uses'=>'DocenteController@loginInit'));
 Route::get('docente/logout.html',array('uses'=>'DocenteController@logout'));
 Route::get('docente/edit/{id}',array('uses'=>'DocenteController@edit'))->where('id','[0-9]+');
-Route::post('docente/update.html',array('uses'=>'DocenteController@update'));
+Route::post('docente/update/{id}',array('uses'=>'DocenteController@update'))->where('id','[0-9]+');
 Route::post('docente/insert.html',array('uses'=>'DocenteController@insert'));
 Route::get('docente/profile/{id}',array('uses'=>'DocenteController@profile'))->where('id','[0-9]+');
 Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
@@ -45,7 +45,7 @@ Route::get('personal/add.html',array('uses'=>'PersonalController@add'));
 Route::post('personal/insert.html',array('uses'=>'PersonalController@insert'));
 Route::get('personal/profile/{id}',array('uses'=>'PersonalController@profile'))->where('id','[0-9]+');
 Route::get('personal/edit/{id}',array('uses'=>'PersonalController@edit'))->where('id','[0-9]+');
-Route::post('personal/update.html',array('uses'=>'PersonalController@update'));
+Route::post('personal/update/{id}',array('uses'=>'PersonalController@update'))->where('id','[0-9]+');
 Route::get('personal/change-pass-personal/{id}',array('uses'=>'PersonalController@changePassPersonal'))->where('id','[0-9]+');
 
 //Modulos mantenimiento
@@ -83,9 +83,17 @@ Route::controller('pagos','PagosController');
 
 
 // Modulos Asistencia: Docentes y Alumnos
-Route::post('create','AsistenciaController');
+Route::get('asistencia/add_ct',array('uses'=>'AsistenciaController@add_ct'));
+Route::get('asistencia/add_cl',array('uses' =>'AsistenciaController@add_cl'));
 
 // carga academica
 Route::get('carga.html',array('uses'=>'CargaAcademicaController@MostrarCargaAcademica'));
 Route::get('crear.html',array('uses'=>'CargaAcademicaController@MostrarCrearCarga'));
 
+//mantenimiento de tablas libres
+Route::resource('dia','DiaController');
+Route::resource('grupo','GrupoController');
+Route::resource('horario','HorarioController');
+Route::resource('modulo','ModuloController');
+Route::resource('semestre','SemestreController');
+Route::resource('turno','TurnoController');

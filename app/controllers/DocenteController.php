@@ -2,10 +2,11 @@
 
 class DocenteController extends BaseController
 {
-	public function index()
+	public function index($registros=5)
 	{
+		$datos = Docente::paginate($registros);
 		$docentes = Docente::all();
-		return View::make('docente.index',array('docentes'=>$docentes));
+		return View::make('docente.index',compact("datos"),array('docentes'=>$docentes));
 	}
 	public function profile($id = null)
 	{
@@ -31,7 +32,7 @@ class DocenteController extends BaseController
 		$respuesta = Docente::agregar(Input::all());
 		if($respuesta['error']==true)
 		{
-			return Redirect::to('docente/add')->with('mensaje',$respuesta['mensaje'])->withInput();
+			return Redirect::to('docente/add.html')->withErrors($respuesta['mensaje'] )->withInput();
 		} else {
 			return Redirect::to('docentes')->with('mensaje',$respuesta['mensaje']);
 		}
@@ -46,10 +47,9 @@ class DocenteController extends BaseController
 			return View::make('docente.edit',array('docente'=>$docente));
 		}
 	}
-	public function update()
+	public function update($id=0)
 	{
-		$cod=Input::get('codDocente');
-		if(is_null($cod))
+		if($id<1)
 		{
 			Redirect::to('404.html');
 		} else {
@@ -61,7 +61,7 @@ class DocenteController extends BaseController
 				$docente->email = Input::get('email');
 				$docente->telefono = Input::get('telefono');
 				$docente->save();
-				return Redirect::to('docentes');
+				return Redirect::to('docente/profile/'.$id);
 			} else {
 				Redirect::to('500.html');
 			}
@@ -141,11 +141,5 @@ class DocenteController extends BaseController
 				Redirect::to('500.html');
 			}
 		}
-	}
-	public function pag()
-	{
-		$datos = Docente::paginate(2);
-		$docentes = Docente::all();
-		return View::make('docente.index',compact("datos"),array('docentes'=>$docentes));
 	}
 }
