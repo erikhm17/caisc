@@ -26,15 +26,12 @@ Mantenimiento Modalidad
         @if (!empty($modalidad))
           <form method="post" action="/caisc/public/modalidad/update/{{ $modalidad->id}}">
           <p>
-            <label>Nombre:</label>
             <input value="{{ $modalidad->id }}" type="text" name="id" placeholder="Nombre" class="form-control" required>
           </p>
           <p>
-            <label>Descripción:</label>
             <input value="{{ $modalidad->descripcion }}" type="text" name="descripcion" placeholder="Descripcion" class="form-control" required>
           </p>
            <p>
-            <label>Monto:</label>
             <input value="{{ $modalidad->monto }}" type="text" name="monto" placeholder="Monto" class="form-control" required>
           </p>
           <input type="submit" value="Guardar" class="btn btn-success">
@@ -42,7 +39,7 @@ Mantenimiento Modalidad
           <p>
             No existe información para éste usuario.
           </p>
-        @endif
+          @endif
       </form>
     </div>
   </div>

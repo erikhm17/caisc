@@ -1,6 +1,6 @@
 <?php
 
-class ModalidadController extends \BaseController {
+class PagosController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,16 +9,16 @@ class ModalidadController extends \BaseController {
 	 */
 	public function getIndex()
 	{
-		$modalidad = Modalidad::orderBy('id','DESC')->get();
+		$pagos = Pagos::orderBy('id','DESC')->get();
 
-		return View::make('modalidad.index')->with('modalidad',$modalidad);
+		return View::make('pagos.index')->with('pagos',$pagos);
 	}
 
 	public function index()
 	{
-		$modalidad = Modalidad::orderBy('id','DESC')->get();
+		$pagos = Pagos::orderBy('id','DESC')->get();
 
-		return View::make('modalidad.index')->with('modalidad',$modalidad);
+		return View::make('pagos.index')->with('pagos',$pagos);
 	}
 
 	/**
@@ -28,7 +28,7 @@ class ModalidadController extends \BaseController {
 	 */
 	public function getCreate()
 	{
-		return View::make('modalidad.create');
+		return View::make('pagos.create');
 	}
 
 	/**
@@ -38,13 +38,15 @@ class ModalidadController extends \BaseController {
 	 */
 	public function store()
 	{
-		$modalidad = new Modalidad;
+		$pagos = new Pagos;
 
-		$modalidad->id = Input::get('id');
-		$modalidad->descripcion = Input::get('descripcion');
-		$modalidad->monto = Input::get('monto');
+		$pagos->id = Input::get('id');
+		$pagos->nro_serie = Input::get('nro_serie');
+		$pagos->id_alumno = Input::get('id_alumno');
+		$pagos->fecha = Input::get('fecha');
+		$pagos->total_pago = Input::get('total_pago');
 
-		if ($modalidad->save()) {
+		if ($pagos->save()) {
 			Session::flash('message','Guardado correctamente!');
 			Session::flash('class','success');
 		} else {
@@ -52,7 +54,7 @@ class ModalidadController extends \BaseController {
 			Session::flash('class','danger');
 		}
 
-		return Redirect::to('modalidad/create');
+		return Redirect::to('pagos/create');
 	}
 
 	/**
@@ -63,10 +65,10 @@ class ModalidadController extends \BaseController {
 	 */
 	public function getShow($id = null)
 	{
-		$modalidad = Modalidad::find($id);
-		//$modalidad = modalidad::getAttribute($id)
-		//$modalidad = modalidad::table('modalidad_pago')-->where('nombre','=',$nombre)-->get();
-		return View::make('modalidad.show')->with('modalidad',$modalidad);
+		$pagos = Pagos::find($id);
+		//$pagos = Pagos::getAttribute($id)
+		//$pagos = Pagos::table('pagos_pago')-->where('nombre','=',$nombre)-->get();
+		return View::make('pagos.show')->with('pagos',$pagos);
 	}
 
 	/**
@@ -77,9 +79,9 @@ class ModalidadController extends \BaseController {
 	 */
 	public function getEdit($id = null)
 	{
-		$modalidad = Modalidad::find($id);
+		$pagos = Pagos::find($id);
 
-		return View::make('modalidad.edit')->with('modalidad',$modalidad);
+		return View::make('pagos.edit')->with('pagos',$pagos);
 	}
 
 	/**
@@ -90,19 +92,22 @@ class ModalidadController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$modalidad = Modalidad::find($id);
+		$pagos = Pagos::find($id);
 
-		$modalidad->id = Input::get('id');
-		$modalidad->descripcion = Input::get('descripcion');
-		$modalidad->monto = Input::get('monto');
-		if ($modalidad->save()) {
+		$pagos->id = Input::get('id');
+		$pagos->nro_serie = Input::get('nro_serie');
+		$pagos->id_alumno = Input::get('id_alumno');
+		$pagos->fecha = Input::get('fecha');
+		$pagos->total_pago = Input::get('total_pago');
+
+		if ($pagos->save()) {
 			Session::flash('message','Actualizado correctamente!');
 			Session::flash('class','success');
 		} else {
 			Session::flash('message','Ha ocurrido un error!');
 			Session::flash('class','danger');
 		}
-		return Redirect::to('modalidad/edit/'.$id);
+		return Redirect::to('pagos/edit/'.$id);
 	}
 
 	/**
@@ -111,11 +116,11 @@ class ModalidadController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($nombre)
+	public function destroy($id)
 	{
-		$modalidad = Modalidad::find($nombre);
+		$pagos = Pagos::find($id);
 
-		if ($modalidad->delete()) {
+		if ($pagos->delete()) {
 			Session::flash('message','Eliminado correctamente!');
 			Session::flash('class','success');
 		} else {
@@ -123,7 +128,7 @@ class ModalidadController extends \BaseController {
 			Session::flash('class','danger');
 		}
 
-		return Redirect::to('modalidad');
+		return Redirect::to('pagos');
 	}
 
 }

@@ -8,8 +8,8 @@ Mantenimiento Modalidad
   		<div class="container-fluid">
     		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       			<ul class="nav navbar-nav">
-        			<li ><a href="/caisc/public/modalidad/index">Todos</a></li>
-        			<li><a href="/caisc/public/modalidad/create">Nuevo</a></li>
+        			<li >{{ HTML::link('/modalidad','Todos') }}</li>
+        			<li>{{ HTML::link('/modalidad/create','Nuevo') }}</li>
         		</ul>
         	</div>
         </div>
@@ -37,9 +37,9 @@ Mantenimiento Modalidad
 							<td>{{ $mod->descripcion }}</td>
 							<td>{{ $mod->monto }}</td>
 							<td>
-								<a href="/caisc/public/modalidad/show/{{ $mod->id}}"><span class="label label-success">Mostrar</span></a>
-								<a href="/caisc/public/modalidad/edit/{{ $mod->id}}"><span class="label label-info">Editar</span></a>
-								<a href="{{ url('/caisc/public/modalidad/destroy',$mod->id) }}"><span class="label label-danger">Borrar</span></a>
+								<a href="modalidad/show/{{ $mod->id}}"><span class="label label-success">Mostrar</span></a>
+								<a href="modalidad/edit/{{ $mod->id}}"><span class="label label-info">Editar</span></a>
+								<a href="{{ url('modalidad/destroy',$mod->id) }}"><span class="label label-danger">Borrar</span></a>
 							</td>
 						</tr>
 					@endforeach

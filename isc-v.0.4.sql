@@ -247,22 +247,30 @@ CREATE TABLE IF NOT EXISTS modalidad_pago(
 	`monto` real,
 	PRIMARY KEY (`id`)
 ) CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS pagos(
-	`nro_boleta` int AUTO_INCREMENT NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`nro_serie` varchar(3),
 	`id_alumno` VARCHAR(10),
 	`fecha` DATE,
 	`total_pago` real,
-	PRIMARY KEY (`nro_boleta`),
-	FOREIGN KEY (`alumno`) REFERENCES alumno(`codAlumno`)
-) CHARSET=utf8;
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`id_alumno`) REFERENCES alumno(`codAlumno`)
+) CHARSET=utf8 AUTO_INCREMENT=214;
+
+
 CREATE TABLE IF NOT EXISTS detalle_pagos(
 	`id` int AUTO_INCREMENT not null,
 	`nro_boleta` int NOT NULL,
-	`id_curso` varchar(10),
-	`id_mmodalidad` VARCHAR(30),
+	`descripcion` varchar(20),
+	`id_modalidad` VARCHAR(30),
+	PRIMARY KEY (`id`),	
+	FOREIGN KEY (`id_modalidad`) REFERENCES modalidad_pago(`id`),
 	FOREIGN KEY (`nro_boleta`) REFERENCES pagos(`nro_boleta`)
-) CHARSET=utf8;
+) CHARSET=utf8 AUTO_INCREMENT=214;
+
+
+
 
 -- Flotantes
 CREATE TABLE IF NOT EXISTS horario(
