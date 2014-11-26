@@ -1,6 +1,18 @@
 CREATE DATABASE isc_test8;
 use isc_test8;
 
+CREATE TABLE IF NOT EXISTS users(
+	`id` INT AUTO_INCREMENT NOT NULL,
+	`email` VARCHAR(120) NOT NULL,
+    `password` VARCHAR(120) NOT NULL,
+    `tipoUsuario` VARCHAR(120) NOT NULL,
+    `nroId` INT NOT NULL,
+    `estado` INT(2) DEFAULT '1',
+    `updated_at` DATETIME NOT NULL,
+    `created_at` DATETIME NOT NULL,
+	PRIMARY KEY (`id`)
+) CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS carrera(
 	`codCarrera` VARCHAR(10) NOT NULL,
 	`nombre` VARCHAR(50) NOT NULL,
