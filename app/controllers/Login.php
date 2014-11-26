@@ -40,7 +40,8 @@ class Login extends BaseController{
 		}
 		else
 		{
-				return "Error Datos no Validos.";				
+			return Redirect::to('/');									
+				//return "Error Datos no Validos.";				
 		}
 
 
