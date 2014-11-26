@@ -96,5 +96,12 @@ Route::resource('grupo','GrupoController');
 Route::resource('horario','HorarioController');
 Route::resource('modulo','ModuloController');
 Route::resource('semestre','SemestreController');
-// YURESZ
 Route::resource('turno','TurnoController');
+
+// Mantenimiento matricula carrera tecnica
+Route::get('matriculas',array('uses'=>'MatriculaCTController@index'));
+Route::get('matriculas/edit/{cod}',array('uses'=>'MatriculaCTController@edit'));
+Route::post('matriculas/update.html',array('uses'=>'MatriculaCTController@update'));
+Route::get('matriculas/delete/{cod}',array('uses'=>'MatriculaCTController@delete'));
+Route::get('matriculas/add.html',array('uses'=>'MatriculaCTController@add'));
+Route::post('matriculas/insert.html',array('uses'=>'MatriculaCTController@insert'));
