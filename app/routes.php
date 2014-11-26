@@ -13,13 +13,44 @@
 
 Route::get('/', function()
 {
-	return View::make('inicio');
+	return View::make('login');
 });
 // Errors
 Route::get('404.html',array('uses'=>'ErrorController@mostrar404'));
 Route::get('500.html',array('uses'=>'ErrorController@mostrar500'));
 Route::get('blank.html',array('uses'=>'ErrorController@blank'));
+
 //login
+Route::get('salir',function()
+{
+	Auth::logout();
+});
+
+Route::post('check',array('uses'=>'Login@postUser'));
+
+Route::get('registrar', function()
+{
+	$user = new User;	
+	$user->email = "osc@gmail.com";
+	$user->password = Hash::make('1234');
+	$user->tipoUsuario = "Docente";
+	$user->nroId = "2141";
+	//guardamos
+	$user->save();
+	return "El usuario fue agregado.";
+});
+Route::get('registrarPer', function()
+{
+	$user = new User;	
+	$user->email = "per@gmail.com";
+	$user->password = Hash::make('1234');
+	$user->tipoUsuario = "Personal";
+	$user->nroId = "215";
+	//guardamos
+	$user->save();
+	return "El PersonalAdminstrativo fue agregado.";
+});
+
 
 
 // Docente
@@ -97,3 +128,4 @@ Route::resource('horario','HorarioController');
 Route::resource('modulo','ModuloController');
 Route::resource('semestre','SemestreController');
 Route::resource('turno','TurnoController');
+
