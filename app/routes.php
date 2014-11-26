@@ -129,8 +129,6 @@ Route::resource('modulo','ModuloController');
 Route::resource('semestre','SemestreController');
 Route::resource('turno','TurnoController');
 
-
-
 // Mantenimiento matricula carrera tecnica
 Route::get('matriculas',array('uses'=>'MatriculaCTController@index'));
 Route::get('matriculas/edit/{cod}',array('uses'=>'MatriculaCTController@edit'));
