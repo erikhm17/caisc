@@ -9,60 +9,62 @@ Registro Asistencia: <small> CARRERA TECNICA </small>
 @section('content')
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 {{ Form::open(array('method'=> 'POST','url'=> 'asistencia/insert.html','class'=>'form-horizontal','role'=>'form')) }}
-	<div class="form-group">
-		{{ Form::label('nombre','Nombre(s):',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::text('nombre','',array('class'=>'form-control','placeholder'=>'Juan'))}}
-		</div>
+	<div>
+		<h1>Bienvenido:</h1><small>Ing. User</small>
 	</div>
-	<div class="form-group">
-		{{ Form::label('apellidos','Apellidos:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::text('apellidos','',array('class'=>'form-control','placeholder'=>'Huamani Mendoza'))}}
-		</div>
+	<div>
+		Seleccione su curso:
+		<select>
+	  		<option value="CL001">Operador de Sistemas Computarizados</option>
+	  		<option value="CL002">Operador de Sistemas Contables</option>
+   		    <option value="CL003">Tecnico en Redes de Computadoras</option>
+   		    <option value="CL004">Programador de Sistemas</option>
+   		    <option value="CL005">Analista de Sistemas</option>
+			  <button class="btn btn-primary btn-block" type="submit">Registrar Docente</button>
+		</select>
+
 	</div>
-	<div class="form-group">
-		{{ Form::label('dni','DNI:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::number('dni','',array('class'=>'form-control','placeholder'=>'12345678'))}}
-		</div>
+
+	<div class="col-xs-12 col-sm-6 col-md-6">
+		<button class="btn btn-primary btn-block" type="submit">Registrar Docente</button>
 	</div>
-	<div class="form-group">
-		{{ Form::label('direccion','Dirección:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::text('direccion','',array('class'=>'form-control','placeholder'=>'Av. la cultura Nro 8'))}}
-		</div>
+	<br>
+	<br>
+	<div>
+		<br>
+		<table border='1 solid'>
+			<tr>
+				<th>N°</th>
+				<th>Codigo</th>
+				<th>Apellidos y Nombres</th>
+				<th>Presente</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>AL00000001</td>
+				<td>VARGAS SOTO-JOEL YURI</td>
+				<td align='center'>
+					<input type="checkbox" name="presente">
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>AL00000002</td>
+				<td>RAYME CHAMBI-ERWIN MIULLER</td>
+				<td align='center'>
+					<input type="checkbox" name="presente">
+				</td>
+			</tr>
+		</table>
 	</div>
-	<div class="form-group">
-		{{ Form::label('telefono','Teléfono:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::text('telefono','',array('class'=>'form-control','placeholder'=>'12345678'))}}
-		</div>
-	</div>
-	<div class="form-group">
-		{{ Form::label('email','E-mail:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::email('email','',array('class'=>'form-control','placeholder'=>'correo@unsaac.edu.pe'))}}
-		</div>
-	</div>
-	<div class="form-group">
-		{{ Form::label('password','Password:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::password('password',array('class'=>'form-control'))}}
-		</div>
-	</div>
-	<div class="form-group">
-		{{ Form::label('repassword','Confirme-Password:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::password('repassword',array('class'=>'form-control'))}}
-		</div>
-	</div>
+	<br>
+	<br>
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-6 col-md-6">
 			<button class="btn btn-info btn-block" type="reset">Cancelar</button>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6">
-			<button class="btn btn-primary btn-block" type="submit">Guardar</button>
+			<button class="btn btn-primary btn-block" type="submit">Registrar Asistencia Alumnos</button>
 		</div>
 	</div>
 {{Form::close()}}
