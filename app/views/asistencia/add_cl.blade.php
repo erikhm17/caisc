@@ -15,10 +15,13 @@ Registro Asistencia: <small> CURSOS LIBRES </small>
 	<div>
 		Seleccione su curso:
 		<select>
-	  		<option value="CL001">MS Word I</option>
-	  		<option value="CL002">MS Excel I</option>
-			  <option value="CL003">MS PowerPoint I</option>
-			  <option value="CL004">LAboratorio I</option><button class="btn btn-primary btn-block" type="submit">Registrar Docente</button>
+	  		<option value="CL001">Operador de computadoras</option>
+	  		<option value="CL002">Ensamblaje y mantenimiento de computadoras</option>
+			  <option value="CL003"> Desarrollo de aplicaciones .NET</option>
+			  <option value="CL004">Desarrollo de aplicaciones WEB</option>
+			  <option value="CL004">Programas contables </option>
+			  <option value="CL004">ARCGIS, AutoCAD </option>
+			  <button class="btn btn-primary btn-block" type="submit">Registrar Docente</button>
 		</select>
 
 	</div>
@@ -33,19 +36,22 @@ Registro Asistencia: <small> CURSOS LIBRES </small>
 		<table border='1 solid'>
 			<tr>
 				<th>N°</th>
+				<th>Codigo</th>
 				<th>Apellidos y Nombres</th>
 				<th>Presente</th>
 			</tr>
 			<tr>
 				<td>1</td>
-				<td>vargas soto joel</td>
+				<td>AL00000001</td>
+				<td>VARGAS SOTO-JOEL YURI</td>
 				<td align='center'>
 					<input type="checkbox" name="presente">
 				</td>
 			</tr>
 			<tr>
 				<td>2</td>
-				<td>santacruz carrion cristian</td>
+				<td>AL00000002</td>
+				<td>RAYME CHAMBI-ERWIN MIULLER</td>
 				<td align='center'>
 					<input type="checkbox" name="presente">
 				</td>
