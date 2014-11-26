@@ -96,4 +96,5 @@ Route::resource('grupo','GrupoController');
 Route::resource('horario','HorarioController');
 Route::resource('modulo','ModuloController');
 Route::resource('semestre','SemestreController');
+// YURESZ
 Route::resource('turno','TurnoController');
