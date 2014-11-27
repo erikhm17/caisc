@@ -220,11 +220,13 @@ CREATE TABLE IF NOT EXISTS horario_aula(
 -- ASISTENCIA ALUMNOS
 CREATE TABLE IF NOT EXISTS asistencia_ct(
 	`codAsistencia_ct` VARCHAR(10) NOT NULL,
-	`fecha` DATE NOT NULL,
-	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
+	`fecha` DATE NOT NULL,	
+	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,	
 	`tema` VARCHAR(10) NOT NULL,
+	`docente_id` INT NOT NULL,
 	PRIMARY KEY (`codAsistencia_ct`),
 	FOREIGN KEY (`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`)
+	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS detalle_asistencia_ct(
@@ -240,8 +242,10 @@ CREATE TABLE IF NOT EXISTS asistencia_cl(
 	`fecha` DATE NOT NULL,
 	`codCargaAcademica_cl` VARCHAR(10) NOT NULL,
 	`tema` VARCHAR(10) NOT NULL,
+	`docente_id` INT NOT NULL,
 	PRIMARY KEY (`codAsistencia_cl`),
 	FOREIGN KEY (`codCargaAcademica_cl`) REFERENCES carga_academica_cl(`codCargaAcademica_cl`)
+	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS detalle_asistencia_cl(
