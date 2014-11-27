@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS docente(
     `estado` INT(2) DEFAULT '1',
     `updated_at` DATETIME NOT NULL,
     `created_at` DATETIME NOT NULL,
-    PRIMARY KEY (`id`)  
+    PRIMARY KEY (`id`)
 ) CHARSET=utf8 AUTO_INCREMENT=2141 ;
 
 CREATE TABLE IF NOT EXISTS cargo(
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS nota_ct(
 	`codMatricula_ct` VARCHAR(10) NOT NULL,
 	`nota` float(7,4) NOT NULL,
 	PRIMARY KEY (`codNota_ct`),
-	FOREIGN KEY (`codMatricula_ct`) REFERENCES matricula_ct(`codMatricula_ct`)	
+	FOREIGN KEY (`codMatricula_ct`) REFERENCES matricula_ct(`codMatricula_ct`)
 ) CHARSET=utf8;
 
  -- CURSOS LIBRES
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS detalle_silabus_cl(
 	`titulo` VARCHAR(120) NOT NULL,
 	`descripcion` text NOT NULL,
 	`orden` INT NOT NULL,
-	`estado` BIT NOT NULL,	
+	`estado` BIT NOT NULL,
 	PRIMARY KEY(`codDetalleSilabus_cl`),
 	FOREIGN KEY(`codSilabus_cl`) REFERENCES silabus_cl(`codSilabus_cl`)
 ) CHARSET=utf8;
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS nota_cl(
 	`codMatricula_cl` VARCHAR(10) NOT NULL,
 	`nota` float(7,4) NOT NULL,
 	PRIMARY KEY (`codNota_cl`),
-	FOREIGN KEY (`codMatricula_cl`) REFERENCES matricula_cl(`codMatricula_cl`)	
+	FOREIGN KEY (`codMatricula_cl`) REFERENCES matricula_cl(`codMatricula_cl`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS aula(
@@ -220,12 +220,12 @@ CREATE TABLE IF NOT EXISTS horario_aula(
 -- ASISTENCIA ALUMNOS
 CREATE TABLE IF NOT EXISTS asistencia_ct(
 	`codAsistencia_ct` VARCHAR(10) NOT NULL,
-	`fecha` DATE NOT NULL,	
-	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,	
+	`fecha` DATE NOT NULL,
+	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
 	`tema` VARCHAR(10) NOT NULL,
 	`docente_id` INT NOT NULL,
 	PRIMARY KEY (`codAsistencia_ct`),
-	FOREIGN KEY (`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`)
+	FOREIGN KEY (`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`),
 	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8;
 
@@ -244,7 +244,7 @@ CREATE TABLE IF NOT EXISTS asistencia_cl(
 	`tema` VARCHAR(10) NOT NULL,
 	`docente_id` INT NOT NULL,
 	PRIMARY KEY (`codAsistencia_cl`),
-	FOREIGN KEY (`codCargaAcademica_cl`) REFERENCES carga_academica_cl(`codCargaAcademica_cl`)
+	FOREIGN KEY (`codCargaAcademica_cl`) REFERENCES carga_academica_cl(`codCargaAcademica_cl`),
 	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8;
 
@@ -277,16 +277,13 @@ CREATE TABLE IF NOT EXISTS pagos(
 
 CREATE TABLE IF NOT EXISTS detalle_pagos(
 	`id` int AUTO_INCREMENT not null,
-	`nro_boleta` int NOT NULL,
+	`pagos_id` int NOT NULL,
 	`descripcion` varchar(20),
 	`id_modalidad` VARCHAR(30),
-	PRIMARY KEY (`id`),	
+	PRIMARY KEY (`id`),
 	FOREIGN KEY (`id_modalidad`) REFERENCES modalidad_pago(`id`),
-	FOREIGN KEY (`nro_boleta`) REFERENCES pagos(`nro_boleta`)
+	FOREIGN KEY (`pagos_id`) REFERENCES pagos(`id`)
 ) CHARSET=utf8 AUTO_INCREMENT=214;
-
-
-
 
 -- Flotantes
 CREATE TABLE IF NOT EXISTS horario(
@@ -325,28 +322,3 @@ CREATE TABLE IF NOT EXISTS grupo(
 	`nombre` VARCHAR(10),
 	PRIMARY KEY (`id`)
 ) CHARSET=utf8;
-
--- Cambiar definer : 'root por usuario asignado' @ 'localhost por tu servidor o ip del servidor'
-DELIMITER $$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarCargaAcademica_ct`()
-BEGIN
-    select c.codCargaAcademica_ct,dia,horaInicio,horaFin,d1.nombre as "NombreDocente",d1.apellidos as "ApellidoDocente",codAula,cct1.nombre as "curso",grupo,c.semestre 
-	from (((horario_aula h inner join carga_academica_ct c
-	on h.codCargaAcademica_ct = c.codCargaAcademica_ct) inner join 
-	horario h1 on h.Horario = h1.codHorario) inner join curso_ct cct1 on c.codCurso_ct = cct1.codCurso_ct) inner join docente d1 on c.docente_id= d1.id;
-END
-
--- Cambiar definer : 'root por usuario asignado' @ 'localhost por tu servidor o ip del servidor'
-DELIMITER $$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarCargaAcademica_cl`()
-BEGIN
-    select c.codCargaAcademica_cl,h.dia,h1.horaInicio,h1.horaFin,ccl_1.nombre as "Nombre Curso",ccl_1.horas_academicas as "Horas Academicas",d.nombre as "Nombre Docente",d.apellidos as "Apellidos Docente",c.grupo,c.turno,c.fecha_inicio,c.fecha_fin,c.estado,c.minimo 
-	from (((horario_aula h inner join carga_academica_cl c
-	on h.codCargaAcademica_cl = c.codCargaAcademica_cl) inner join 
-    curso_cl ccl_1 on c.codcurso_cl=ccl_1.codcurso_cl) inner join
-    docente d on c.docente_id=d.id) inner join 
-    horario h1 on c.codHorarioAula=h1.codHorario ;
-END
-
