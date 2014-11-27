@@ -18,7 +18,7 @@
         {{ HTML::style('assets/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}
         <!-- Theme style -->
         {{ HTML::style('assets/css/AdminLTE.css') }}
-        
+
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,40 +31,35 @@
 
         <form class="form-box" id="login-box" action="check" method="POST" >
             <div class="header">Sign In </div>
-            
+
                 <div class="body bg-gray">
                     <div class="form-group">
                         <input type="text" name="email" class="form-control" placeholder="Correo electrónico"/>
                     </div>
                     <div class="form-group">
                         <input type="password" name="pass" class="form-control" placeholder="Contraseña"/>
-                    </div>          
+                    </div>
                     <div class="form-group">
                         <input type="checkbox" name="remember_me"/> Mantener la sesion iniciada
                     </div>
                 </div>
-                <div class="footer">                                                               
-                    <button type="submit" class="btn bg-olive btn-block">Iniciar Sesion</button>  
-                    
+                <div class="footer">
+                    <button type="submit" class="btn bg-olive btn-block">Iniciar Sesion</button>
+
                     <p><a href="#">¿Olvidaste tu Contraseña?</a></p>
-                    
+
                     <a href="register.html" class="text-center">Registrar un nuevo usuario</a>
                 </div>
-            
+
 
             <div class="margin text-center">
-                <span>iniciar sesion en Redes Sociales</span>
-                <br/>
-                <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
-                <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
-                <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
 
             </div>
         </form>
 
         {{ HTML::script('assets/js/plugins/jquery.min.js') }}
         {{ HTML::script('assets/js/plugins/bootstrap.min.js') }}
-        
+
 
     </body>
 </html>
