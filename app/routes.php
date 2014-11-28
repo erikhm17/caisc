@@ -28,31 +28,6 @@ Route::get('salir',function()
 
 Route::post('check',array('uses'=>'Login@postUser'));
 
-Route::get('registrar', function()
-{
-	$user = new User;	
-	$user->email = "osc@gmail.com";
-	$user->password = Hash::make('1234');
-	$user->tipoUsuario = "Docente";
-	$user->nroId = "2141";
-	//guardamos
-	$user->save();
-	return "El usuario fue agregado.";
-});
-Route::get('registrarPer', function()
-{
-	$user = new User;	
-	$user->email = "per@gmail.com";
-	$user->password = Hash::make('1234');
-	$user->tipoUsuario = "Personal";
-	$user->nroId = "215";
-	//guardamos
-	$user->save();
-	return "El PersonalAdminstrativo fue agregado.";
-});
-
-
-
 // Docente
 Route::get('docentes',array('uses'=>'DocenteController@index'));
 Route::get('docente/add.html',array('uses'=>'DocenteController@add'));
@@ -85,18 +60,12 @@ Route::get('modulo/nuevo.html',array('uses'=>'ModuloController@nuevo'));
 Route::get('modulo/actualizar.html',array('uses'=>'ModuloController@actualizar'));
 Route::post('modulo/crear',array('uses'=>'ModuloController@crear'));
 
-Route::get('mi/pagina', function() {
-	return '¡Hola mundo!';
-});
-
-
 Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModuloController@nuevo'));
 
 Route::get('modalidad_pago',array('uses'=>'ModalidadPagoController@index'));
 Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModalidadPagoController@nuevo'));
 Route::get('modalidad_pago/actualizar.html',array('uses'=>'ModalidadPagoController@actualizar'));
 Route::post('modalidad_pago/crear',array('uses'=>'ModalidadPagoController@crear'));
-
 
 /*Begin Caja y Facturacion*/
 Route::post('modalidad/store','ModalidadController@store');
@@ -111,7 +80,6 @@ Route::get('pagos/destroy/{id}','PagosController@destroy');
 Route::post('pagos/index','PagosController@index');
 Route::controller('pagos','PagosController');
 /*End Caja y Facturacion*/
-
 
 // Modulos Asistencia: Docentes y Alumnos
 Route::get('asistencia/add_ct',array('uses'=>'AsistenciaController@add_ct'));
@@ -136,4 +104,3 @@ Route::post('matriculas/update.html',array('uses'=>'MatriculaCTController@update
 Route::get('matriculas/delete/{cod}',array('uses'=>'MatriculaCTController@delete'));
 Route::get('matriculas/add.html',array('uses'=>'MatriculaCTController@add'));
 Route::post('matriculas/insert.html',array('uses'=>'MatriculaCTController@insert'));
-
