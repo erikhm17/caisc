@@ -42,6 +42,8 @@ CREATE TABLE IF NOT EXISTS curso_ct(
 	`modulo` INT(2) DEFAULT null,
 	`estado` BIT DEFAULT 1,
 	`codCarrera` VARCHAR(10) NOT NULL,
+	`updated_at` DATETIME NOT NULL,
+	`created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`codCurso_ct`),
 	FOREIGN KEY (`codCarrera`) REFERENCES carrera(`codCarrera`)
 
@@ -145,6 +147,8 @@ CREATE TABLE IF NOT EXISTS curso_cl(
 	`nombre` VARCHAR(30) NOT NULL,
 	`horas_academicas` VARCHAR(30) DEFAULT null,
 	`estado` BIT DEFAULT 1,
+	`updated_at` DATETIME NOT NULL,
+    	`created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`codCurso_cl`)
 ) CHARSET=utf8;
 
