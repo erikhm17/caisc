@@ -104,3 +104,27 @@ Route::post('matriculas/update.html',array('uses'=>'MatriculaCTController@update
 Route::get('matriculas/delete/{cod}',array('uses'=>'MatriculaCTController@delete'));
 Route::get('matriculas/add.html',array('uses'=>'MatriculaCTController@add'));
 Route::post('matriculas/insert.html',array('uses'=>'MatriculaCTController@insert'));
+
+//Modulo Cursos de Carrera Libre
+Route::get('CursosLibres/create.html','CursosCarreraLibreController@nuevo');
+Route::post('CursosLibres/insert.html','CursosCarreraLibreController@insertar');
+Route::get('CursosLibres/index.html','CursosCarreraLibreController@listar');
+
+Route::get('CursosLibres/updatesID.html','CursosCarreraLibreController@ActualizarBuscandoNombre');
+Route::get('CursosLibres/updatecID/{id}',array('uses'=>'CursosCarreraLibreController@ActualizarConID'))->where('codCurso_cl','[0-9]+');
+Route::post('CursosLibres/post_update.html',array('uses'=>'CursosCarreraLibreController@post_actualizar'));//->where('codCurso_cl','[0-9]+');
+
+Route::get('CursosLibres/delete.html','CursosCarreraLibreController@get_eliminar');
+Route::get('CursosLibres/post_delete/{id}',array('uses'=>'CursosCarreraLibreController@post_eliminar'))->where('codCurso_cl','[0-9]+');
+
+//Modulo Cursos de Carrera Tecnica
+Route::get('CursosTecnica/create.html','CursosCarreraTecnicaController@nuevo');
+Route::post('CursosTecnica/insert.html','CursosCarreraTecnicaController@insertar');
+Route::get('CursosTecnica/index.html','CursosCarreraTecnicaController@listar');
+
+Route::get('CursosTecnica/updatesID.html','CursosCarreraTecnicaController@ActualizarBuscandoNombre');
+Route::get('CursosTecnica/updatecID/{id}',array('uses'=>'CursosCarreraTecnicaController@ActualizarConID'))->where('codCurso_ct','[0-9]+');
+Route::post('CursosTecnica/post_update.html/{id}',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'))->where('codCurso_ct','[0-9]+');
+
+Route::get('CursosTecnica/delete.html','CursosCarreraTecnicaController@get_eliminar');
+Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'));
