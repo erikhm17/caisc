@@ -26,6 +26,7 @@ Route::get('salir',function()
 	Auth::logout();
 });
 
+
 Route::post('check',array('uses'=>'Login@postUser'));
 
 // Docente
