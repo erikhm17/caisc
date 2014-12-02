@@ -3,12 +3,12 @@
 class MatriculaCT extends Eloquent {
 
 	protected $table = 'matricula_ct';
-	protected $fillable = array('codMatricula_ct','codAlumno','codCargaAcademica_ct','modulo');
+	protected $fillable = array('id','codAlumno','codCargaAcademica_ct','modulo');
 
 	public static function agregar($input) {
 		$respuesta = array();
 		$reglas = array(
-			'codMatricula_ct'=>array('required','max:10'),
+			'id'=>array('required','max:10'),
 			'codAlumno'=>array('required','max:10'),
 			'codCargaAcademica_ct'=>array('required','max:10'),
 			'modulo'=>array('required','max:10')

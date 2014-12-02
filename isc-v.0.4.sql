@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS curso_cl(
 	`horas_academicas` VARCHAR(30) DEFAULT null,
 	`estado` BIT DEFAULT 1,
 	`updated_at` DATETIME NOT NULL,
-    	`created_at` DATETIME NOT NULL,
+    `created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`codCurso_cl`)
 ) CHARSET=utf8;
 

@@ -42,7 +42,7 @@ Lista de Matriculas
                 <tbody aria-relevant="all" aria-live="polite" role="alert">
                 	@foreach( $matriculas as $matricula)
                 	<tr class="odd">
-                            <td class=" "><b>{{ $matricula->codMatricula_ct }}</b></td>
+                            <td class=" "><b>{{ $matricula->id }}</b></td>
                             <td class=" "><b>{{ $matricula->codAlumno }}</b></td>
                             <td class=" ">{{ $matricula->codCargaAcademica_ct }}</td>
                             <td class=" ">{{ $matricula->modulo }}</td>
