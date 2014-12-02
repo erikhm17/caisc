@@ -128,6 +128,8 @@ CREATE TABLE IF NOT EXISTS matricula_ct(
 	`codAlumno` VARCHAR(10) NOT NULL,
 	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
 	`modulo` VARCHAR(10) NOT NULL,
+	`updated_at` DATETIME NOT NULL,
+    `created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`codAlumno`) REFERENCES alumno(`codAlumno`),
 	FOREIGN KEY(`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`)

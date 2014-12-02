@@ -12,26 +12,26 @@ class MatriculaCTController extends BaseController
 		{
 			return Redirect::to('404.html');
 		} else {
-			$matricula = MatriculaCT::where('codMatricula_ct','=',$cod)->firstOrFail();
+			$matricula = MatriculaCT::where('id','=',$cod)->firstOrFail();
 			return View::make('matriculaCT.edit',array('matricula'=>$matricula));
 		}
 	}
 	public function update()
 	{
 		//$input=Input::get('codDocente');
-		$cod=Input::get('CodMatricula');
+		$cod=Input::get('idt');
 		if(is_null($cod))
 		{
 			Redirect::to('404.html');
 		} else {
-			$matricula = MatriculaCT::where('codMatricula_ct','=',$cod)->firstOrFail();
+			$matricula = MatriculaCT::where('id','=',$cod)->firstOrFail();
 			if(is_object($matricula))
 			{
 				$matricula->codAlumno = Input::get('CodAlumno');
 				$matricula->codCargaAcademica_ct = Input::get('CodCargaAcad');
 				$matricula->modulo = Input::get('mod');
 				$matricula->save();
-				return Redirect::to('matriculas');
+				return Redirect::to('/matriculas');
 			} else {
 				Redirect::to('500.html');
 			}
@@ -43,7 +43,7 @@ class MatriculaCTController extends BaseController
 		{
 			Redirect::to('404.html');
 		} else {
-			$matricula = MatriculaCT::where('codMatricula_ct','=',$cod)->delete();
+			$matricula = MatriculaCT::where('id','=',$cod)->delete();
 			return Redirect::to('matriculas');
 		}
 	}
