@@ -124,21 +124,21 @@ CREATE TABLE IF NOT EXISTS detalle_silabus_ct(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS matricula_ct(
-	`codMatricula_ct` VARCHAR(10) NOT NULL,
+	`id` INT AUTO_INCREMENT NOT NULL,
 	`codAlumno` VARCHAR(10) NOT NULL,
 	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
 	`modulo` VARCHAR(10) NOT NULL,
-	PRIMARY KEY (`codMatricula_ct`),
+	PRIMARY KEY (`id`),
 	FOREIGN KEY (`codAlumno`) REFERENCES alumno(`codAlumno`),
 	FOREIGN KEY(`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS nota_ct(
 	`codNota_ct` INT AUTO_INCREMENT,
-	`codMatricula_ct` VARCHAR(10) NOT NULL,
+	`codMatricula_ct` INT NOT NULL,
 	`nota` float(7,4) NOT NULL,
 	PRIMARY KEY (`codNota_ct`),
-	FOREIGN KEY (`codMatricula_ct`) REFERENCES matricula_ct(`codMatricula_ct`)
+	FOREIGN KEY (`codMatricula_ct`) REFERENCES matricula_ct(`id`)
 ) CHARSET=utf8;
 
  -- CURSOS LIBRES
