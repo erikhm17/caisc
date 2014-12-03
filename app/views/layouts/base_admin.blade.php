@@ -284,16 +284,6 @@
                         </li>
 
                         <li class="treeview">
-                            <a href="/">
-                                <i class="fa fa-dashboard"></i> <span>Matricula Carrera Técnica</span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>{{ HTML::link('matriculas/add.html','Agregar') }}</li>
-                                <li>{{ HTML::link('matriculas','Listar') }}</li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
                             <a href="docente">
                                 <i class="fa fa-folder"></i> <span>Docente</span>
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -353,7 +343,16 @@
                             </ul>
                         </li>
 
-
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-folder"></i> <span>Carga Academica</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('/crearCargaCt','Carga Academica CT') }}</li>
+                                <li>{{ HTML::link('/crearCargaCL','Carga Academica CL') }}</li>
+                            </ul>
+                        </li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-folder"></i> <span>Examples</span>
@@ -365,7 +364,7 @@
                                 <li>{{ HTML::link('404.html','404 Error') }}</li>
                                 <li>{{ HTML::link('500.html','500 Error') }}</li>
                                 <li>{{ HTML::link('blank.html','Blank Page') }}</li>
-                                <li>{{ HTML::link('carga.html','Carga Academica pro') }}</li>
+                                
                             </ul>
                         </li>
                     </ul>

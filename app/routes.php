@@ -26,7 +26,6 @@ Route::get('salir',function()
 	Auth::logout();
 });
 
-
 Route::post('check',array('uses'=>'Login@postUser'));
 
 // Docente
@@ -85,10 +84,6 @@ Route::controller('pagos','PagosController');
 Route::get('asistencia/add_ct',array('uses'=>'AsistenciaController@add_ct'));
 Route::get('asistencia/add_cl',array('uses' =>'AsistenciaController@add_cl'));
 
-// carga academica
-Route::get('carga.html',array('uses'=>'CargaAcademicaController@MostrarCargaAcademica'));
-Route::get('crear.html',array('uses'=>'CargaAcademicaController@MostrarCrearCarga'));
-
 //mantenimiento de tablas libres
 Route::resource('dia','DiaController');
 Route::resource('grupo','GrupoController');
@@ -128,3 +123,11 @@ Route::post('CursosTecnica/post_update.html/{id}',array('uses'=>'CursosCarreraTe
 
 Route::get('CursosTecnica/delete.html','CursosCarreraTecnicaController@get_eliminar');
 Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'));
+
+// carga academica
+
+
+Route::get('/crearCargaCt','CargaController@CargarIndexCargaCt');
+Route::post('/recogerDatos','CargaController@AgregarDatos');
+Route::get('/mostrarDatos','CargaController@MostrarDatos');
+Route::get('/eliminarCarga/{id}', 'CargaController@eliminarElementoCarga');
