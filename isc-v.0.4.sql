@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS personal(
 ) CHARSET=utf8 AUTO_INCREMENT=214 ;
 
 CREATE TABLE IF NOT EXISTS carga_academica_ct(
-	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_ct` INT AUTO_INCREMENT NOT NULL,
 	`codCurso_ct` VARCHAR(10) NOT NULL,
 	`docente_id` INT NOT NULL,
 	`semestre` VARCHAR(10) NOT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS carga_academica_ct(
 	PRIMARY KEY (`codCargaAcademica_ct`),
 	FOREIGN KEY (`codCurso_ct`) REFERENCES curso_ct(`codCurso_ct`),
 	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
-) CHARSET=utf8;
+) CHARSET=utf8 AUTO_INCREMENT=1;
 
 CREATE TABLE IF NOT EXISTS silabus_ct(
 	`codSilabus_ct` VARCHAR(10) NOT NULL,
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS curso_cl(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS carga_academica_cl(
-	`codCargaAcademica_cl` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_cl` INT AUTO_INCREMENT NOT NULL,
 	`codCurso_cl` VARCHAR(10) NOT NULL,
 	`docente_id` INT NOT NULL,
 	`turno` VARCHAR(10) NOT NULL,
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS carga_academica_cl(
 	PRIMARY KEY (`codCargaAcademica_cl`),
 	FOREIGN KEY (`codCurso_cl`) REFERENCES curso_cl(`codCurso_cl`),
 	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
-) CHARSET=utf8;
+) CHARSET=utf8 AUTO_INCREMENT=1;
 
 CREATE TABLE IF NOT EXISTS silabus_cl(
 	`codSilabus_cl` VARCHAR(10) NOT NULL,
