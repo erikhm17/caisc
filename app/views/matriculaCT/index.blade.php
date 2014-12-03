@@ -42,13 +42,13 @@ Lista de Matriculas
                 <tbody aria-relevant="all" aria-live="polite" role="alert">
                 	@foreach( $matriculas as $matricula)
                 	<tr class="odd">
-                            <td class=" "><b>{{ $matricula->codMatricula_ct }}</b></td>
+                            <td class=" "><b>{{ $matricula->id }}</b></td>
                             <td class=" "><b>{{ $matricula->codAlumno }}</b></td>
                             <td class=" ">{{ $matricula->codCargaAcademica_ct }}</td>
                             <td class=" ">{{ $matricula->modulo }}</td>
                             <td class=" ">
-                            {{ HTML::link('matriculas/edit/'.$matricula->codMatricula_ct,'Modificar') }}
-                            {{ HTML::link('matriculas/delete/'.$matricula->codMatricula_ct,'Eliminar') }}
+                            {{ HTML::link('matriculas/edit/'.$matricula->id,'Modificar') }}
+                            {{ HTML::link('matriculas/delete/'.$matricula->id,'Eliminar') }}
                         </td>
                     </tr>
                     @endforeach

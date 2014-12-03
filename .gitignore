@@ -2,3 +2,4 @@
 /app/config/local
 .env.*.php
 .env.php
+/nbproject/private/

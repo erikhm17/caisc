@@ -10,9 +10,9 @@ Editar Matricula
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 {{ Form::open(array('method'=> 'POST','url'=> 'matriculas/update.html','class'=>'form-horizontal','role'=>'form')) }}
 	<div class="form-group">
-		{{ Form::label('CodMatricula','Código Matricula:',array('class'=>'col-sm-4 control-label')) }}
+		{{ Form::label('idt','Código Matricula:',array('class'=>'col-sm-4 control-label')) }}
 		<div class="col-sm-8">
-			{{ Form::text('CodMatricula',$matricula->codMatricula_ct,array('class'=>'form-control'))}}
+			{{ Form::text('idt',$matricula->id,array('class'=>'form-control'))}}
 		</div>
 	</div>
 	<div class="form-group">
