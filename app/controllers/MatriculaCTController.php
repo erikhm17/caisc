@@ -49,7 +49,8 @@ class MatriculaCTController extends BaseController
 	}
 	public function add()
 	{
-		return View::make('matriculaCT.add');
+		$modulos = Modulo::lists('id','nombre');
+		return View::make('matriculaCT.add',array('modulos'=>$modulos));
 	}
 	public function insert()
 	{

@@ -189,9 +189,12 @@ CREATE TABLE IF NOT EXISTS detalle_silabus_cl(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS matricula_cl(
+	`id` INT AUTO_INCREMENT NOT NULL,
 	`codMatricula_cl` VARCHAR(10) NOT NULL,
 	`codAlumno` VARCHAR(10) NOT NULL,
 	`codCargaAcademica_cl` VARCHAR(10) NOT NULL,
+	`updated_at` DATETIME NOT NULL,
+    `created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`codMatricula_cl`),
 	FOREIGN KEY (`codAlumno`) REFERENCES alumno(`codAlumno`),
 	FOREIGN KEY(`codCargaAcademica_cl`) REFERENCES carga_academica_cl(`codCargaAcademica_cl`)
