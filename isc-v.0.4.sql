@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS carga_academica_ct(
 	PRIMARY KEY (`codCargaAcademica_ct`),
 	FOREIGN KEY (`codCurso_ct`) REFERENCES curso_ct(`codCurso_ct`),
 	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
-) CHARSET=utf8;
+) CHARSET=utf8 ;
 
 CREATE TABLE IF NOT EXISTS silabus_ct(
 	`codSilabus_ct` VARCHAR(10) NOT NULL,
