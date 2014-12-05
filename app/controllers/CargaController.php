@@ -7,12 +7,13 @@ class CargaController extends \BaseController {
 	}
 	public function CargarIndexCargaCt(){
 
-		$elementosComboSemestre = Semestre::all()->lists('id');
-		$elementosComboCodCurso_ct = CursoTecnico::all()->lists('codCurso_ct');
-		$elementosComboCodDocente = Docente::all()->lists('id');
-		$elementosComboCodAula = Aula::all()->lists('codAula');
-		$elementosComboTurno = Turno::all()->lists('id');
-		$elementosComboGrupo = Grupo::all()->lists('id');
+		$elementosComboCodCurso_ct = CursoTecnico::all()->lists('codCurso_ct','codCurso_ct');
+		$elementosComboCodDocente = Docente::all()->lists('id','id');
+		$elementosComboSemestre = Semestre::all()->lists('id','id');
+		$elementosComboTurno = Turno::all()->lists('id','id');
+		$elementosComboGrupo = Grupo::all()->lists('id','id');
+		$elementosComboCodAula = Aula::all()->lists('codAula','codAula');
+		
 
 		return View::make('vistaCarga.crearCargaCt',array(
 			'varElementosComboSemestre'=>$elementosComboSemestre,
@@ -39,16 +40,19 @@ class CargaController extends \BaseController {
 		// 2 1 2 1 1 2 7-8 lunes
 		//$hora=$_POST['rbHorariosLunes'];
 	    //echo " ".$codCurso_ct." ".$docente_id." ".$semestre." ".$turno." ".$grupo." ".$aula." ".$hora." ".'lunes'." ";
+		//$validador = DB::select('call validarCarga(?,?,?)',array($aula,));
+		global $hora;
 
 		if (Input::get('rbHorariosLunes')) {
 			$hora=$_POST['rbHorariosLunes'];
+				
 			DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)'
 			    ,array($codCurso_ct,$docente_id,$semestre,$turno,$grupo,$aula,$hora,'lunes'));
 		} else {}
 
 		if (Input::get('rbHorariosMartes')) {
 			$hora=$_POST['rbHorariosMartes'];
-		    DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)'
+		   DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)'
 			    ,array($codCurso_ct,$docente_id,$semestre,$turno,$grupo,$aula,$hora,'martes'));
 
 		} else {}
@@ -112,4 +116,5 @@ class CargaController extends \BaseController {
             echo "el elemento no se pudo eliminar";
         }
 	}
+
 }

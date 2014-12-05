@@ -39,7 +39,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
         -->
             <p class="lbls">{{Form::label('lblSemestre','Semestre')}}</p>
             <!--<p class="inputs">{{Form::text('txtSemestre')}}</p> --> 
-            <div class="inputs">{{ Form::select('cmbSemestre', $varElementosComboSemestre) }}</div>
+            <div class="inputs">{{ Form::select('cmbSemestre', $varElementosComboSemestre)}}</div>
 
             <p class="lbls">{{Form::label('lblCurso','Curso:')}}</p>
             <div class="inputs">{{ Form::select('cmbCursos', $varElementosComboCodCurso_ct) }}</div>
@@ -48,7 +48,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
             <div class="inputs">{{ Form::select('cmbDocentes', $varElementosComboCodDocente) }}</div>
             
             <p class="lbls">{{Form::label('lblAula','Aula:')}}</p>
-            <div class="inputs">{{ Form::select('cmbAulas', $varElementosComboCodAula) }}</div>
+            <div class="inputs">{{ Form::select('cmbAulas', $varElementosComboCodAula)}}</div>
 
             <p class="lbls">{{Form::label('lblTurno','Turno:')}}</p>
             <div class="inputs">{{ Form::select('cmbTurnos', $varElementosComboTurno) }}</div>
@@ -142,50 +142,50 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                             10-11
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', 'D1', false);}}
+                            {{Form::checkbox('rbHorariosLunes', '10-11', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', 'D2', false);}}
+                            {{Form::checkbox('rbHorariosMartes', '10-11', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', 'D3', false);}}
+                            {{Form::checkbox('rbHorariosMiercoles', '10-11', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', 'D4', false);}}
+                            {{Form::checkbox('rbHorariosJueves', '10-11', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', 'D5', false);}}
+                            {{Form::checkbox('rbHorariosViernes', '10-11', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', 'D6', false);}}
+                            {{Form::checkbox('rbHorariosSabado', '10-11', false);}}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            11-12
+                            20-21
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', 'M1', false);}}
+                            {{Form::checkbox('rbHorariosLunes', '11-12', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', 'M2', false);}}
+                            {{Form::checkbox('rbHorariosMartes', '11-12', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', 'M3', false);}}
+                            {{Form::checkbox('rbHorariosMiercoles', '11-12', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', 'M4', false);}}
+                            {{Form::checkbox('rbHorariosJueves', '11-12', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', 'M5', false);}}
+                            {{Form::checkbox('rbHorariosViernes', '11-12', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', 'M6', false);}}
+                            {{Form::checkbox('rbHorariosSabado', '11-12', false);}}
                         </td>
                     </tr>
                     <tr class="success">
                         <td>
-                            12-1
+                            21-22
                         </td>
                         <td>
                             {{Form::checkbox('rbHorariosLunes', 'A7', false);}}
