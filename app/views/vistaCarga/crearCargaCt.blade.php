@@ -162,7 +162,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                     </tr>
                     <tr>
                         <td>
-                            20-21
+                            11-12
                         </td>
                         <td>
                             {{Form::checkbox('rbHorariosLunes', 'M1', false);}}
@@ -185,7 +185,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                     </tr>
                     <tr class="success">
                         <td>
-                            21-22
+                            12-1
                         </td>
                         <td>
                             {{Form::checkbox('rbHorariosLunes', 'A7', false);}}
