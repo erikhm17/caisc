@@ -13,7 +13,7 @@
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/bootstrap-theme.min.css') }}
     {{ HTML::style('css/plantilla.css') }}
-
+    {{ HTML::script('js/jquery-2.min.js') }}
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="{{ HTML::style('js/ie8-responsive-file-warning.js') }}"></script><![endif]-->
 
@@ -87,7 +87,7 @@
         </div>
       </div>
     </div>
-    {{ HTML::script('js/jquery-2.min.js') }}
+    
     {{ HTML::script('js/bootstrap.min.js') }}
   </body>
 </html>

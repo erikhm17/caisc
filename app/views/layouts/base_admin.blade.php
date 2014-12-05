@@ -21,7 +21,8 @@
         {{ HTML::style('assets/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}
         <!-- Theme style -->
         {{ HTML::style('assets/css/AdminLTE.css') }}
-
+        
+        {{ HTML::script('assets/js/jquery.min.js') }}
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -395,7 +396,6 @@
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
         <!-- add new calendar event modal -->
-        {{ HTML::script('assets/js/jquery.min.js') }}
         {{ HTML::script('assets/js/bootstrap.min.js') }}
         {{ HTML::script('assets/js/jquery-ui.min.js') }}
         <!-- Morris.js charts -->

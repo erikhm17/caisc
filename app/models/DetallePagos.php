@@ -3,14 +3,14 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Alumno extends Eloquent implements UserInterface, RemindableInterface {
+class DetallePagos extends Eloquent implements UserInterface, RemindableInterface {
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'alumno';
+	protected $table = 'detalle_pagos';
 	public $timestamps = false;
 
 	/**

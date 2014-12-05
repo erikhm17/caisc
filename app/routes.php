@@ -59,7 +59,6 @@ Route::get('modulo',array('uses'=>'ModuloController@index'));
 Route::get('modulo/nuevo.html',array('uses'=>'ModuloController@nuevo'));
 Route::get('modulo/actualizar.html',array('uses'=>'ModuloController@actualizar'));
 Route::post('modulo/crear',array('uses'=>'ModuloController@crear'));
-
 Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModuloController@nuevo'));
 
 Route::get('modalidad_pago',array('uses'=>'ModalidadPagoController@index'));
@@ -74,10 +73,14 @@ Route::get('modalidad/destroy/{id}','ModalidadController@destroy');
 Route::post('modalidad/index','ModalidadController@index');
 Route::controller('modalidad','ModalidadController');
 
-Route::post('pagos/store','PagosController@store');
-Route::post('pagos/update/{id}','PagosController@update');
+//Route::post('pagos/update/{id}','PagosController@update');
 Route::get('pagos/destroy/{id}','PagosController@destroy');
 Route::post('pagos/index','PagosController@index');
+Route::get('pagos/create',array('uses'=>'PagosController@add'));
+//Route::post('pagos/showAlumno/{id}','PagosController@getAlumno');
+Route::get('pagos/showAlumno/{id}',array('uses'=>'PagosController@profile'))->where('id','[0-9]+');
+//Route::post('pagos/create',array('uses' => 'PagosController@store'));
+
 Route::controller('pagos','PagosController');
 /*End Caja y Facturacion*/
 
