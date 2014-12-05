@@ -37,28 +37,24 @@ Agregar Personal <small> NUEVO PERSONAL </small>
        <!-- <p class="lbls">{{Form::label('lblCargaCodigo','Carga Codigo')}}</p>
             <p class="inputs">{{Form::text('txtCodCargaAcademica_ct')}}</p>     
         -->
-            <p class="lbls">{{Form::label('lblCiclo','Ciclo:')}}</p>
-            <div class="inputs">{{Form::select('cmbCiclos', array('Primer Ciclo' => 'Primer Ciclo', 'Segundo Ciclo' => 'Segundo Ciclo','Tercer Ciclo'=>'Tercer Ciclo','Cuarto Ciclo'=>'Cuarto Ciclo','Quinto Ciclo'=>'Quinto Ciclo','Sexto Ciclo'=>'Sexto Ciclo','Septimo Ciclo'=>'Septimo Ciclo'))}}</div>
-
             <p class="lbls">{{Form::label('lblSemestre','Semestre')}}</p>
             <!--<p class="inputs">{{Form::text('txtSemestre')}}</p> --> 
-            <div class="inputs">{{Form::select('cmbSemestre', array('2014-I' => '2014-I', '2014-II' => '2014-II', '2015-I' => '2015-II'))}}</div>
+            <div class="inputs">{{ Form::select('cmbSemestre', $varElementosComboSemestre) }}</div>
 
             <p class="lbls">{{Form::label('lblCurso','Curso:')}}</p>
-            
-            <div class="inputs">{{Form::select('cmbCursos', array('Algoritmica' => 'Algoritmica', 'Base De Datos' => 'Base de datos'))}}</div>
+            <div class="inputs">{{ Form::select('cmbCursos', $varElementosComboCodCurso_ct) }}</div>
             
             <p class="lbls">{{Form::label('lblDocente','Docente:')}}</p>
-            <div class="inputs">{{Form::select('cmbDocentes', array('Docente 1' => 'Docente 1', 'Docente 2' => 'Docente 2'))}}</div>
+            <div class="inputs">{{ Form::select('cmbDocentes', $varElementosComboCodDocente) }}</div>
             
             <p class="lbls">{{Form::label('lblAula','Aula:')}}</p>
-            <div class="inputs">{{Form::select('cmbAulas', array('varAula1' => 'Aula 1', 'varAula2' => 'Aula 2'))}}</div>
+            <div class="inputs">{{ Form::select('cmbAulas', $varElementosComboCodAula) }}</div>
 
             <p class="lbls">{{Form::label('lblTurno','Turno:')}}</p>
-            <div class="inputs">{{Form::select('cmbTurnos', array('Maniana' => 'Maniana', 'tarde' => 'tarde', 'noche' => 'noche'))}}</div>
+            <div class="inputs">{{ Form::select('cmbTurnos', $varElementosComboTurno) }}</div>
             
             <p class="lbls">{{Form::label('lblGrupo','Grupo:')}}</p>
-            <div class="inputs">{{Form::select('cmbGrupos', array('A' => 'A', 'B' => 'B'))}}</div>
+            <div class="inputs">{{ Form::select('cmbGrupos', $varElementosComboGrupo) }}</div>
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>

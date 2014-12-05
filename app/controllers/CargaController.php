@@ -1,3 +1,4 @@
+
 <?php
 class CargaController extends \BaseController {
 
@@ -5,9 +6,27 @@ class CargaController extends \BaseController {
 		return View::make('vistaCarga.indexCarga');
 	}
 	public function CargarIndexCargaCt(){
-		return View::make('vistaCarga.crearCargaCt');
+
+		$elementosComboSemestre = Semestre::all()->lists('id');
+		$elementosComboCodCurso_ct = CursoTecnico::all()->lists('codCurso_ct');
+		$elementosComboCodDocente = Docente::all()->lists('id');
+		$elementosComboCodAula = Aula::all()->lists('codAula');
+		$elementosComboTurno = Turno::all()->lists('id');
+		$elementosComboGrupo = Grupo::all()->lists('id');
+
+		return View::make('vistaCarga.crearCargaCt',array(
+			'varElementosComboSemestre'=>$elementosComboSemestre,
+			'varElementosComboCodCurso_ct'=>$elementosComboCodCurso_ct,
+			'varElementosComboCodDocente'=>$elementosComboCodDocente,
+			'varElementosComboCodAula'=>$elementosComboCodAula,
+			'varElementosComboTurno'=>$elementosComboTurno,
+			'varElementosComboGrupo'=>$elementosComboGrupo,
+
+			));
 	}
 	public function AgregarDatos(){
+		/*	DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)',
+				array('1','2141','1','1','1','A101','14-15','Lunes'));*/
 
 		$codCurso_ct= $_POST['cmbCursos'];
 		$docente_id=$_POST['cmbDocentes'];
@@ -16,107 +35,54 @@ class CargaController extends \BaseController {
 		$turno=$_POST['cmbTurnos'];
 		$grupo=$_POST['cmbGrupos'];
 		$aula=$_POST['cmbAulas'];
-	
-		
-		if (Input::get('rbHorariosLunes')) {
-			return View::make('vistaCarga.datoInsertado');
-			$hora=$_POST['rbHorariosLunes'];
-		    $id = DB::table('tcargaacademica')->insertGetId(
-		    array('codCurso_ct' => $codCurso_ct,
-		    	  'docente_id'=>$docente_id,
-		    	  'semestre'=>$semestre,
-		    	  'turno'=>$turno,
-		    	  'grupo'=>$grupo,
-		    	  'aula'=>$aula,
-		    	  'hora'=>$hora,
-		    	  'dia'=>'lunes'
-		    	 )
-			);
 
+		// 2 1 2 1 1 2 7-8 lunes
+		//$hora=$_POST['rbHorariosLunes'];
+	    //echo " ".$codCurso_ct." ".$docente_id." ".$semestre." ".$turno." ".$grupo." ".$aula." ".$hora." ".'lunes'." ";
+
+		if (Input::get('rbHorariosLunes')) {
+			$hora=$_POST['rbHorariosLunes'];
+			DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)'
+			    ,array($codCurso_ct,$docente_id,$semestre,$turno,$grupo,$aula,$hora,'lunes'));
 		} else {}
+
 		if (Input::get('rbHorariosMartes')) {
-			return View::make('vistaCarga.datoInsertado');
 			$hora=$_POST['rbHorariosMartes'];
-		    $id = DB::table('tcargaacademica')->insertGetId(
-		    array('codCurso_ct' => $codCurso_ct,
-		    	  'docente_id'=>$docente_id,
-		    	  'semestre'=>$semestre,
-		    	  'turno'=>$turno,
-		    	  'grupo'=>$grupo,
-		    	  'aula'=>$aula,
-		    	  'hora'=>$hora,
-		    	  'dia'=>'martes'
-		    	 )
-			);
+		    DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)'
+			    ,array($codCurso_ct,$docente_id,$semestre,$turno,$grupo,$aula,$hora,'martes'));
 
 		} else {}
 		if (Input::get('rbHorariosMiercoles')) {
-			return View::make('vistaCarga.datoInsertado');
+			
 			$hora=$_POST['rbHorariosMiercoles'];
-		    $id = DB::table('tcargaacademica')->insertGetId(
-		    array('codCurso_ct' => $codCurso_ct,
-		    	  'docente_id'=>$docente_id,
-		    	  'semestre'=>$semestre,
-		    	  'turno'=>$turno,
-		    	  'grupo'=>$grupo,
-		    	  'aula'=>$aula,
-		    	  'hora'=>$hora,
-		    	  'dia'=>'miercoles'
-		    	 )
-			);
+		   DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)'
+			    ,array($codCurso_ct,$docente_id,$semestre,$turno,$grupo,$aula,$hora,'miercoles'));
 
 		} else {}
 		if (Input::get('rbHorariosJueves')) {
-			return View::make('vistaCarga.datoInsertado');
+			
 			$hora=$_POST['rbHorariosJueves'];
-		    $id = DB::table('tcargaacademica')->insertGetId(
-		    array('codCurso_ct' => $codCurso_ct,
-		    	  'docente_id'=>$docente_id,
-		    	  'semestre'=>$semestre,
-		    	  'turno'=>$turno,
-		    	  'grupo'=>$grupo,
-		    	  'aula'=>$aula,
-		    	  'hora'=>$hora,
-		    	  'dia'=>'jueves'
-		    	 )
-			);
+		    DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)'
+			    ,array($codCurso_ct,$docente_id,$semestre,$turno,$grupo,$aula,$hora,'jueves'));
 
 		} else {}
 		if (Input::get('rbHorariosViernes')) {
-			return View::make('vistaCarga.datoInsertado');
+			
 			$hora=$_POST['rbHorariosViernes'];
-		    $id = DB::table('tcargaacademica')->insertGetId(
-		    array('codCurso_ct' => $codCurso_ct,
-		    	  'docente_id'=>$docente_id,
-		    	  'semestre'=>$semestre,
-		    	  'turno'=>$turno,
-		    	  'grupo'=>$grupo,
-		    	  'aula'=>$aula,
-		    	  'hora'=>$hora,
-		    	  'dia'=>'viernes'
-		    	 )
-			);
+		   DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)'
+			    ,array($codCurso_ct,$docente_id,$semestre,$turno,$grupo,$aula,$hora,'viernes'));
 
 		} else {}
 		if (Input::get('rbHorariosSabado')) {
-			return View::make('vistaCarga.datoInsertado');
+			
 			$hora=$_POST['rbHorariosSabado'];
-		    $id = DB::table('tcargaacademica')->insertGetId(
-		    array('codCurso_ct' => $codCurso_ct,
-		    	  'docente_id'=>$docente_id,
-		    	  'semestre'=>$semestre,
-		    	  'turno'=>$turno,
-		    	  'grupo'=>$grupo,
-		    	  'aula'=>$aula,
-		    	  'hora'=>$hora,
-		    	  'dia'=>'sabado'
-		    	 )
-			);
+		    DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)'
+			    ,array($codCurso_ct,$docente_id,$semestre,$turno,$grupo,$aula,$hora,'sabado'));
 
 		} else {
 			echo "No se registro ningun dato";
 		}
-		
+		return View::make('vistaCarga.datoInsertado');
 		
 
 	/*	$horaLunes=$_POST['rbHorariosLunes'];
