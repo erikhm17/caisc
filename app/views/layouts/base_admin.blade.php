@@ -350,6 +350,17 @@
                             </ul>
                         </li>
 
+                        <li class="treeview">
+                            <a href="alumno">
+                                <i class="fa fa-folder"></i> <span>Alumno</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('alumno/add.html','Agregar') }}</li>
+                                <li>{{ HTML::link('alumnos','Listar Alumnos') }}</li>
+                            </ul>
+                        </li>
+                        
                         <!-- modulo Asistencias -->
                         <li class="treeview">
                             <a href="RegistroAsistencias">

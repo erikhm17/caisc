@@ -1,116 +1,65 @@
 <?php
 
-class AlumnoController extends \BaseController {
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+class AlumnoController extends BaseController
+{
+	public function index($registros=5)
 	{
-		//mostrar todos los alumnos que tenemos en la base de datos
+		$datos = Alumno::paginate($registros);
 		$alumnos = Alumno::all();
-		return View::make('alumno.index')->with('alumnos',$alumnos);
+		return View::make('alumno.index',compact("datos"),array('alumnos'=>$alumnos));
 	}
 
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function add()
 	{
-		return View::make('alumno.create');
+		$carreras = Carrera::all();
+		$modulos = Modulo::all();
+		return View::make('alumno.add', compact('carreras','modulos'));
 	}
 
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+	public function insert()
 	{
-		$alumno = new Alumno();
-		$alumno->id = Input::get('codAlumno');
-		$alumno->nombre = Input::get('nombre');
-		$alumno->apellidos = Input::get('apellidos');
-		$alumno->dni = Input::get('dni');
-		$alumno->direccion = Input::get('direccion');
-		$alumno->telefono = Input::get('telefono');
-		$alumno->email = Input::get('email');
-		$alumno->pasword = Input::get('password');
-		$alumno->estado = Input::get('estado');
-		$alumno->codCarrera = Input::get('codCarrera');
-		$alumno->modulo = Input::get('modulo');
-		$alumno->save();
-		return Redirect::to('alumno');
+		$respuesta = Alumno::agregar(Input::all());
+		if($respuesta['error']==true)
+		{
+			return Redirect::to('alumno/add.html')->withErrors($respuesta['mensaje'] )->withInput();
+		} else {
+			return Redirect::to('alumnos')->with('mensaje',$respuesta['mensaje']);
+		}
 	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+	public function edit($id=null)
 	{
-		$alumno = Alumno::find($id);
-		return View::make('alumno.show')->with('alumno',$alumno);
+	
+			$alumno = Alumno::where('codAlumno','=',$id)->firstOrFail();
+			return View::make('alumno.edit',array('alumno'=>$alumno));
 	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{	
-
-		$alumno = Alumno::find($id);
-		return View::make('alumno.edit')->with('alumno',$alumno);
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+	public function update($id=0)
 	{
-		$alumno = Alumno::find($id);
-		$alumno->nombre = Input::get('nombre');
-		$alumno->apellidos = Input::get('apellidos');
-		$alumno->dni = Input::get('dni');
-		$alumno->direccion = Input::get('direccion');
-		$alumno->telefono = Input::get('telefono');
-		$alumno->email = Input::get('email');
-		$alumno->pasword = Input::get('pasword');
-		$alumno->estado = Input::get('estado');
-		$alumno->codCarrera = Input::get('codCarrera');
-		$alumno->modulo = Input::get('modulo');
-		$alumno->save();
-		return Redirect::to('alumno');
+		if($id<1)
+		{
+			Redirect::to('404.html');
+		} else {
+			$alumno = Alumno::where('codAlumno','=',$id)->firstOrFail();
+			if(is_object($alumno))
+			{
+				$alumno->nombre = Input::get('nombre');
+				$alumno->apellidos = Input::get('apellidos');
+				$alumno->email = Input::get('email');
+				$alumno->telefono = Input::get('telefono');
+				$alumno->save();
+				return Redirect::to('alumnos');
+			} else {
+				Redirect::to('500.html');
+			}
+		}
 	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
+	public function profile($id = null)
 	{
-		
+		$alumno = alumno::where('codAlumno','=',$id)->firstOrFail();
+		if (is_object($alumno))
+		{
+			return View::make('alumno.profile',array('alumno'=>$alumno));
+		} else {
+			return Redirect::to('404.html');
+		}
 	}
-
-
 }
