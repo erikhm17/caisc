@@ -353,6 +353,29 @@
                                 <li>{{ HTML::link('/crearCargaCL','Carga Academica CL') }}</li>
                             </ul>
                         </li>
+
+                        <li class="treeview">
+                            <a href="matriculas">
+                                <i class="fa fa-folder"></i> <span>Matriculas Carrera Técnica</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('matriculas/add.html','Agregar') }}</li>
+                                <li>{{ HTML::link('matriculas','Listar') }}</li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="matriculas">
+                                <i class="fa fa-folder"></i> <span>Matriculas Curso Libre</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('matriculascl/add.html','Agregar') }}</li>
+                                <li>{{ HTML::link('matriculascl','Listar') }}</li>
+                            </ul>
+                        </li>
+
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-folder"></i> <span>Examples</span>

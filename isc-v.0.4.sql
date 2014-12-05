@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS personal(
 ) CHARSET=utf8 AUTO_INCREMENT=214 ;
 
 CREATE TABLE IF NOT EXISTS carga_academica_ct(
-	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_ct` INT AUTO_INCREMENT NOT NULL,
 	`codCurso_ct` VARCHAR(10) NOT NULL,
 	`docente_id` INT NOT NULL,
 	`semestre` VARCHAR(10) NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS carga_academica_ct(
 
 CREATE TABLE IF NOT EXISTS silabus_ct(
 	`codSilabus_ct` VARCHAR(10) NOT NULL,
-	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_ct` INT NOT NULL,
 	PRIMARY KEY(`codSilabus_ct`),
 	FOREIGN KEY (`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`)
 ) CHARSET=utf8;
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS detalle_silabus_ct(
 CREATE TABLE IF NOT EXISTS matricula_ct(
 	`id` INT AUTO_INCREMENT NOT NULL,
 	`codAlumno` VARCHAR(10) NOT NULL,
-	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_ct` INT NOT NULL,
 	`modulo` VARCHAR(10) NOT NULL,
 	`updated_at` DATETIME NOT NULL,
     `created_at` DATETIME NOT NULL,
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS curso_cl(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS carga_academica_cl(
-	`codCargaAcademica_cl` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_cl` INT AUTO_INCREMENT NOT NULL,
 	`codCurso_cl` VARCHAR(10) NOT NULL,
 	`docente_id` INT NOT NULL,
 	`turno` VARCHAR(10) NOT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS carga_academica_cl(
 
 CREATE TABLE IF NOT EXISTS silabus_cl(
 	`codSilabus_cl` VARCHAR(10) NOT NULL,
-	`codCargaAcademica_cl` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_cl` INT NOT NULL,
 	PRIMARY KEY(`codSilabus_cl`),
 	FOREIGN KEY (`codCargaAcademica_cl`) REFERENCES carga_academica_cl(`codCargaAcademica_cl`)
 ) CHARSET=utf8;
@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS detalle_silabus_cl(
 CREATE TABLE IF NOT EXISTS matricula_cl(
 	`id` INT AUTO_INCREMENT NOT NULL,
 	`codAlumno` VARCHAR(10) NOT NULL,
-	`codCargaAcademica_cl` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_cl` INT NOT NULL,
 	`updated_at` DATETIME NOT NULL,
     `created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`id`),
@@ -217,8 +217,8 @@ CREATE TABLE IF NOT EXISTS horario_aula(
 	`codAula` VARCHAR(10) NOT NULL,
 	`horario` VARCHAR(10) NOT NULL,
 	`dia` VARCHAR(10) NOT NULL,
-	`codCargaAcademica_ct` VARCHAR(10) NULL,
-	`codCargaAcademica_cl` VARCHAR(10) NULL,
+	`codCargaAcademica_ct` INT NOT NULL,
+	`codCargaAcademica_cl` INT NOT NULL,
 	PRIMARY KEY(`codAula`,`horario`,`dia`),
 	FOREIGN KEY (`codAula`)  REFERENCES aula(`codAula`),
 	FOREIGN KEY (`codCargaAcademica_ct`)  REFERENCES carga_academica_ct(`codCargaAcademica_ct`),
@@ -229,7 +229,7 @@ CREATE TABLE IF NOT EXISTS horario_aula(
 CREATE TABLE IF NOT EXISTS asistencia_ct(
 	`codAsistencia_ct` VARCHAR(10) NOT NULL,
 	`fecha` DATE NOT NULL,
-	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_ct` INT NOT NULL,
 	`tema` VARCHAR(10) NOT NULL,
 	`docente_id` INT NOT NULL,
 	PRIMARY KEY (`codAsistencia_ct`),
@@ -248,7 +248,7 @@ CREATE TABLE IF NOT EXISTS detalle_asistencia_ct(
 CREATE TABLE IF NOT EXISTS asistencia_cl(
 	`codAsistencia_cl` VARCHAR(10) NOT NULL,
 	`fecha` DATE NOT NULL,
-	`codCargaAcademica_cl` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_cl` INT NOT NULL,
 	`tema` VARCHAR(10) NOT NULL,
 	`docente_id` INT NOT NULL,
 	PRIMARY KEY (`codAsistencia_cl`),
