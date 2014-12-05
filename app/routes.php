@@ -100,6 +100,14 @@ Route::get('matriculas/delete/{cod}',array('uses'=>'MatriculaCTController@delete
 Route::get('matriculas/add.html',array('uses'=>'MatriculaCTController@add'));
 Route::post('matriculas/insert.html',array('uses'=>'MatriculaCTController@insert'));
 
+// Mantenimiento matricula cursos libres
+Route::get('matriculascl',array('uses'=>'MatriculaCLController@index'));
+Route::get('matriculascl/edit/{cod}',array('uses'=>'MatriculaCLController@edit'));
+Route::post('matriculascl/update.html',array('uses'=>'MatriculaCLController@update'));
+Route::get('matriculascl/delete/{cod}',array('uses'=>'MatriculaCLController@delete'));
+Route::get('matriculascl/add.html',array('uses'=>'MatriculaCLController@add'));
+Route::post('matriculascl/insert.html',array('uses'=>'MatriculaCLController@insert'));
+
 //Modulo Cursos de Carrera Libre
 Route::get('CursosLibres/create.html','CursosCarreraLibreController@nuevo');
 Route::post('CursosLibres/insert.html','CursosCarreraLibreController@insertar');
