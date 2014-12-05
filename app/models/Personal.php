@@ -9,12 +9,12 @@ class Personal extends Eloquent {
 	{
 		$respuesta = array();
 		$reglas = array(
-			'nombre'=>array('required','alpha_num','min:4'),
-			'apellidos'=>array('required','alpha_num','min:4'),
-			'dni'=>array('required','size:8','digits:8','unique:personal'),
+			'nombre'=>array('required','alpha','min:3'),
+			'apellidos'=>array('required','alpha','min:3'),
+			'dni'=>array('required','numeric','digits:8','unique:personal'),
 			'direccion'=>array('required','min:10'),
 			'telefono'=>array('required','numeric'),
-			'email'=>array('required','min:10','email','unique:personal'),
+			'email'=>array('required','email','unique:personal'),
 			'cargo_id'=>array('required','exists:cargo,id'),
 			'password'=>array('required','min:6','confirmed')
 		);
