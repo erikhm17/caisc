@@ -26,7 +26,6 @@ Route::get('salir',function()
 	Auth::logout();
 });
 
-
 Route::post('check',array('uses'=>'Login@postUser'));
 
 // Docente
@@ -88,10 +87,6 @@ Route::controller('pagos','PagosController');
 Route::get('asistencia/add_ct',array('uses'=>'AsistenciaController@add_ct'));
 Route::get('asistencia/add_cl',array('uses' =>'AsistenciaController@add_cl'));
 
-// carga academica
-Route::get('carga.html',array('uses'=>'CargaAcademicaController@MostrarCargaAcademica'));
-Route::get('crear.html',array('uses'=>'CargaAcademicaController@MostrarCrearCarga'));
-
 //mantenimiento de tablas libres
 Route::resource('dia','DiaController');
 Route::resource('grupo','GrupoController');
@@ -107,6 +102,14 @@ Route::post('matriculas/update.html',array('uses'=>'MatriculaCTController@update
 Route::get('matriculas/delete/{cod}',array('uses'=>'MatriculaCTController@delete'));
 Route::get('matriculas/add.html',array('uses'=>'MatriculaCTController@add'));
 Route::post('matriculas/insert.html',array('uses'=>'MatriculaCTController@insert'));
+
+// Mantenimiento matricula cursos libres
+Route::get('matriculascl',array('uses'=>'MatriculaCLController@index'));
+Route::get('matriculascl/edit/{cod}',array('uses'=>'MatriculaCLController@edit'));
+Route::post('matriculascl/update.html',array('uses'=>'MatriculaCLController@update'));
+Route::get('matriculascl/delete/{cod}',array('uses'=>'MatriculaCLController@delete'));
+Route::get('matriculascl/add.html',array('uses'=>'MatriculaCLController@add'));
+Route::post('matriculascl/insert.html',array('uses'=>'MatriculaCLController@insert'));
 
 //Modulo Cursos de Carrera Libre
 Route::get('CursosLibres/create.html','CursosCarreraLibreController@nuevo');
@@ -131,3 +134,11 @@ Route::post('CursosTecnica/post_update.html/{id}',array('uses'=>'CursosCarreraTe
 
 Route::get('CursosTecnica/delete.html','CursosCarreraTecnicaController@get_eliminar');
 Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'));
+
+// carga academica
+
+
+Route::get('/crearCargaCt','CargaController@CargarIndexCargaCt');
+Route::post('/recogerDatos','CargaController@AgregarDatos');
+Route::get('/mostrarDatos','CargaController@MostrarDatos');
+Route::get('/eliminarCarga/{id}', 'CargaController@eliminarElementoCarga');

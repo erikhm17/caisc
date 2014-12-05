@@ -1,28 +1,31 @@
 <?php
 
-class MatriculaCT extends Eloquent {
+class MatriculaCL extends Eloquent {
 
-	protected $table = 'matricula_ct';
-	protected $fillable = array('codAlumno','codCargaAcademica_ct','modulo','updated_at','created_up');
+	protected $table = 'matricula_cl';
+	protected $fillable = array('id','codAlumno','codCargaAcademica_cl','updated_at','created_up');
 
 	public static function agregar($input) {
 		$respuesta = array();
 		$reglas = array(
+			'id'=>array('required','max:10'),
 			'codAlumno'=>array('required','max:10'),
-			'codCargaAcademica_ct'=>array('required','max:10'),
-			'modulo'=>array('required','exists:modulo,nombre')
-		);
+			'codCargaAcademica_cl'=>array('required','max:10')
+			
+			);
 		$validador = Validator::make($input,$reglas);
 		if($validador->fails())
 		{
 			$respuesta['mensaje'] = $validador;
 			$respuesta['error'] = true;
 		} else{
-			$matricula_ct = static::create($input);
+			$matricula_cl = static::create($input);
 			$respuesta['mensaje'] = 'Matricula Creada';
 			$respuesta['error'] = false;
-			$respuesta['data'] = $matricula_ct;
+			$respuesta['data'] = $matricula_cl;
 		}
 		return $respuesta;
 	}
 }
+
+
