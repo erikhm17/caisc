@@ -23,6 +23,7 @@ BEGIN
     horario h1 on c.codHorarioAula=h1.codHorario ;
 END
 
+
 -- --------------------------------------------------------------------------------
 -- Routine DDL
 -- Note: comments before and after the routine body will not be stored by the server
