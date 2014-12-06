@@ -37,21 +37,20 @@ class CursosCarreraLibreController extends BaseController {
 		} 
 		else 
 		{
-			$curso = CursoLibre::where('codCurso_cl','=',$id)->firstOrFail();
+			$curso = CursoLibre::where('id','=',$id)->firstOrFail();
 			return View::make('Cursos_Carrera_Libre.editconID',array('curso_cl'=>$curso));
 		}
 	}
 	public function post_actualizar()
 	{
-		$cod=Input::get('codCurso_cl');
+		$cod=Input::get('id');
 		if(is_null($cod))
 		{
 			Redirect::to('404.html');
 		} 
 		else 
 		{
-			$curso = CursoLibre::where('codCurso_cl','=',$cod)->firstOrFail();
-			//return $curso;
+			$curso = CursoLibre::where('id','=',$cod)->firstOrFail();
 			if(is_object($curso))
 			{
 				$curso->nombre = Input::get('nombre');
@@ -70,34 +69,50 @@ class CursosCarreraLibreController extends BaseController {
 
 	public function get_eliminar()
 	{
-		$datos = CursoLibre::paginate(5);
-		$curso_cl = CursoLibre::all();
-		return View::make('Cursos_Carrera_Libre.delete',compact("datos"),array('curso_cl'=>$curso_cl));
+		$datos = CursoLibre::where('estado','=','1')->orderBy('id','DESC')->paginate(10);
+		$curso_cl = CursoLibre::where('estado','=','1')->orderBy('id','DESC')->get();
+		return View::make('Cursos_Carrera_Libre.delete',compact("datos"),array('id'=>$curso_cl));
 
 	}
-	public function post_eliminar($id = null)
+	public function post_eliminar($id=null)
 	{
-		return Input::get('codCurso_cl');
 		if(is_null($id))
 		{
 			Redirect::to('404.html');
 		} 
 		else 
 		{
-			$curso = CursoLibre::where('codCurso_cl','=',$id)->firstOrFail();
+			$curso = CursoLibre::where('id','=',$id)->firstOrFail();
+			return View::make('Cursos_Carrera_Libre.post_eliminar',array('curso_cl'=>$curso));
+			
+		}
+	}
+	public function eliminando()
+	{
+		$cod=Input::get('id');
+		if(is_null($cod))
+		{
+			Redirect::to('404.html');
+		} 
+		else 
+		{
+			$curso = CursoLibre::find($cod);
 			if(is_object($curso))
 			{
-				$curso->estado = '0';
+				$curso->estado = 0;
 				$curso->save();
 				return Redirect::to('CursosLibres/index.html');
+			} 
+			else 
+			{
+				Redirect::to('500.html');
 			}
 		}
 	}
-
 	public function listar()
 	{
-		$datos = CursoLibre::paginate(5);
-		$curso_cl = CursoLibre::all();
-		return View::make('Cursos_Carrera_Libre.index',compact("datos"),array('curso_cl'=>$curso_cl));
+		$datos = CursoLibre::where('estado','=','1')->orderBy('id','DESC')->paginate(10);
+		$curso_cl = CursoLibre::where('estado','=','1')->orderBy('id','DESC')->get();
+		return View::make('Cursos_Carrera_Libre.index',compact("datos"),array('id'=>$curso_cl));
 	}
 }
