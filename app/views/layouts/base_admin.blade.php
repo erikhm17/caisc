@@ -296,6 +296,60 @@
                             </ul>
                         </li>
 
+
+
+                        <li class="treeview">
+                            <a href="CursosTecnica/create.html">
+                                <i class="fa fa-folder"></i> <span>Cursos de Carrera</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+
+                                <li class="treeview">
+                            <a href="CursosTecnica/create.html">
+                                <i class="fa fa-folder"></i> <span>Silabo</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('SilaboCarreraTecnica/index.html','Ver Silabos') }}</li>
+                                <li>{{ HTML::link('SilaboCarreraTecnica/create.html','Agregar Silabo') }}</li>
+                                <li>{{ HTML::link('SilaboCarreraTecnica/delete.html', 'Eliminar Silabo')}}</li>
+                            </ul>
+                        </li>
+
+
+                                <li>{{ HTML::link('CursosTecnica/index.html','Ver Cursos de Carrera') }}</li>
+                                <li>{{ HTML::link('CursosTecnica/create.html','Agregar Curso') }}</li>
+                                <li>{{ HTML::link('CursosTecnica/delete.html', 'Eliminar Curso')}}</li>
+                            </ul>
+                        </li>
+
+                         <li class="treeview">
+                            <a href="CursosLibres/create.html">
+                                <i class="fa fa-folder"></i> <span>Cursos Libres</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+
+                                 <li class="treeview">
+                            <a href="SilaboCarreraLibre/create.html">
+                                <i class="fa fa-folder"></i> <span>Silabo</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('SilaboCarreraLibre/index.html','Ver Silabo') }}</li>
+                                <li>{{ HTML::link('SilaboCarreraLibre/create.html','Agregar Silabo') }}</li>
+                                <li>{{ HTML::link('SilaboCarreraLibre/delete.html', 'Eliminar Silabo')}}</li>
+                            </ul>
+                        </li>
+
+
+                                 <li>{{HTML::link('CursosLibres/index.html','Ver Cursos Libres') }}</li>
+                                <li>{{ HTML::link('CursosLibres/create.html','Agregar Curso') }}</li>
+                                <li>{{ HTML::link('CursosLibres/delete.html', 'Eliminar Curso')}}</li>
+                            </ul>
+                        </li>
+
                         <!-- modulo Asistencias -->
                         <li class="treeview">
                             <a href="RegistroAsistencias">
@@ -410,7 +464,7 @@
             <aside class="right-side">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>@section('title') PANEL CONTROL<small>Instituto Sistima Cusco </small>@show</h1>
+                    <h1>@section('title') PANEL CONTROL<small>Instituto de Sistemas Cusco </small>@show</h1>
                     <ol class="breadcrumb">
                         @section('breadcrumb')
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
