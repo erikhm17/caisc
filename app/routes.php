@@ -117,11 +117,12 @@ Route::post('CursosLibres/insert.html','CursosCarreraLibreController@insertar');
 Route::get('CursosLibres/index.html','CursosCarreraLibreController@listar');
 
 Route::get('CursosLibres/updatesID.html','CursosCarreraLibreController@ActualizarBuscandoNombre');
-Route::get('CursosLibres/updatecID/{id}',array('uses'=>'CursosCarreraLibreController@ActualizarConID'))->where('codCurso_cl','[0-9]+');
+Route::get('CursosLibres/updatecID/{id}','CursosCarreraLibreController@ActualizarConID');
 Route::post('CursosLibres/post_update.html',array('uses'=>'CursosCarreraLibreController@post_actualizar'));//->where('codCurso_cl','[0-9]+');
 
 Route::get('CursosLibres/delete.html','CursosCarreraLibreController@get_eliminar');
-Route::get('CursosLibres/post_delete/{id}',array('uses'=>'CursosCarreraLibreController@post_eliminar'))->where('codCurso_cl','[0-9]+');
+Route::get('CursosLibres/post_delete/{id}','CursosCarreraLibreController@post_eliminar');
+Route::post('CursosLibres/eliminar.html','CursosCarreraLibreController@eliminando');
 
 //Modulo Cursos de Carrera Tecnica
 Route::get('CursosTecnica/create.html','CursosCarreraTecnicaController@nuevo');
@@ -129,11 +130,40 @@ Route::post('CursosTecnica/insert.html','CursosCarreraTecnicaController@insertar
 Route::get('CursosTecnica/index.html','CursosCarreraTecnicaController@listar');
 
 Route::get('CursosTecnica/updatesID.html','CursosCarreraTecnicaController@ActualizarBuscandoNombre');
-Route::get('CursosTecnica/updatecID/{id}',array('uses'=>'CursosCarreraTecnicaController@ActualizarConID'))->where('codCurso_ct','[0-9]+');
-Route::post('CursosTecnica/post_update.html/{id}',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'))->where('codCurso_ct','[0-9]+');
+Route::get('CursosTecnica/updatecID/{id}',array('uses'=>'CursosCarreraTecnicaController@ActualizarConID'));
+Route::post('CursosTecnica/post_update.html',array('uses'=>'CursosCarreraTecnicaController@post_actualizar'));
 
 Route::get('CursosTecnica/delete.html','CursosCarreraTecnicaController@get_eliminar');
+Route::get('CursosTecnica/post_delete/{id}',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'));
+Route::post('CursosTecnica/eliminar.html','CursosCarreraTecnicaController@eliminando');
+
+//Modulo silabo de carrera libre
+Route::get('SilaboCarreraLibre/create.html','SilaboCarreraLibreController@nuevo');
+Route::get('SilaboCarreraLibre/index.html','SilaboCarreraLibreController@listar');
+Route::post('SilaboCarreraLibre/insert.html','SilaboCarreraLibreController@insertar');
+
+Route::get('SilaboCarreraLibre/updatesID.html','SilaboCarreraLibreController@ActualizarBuscandoNombre');
+Route::get('SilaboCarreraLibre/updatecID/{id}',array('uses'=>'SilaboCarreraLibreController@ActualizarConID'));
+Route::post('SilaboCarreraLibre/post_update.html',array('uses'=>'SilaboCarreraLibreController@post_actualizar'));
+
+Route::get('SilaboCarreraLibre/delete.html','SilaboCarreraLibreController@get_eliminar');
+Route::get('SilaboCarreraLibre/post_delete/{id}',array('uses'=>'SilaboCarreraLibreController@post_eliminar'));
+Route::post('SilaboCarreraLibre/eliminar.html','SilaboCarreraLibreController@eliminando');
+
+//Modulo silabo de carrera tecnica
+Route::get('SilaboCarreraTecnica/create.html','SilaboCarreraTecnicaController@nuevo');
+Route::get('SilaboCarreraTecnica/index.html','SilaboCarreraTecnicaController@listar');
+Route::post('SilaboCarreraTecnica/insert.html','SilaboCarreraTecnicaController@insertar');
+
+Route::get('SilaboCarreraTecnica/updatesID.html','SilaboCarreraTecnicaController@ActualizarBuscandoNombre');
+Route::get('SilaboCarreraTecnica/updatecID/{id}',array('uses'=>'SilaboCarreraTecnicaController@ActualizarConID'));
+Route::post('SilaboCarreraTecnica/post_update.html',array('uses'=>'SilaboCarreraTecnicaController@post_actualizar'));
+
+Route::get('SilaboCarreraTecnica/delete.html','SilaboCarreraTecnicaController@get_eliminar');
+Route::get('SilaboCarreraTecnica/post_delete/{id}',array('uses'=>'SilaboCarreraTecnicaController@post_eliminar'));
+Route::post('SilaboCarreraTecnica/eliminar.html','SilaboCarreraTecnicaController@eliminando');
 Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'));
+
 
 // carga academica
 
