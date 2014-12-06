@@ -1,6 +1,6 @@
 @extends('layouts.base_admin')
 @section('content')
-<form action="ingreso" name="form1" method="get">
+<form action="ingreso" name="form1" method="post">
     <div class="form-group">
     	<label for="">Asignatura : </label>
 	        <select name='id' id='id' onChange='document.form1.submit()'>
@@ -15,7 +15,7 @@
 	        </select>
     </div>
 </form>
-{{ Form::open(array('url'=>'ingresonotas/ingresoNota', 'method'=>'get')) }}
+{{ Form::open(array('url'=>'ingresonotas/ingresoNota', 'method'=>'post')) }}
     <label for="">ID CURSO : </label>
     <?php $idCurso = $id ?>
     <input type="text" value="{{ $idCurso }}" name="idCurso" readonly="readonly">

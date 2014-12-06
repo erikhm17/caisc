@@ -146,5 +146,5 @@ Route::get('/eliminarCarga/{id}', 'CargaController@eliminarElementoCarga');
 
 
 Route::get('ingresonotas/inicio','IngresoNotasController@inicio');
-Route::get('ingresonotas/ingreso','IngresoNotasController@curso');
-Route::get('ingresonotas/ingresoNota','IngresoNotasController@ingreso');
+Route::post('ingresonotas/ingreso','IngresoNotasController@curso');
+Route::post('ingresonotas/ingresoNota','IngresoNotasController@ingreso');

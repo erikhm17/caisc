@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS nota_ct(
 	`notaa` float(7,4) NOT NULL,
 	`notab` float(7,4) NOT NULL,
 	`notac` float(7,4) NOT NULL,
-	PRIMARY KEY (`codNota_ct`),
+	PRIMARY KEY (`id`),
 	FOREIGN KEY (`codMatricula_ct`) REFERENCES matricula_ct(`id`)
 ) CHARSET=utf8;
 
