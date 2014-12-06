@@ -142,3 +142,9 @@ Route::get('/crearCargaCt','CargaController@CargarIndexCargaCt');
 Route::post('/recogerDatos','CargaController@AgregarDatos');
 Route::get('/mostrarDatos','CargaController@MostrarDatos');
 Route::get('/eliminarCarga/{id}', 'CargaController@eliminarElementoCarga');
+
+
+
+Route::get('ingresonotas/inicio','IngresoNotasController@inicio');
+Route::get('ingresonotas/ingreso','IngresoNotasController@curso');
+Route::get('ingresonotas/ingresoNota','IngresoNotasController@ingreso');
