@@ -125,5 +125,11 @@ class ModalidadController extends \BaseController {
 
 		return Redirect::to('modalidad');
 	}
+	public function getModalidad()
+	{
+		$modalidad = Modalidad::orderBy('id','DESC')->get();
+
+		return View::make('pagos.showAlumno')->with('modalidad',$modalidad);
+	}
 
 }

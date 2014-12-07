@@ -9,8 +9,8 @@ class Cargo extends Eloquent {
 	{
 		$respuesta = array();
 		$reglas = array(
-			'nombre'=>array('required','max:50'),
-			'privilegios'=>array('required','max:100'),
+			'nombre'=>array('required','alpha_numeric','max:50'),
+			'privilegios'=>array('required','alpha_numeric','max:100'),
 		);
 		$validador = Validator::make($input,$reglas);
 		if($validador->fails())

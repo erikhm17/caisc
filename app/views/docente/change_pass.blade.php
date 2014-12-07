@@ -9,7 +9,7 @@ Cambiar Contraseña <small> {{$docente->nombre}} </small>
 @stop
 @section('content')
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-{{ Form::open(array('method'=> 'POST','url'=> 'docente/update_pass.html','class'=>'form-horizontal','role'=>'form')) }}
+{{ Form::open(array('method'=> 'POST','url'=> '','class'=>'form-horizontal','role'=>'form')) }}
 	<p> {{$docente->nombre}} </p>
 	<p>{{$docente->apellidos}}</p>
 	

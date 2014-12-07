@@ -9,33 +9,21 @@ class PagosController extends \BaseController {
 	 */
 	public function getIndex()
 	{
-		$pagos = Pagos::orderBy('id','DESC')->get();
+		$alumnos = Alumno::orderBy('id','DESC')->get();
 
-		return View::make('pagos.index')->with('pagos',$pagos);
+		return View::make('pagos.index')->with('alumnos',$alumnos);
 	}
-
-	public function index()
+	/*public function index()
 	{
 		$pagos = Pagos::orderBy('id','DESC')->get();
 
 		return View::make('pagos.index')->with('pagos',$pagos);
-	}
+	}*/
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function getCreate()
 	{
 		return View::make('pagos.create');
 	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
 		$pagos = new Pagos;
@@ -44,7 +32,7 @@ class PagosController extends \BaseController {
 		$pagos->nro_serie = Input::get('nro_serie');
 		$pagos->id_alumno = Input::get('id_alumno');
 		$pagos->fecha = Input::get('fecha');
-		$pagos->total_pago = Input::get('total_pago');
+		$pagos->total_pago = Input::get('total');
 
 		if ($pagos->save()) {
 			Session::flash('message','Guardado correctamente!');
@@ -53,7 +41,19 @@ class PagosController extends \BaseController {
 			Session::flash('message','Ha ocurrido un error!');
 			Session::flash('class','danger');
 		}
+		$detalle_pagos = new DetallePagos;
+		$detalle_pagos->id = Input::get('id');
+		$detalle_pagos->pagos_id = $pagos->id;
+		$detalle_pagos->descripcion = Input::get('descripcion');
+		$detalle_pagos->id_modalidad=Input::get('id_modalidad');
 
+		if ($detalle_pagos->save()) {
+			Session::flash('message','Guardado correctamente!');
+			Session::flash('class','success');
+		} else {
+			Session::flash('message','Ha ocurrido un error!');
+			Session::flash('class','danger');
+		}
 		return Redirect::to('pagos/create');
 	}
 
@@ -129,6 +129,27 @@ class PagosController extends \BaseController {
 		}
 
 		return Redirect::to('pagos');
+	}
+	public function profile($id = null)
+	{
+		$modalidad = Modalidad::lists('id','monto');
+		if (is_null($id) or ! is_numeric($id))
+		{
+			return Redirect::to('404.html');
+		} else {
+			$alumno = Alumno::where('id','=',$id)->firstOrFail();
+			if (is_object($alumno))
+			{
+				return View::make('pagos.showAlumno',array('alumno'=>$alumno,'modalidad'=>$modalidad));
+			} else {
+				return Redirect::to('404.html');
+			}
+		}
+	}
+	public function add()
+	{
+		$modalidad = Modalidad::lists('id','monto');
+		return View::make('pagos.create',array('modalidad'=>$modalidad));
 	}
 
 }

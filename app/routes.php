@@ -39,8 +39,7 @@ Route::post('docente/update/{id}',array('uses'=>'DocenteController@update'))->wh
 Route::post('docente/insert.html',array('uses'=>'DocenteController@insert'));
 Route::get('docente/profile/{id}',array('uses'=>'DocenteController@profile'))->where('id','[0-9]+');
 Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
-Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changePass'))->where('id','[0-9]+');
-Route::post('docente/update_pass.html',array('uses'=>'DocenteController@cambiarContrasenia'));
+Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changepass'))->where('id','[0-9]+');
 
 // Personal
 Route::get('personal',array('uses'=>'PersonalController@index'));
@@ -59,7 +58,6 @@ Route::get('modulo',array('uses'=>'ModuloController@index'));
 Route::get('modulo/nuevo.html',array('uses'=>'ModuloController@nuevo'));
 Route::get('modulo/actualizar.html',array('uses'=>'ModuloController@actualizar'));
 Route::post('modulo/crear',array('uses'=>'ModuloController@crear'));
-
 Route::get('modalidad_pago/nuevo.html',array('uses'=>'ModuloController@nuevo'));
 
 Route::get('modalidad_pago',array('uses'=>'ModalidadPagoController@index'));
@@ -74,20 +72,20 @@ Route::get('modalidad/destroy/{id}','ModalidadController@destroy');
 Route::post('modalidad/index','ModalidadController@index');
 Route::controller('modalidad','ModalidadController');
 
-Route::post('pagos/store','PagosController@store');
-Route::post('pagos/update/{id}','PagosController@update');
+//Route::post('pagos/update/{id}','PagosController@update');
 Route::get('pagos/destroy/{id}','PagosController@destroy');
 Route::post('pagos/index','PagosController@index');
+Route::get('pagos/create',array('uses'=>'PagosController@add'));
+//Route::post('pagos/showAlumno/{id}','PagosController@getAlumno');
+Route::get('pagos/showAlumno/{id}',array('uses'=>'PagosController@profile'))->where('id','[0-9]+');
+//Route::post('pagos/create',array('uses' => 'PagosController@store'));
+
 Route::controller('pagos','PagosController');
 /*End Caja y Facturacion*/
 
 // Modulos Asistencia: Docentes y Alumnos
 Route::get('asistencia/add_ct',array('uses'=>'AsistenciaController@add_ct'));
 Route::get('asistencia/add_cl',array('uses' =>'AsistenciaController@add_cl'));
-
-// carga academica
-Route::get('carga.html',array('uses'=>'CargaAcademicaController@MostrarCargaAcademica'));
-Route::get('crear.html',array('uses'=>'CargaAcademicaController@MostrarCrearCarga'));
 
 //mantenimiento de tablas libres
 Route::resource('dia','DiaController');
@@ -105,17 +103,26 @@ Route::get('matriculas/delete/{cod}',array('uses'=>'MatriculaCTController@delete
 Route::get('matriculas/add.html',array('uses'=>'MatriculaCTController@add'));
 Route::post('matriculas/insert.html',array('uses'=>'MatriculaCTController@insert'));
 
+// Mantenimiento matricula cursos libres
+Route::get('matriculascl',array('uses'=>'MatriculaCLController@index'));
+Route::get('matriculascl/edit/{cod}',array('uses'=>'MatriculaCLController@edit'));
+Route::post('matriculascl/update.html',array('uses'=>'MatriculaCLController@update'));
+Route::get('matriculascl/delete/{cod}',array('uses'=>'MatriculaCLController@delete'));
+Route::get('matriculascl/add.html',array('uses'=>'MatriculaCLController@add'));
+Route::post('matriculascl/insert.html',array('uses'=>'MatriculaCLController@insert'));
+
 //Modulo Cursos de Carrera Libre
 Route::get('CursosLibres/create.html','CursosCarreraLibreController@nuevo');
 Route::post('CursosLibres/insert.html','CursosCarreraLibreController@insertar');
 Route::get('CursosLibres/index.html','CursosCarreraLibreController@listar');
 
 Route::get('CursosLibres/updatesID.html','CursosCarreraLibreController@ActualizarBuscandoNombre');
-Route::get('CursosLibres/updatecID/{id}',array('uses'=>'CursosCarreraLibreController@ActualizarConID'))->where('codCurso_cl','[0-9]+');
+Route::get('CursosLibres/updatecID/{id}','CursosCarreraLibreController@ActualizarConID');
 Route::post('CursosLibres/post_update.html',array('uses'=>'CursosCarreraLibreController@post_actualizar'));//->where('codCurso_cl','[0-9]+');
 
 Route::get('CursosLibres/delete.html','CursosCarreraLibreController@get_eliminar');
-Route::get('CursosLibres/post_delete/{id}',array('uses'=>'CursosCarreraLibreController@post_eliminar'))->where('codCurso_cl','[0-9]+');
+Route::get('CursosLibres/post_delete/{id}','CursosCarreraLibreController@post_eliminar');
+Route::post('CursosLibres/eliminar.html','CursosCarreraLibreController@eliminando');
 
 //Modulo Cursos de Carrera Tecnica
 Route::get('CursosTecnica/create.html','CursosCarreraTecnicaController@nuevo');
@@ -123,8 +130,51 @@ Route::post('CursosTecnica/insert.html','CursosCarreraTecnicaController@insertar
 Route::get('CursosTecnica/index.html','CursosCarreraTecnicaController@listar');
 
 Route::get('CursosTecnica/updatesID.html','CursosCarreraTecnicaController@ActualizarBuscandoNombre');
-Route::get('CursosTecnica/updatecID/{id}',array('uses'=>'CursosCarreraTecnicaController@ActualizarConID'))->where('codCurso_ct','[0-9]+');
-Route::post('CursosTecnica/post_update.html/{id}',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'))->where('codCurso_ct','[0-9]+');
+Route::get('CursosTecnica/updatecID/{id}',array('uses'=>'CursosCarreraTecnicaController@ActualizarConID'));
+Route::post('CursosTecnica/post_update.html',array('uses'=>'CursosCarreraTecnicaController@post_actualizar'));
 
 Route::get('CursosTecnica/delete.html','CursosCarreraTecnicaController@get_eliminar');
+Route::get('CursosTecnica/post_delete/{id}',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'));
+Route::post('CursosTecnica/eliminar.html','CursosCarreraTecnicaController@eliminando');
+
+//Modulo silabo de carrera libre
+Route::get('SilaboCarreraLibre/create.html','SilaboCarreraLibreController@nuevo');
+Route::get('SilaboCarreraLibre/index.html','SilaboCarreraLibreController@listar');
+Route::post('SilaboCarreraLibre/insert.html','SilaboCarreraLibreController@insertar');
+
+Route::get('SilaboCarreraLibre/updatesID.html','SilaboCarreraLibreController@ActualizarBuscandoNombre');
+Route::get('SilaboCarreraLibre/updatecID/{id}',array('uses'=>'SilaboCarreraLibreController@ActualizarConID'));
+Route::post('SilaboCarreraLibre/post_update.html',array('uses'=>'SilaboCarreraLibreController@post_actualizar'));
+
+Route::get('SilaboCarreraLibre/delete.html','SilaboCarreraLibreController@get_eliminar');
+Route::get('SilaboCarreraLibre/post_delete/{id}',array('uses'=>'SilaboCarreraLibreController@post_eliminar'));
+Route::post('SilaboCarreraLibre/eliminar.html','SilaboCarreraLibreController@eliminando');
+
+//Modulo silabo de carrera tecnica
+Route::get('SilaboCarreraTecnica/create.html','SilaboCarreraTecnicaController@nuevo');
+Route::get('SilaboCarreraTecnica/index.html','SilaboCarreraTecnicaController@listar');
+Route::post('SilaboCarreraTecnica/insert.html','SilaboCarreraTecnicaController@insertar');
+
+Route::get('SilaboCarreraTecnica/updatesID.html','SilaboCarreraTecnicaController@ActualizarBuscandoNombre');
+Route::get('SilaboCarreraTecnica/updatecID/{id}',array('uses'=>'SilaboCarreraTecnicaController@ActualizarConID'));
+Route::post('SilaboCarreraTecnica/post_update.html',array('uses'=>'SilaboCarreraTecnicaController@post_actualizar'));
+
+Route::get('SilaboCarreraTecnica/delete.html','SilaboCarreraTecnicaController@get_eliminar');
+Route::get('SilaboCarreraTecnica/post_delete/{id}',array('uses'=>'SilaboCarreraTecnicaController@post_eliminar'));
+Route::post('SilaboCarreraTecnica/eliminar.html','SilaboCarreraTecnicaController@eliminando');
 Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'));
+
+
+// carga academica
+
+
+Route::get('/crearCargaCt','CargaController@CargarIndexCargaCt');
+Route::post('/recogerDatos','CargaController@AgregarDatos');
+Route::get('/mostrarDatos','CargaController@MostrarDatos');
+Route::get('/eliminarCarga/{id}', 'CargaController@eliminarElementoCarga');
+
+
+
+Route::get('ingresonotas/inicio','IngresoNotasController@inicio');
+Route::post('ingresonotas/ingreso','IngresoNotasController@curso');
+Route::post('ingresonotas/ingresoNota','IngresoNotasController@ingreso');

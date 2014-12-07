@@ -8,46 +8,48 @@ class CursosCarreraTecnicaController extends BaseController{
 	 */
 	public function nuevo()
 	{
-		return View::make('Cursos_Carrera_Tecnica.create');
+		$carrera = Carrera::lists('nombre','id');
+		return View::make('Cursos_Carrera_Tecnica.create',array('carrera'=>$carrera));
 	}
 	public function insertar()
-	{
+	{	
 		$respuesta = CursoTecnico::agregar(Input::all());
 		if($respuesta['error']==true)
 		{
-			return Redirect::to('Cursos_Carrera_Tecnica/create')->with('mensaje',$respuesta['mensaje'])->withInput();
-		} else {
-			return Redirect::to('inicio')->with('mensaje',$respuesta['mensaje']);
+			return Redirect::to('CursosTecnica/create.html')->with('mensaje',$respuesta['mensaje']);
+		} 
+		else 
+		{
+			return Redirect::to('CursosTecnica/index.html')->with('mensaje',$respuesta['mensaje']);
 		}
 	}
 
 	public function listar()
-	{
-		$datos = CursoTecnico::paginate(5);
-		$curso_ct = CursoTecnico::all();
+	{ 
+		$datos = CursoTecnico::where('estado','=','1')->orderBy('id','DESC')->paginate(10);		
+		$curso_ct = CursoTecnico::where('estado','=','1')->orderBy('id','DESC')->get();
 		return View::make('Cursos_Carrera_Tecnica.index',compact("datos"),array('curso_ct'=>$curso_ct));
 	}
-
-
-
 
 	public function ActualizarBuscandoNombre()
 	{
 		return View::make('Cursos_Carrera_Tecnica.edit');
 	}
-	public function ActualizarConID($id=null)
+	public function ActualizarConID($id)
 	{
 		if(is_null($id))
 		{
 			return Redirect::to('404.html');
-		} else {
-			$curso = CursoTecnico::where('codCurso_ct','=',$id)->firstOrFail();
+		} 
+		else 
+		{
+			$curso = CursoTecnico::where('id','=',$id)->firstOrFail();
 			return View::make('Cursos_Carrera_Tecnica.editconID',array('curso_ct'=>$curso));
 		}
 	}
 	public function post_actualizar()
 	{
-		$cod=Input::get('codCurso_ct');
+		$cod=Input::get('id');
 
 		if(is_null($cod))
 		{
@@ -55,14 +57,15 @@ class CursosCarreraTecnicaController extends BaseController{
 		} 
 		else 
 		{
-			$curso = CursoTecnico::where('codCurso_ct','=',$id)->firstOrFail();
+			$curso = CursoTecnico::where('id','=',$cod)->firstOrFail();
 			if(is_object($curso))
 			{
-				$curso->codCurso_ct = Input::get('codCurso_cl');
+				$curso->id = Input::get('id');
 				$curso->nombre = Input::get('nombre');
 				$curso->modulo = Input::get('modulo');
-				$curso->estado = Input::get('estado');
+				$curso->estado = 1;
 				$curso->codCarrera = Input::get('codCarrera');
+				$curso->updated_at = time();
 				$curso->save();
 				return Redirect::to('CursosTecnica/index.html');
 			} else {
@@ -73,12 +76,12 @@ class CursosCarreraTecnicaController extends BaseController{
 
 	public function get_eliminar()
 	{
-		$datos = CursoTecnico::paginate(5);
-		$curso_ct = CursoTecnico::all();
+		$datos = CursoTecnico::where('estado','=','1')->orderBy('id','DESC')->paginate(10);
+		$curso_ct = CursoTecnico::where('estado','=','1')->orderBy('id','DESC')->get();
 		return View::make('Cursos_Carrera_Tecnica.delete',compact("datos"),array('curso_ct'=>$curso_ct));
 
 	}
-	public function post_eliminar($id = null)
+	public function post_eliminar($id=null)
 	{
 		if(is_null($id))
 		{
@@ -86,12 +89,30 @@ class CursosCarreraTecnicaController extends BaseController{
 		} 
 		else 
 		{
-			$curso = CursoTecnico::where('codCurso_ct','=',$id)->firstOrFail();
+			$curso = CursoTecnico::where('id','=',$id)->firstOrFail();
+			return View::make('Cursos_Carrera_Tecnica.post_eliminar',array('curso_ct'=>$curso));		
+		}
+	}
+
+	public function eliminando()
+	{
+		$cod=Input::get('id');
+		if(is_null($cod))
+		{
+			Redirect::to('404.html');
+		} 
+		else 
+		{
+			$curso = CursoTecnico::find($cod);
 			if(is_object($curso))
 			{
-				$curso->estado = '0';
+				$curso->estado = 0;
 				$curso->save();
 				return Redirect::to('CursosTecnica/index.html');
+			} 
+			else 
+			{
+				Redirect::to('500.html');
 			}
 		}
 	}
