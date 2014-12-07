@@ -309,15 +309,26 @@
 
                         <li class="treeview">
                             <a href="docente">
-                                <i class="fa fa-folder"></i> <span>Modalidad de Pago</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <i class="glyphicon glyphicon-briefcase"></i> <span>Modalidad de Pago</span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><i class="fa fa-angle-double-right"></i> {{ HTML::link('/modalidad/create','Agregar') }}</li>
-                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('#','Buscar') }}</li>
-                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('/modalidad','Listar') }}</li>
+                                <li><i class="glyphicon glyphicon-plus"></i> {{ HTML::link('/modalidad/create','Agregar') }}</li>
+                                <li><i class="glyphicon glyphicon-search"></i>{{ HTML::link('#','Buscar') }}</li>
+                                <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('/modalidad','Listar') }}</li>
                             </ul>
                         </li>
+                        <li class="treeview">
+                            <a href="pagos">
+                                <i class="glyphicon glyphicon-euro"></i> <span>Caja y Facturación</span>                                
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><i class="glyphicon glyphicon-plus"></i> {{ HTML::link('/pagos/create','Realizar Pago') }}</li>
+                                <li><i class="glyphicon glyphicon-search"></i>{{ HTML::link('#','Buscar') }}</li>
+                                <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('/pagos','Listar') }}</li>
+                            </ul>
+                        </li>
+                        
+
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-dashboard"></i> <span>Mantenimientos TL</span>
@@ -331,17 +342,7 @@
                                 <li>{{HTML::linkAction('TurnoController@index', 'Turno')}}</li>
                             </ul>
                         </li>
-                        <li class="treeview">
-                            <a href="docente">
-                                <i class="fa fa-folder"></i> <span>Caja y Facturación</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><i class="fa fa-angle-double-right"></i> {{ HTML::link('/pagos/create','Realizar Pago') }}</li>
-                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('#','Buscar') }}</li>
-                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('/pagos','Listar') }}</li>
-                            </ul>
-                        </li>
+                        
 
 
                         <li class="treeview">
