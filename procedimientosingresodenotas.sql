@@ -15,6 +15,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `CursosXDocente`(IN `id_docente` INT
 BEGIN
     select cg.codCargaAcademica_ct as "id", cu.nombre as "nombre"
 
-	from carga_academica_ct cg inner join curso_ct cu on cg.codCurso_ct = cu.codCurso_ct 
+	from carga_academica_ct cg inner join curso_ct cu on cg.codCurso_ct = cu.id 
     where cg.docente_id = id_docente;
 END
+

@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS alumno(
 	`estado` INT(2) null,
 	`codCarrera` VARCHAR(10) DEFAULT null,
 	PRIMARY KEY (`codAlumno`),
-	FOREIGN KEY (`codCarrera`) REFERENCES carrera(`codCarrera`)
+	FOREIGN KEY (`codCarrera`) REFERENCES carrera(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS curso_ct(
@@ -101,13 +101,13 @@ CREATE TABLE IF NOT EXISTS carga_academica_ct(
 	`turno` VARCHAR(10) NOT NULL,
 	`grupo` VARCHAR(10) NOT NULL,
 	PRIMARY KEY (`codCargaAcademica_ct`),
-	FOREIGN KEY (`codCurso_ct`) REFERENCES curso_ct(`codCurso_ct`),
+	FOREIGN KEY (`codCurso_ct`) REFERENCES curso_ct(`id`),
 	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8 ;
 
 CREATE TABLE IF NOT EXISTS silabus_ct(
 	`id` int AUTO_INCREMENT NOT NULL,
-	`codCargaAcademica_ct` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_ct` INT NOT NULL,
 	PRIMARY KEY(`id`),
 	FOREIGN KEY (`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`)
 ) CHARSET=utf8;
@@ -170,13 +170,13 @@ CREATE TABLE IF NOT EXISTS carga_academica_cl(
 	`estado` BIT DEFAULT 1,
 	`minimo` INT NOT NULL,
 	PRIMARY KEY (`codCargaAcademica_cl`),
-	FOREIGN KEY (`codCurso_cl`) REFERENCES curso_cl(`codCurso_cl`),
+	FOREIGN KEY (`codCurso_cl`) REFERENCES curso_cl(`id`),
 	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS silabus_cl(
 	`id` int AUTO_INCREMENT NOT NULL,
-	`codCargaAcademica_cl` VARCHAR(10) NOT NULL,
+	`codCargaAcademica_cl` INT NOT NULL,
 	PRIMARY KEY(`id`),
 	FOREIGN KEY (`codCargaAcademica_cl`) REFERENCES carga_academica_cl(`codCargaAcademica_cl`)
 ) CHARSET=utf8;
