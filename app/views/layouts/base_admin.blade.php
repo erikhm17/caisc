@@ -406,7 +406,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li>{{ HTML::link('/crearCargaCt','Carga Academica CT') }}</li>
-                                <li>{{ HTML::link('/crearCargaCL','Carga Academica CL') }}</li>
+                                <li>{{ HTML::link('/crearCargaCl','Carga Academica CL') }}</li>
                             </ul>
                         </li>
 
