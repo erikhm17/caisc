@@ -1,5 +1,5 @@
 <?php
-	class Nota extends Eloquent{
+	class NotaCT extends Eloquent{
 		protected $table = 'nota_ct';
 		public $timestamps = false;
 	}

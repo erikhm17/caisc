@@ -434,11 +434,12 @@
 
                         <li class="treeview">
                             <a href="ingresonotas">
-                                <i class="fa fa-folder"></i> <span>Ingreso De Notas De Carrera Tecinica</span>
+                                <i class="fa fa-folder"></i> <span>Ingreso De Notas</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li>{{ HTML::link('ingresonotas/inicio','IngresoDeNotas') }}</li>
+                                <li>{{ HTML::link('ingresonotas/inicioCT','Ingreso De Notas Carrera Tecnica') }}</li>
+                                <li>{{ HTML::link('ingresonotas/inicioCL','Ingreso De Notas Curso Libre') }}</li>
                             </ul>
                         </li>
 

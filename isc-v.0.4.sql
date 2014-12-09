@@ -206,10 +206,10 @@ CREATE TABLE IF NOT EXISTS matricula_cl(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS nota_cl(
-	`codNota_cl` INT AUTO_INCREMENT,
+	`id` INT AUTO_INCREMENT,
 	`codMatricula_cl` INT NOT NULL,
 	`nota` float(7,4) NOT NULL,
-	PRIMARY KEY (`codNota_cl`),
+	PRIMARY KEY (`id`),
 	FOREIGN KEY (`codMatricula_cl`) REFERENCES matricula_cl(`id`)
 ) CHARSET=utf8;
 
