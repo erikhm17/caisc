@@ -179,8 +179,10 @@ Route::get('ingresonotas/inicioCT','IngresoNotasController@inicioCT');
 Route::post('ingresonotas/ingresoCT','IngresoNotasController@cursoCT');
 Route::post('ingresonotas/ingresoNotaCT','IngresoNotasController@ingresoCT');
 Route::post('ingresonotas/consolidadoCT','IngresoNotasController@consolidadoCT');
+Route::get('ingresonotas/registroCT','IngresoNotasController@registroCT');
 
 Route::get('ingresonotas/inicioCL','IngresoNotasController@inicioCL');
 Route::post('ingresonotas/ingresoCL','IngresoNotasController@cursoCL');
 Route::post('ingresonotas/ingresoNotaCL','IngresoNotasController@ingresoCL');
 Route::post('ingresonotas/consolidadoCL','IngresoNotasController@consolidadoCL');
+Route::get('ingresonotas/registroCL','IngresoNotasController@registroCL');

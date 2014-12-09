@@ -43,7 +43,16 @@ class IngresoNotasController extends \BaseController {
 		$alumnos = DB::select('call AlumnosXCursoCT(' . $id . ')');
       	return View::make("ingresonotas/consolidadoCT", compact('cursos', 'id', 'alumnos'));
 	}
+	public function registroCT()
+	{ 
+		$idDocente = 10001;
+		$cursos = DB::select('call CursosXDocenteCT(' . $idDocente . ')');
+      	return View::make("ingresonotas/registroCT", compact('cursos'));
+	}
 
+/************************************************************************************************************************************************
+*********************************************************************XxX*************************************************************************
+************************************************************************************************************************************************/
 	public function inicioCL()
 	{ 
 		$idDocente = 10002;
@@ -82,4 +91,11 @@ class IngresoNotasController extends \BaseController {
 		$alumnos = DB::select('call AlumnosXCursoCL(' . $id . ')');
       	return View::make("ingresonotas/consolidadoCL", compact('cursos', 'id', 'alumnos'));
 	}
+	public function registroCL()
+	{ 
+		$idDocente = 10001;
+		$cursos = DB::select('call CursosXDocenteCT(' . $idDocente . ')');
+      	return View::make("ingresonotas/registroCL", compact('cursos'));
+	}
+
 }
