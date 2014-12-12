@@ -13,6 +13,9 @@ Agregar Personal <small> NUEVO PERSONAL </small>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')}}
+{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css')}}
+{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')}}
 </head>
 <style type="text/css">
     table tr td,th {
@@ -73,22 +76,22 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                             7:00-8:30
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosLunes', '7:00-8:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosMartes', '7:00-8:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '7:00-8:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosJueves', '7:00-8:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosViernes', '7:00-8:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosSabado', '7:00-8:30', false);}}
                         </td>
                     </tr>
                     <tr class="success">
@@ -96,22 +99,22 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                             8:30-10:00
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosLunes', '8:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosMartes', '8:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '8:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosJueves', '8:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosViernes', '8:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosSabado', '8:30-10:00', false);}}
                         </td>
                     </tr>
                     <tr>
@@ -119,22 +122,22 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                        10:00-11:30
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '10:00-11:30', false);}}
+                            {{Form::radio('rbHorariosLunes', '10:00-11:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '10:00-11:30', false);}}
+                            {{Form::radio('rbHorariosMartes', '10:00-11:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '10:00-11:30', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '10:00-11:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '10:00-11:30', false);}}
+                            {{Form::radio('rbHorariosJueves', '10:00-11:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '10:00-11:30', false);}}
+                            {{Form::radio('rbHorariosViernes', '10:00-11:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '10:00-11:30', false);}}
+                            {{Form::radio('rbHorariosSabado', '10:00-11:30', false);}}
                         </td>
                     </tr>
                     <tr class="success">
@@ -142,22 +145,22 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                             11:30-13:00
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '11:30-13:00', false);}}
+                            {{Form::radio('rbHorariosLunes', '11:30-13:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '11:30-13:00', false);}}
+                            {{Form::radio('rbHorariosMartes', '11:30-13:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '11:30-13:00', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '11:30-13:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '11:30-13:00', false);}}
+                            {{Form::radio('rbHorariosJueves', '11:30-13:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '11:30-13:00', false);}}
+                            {{Form::radio('rbHorariosViernes', '11:30-13:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '11:30-13:00', false);}}
+                            {{Form::radio('rbHorariosSabado', '11:30-13:00', false);}}
                         </td>
                     </tr>
                     <tr>
@@ -165,22 +168,22 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                             13:00-14:30
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '13:00-14:30', false);}}
+                            {{Form::radio('rbHorariosLunes', '13:00-14:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '13:00-14:30', false);}}
+                            {{Form::radio('rbHorariosMartes', '13:00-14:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '13:00-14:30', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '13:00-14:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '13:00-14:30', false);}}
+                            {{Form::radio('rbHorariosJueves', '13:00-14:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '13:00-14:30', false);}}
+                            {{Form::radio('rbHorariosViernes', '13:00-14:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '13:00-14:30', false);}}
+                            {{Form::radio('rbHorariosSabado', '13:00-14:30', false);}}
                         </td>
                     </tr>
                     <tr class="success">
@@ -188,22 +191,22 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                             14:30-16:00
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '14:30-16:00', false);}}
+                            {{Form::radio('rbHorariosLunes', '14:30-16:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '14:30-16:00', false);}}
+                            {{Form::radio('rbHorariosMartes', '14:30-16:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '14:30-16:00', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '14:30-16:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '14:30-16:00', false);}}
+                            {{Form::radio('rbHorariosJueves', '14:30-16:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '14:30-16:00', false);}}
+                            {{Form::radio('rbHorariosViernes', '14:30-16:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '14:30-16:00', false);}}
+                            {{Form::radio('rbHorariosSabado', '14:30-16:00', false);}}
                         </td>
                     </tr>
                     <tr>
@@ -211,22 +214,22 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                             16:00-17:30
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '16:00-17:30', false);}}
+                            {{Form::radio('rbHorariosLunes', '16:00-17:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '16:00-17:30', false);}}
+                            {{Form::radio('rbHorariosMartes', '16:00-17:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '16:00-17:30', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '16:00-17:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '16:00-17:30', false);}}
+                            {{Form::radio('rbHorariosJueves', '16:00-17:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '16:00-17:30', false);}}
+                            {{Form::radio('rbHorariosViernes', '16:00-17:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '16:00-17:30', false);}}
+                            {{Form::radio('rbHorariosSabado', '16:00-17:30', false);}}
                         </td>
                     </tr>
                     <tr class="success">
@@ -234,22 +237,22 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                             17:30-19:00
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '17:30-19:00', false);}}
+                            {{Form::radio('rbHorariosLunes', '17:30-19:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '17:30-19:00', false);}}
+                            {{Form::radio('rbHorariosMartes', '17:30-19:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '17:30-19:00', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '17:30-19:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '17:30-19:00', false);}}
+                            {{Form::radio('rbHorariosJueves', '17:30-19:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '17:30-19:00', false);}}
+                            {{Form::radio('rbHorariosViernes', '17:30-19:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '17:30-19:00', false);}}
+                            {{Form::radio('rbHorariosSabado', '17:30-19:00', false);}}
                         </td>
                     </tr>
                     <tr>
@@ -257,22 +260,22 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                             19:00-20:30
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '19:00-20:30', false);}}
+                            {{Form::radio('rbHorariosLunes', '19:00-20:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '19:00-20:30', false);}}
+                            {{Form::radio('rbHorariosMartes', '19:00-20:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '19:00-20:30', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '19:00-20:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '19:00-20:30', false);}}
+                            {{Form::radio('rbHorariosJueves', '19:00-20:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '19:00-20:30', false);}}
+                            {{Form::radio('rbHorariosViernes', '19:00-20:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '19:00-20:30', false);}}
+                            {{Form::radio('rbHorariosSabado', '19:00-20:30', false);}}
                         </td>
                     </tr>
                     <tr class="success">
@@ -280,22 +283,22 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                             20:30-22:00
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '20:30-22:00', false);}}
+                            {{Form::radio('rbHorariosLunes', '20:30-22:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '20:30-22:00', false);}}
+                            {{Form::radio('rbHorariosMartes', '20:30-22:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '20:30-22:00', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '20:30-22:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '20:30-22:00', false);}}
+                            {{Form::radio('rbHorariosJueves', '20:30-22:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '20:30-22:00', false);}}
+                            {{Form::radio('rbHorariosViernes', '20:30-22:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '20:30-22:00', false);}}
+                            {{Form::radio('rbHorariosSabado', '20:30-22:00', false);}}
                         </td>
                     </tr>
                 </table>
