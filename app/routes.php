@@ -13,6 +13,7 @@
 
 Route::get('/', function()
 {
+	
 	return View::make('login');
 });
 // Errors
@@ -24,6 +25,7 @@ Route::get('blank.html',array('uses'=>'ErrorController@blank'));
 Route::get('salir',function()
 {
 	Auth::logout();
+	return Redirect::to('/');
 });
 
 Route::post('check',array('uses'=>'Login@postUser'));
@@ -54,23 +56,25 @@ Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->whe
 Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changepass'))->where('id','[0-9]+');
 
 // Personal
-Route::get('personal',array('uses'=>'PersonalController@index'));
+
+
+
+Route::group(['before' => 'auth'], function()
+{
+	Route::get('personal',array('uses'=>'PersonalController@index'));
 Route::get('personal/cargos',array('uses'=>'CargoController@index'));
 Route::get('personal/cargo/add.html',array('uses'=>'CargoController@add'));
 Route::post('personal/cargo/insert.html',array('uses'=>'CargoController@insert'));
 Route::get('personal/add.html',array('uses'=>'PersonalController@add'));
 Route::post('personal/insert.html',array('uses'=>'PersonalController@insert'));
-
-
-Route::group(['before' => 'auth'], function()
-{
 Route::get('personal/profile/{id}',array('uses'=>'PersonalController@profile'))->where('id','[0-9]+');
-});
-
-
 Route::get('personal/edit/{id}',array('uses'=>'PersonalController@edit'))->where('id','[0-9]+');
 Route::post('personal/update/{id}',array('uses'=>'PersonalController@update'))->where('id','[0-9]+');
 Route::get('personal/change-pass-personal/{id}',array('uses'=>'PersonalController@changePassPersonal'))->where('id','[0-9]+');
+});
+
+
+
 
 //Modulos mantenimiento
 Route::get('modulo',array('uses'=>'ModuloController@index'));

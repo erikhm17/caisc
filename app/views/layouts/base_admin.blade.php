@@ -228,7 +228,7 @@
                                         {{ HTML::link('docente/profile/12345','Profile',array('class'=>'btn btn-default btn-flat')) }}
                                     </div>
                                     <div class="pull-right">
-                                        {{ HTML::link('docente/logout.html','Sign out', array('class'=>'btn btn-default btn-flat')) }}
+                                        {{ HTML::link('salir','Sign out', array('class'=>'btn btn-default btn-flat')) }}
                                     </div>
                                 </li>
                             </ul>
