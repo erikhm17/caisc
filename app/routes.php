@@ -211,3 +211,8 @@ Route::post('ingresonotas/ingresoCL','IngresoNotasController@cursoCL');
 Route::post('ingresonotas/ingresoNotaCL','IngresoNotasController@ingresoCL');
 Route::post('ingresonotas/consolidadoCL','IngresoNotasController@consolidadoCL');
 Route::get('ingresonotas/registroCL','IngresoNotasController@registroCL');
+
+
+//Pago en planilla docentes
+Route::get('Planilla',array('uses'=>'PlanillaController@index'));
+Route::get('Planilla/detalle_Planilla/{id}',array('uses'=>'PlanillaController@detalle_Planilla'))->where('id','[0-9]+');
