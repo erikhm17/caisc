@@ -427,8 +427,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li>{{ HTML::link('matriculas/add.html','Agregar') }}</li>
-                                <li>{{ HTML::link('matriculas','Listar') }}</li>
+                                <li>{{ HTML::link('matriculas','Registrar Matricula') }}</li>
+                                <li>{{ HTML::link('matriculas/lista','Listar') }}</li>
                             </ul>
                         </li>
 

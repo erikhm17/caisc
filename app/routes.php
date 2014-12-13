@@ -38,7 +38,12 @@ Route::get('docente/edit/{id}',array('uses'=>'DocenteController@edit'))->where('
 Route::post('docente/update/{id}',array('uses'=>'DocenteController@update'))->where('id','[0-9]+');
 Route::post('docente/insert.html',array('uses'=>'DocenteController@insert'));
 
-
+// Alumno
+Route::get('alumnos',array('uses'=>'AlumnoController@index'));
+Route::get('alumno/add.html',array('uses'=>'AlumnoController@add'));
+Route::get('alumno/edit/{id}',array('uses'=>'AlumnoController@edit'))->where('id','[0-9]+');
+Route::post('alumno/update/{id}',array('uses'=>'AlumnoController@update'))->where('id','[0-9]+');
+Route::post('alumno/insert.html',array('uses'=>'AlumnoController@insert'));
 
  
 
@@ -116,6 +121,12 @@ Route::resource('turno','TurnoController');
 
 // Mantenimiento matricula carrera tecnica
 Route::get('matriculas',array('uses'=>'MatriculaCTController@index'));
+Route::get('matriculas/listacursos',array('uses'=>'MatriculaCTController@listacursos'));
+Route::get('matriculas/listaMatri',array('uses'=>'MatriculaCTController@listaMatri'));
+Route::post('matriculas/listaMatricula.html',array('uses'=>'MatriculaCTController@listaMatricula'));
+Route::post('matriculas/listaCursosNuevos.html',array('uses'=>'MatriculaCTController@listacursosnuevos'));
+
+Route::get('matriculas/lista',array('uses'=>'MatriculaCTController@lista'));
 Route::get('matriculas/edit/{cod}',array('uses'=>'MatriculaCTController@edit'));
 Route::post('matriculas/update.html',array('uses'=>'MatriculaCTController@update'));
 Route::get('matriculas/delete/{cod}',array('uses'=>'MatriculaCTController@delete'));

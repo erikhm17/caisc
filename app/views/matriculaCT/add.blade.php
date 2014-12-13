@@ -35,7 +35,7 @@ Registrar Matricula <small> NUEVA MATRICULA </small>
 	</div>
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-6 col-md-6">
-			<button class="btn btn-info btn-block" type="reset">Cancelar</button>
+			<button class="btn btn-info btn-block" type="reset">Limpiar</button>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6">
 			<button class="btn btn-primary btn-block" type="submit">Guardar</button>
