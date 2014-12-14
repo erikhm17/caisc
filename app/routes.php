@@ -50,10 +50,10 @@ Route::post('alumno/insert.html',array('uses'=>'AlumnoController@insert'));
  
 
 
-Route::group(['before' => 'auth'], function()
-{
+//Route::group(['before' => 'auth'], function()
+//{
     Route::get('docente/profile/{id}',array('uses'=>'DocenteController@profile'))->where('id','[0-9]+');
-});
+//});
 
 
 
@@ -64,8 +64,8 @@ Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changepas
 
 
 
-Route::group(['before' => 'auth'], function()
-{
+//Route::group(['before' => 'auth'], function()
+//{
 	Route::get('personal',array('uses'=>'PersonalController@index'));
 Route::get('personal/cargos',array('uses'=>'CargoController@index'));
 Route::get('personal/cargo/add.html',array('uses'=>'CargoController@add'));
@@ -76,7 +76,7 @@ Route::get('personal/profile/{id}',array('uses'=>'PersonalController@profile'))-
 Route::get('personal/edit/{id}',array('uses'=>'PersonalController@edit'))->where('id','[0-9]+');
 Route::post('personal/update/{id}',array('uses'=>'PersonalController@update'))->where('id','[0-9]+');
 Route::get('personal/change-pass-personal/{id}',array('uses'=>'PersonalController@changePassPersonal'))->where('id','[0-9]+');
-});
+//});
 
 
 

@@ -11,7 +11,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
 {{ Form::open(array('method'=> 'POST','url'=> 'personal/insert.html','class'=>'form-horizontal','role'=>'form')) }}
 	<div class="form-group">
 		{{ Form::label('nombre','Nombre(s):',array('class'=>'col-sm-2 control-label')) }}
-		<div class="col-sm-6 col-md-4">
+		<div class="c">
 			{{ Form::text('nombre','',array('class'=>'form-control','placeholder'=>'Juan'))}}
 		</div>
 		<div class="errores">

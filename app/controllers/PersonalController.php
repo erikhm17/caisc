@@ -8,6 +8,7 @@ class PersonalController extends BaseController
 		$personal = Personal::all();
 		return View::make('personal.index',compact("datos"),array('personal'=>$personal));
 	}
+	
 	public function profile($id = null)
 	{
 		if (is_null($id) or ! is_numeric($id))
@@ -23,11 +24,13 @@ class PersonalController extends BaseController
 			}
 		}
 	}
+
 	public function add()
 	{
 		$cargos = Cargo::lists('nombre','id');
 		return View::make('personal.add',array('cargos'=>$cargos));
 	}
+
 	public function insert()
 	{
 		$respuesta = Personal::agregar(Input::all());
@@ -38,6 +41,7 @@ class PersonalController extends BaseController
 			return Redirect::to('personal')->with('mensaje',$respuesta['mensaje']);
 		}
 	}
+
 	public function edit($id=null)
 	{
 		if(is_null($id))
@@ -48,26 +52,38 @@ class PersonalController extends BaseController
 			return View::make('personal.edit',array('personal'=>$personal));
 		}
 	}
+
 	public function update($id = null)
 	{
-		if(is_null($id))
+		$respuesta = Docente::editar(Input::all());
+		if($respuesta['error']==true)
 		{
-			Redirect::to('404.html');
-		} else {
-			$personal = Personal::where('id','=',$id)->firstOrFail();
-			if(is_object($personal))
+			return Redirect::to('docente/edit/'.$id)->withErrors($respuesta['mensaje'] )->withInput();
+		}
+		else
+		{
+			if(is_null($id))
 			{
-				$personal->nombre = Input::get('nombre');
-				$personal->apellidos = Input::get('apellidos');
-				$personal->email = Input::get('email');
-				$personal->telefono = Input::get('telefono');
-				$personal->save();
-				return Redirect::to('personal');
+				Redirect::to('404.html');
 			} else {
-				Redirect::to('500.html');
+				$personal = Personal::where('id','=',$id)->firstOrFail();
+				if(is_object($personal))
+				{
+					$personal->nombre = Input::get('nombre');
+					$personal->apellidos = Input::get('apellidos');
+					$personal->dni = Input::('dni');
+					$personal->direccion = Input::get('direccion');
+					$personal->telefono = Input::get('telefono');
+					$personal->email = Input::get('email');
+					$personal->save();
+					return Redirect::to('personal');
+				} else {
+					Redirect::to('500.html');
+				}
 			}
 		}
 	}
+
 	public function delete($id = null)
 	{
 		if(is_null($id))
@@ -83,6 +99,7 @@ class PersonalController extends BaseController
 			}
 		}
 	}
+
 	public function changePassPersonal($id = null)
 	{
 		if (is_null($id) or ! is_numeric($id))

@@ -39,7 +39,7 @@ class Docente extends Eloquent {
 		$reglas = array(
 			'nombre'=>array('required','alpha','min:3'),
 			'apellidos'=>array('required','alpha','min:3'),
-			'dni'=>array('required','numeric','digits:8','unique:docente'),
+			'dni'=>array('required','numeric','digits:8'),
 			'direccion'=>array('required','min:10'),
 			'telefono'=>array('required','numeric')
 		);
@@ -50,10 +50,8 @@ class Docente extends Eloquent {
 			$respuesta['error'] = true;
 		} else
 		{
-			$docente = static::create($input);
-			$respuesta['mensaje'] = 'Docente Creado';
+			$respuesta['mensaje'] = 'Docente Actualizado';
 			$respuesta['error'] = false;
-			$respuesta['data'] = $docente;
 		}
 		return $respuesta;
 	}
