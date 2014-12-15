@@ -13,7 +13,7 @@ Agregar <small> NUEVO SILAB0 </small>
 {{ Form::open(array('method'=> 'POST','url'=> 'SilaboCarreraLibre/insert.html','class'=>'form-horizontal','role'=>'form')) }}
 	
 	<div class="form-group">
-		{{ Form::label('codSilabus_cl','Codigo del Silabo:',array('class'=>'col-sm-4 control-label')) }}
+		{{ Form::label('codSilabus_cl','Carga academica del Silabo:',array('class'=>'col-sm-4 control-label')) }}
 		<div class="col-sm-8">
 			{{ Form::select('codSilabus_cl',$codSilabo,null,array('class'=>'form-control','required'))}}
 		</div>
