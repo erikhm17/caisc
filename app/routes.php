@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	
+
 	return View::make('login');
 });
 // Errors
@@ -47,7 +47,7 @@ Route::get('alumno/edit/{id}',array('uses'=>'AlumnoController@edit'))->where('id
 Route::post('alumno/update/{id}',array('uses'=>'AlumnoController@update'))->where('id','[0-9]+');
 Route::post('alumno/insert.html',array('uses'=>'AlumnoController@insert'));
 
- 
+
 
 
 Route::group(['before' => 'auth'], function()
@@ -76,6 +76,7 @@ Route::get('personal/profile/{id}',array('uses'=>'PersonalController@profile'))-
 Route::get('personal/edit/{id}',array('uses'=>'PersonalController@edit'))->where('id','[0-9]+');
 Route::post('personal/update/{id}',array('uses'=>'PersonalController@update'))->where('id','[0-9]+');
 Route::get('personal/change-pass-personal/{id}',array('uses'=>'PersonalController@changePassPersonal'))->where('id','[0-9]+');
+Route::get('personal/delete/{id}',array('uses'=>'PersonalController@delete'))->where('id','[0-9]+');
 });
 
 
