@@ -50,7 +50,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCargaAcademica_cl`(codCurso
 docente_idI int,turnoI varchar(10),grupoI int,semestreI varchar(10),fecha_inicioI date,fecha_finI date,estadoI bit,minimoI int,codAulaI varchar(10),horarioI varchar(10),diaI varchar(10))
 BEGIN
     Declare codCargaAcademica_clI varchar(10);
-    select Date_format(now(),'%m%d%H%i%s') into codCargaAcademica_clI;
+    Declare aleartorio int;
+    select 10+(RAND() * 1000) into aleartorio;
+    select Date_format(now(),'%m%d%H%i%s')+aleartorio into codCargaAcademica_clI;
     INSERT INTO `carga_academica_cl`(`codCargaAcademica_cl`, `codCurso_cl`, `docente_id`, `turno`, `grupo`, `semestre`, `fecha_inicio`, `fecha_fin`, `estado`, `minimo`) VALUES (codCargaAcademica_clI,codCurso_clI,docente_idI,turnoI,grupoI,semestreI,fecha_inicioI,fecha_finI,estadoI,minimoI);
     INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioI,diaI,null,codCargaAcademica_clI);
 END
@@ -64,8 +66,63 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCargaAcademica_ct`(codCurso_ctI varchar(10),docente_idI int,semestreI varchar(10),turnoI varchar(10),grupoI int,codAulaI varchar(10),horarioI varchar(10),diaI varchar(10))
 BEGIN
     Declare codCargaAcademica_ctI varchar(10);
-    select Date_format(now(),'%m%d%H%i%s') into codCargaAcademica_ctI;
+    Declare aleartorio int;
+    select 10+(RAND() * 1000) into aleartorio;
+    select Date_format(now(),'%m%d%H%i%s')+aleartorio into codCargaAcademica_ctI;
     INSERT INTO `carga_academica_ct`(`codCargaAcademica_ct`, `codCurso_ct`, `docente_id`, `semestre`, `turno`, `grupo`) VALUES (codCargaAcademica_ctI,codCurso_ctI,docente_idI,semestreI,turnoI,grupoI);
     INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioI,diaI,codCargaAcademica_ctI,null);
+END
+
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `HorarioCargaAcademica`(semestreCA varchar(10),diaCA varchar(10))
+BEGIN
+    DROP TABLE IF EXISTS AuxCtCA;
+    DROP TABLE IF EXISTS AuxCt2CA;
+    DROP TABLE IF EXISTS AuxClCA;
+    DROP TABLE IF EXISTS AuxCl2CA;
+    DROP TABLE IF EXISTS AuxCargaAcademicaCA;
+    
+    
+    create temporary table AuxCtCA
+    select h1.codAula,h1.horario,h1.dia,ca1.docente_id
+    from horario_aula h1 inner join carga_academica_ct ca1 
+    on h1.codCargaAcademica_ct=ca1.codCargaAcademica_ct    
+    where ca1.semestre=semestreCA;
+    
+    create temporary table AuxCt2CA
+    select A1.codAula,A1.horario,A1.dia,CONCAT(d1.nombre,' ',d1.apellidos) as nombres
+    from AuxCtCA A1 inner join docente d1
+    on A1.docente_id=d1.id;
+    
+    create temporary table AuxClCA
+    select h1.codAula,h1.horario,h1.dia,ca2.docente_id
+    from horario_aula h1 inner join carga_academica_cl ca2 
+    on h1.codCargaAcademica_cl=ca2.codCargaAcademica_cl    
+    where ca2.semestre=semestreCA;
+    
+    create temporary table AuxCl2CA
+    select A1.codAula,A1.horario,A1.dia,CONCAT(d1.nombre,' ',d1.apellidos) as nombres
+    from AuxClCA A1 inner join docente d1
+    on A1.docente_id=d1.id;
+    
+    create temporary table AuxCargaAcademicaCA
+    select * from AuxCt2CA
+    UNION ALL
+    select * from AuxCl2CA;
+    
+    select horario,
+     case when car1.codAula = 'A101'  then car1.nombres else 0 end as "Aula101",
+     case when car1.codAula = 'A102'  then car1.nombres else 0 end as "Aula102",
+     case when car1.codAula = 'A103'  then car1.nombres else 0 end as "Aula103",
+     case when car1.codAula = 'A104'  then car1.nombres else 0 end as "Aula104",
+     case when car1.codAula = 'A105'  then car1.nombres else 0 end as "Aula105",
+     case when car1.codAula = 'A106'  then car1.nombres else 0 end as "Aula106"
+    from AuxCargaAcademicaCA car1    
+    where dia=diaCA
+    order by horario DESC;
+    
 END
 

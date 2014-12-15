@@ -13,6 +13,9 @@ Agregar Personal <small> NUEVO PERSONAL </small>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')}}
+{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css')}}
+{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')}}
 </head>
 <style type="text/css">
     table tr td,th {
@@ -39,7 +42,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
         -->
             <p class="lbls">{{Form::label('lblSemestre','Semestre')}}</p>
             <!--<p class="inputs">{{Form::text('txtSemestre')}}</p> --> 
-            <div class="inputs">{{ Form::select('cmbSemestre', $varElementosComboSemestre) }}</div>
+            <div class="inputs">{{ Form::select('cmbSemestre', $varElementosComboSemestre)}}</div>
 
             <p class="lbls">{{Form::label('lblCurso','Curso:')}}</p>
             <div class="inputs">{{ Form::select('cmbCursos', $varElementosComboCodCurso_ct) }}</div>
@@ -48,7 +51,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
             <div class="inputs">{{ Form::select('cmbDocentes', $varElementosComboCodDocente) }}</div>
             
             <p class="lbls">{{Form::label('lblAula','Aula:')}}</p>
-            <div class="inputs">{{ Form::select('cmbAulas', $varElementosComboCodAula) }}</div>
+            <div class="inputs">{{ Form::select('cmbAulas', $varElementosComboCodAula)}}</div>
 
             <p class="lbls">{{Form::label('lblTurno','Turno:')}}</p>
             <div class="inputs">{{ Form::select('cmbTurnos', $varElementosComboTurno) }}</div>
@@ -70,140 +73,232 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                     </thead>
                     <tr>
                         <td>
-                            7-8
+                            7:00-8:30
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '7-8', false);}}
+                            {{Form::radio('rbHorariosLunes', '7:00-8:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '7-8', false);}}
+                            {{Form::radio('rbHorariosMartes', '7:00-8:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '7-8', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '7:00-8:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '7-8', false);}}
+                            {{Form::radio('rbHorariosJueves', '7:00-8:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '7-8', false);}}
+                            {{Form::radio('rbHorariosViernes', '7:00-8:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '7-8', false);}}
+                            {{Form::radio('rbHorariosSabado', '7:00-8:30', false);}}
                         </td>
                     </tr>
                     <tr class="success">
                         <td>
-                            8-9
+                            8:30-10:00
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '8-9', false);}}
+                            {{Form::radio('rbHorariosLunes', '8:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '8-9', false);}}
+                            {{Form::radio('rbHorariosMartes', '8:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '8-9', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '8:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '8-9', false);}}
+                            {{Form::radio('rbHorariosJueves', '8:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '8-9', false);}}
+                            {{Form::radio('rbHorariosViernes', '8:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '8-9', false);}}
+                            {{Form::radio('rbHorariosSabado', '8:30-10:00', false);}}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            9-10
+                       10:00-11:30
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', '9-10', false);}}
+                            {{Form::radio('rbHorariosLunes', '10:00-11:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', '9-10', false);}}
+                            {{Form::radio('rbHorariosMartes', '10:00-11:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', '9-10', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '10:00-11:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', '9-10', false);}}
+                            {{Form::radio('rbHorariosJueves', '10:00-11:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', '9-10', false);}}
+                            {{Form::radio('rbHorariosViernes', '10:00-11:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', '9-10', false);}}
+                            {{Form::radio('rbHorariosSabado', '10:00-11:30', false);}}
                         </td>
                     </tr>
                     <tr class="success">
                         <td>
-                            10-11
+                            11:30-13:00
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', 'D1', false);}}
+                            {{Form::radio('rbHorariosLunes', '11:30-13:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', 'D2', false);}}
+                            {{Form::radio('rbHorariosMartes', '11:30-13:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', 'D3', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '11:30-13:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', 'D4', false);}}
+                            {{Form::radio('rbHorariosJueves', '11:30-13:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', 'D5', false);}}
+                            {{Form::radio('rbHorariosViernes', '11:30-13:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', 'D6', false);}}
+                            {{Form::radio('rbHorariosSabado', '11:30-13:00', false);}}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            11-12
+                            13:00-14:30
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', 'M1', false);}}
+                            {{Form::radio('rbHorariosLunes', '13:00-14:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', 'M2', false);}}
+                            {{Form::radio('rbHorariosMartes', '13:00-14:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', 'M3', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '13:00-14:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', 'M4', false);}}
+                            {{Form::radio('rbHorariosJueves', '13:00-14:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', 'M5', false);}}
+                            {{Form::radio('rbHorariosViernes', '13:00-14:30', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', 'M6', false);}}
+                            {{Form::radio('rbHorariosSabado', '13:00-14:30', false);}}
                         </td>
                     </tr>
                     <tr class="success">
                         <td>
-                            12-1
+                            14:30-16:00
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosLunes', 'A7', false);}}
+                            {{Form::radio('rbHorariosLunes', '14:30-16:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMartes', 'A8', false);}}
+                            {{Form::radio('rbHorariosMartes', '14:30-16:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosMiercoles', 'A9', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '14:30-16:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosJueves', 'A10', false);}}
+                            {{Form::radio('rbHorariosJueves', '14:30-16:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosViernes', 'A11', false);}}
+                            {{Form::radio('rbHorariosViernes', '14:30-16:00', false);}}
                         </td>
                         <td>
-                            {{Form::checkbox('rbHorariosSabado', 'A12', false);}}
+                            {{Form::radio('rbHorariosSabado', '14:30-16:00', false);}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            16:00-17:30
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosLunes', '16:00-17:30', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosMartes', '16:00-17:30', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosMiercoles', '16:00-17:30', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosJueves', '16:00-17:30', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosViernes', '16:00-17:30', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosSabado', '16:00-17:30', false);}}
+                        </td>
+                    </tr>
+                    <tr class="success">
+                        <td>
+                            17:30-19:00
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosLunes', '17:30-19:00', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosMartes', '17:30-19:00', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosMiercoles', '17:30-19:00', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosJueves', '17:30-19:00', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosViernes', '17:30-19:00', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosSabado', '17:30-19:00', false);}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            19:00-20:30
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosLunes', '19:00-20:30', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosMartes', '19:00-20:30', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosMiercoles', '19:00-20:30', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosJueves', '19:00-20:30', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosViernes', '19:00-20:30', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosSabado', '19:00-20:30', false);}}
+                        </td>
+                    </tr>
+                    <tr class="success">
+                        <td>
+                            20:30-22:00
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosLunes', '20:30-22:00', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosMartes', '20:30-22:00', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosMiercoles', '20:30-22:00', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosJueves', '20:30-22:00', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosViernes', '20:30-22:00', false);}}
+                        </td>
+                        <td>
+                            {{Form::radio('rbHorariosSabado', '20:30-22:00', false);}}
                         </td>
                     </tr>
                 </table>

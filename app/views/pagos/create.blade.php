@@ -23,21 +23,59 @@ Caja y Facturación
 			 	<div class="form-inline">
 	  				<p>
 				  	<div class="col-xs-3">
-				    	<input type="text" class="form-control" placeholder="" value="N° 0001" >
+				    	<input type="text" class="form-control" placeholder="" value="N° 0001" disabled>
 				  	</div>
 
 					<div class="col-xs-3">
-						<input  name="nro_serie" type="text" class="form-control" placeholder="" value="001">
+						<input type="text" class="form-control" placeholder="" value="Serie: 0001" disabled>
 					</div>
 
 				  	<div class="col-xs-3">
+<<<<<<< HEAD
 				  		<input name="fecha" type="text" class="form-control" placeholder="" value="2014-12-13">		    	
+=======
+				  		<input type="text" class="form-control" placeholder="" value="Fecha: 1-12-2014" disabled>		    	
+				    	
+>>>>>>> bd6a383dc3e7ed1c518dd83db70bcd2ea99519b8
 				  	</div>
+					
 
 				  	</p>
 				</div>
 			</div>
+
+
+  			
 			<br>
+			<!--<div class="well carousel-search hidden-sm">
+			<div class="form-inline">
+       				
+				    <div class="input-group">
+				      <div class="input-group-addon">Numero:</div>
+				      <input type="text" class="form-control" placeholder="" value="0001" disabled>
+				    </div>
+				    <div class="input-group">				    	
+				      <div class="input-group-addon">Fecha:</div>
+				      <input type="text" class="form-control" placeholder="" value="1-12-2014" disabled>				      	  
+				    </div>
+				
+			</div>				
+			</div>-->
+
+			
+  			
+			<!--<div class="form-horizontal" >
+				<div class="form-group">
+			    	<label  class="col-sm-2 ">Código:</label>
+				    <div class="col-sm-7">
+				    	<input type="text" class="form-control" id="" >
+				    </div>
+			  	</div>
+			</div>-->
+
+
+			<br>
+
 			<p>
 				<label>Código:</label>
 				<div class="form-inline">			  	
@@ -47,12 +85,30 @@ Caja y Facturación
 				  	</div>
 				  	<a  href="./showAlumno/100512"><span class="glyphicon glyphicon-search" id="buscar" aria-hidden="true"  >Buscar</span></a>
 
+
 					<button type="button" class="btn btn-default btn-sm">
 					  	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar
 					</button>
 				</div>
 
 			</p>
+
+
+
+
+			<!--<div class="well carousel-search hidden-sm">
+			 	<label>Modalidad de Pago:</label>
+		        <div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Modalidades <span class="caret"></span></a>
+		            <ul class="dropdown-menu">
+		                <li><a href="#">Matricula</a></li>
+		                <li><a href="#">Certificado</a></li>                
+		            </ul>
+		        </div>
+			</div>-->
+
+
+			</form>
+
 		 <p>
         <label>Nombres:</label>
 
@@ -85,7 +141,12 @@ Caja y Facturación
 	
 
 		</script>
+<<<<<<< HEAD
 		<input name="agrega_detil" type="button" onclick="agregar_detalle()" value="agregar detalle" />
+=======
+		<input name="agrega_detil" type="button" onclick="agregar_detalle()" value="agregar detalle" class="btn btn-success">
+		<input type="submit" value="guardar" class="btn btn-success">
+>>>>>>> bd6a383dc3e7ed1c518dd83db70bcd2ea99519b8
 				    </div>
 		<table id="detalle_pago" class="table table-striped">
 				<thead>
@@ -104,6 +165,7 @@ Caja y Facturación
         <input type="text" name="total" class="form-control" id="total_pago">
       	</p>
 		</form>
+
 		</div>
 		@if(Session::has('message'))
 			<div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>

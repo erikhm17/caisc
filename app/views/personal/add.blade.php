@@ -38,7 +38,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
 	<div class="form-group">
 		{{ Form::label('dni','DNI:',array('class'=>'col-sm-2 control-label')) }}
 		<div class="col-sm-6 col-md-4">
-			{{ Form::number('dni','',array('class'=>'form-control','placeholder'=>'12345678'))}}
+			{{ Form::text('dni','',array('class'=>'form-control','placeholder'=>'12345678'))}}
 		</div>
 		<div class="errores">
 			@if ( $errors->has('dni'))

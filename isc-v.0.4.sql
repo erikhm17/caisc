@@ -8,16 +8,17 @@ CREATE TABLE IF NOT EXISTS users(
     `tipoUsuario` VARCHAR(120) NOT NULL,
     `nroId` INT NOT NULL,
     `estado` INT(2) DEFAULT '1',
+    `remember_token` VARCHAR(100) NULL,
     `updated_at` DATETIME NOT NULL,
     `created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS carrera(
-	`codCarrera` VARCHAR(10) NOT NULL,
+	`id` VARCHAR(10) NOT NULL,
 	`nombre` VARCHAR(50) NOT NULL,
 	`descripcion` text NOT NULL,
-	PRIMARY KEY (`codCarrera`)
+	PRIMARY KEY (`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS alumno(
@@ -33,19 +34,19 @@ CREATE TABLE IF NOT EXISTS alumno(
 	`estado` INT(2) null,
 	`codCarrera` VARCHAR(10) DEFAULT null,
 	PRIMARY KEY (`codAlumno`),
-	FOREIGN KEY (`codCarrera`) REFERENCES carrera(`codCarrera`)
+	FOREIGN KEY (`codCarrera`) REFERENCES carrera(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS curso_ct(
-	`codCurso_ct` VARCHAR(10) NOT NULL,
+	`id` VARCHAR(10) NOT NULL,
 	`nombre` VARCHAR(30) NOT NULL,
 	`modulo` INT(2) DEFAULT null,
-	`estado` BIT DEFAULT 1,
+	`estado` tinyint(1) DEFAULT '1',
 	`codCarrera` VARCHAR(10) NOT NULL,
 	`updated_at` DATETIME NOT NULL,
 	`created_at` DATETIME NOT NULL,
-	PRIMARY KEY (`codCurso_ct`),
-	FOREIGN KEY (`codCarrera`) REFERENCES carrera(`codCarrera`)
+	PRIMARY KEY (`id`),
+	FOREIGN KEY (`codCarrera`) REFERENCES carrera(`id`)
 
 ) CHARSET=utf8;
 
@@ -101,33 +102,35 @@ CREATE TABLE IF NOT EXISTS carga_academica_ct(
 	`turno` VARCHAR(10) NOT NULL,
 	`grupo` VARCHAR(10) NOT NULL,
 	PRIMARY KEY (`codCargaAcademica_ct`),
-	FOREIGN KEY (`codCurso_ct`) REFERENCES curso_ct(`codCurso_ct`),
+	FOREIGN KEY (`codCurso_ct`) REFERENCES curso_ct(`id`),
 	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8 ;
 
 CREATE TABLE IF NOT EXISTS silabus_ct(
-	`codSilabus_ct` VARCHAR(10) NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`codCargaAcademica_ct` INT NOT NULL,
-	PRIMARY KEY(`codSilabus_ct`),
+	PRIMARY KEY(`id`),
 	FOREIGN KEY (`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS detalle_silabus_ct(
-	`codDetalleSilabus_ct` VARCHAR(10) NOT NULL,
-	`codSilabus_ct` VARCHAR(10) NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
+	`codSilabus_ct`int NOT NULL,
 	`titulo` VARCHAR(120) NOT NULL,
 	`descripcion` text NOT NULL,
 	`orden` INT NOT NULL,
-	`estado` BIT NOT NULL,
-	PRIMARY KEY(`codDetalleSilabus_ct`),
-	FOREIGN KEY(`codSilabus_ct`) REFERENCES silabus_ct(`codSilabus_ct`)
+	`estado` tinyint(1) DEFAULT '1',
+	`updated_at` DATETIME NOT NULL,
+    `created_at` DATETIME NOT NULL,
+	PRIMARY KEY(`id`),
+	FOREIGN KEY(`codSilabus_ct`) REFERENCES silabus_ct(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS matricula_ct(
 	`id` INT AUTO_INCREMENT NOT NULL,
 	`codAlumno` VARCHAR(10) NOT NULL,
 	`codCargaAcademica_ct` INT NOT NULL,
-	`modulo` VARCHAR(10) NOT NULL,
+	`modulo` INT NOT NULL,
 	`updated_at` DATETIME NOT NULL,
     `created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`id`),
@@ -136,22 +139,24 @@ CREATE TABLE IF NOT EXISTS matricula_ct(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS nota_ct(
-	`codNota_ct` INT AUTO_INCREMENT,
+	`id` INT AUTO_INCREMENT,
 	`codMatricula_ct` INT NOT NULL,
-	`nota` float(7,4) NOT NULL,
-	PRIMARY KEY (`codNota_ct`),
+	`notaa` float(7,4) NOT NULL,
+	`notab` float(7,4) NOT NULL,
+	`notac` float(7,4) NOT NULL,
+	PRIMARY KEY (`id`),
 	FOREIGN KEY (`codMatricula_ct`) REFERENCES matricula_ct(`id`)
 ) CHARSET=utf8;
 
  -- CURSOS LIBRES
 CREATE TABLE IF NOT EXISTS curso_cl(
-	`codCurso_cl` VARCHAR(10) NOT NULL,
+	`id` VARCHAR(10) NOT NULL,
 	`nombre` VARCHAR(30) NOT NULL,
-	`horas_academicas` VARCHAR(30) DEFAULT null,
-	`estado` BIT DEFAULT 1,
+	`horas_academicas` VARCHAR(30) DEFAULT null,	
+	`estado` tinyint(1) DEFAULT '1',
 	`updated_at` DATETIME NOT NULL,
     `created_at` DATETIME NOT NULL,
-	PRIMARY KEY (`codCurso_cl`)
+	PRIMARY KEY (`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS carga_academica_cl(
@@ -166,26 +171,28 @@ CREATE TABLE IF NOT EXISTS carga_academica_cl(
 	`estado` BIT DEFAULT 1,
 	`minimo` INT NOT NULL,
 	PRIMARY KEY (`codCargaAcademica_cl`),
-	FOREIGN KEY (`codCurso_cl`) REFERENCES curso_cl(`codCurso_cl`),
+	FOREIGN KEY (`codCurso_cl`) REFERENCES curso_cl(`id`),
 	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS silabus_cl(
-	`codSilabus_cl` VARCHAR(10) NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
 	`codCargaAcademica_cl` INT NOT NULL,
-	PRIMARY KEY(`codSilabus_cl`),
+	PRIMARY KEY(`id`),
 	FOREIGN KEY (`codCargaAcademica_cl`) REFERENCES carga_academica_cl(`codCargaAcademica_cl`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS detalle_silabus_cl(
-	`codDetalleSilabus_cl` VARCHAR(10) NOT NULL,
-	`codSilabus_cl` VARCHAR(10) NOT NULL,
+	`id` int AUTO_INCREMENT NOT NULL,
+	`codSilabus_cl` int NOT NULL,
 	`titulo` VARCHAR(120) NOT NULL,
 	`descripcion` text NOT NULL,
 	`orden` INT NOT NULL,
-	`estado` BIT NOT NULL,
-	PRIMARY KEY(`codDetalleSilabus_cl`),
-	FOREIGN KEY(`codSilabus_cl`) REFERENCES silabus_cl(`codSilabus_cl`)
+	`estado` tinyint(1) DEFAULT '1',
+	`updated_at` DATETIME NOT NULL,
+    	`created_at` DATETIME NOT NULL,
+	PRIMARY KEY(`id`),
+	FOREIGN KEY(`codSilabus_cl`) REFERENCES silabus_cl(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS matricula_cl(
@@ -200,10 +207,10 @@ CREATE TABLE IF NOT EXISTS matricula_cl(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS nota_cl(
-	`codNota_cl` INT AUTO_INCREMENT,
+	`id` INT AUTO_INCREMENT,
 	`codMatricula_cl` INT NOT NULL,
 	`nota` float(7,4) NOT NULL,
-	PRIMARY KEY (`codNota_cl`),
+	PRIMARY KEY (`id`),
 	FOREIGN KEY (`codMatricula_cl`) REFERENCES matricula_cl(`id`)
 ) CHARSET=utf8;
 
@@ -217,8 +224,8 @@ CREATE TABLE IF NOT EXISTS horario_aula(
 	`codAula` VARCHAR(10) NOT NULL,
 	`horario` VARCHAR(10) NOT NULL,
 	`dia` VARCHAR(10) NOT NULL,
-	`codCargaAcademica_ct` INT NOT NULL,
-	`codCargaAcademica_cl` INT NOT NULL,
+	`codCargaAcademica_ct` INT NULL,
+	`codCargaAcademica_cl` INT NULL,
 	PRIMARY KEY(`codAula`,`horario`,`dia`),
 	FOREIGN KEY (`codAula`)  REFERENCES aula(`codAula`),
 	FOREIGN KEY (`codCargaAcademica_ct`)  REFERENCES carga_academica_ct(`codCargaAcademica_ct`),

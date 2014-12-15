@@ -6,6 +6,37 @@ class MatriculaCTController extends BaseController
 		$matriculas = MatriculaCT::all();
 		return View::make('matriculaCT.index',array('matriculas'=>$matriculas));
 	}
+	public function lista(){
+		$matriculas = MatriculaCT::all();
+		return View::make('matriculaCT.lista',array('matriculas'=>$matriculas));
+	}
+	public function listacursos(){
+		$mod='2';
+		$cursos = CargaAcademicaCT::where('semestre','=',$mod)->get();
+		return View::make('matriculaCT.listaCursos',array('cursos'=>$cursos));
+	}
+	public function listacursosnuevos(){
+		$cod = Input::get('codAlumno');
+		$mayor = DB::table('matricula_ct')
+							->where('codAlumno','=',$cod)
+							->max('modulo');
+		$mod=(int)($mayor)+1;
+		$cursos = CargaAcademicaCT::where('semestre','=',$mod)->get();
+		return View::make('matriculaCT.listaCursos',array('cursos'=>$cursos));
+	}
+
+	public function listaMatri($cod){
+		$matriculas = MatriculaCT::where('codAlumno','=',$cod)->get();
+		return View::make('matriculaCT.lista',array('matriculas'=>$matriculas));
+	}
+	public function listaMatricula(){
+		$cod = Input::get('codAlumno');
+		$matriculas = MatriculaCT::where('codAlumno','=',$cod)->get();
+		$mayor = DB::table('matricula_ct')
+							->where('codAlumno','=',$cod)
+							->max('modulo');
+		return View::make('matriculaCT.lista',array('matriculas'=>$matriculas));
+	}
 	public function edit($cod)
 	{
 		if(is_null($cod))

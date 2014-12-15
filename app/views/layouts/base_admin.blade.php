@@ -228,7 +228,7 @@
                                         {{ HTML::link('docente/profile/12345','Profile',array('class'=>'btn btn-default btn-flat')) }}
                                     </div>
                                     <div class="pull-right">
-                                        {{ HTML::link('docente/logout.html','Sign out', array('class'=>'btn btn-default btn-flat')) }}
+                                        {{ HTML::link('salir','Sign out', array('class'=>'btn btn-default btn-flat')) }}
                                     </div>
                                 </li>
                             </ul>
@@ -296,6 +296,71 @@
                             </ul>
                         </li>
 
+
+
+                        <li class="treeview">
+                            <a href="CursosTecnica/create.html">
+                                <i class="fa fa-folder"></i> <span>Cursos de Carrera</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+
+                                <li class="treeview">
+                            <a href="CursosTecnica/create.html">
+                                <i class="fa fa-folder"></i> <span>Silabo</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('SilaboCarreraTecnica/index.html','Ver Silabos') }}</li>
+                                <li>{{ HTML::link('SilaboCarreraTecnica/create.html','Agregar Silabo') }}</li>
+                                <li>{{ HTML::link('SilaboCarreraTecnica/delete.html', 'Eliminar Silabo')}}</li>
+                            </ul>
+                        </li>
+
+
+                                <li>{{ HTML::link('CursosTecnica/index.html','Ver Cursos de Carrera') }}</li>
+                                <li>{{ HTML::link('CursosTecnica/create.html','Agregar Curso') }}</li>
+                                <li>{{ HTML::link('CursosTecnica/delete.html', 'Eliminar Curso')}}</li>
+                            </ul>
+                        </li>
+
+                         <li class="treeview">
+                            <a href="CursosLibres/create.html">
+                                <i class="fa fa-folder"></i> <span>Cursos Libres</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+
+                                 <li class="treeview">
+                            <a href="SilaboCarreraLibre/create.html">
+                                <i class="fa fa-folder"></i> <span>Silabo</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('SilaboCarreraLibre/index.html','Ver Silabo') }}</li>
+                                <li>{{ HTML::link('SilaboCarreraLibre/create.html','Agregar Silabo') }}</li>
+                                <li>{{ HTML::link('SilaboCarreraLibre/delete.html', 'Eliminar Silabo')}}</li>
+                            </ul>
+                        </li>
+
+
+                                 <li>{{HTML::link('CursosLibres/index.html','Ver Cursos Libres') }}</li>
+                                <li>{{ HTML::link('CursosLibres/create.html','Agregar Curso') }}</li>
+                                <li>{{ HTML::link('CursosLibres/delete.html', 'Eliminar Curso')}}</li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="alumno">
+                                <i class="fa fa-folder"></i> <span>Alumno</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('alumno/add.html','Agregar') }}</li>
+                                <li>{{ HTML::link('alumnos','Listar Alumnos') }}</li>
+                            </ul>
+                        </li>
+                        
                         <!-- modulo Asistencias -->
                         <li class="treeview">
                             <a href="RegistroAsistencias">
@@ -310,15 +375,26 @@
 
                         <li class="treeview">
                             <a href="docente">
-                                <i class="fa fa-folder"></i> <span>Modalidad de Pago</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <i class="glyphicon glyphicon-briefcase"></i> <span>Modalidad de Pago</span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><i class="fa fa-angle-double-right"></i> {{ HTML::link('/modalidad/create','Agregar') }}</li>
-                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('#','Buscar') }}</li>
-                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('/modalidad','Listar') }}</li>
+                                <li><i class="glyphicon glyphicon-plus"></i> {{ HTML::link('/modalidad/create','Agregar') }}</li>
+                                <li><i class="glyphicon glyphicon-search"></i>{{ HTML::link('#','Buscar') }}</li>
+                                <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('/modalidad','Listar') }}</li>
                             </ul>
                         </li>
+                        <li class="treeview">
+                            <a href="pagos">
+                                <i class="glyphicon glyphicon-euro"></i> <span>Caja y Facturación</span>                                
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><i class="glyphicon glyphicon-plus"></i> {{ HTML::link('/pagos/create','Realizar Pago') }}</li>
+                                <li><i class="glyphicon glyphicon-search"></i>{{ HTML::link('#','Buscar') }}</li>
+                                <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('/pagos','Listar') }}</li>
+                            </ul>
+                        </li>
+                        
+
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-dashboard"></i> <span>Mantenimientos TL</span>
@@ -332,17 +408,7 @@
                                 <li>{{HTML::linkAction('TurnoController@index', 'Turno')}}</li>
                             </ul>
                         </li>
-                        <li class="treeview">
-                            <a href="docente">
-                                <i class="fa fa-folder"></i> <span>Caja y Facturación</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><i class="fa fa-angle-double-right"></i> {{ HTML::link('/pagos/create','Realizar Pago') }}</li>
-                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('#','Buscar') }}</li>
-                                <li><i class="fa fa-angle-double-right"></i>{{ HTML::link('/pagos','Listar') }}</li>
-                            </ul>
-                        </li>
+                        
 
                         <li class="treeview">
                             <a href="#">
@@ -351,7 +417,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li>{{ HTML::link('/crearCargaCt','Carga Academica CT') }}</li>
-                                <li>{{ HTML::link('/crearCargaCL','Carga Academica CL') }}</li>
+                                <li>{{ HTML::link('/crearCargaCl','Carga Academica CL') }}</li>
                             </ul>
                         </li>
 
@@ -361,8 +427,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li>{{ HTML::link('matriculas/add.html','Agregar') }}</li>
-                                <li>{{ HTML::link('matriculas','Listar') }}</li>
+                                <li>{{ HTML::link('matriculas','Registrar Matricula') }}</li>
+                                <li>{{ HTML::link('matriculas/lista','Listar') }}</li>
                             </ul>
                         </li>
 
@@ -374,6 +440,19 @@
                             <ul class="treeview-menu">
                                 <li>{{ HTML::link('matriculascl/add.html','Agregar') }}</li>
                                 <li>{{ HTML::link('matriculascl','Listar') }}</li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="ingresonotas">
+                                <i class="fa fa-folder"></i> <span>Ingreso De Notas</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('ingresonotas/inicioCT','Ingreso De Notas Carrera Tecnica') }}</li>
+                                <li>{{ HTML::link('ingresonotas/registroCT','Ver Notas Carrera Tecnica') }}</li>
+                                <li>{{ HTML::link('ingresonotas/inicioCL','Ingreso De Notas Curso Libre') }}</li>
+                                <li>{{ HTML::link('ingresonotas/registroCL','Ver Notas Curso Libre') }}</li>
                             </ul>
                         </li>
 
@@ -400,7 +479,7 @@
             <aside class="right-side">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>@section('title') PANEL CONTROL<small>Instituto Sistima Cusco </small>@show</h1>
+                    <h1>@section('title') PANEL CONTROL<small>Instituto de Sistemas Cusco </small>@show</h1>
                     <ol class="breadcrumb">
                         @section('breadcrumb')
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

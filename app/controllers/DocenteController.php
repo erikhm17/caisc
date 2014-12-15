@@ -49,21 +49,29 @@ class DocenteController extends BaseController
 	}
 	public function update($id=0)
 	{
-		if($id<1)
+		$respuesta = Docente::editar(Input::all());
+		if($respuesta['error']==true)
 		{
-			Redirect::to('404.html');
-		} else {
-			$docente = Docente::where('id','=',$id)->firstOrFail();
-			if(is_object($docente))
+			return Redirect::to('docente/edit/'.$id)->withErrors($respuesta['mensaje'] )->withInput();
+		}
+		else
+		{
+			if($id<1)
 			{
-				$docente->nombre = Input::get('nombre');
-				$docente->apellidos = Input::get('apellidos');
-				$docente->email = Input::get('email');
-				$docente->telefono = Input::get('telefono');
-				$docente->save();
-				return Redirect::to('docente/profile/'.$id);
+				Redirect::to('404.html');
 			} else {
-				Redirect::to('500.html');
+				$docente = Docente::where('id','=',$id)->firstOrFail();
+				if(is_object($docente))
+				{
+					$docente->nombre = Input::get('nombre');
+					$docente->apellidos = Input::get('apellidos');
+					$docente->email = Input::get('email');
+					$docente->telefono = Input::get('telefono');
+					$docente->save();
+					return Redirect::to('docente/profile/'.$id);
+				} else {
+					Redirect::to('500.html');
+				}
 			}
 		}
 	}
