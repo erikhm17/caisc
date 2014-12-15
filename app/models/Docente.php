@@ -9,8 +9,8 @@ class Docente extends Eloquent {
 	{
 		$respuesta = array();
 		$reglas = array(
-			'nombre'=>array('required','alpha','min:3'),
-			'apellidos'=>array('required','alpha','min:3'),
+			'nombre'=>array('required','min:3'),
+			'apellidos'=>array('required','min:3'),
 			'dni'=>array('required','numeric','digits:8','unique:docente'),
 			'direccion'=>array('required','min:10'),
 			'telefono'=>array('required','numeric'),
@@ -38,8 +38,8 @@ class Docente extends Eloquent {
 	{
 		$respuesta = array();
 		$reglas = array(
-			'nombre'=>array('required','alpha','min:3'),
-			'apellidos'=>array('required','alpha','min:3'),
+			'nombre'=>array('required','min:3'),
+			'apellidos'=>array('required','min:3'),
 			'dni'=>array('required','numeric','digits:8','unique:docente'),
 			'direccion'=>array('required','min:10'),
 			'telefono'=>array('required','numeric')

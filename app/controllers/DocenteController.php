@@ -115,7 +115,7 @@ class DocenteController extends BaseController
 
 	public function changePass($id = null)
 	{
-            	if (is_null($id) or ! is_numeric($id))
+		if (is_null($id) or ! is_numeric($id))
 		{
 			return Redirect::to('404.html');
 		} else {
@@ -127,5 +127,29 @@ class DocenteController extends BaseController
 				return Redirect::to('404.html');
 			}
 		}
+	}
+	public function imagen($id=null)
+	{
+		if(is_null($id) or ! is_numeric($id))
+		{
+			return Redirect::to('404.html');
+		} else {
+			$docente = Docente::where('id','=',$id)->firstOrFail();
+			return View::make('docente.imagen',array('docente'=>$docente));
+		}
+	}
+	public function uploadImage($id=null)
+	{
+		$file = Input::file("foto");
+		$fileName = Input::file('foto')->getClientOriginalName();
+		$docente = Docente::where('id','=',$id)->firstOrFail();
+		$docente->foto = md5($id."-".$fileName);
+		$mensaje = "Ocurrio Error";
+		if($docente->save())
+		{
+			Input::file('foto')->move('assets/foto',$docente->foto);
+			$mensaje = "Imagen actualizado";
+		}
+		return Redirect::to('docente/profile/'.$id)->withErrors($mensaje);
 	}
 }
