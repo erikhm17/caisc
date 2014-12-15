@@ -102,12 +102,15 @@ Route::post('modalidad/index','ModalidadController@index');
 Route::controller('modalidad','ModalidadController');
 
 //Route::post('pagos/update/{id}','PagosController@update');
+Route::post('pagos/store','PagosController@store');
+
 Route::get('pagos/destroy/{id}','PagosController@destroy');
 Route::post('pagos/index','PagosController@index');
 Route::get('pagos/create',array('uses'=>'PagosController@add'));
 //Route::post('pagos/showAlumno/{id}','PagosController@getAlumno');
 Route::get('pagos/showAlumno/{id}',array('uses'=>'PagosController@profile'))->where('id','[0-9]+');
-//Route::post('pagos/create',array('uses' => 'PagosController@store'));
+Route::post('pagos/create',array('uses' => 'PagosController@store'));
+Route::post('pagos/showAlumno/store','PagosController@store');
 
 Route::controller('pagos','PagosController');
 /*End Caja y Facturacion*/

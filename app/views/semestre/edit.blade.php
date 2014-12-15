@@ -24,7 +24,7 @@ MATENIMIENTO DE SEMESTRE
             		<section class="content">
                 		<ul>
         					{{ Form::open(array('url' => 'semestre/' . $semestre->id, 'method' =>'put')) }}
-        					{{ Form::text('nombre', $semestre->nombre) }} <br/>
+        					<input title="Se necesita un nuevo semestre" type="number" min = "1" max ="12" name="nombre" required/> <br/>
         					<br/>
         					{{ Form::submit('Modificar')}} 
         					&nbsp;&nbsp;&nbsp;&nbsp;

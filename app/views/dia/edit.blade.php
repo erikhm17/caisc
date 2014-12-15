@@ -24,7 +24,8 @@ MATENIMIENTO DE DIA
             		<section class="content">
                 		<ul>
         					{{ Form::open(array('url' => 'dia/' . $dia->id, 'method' =>'put')) }}
-        					{{ Form::text('nombre', $dia->nombre) }} <br/>
+                             <input title="Se necesita un nuevo dia" type="text" name="nombre" pattern="^[a-zA-Z]*$" required/> <br/>
+        					
         					<br/>
         					{{ Form::submit('Modificar')}} 
         					&nbsp;&nbsp;&nbsp;&nbsp;

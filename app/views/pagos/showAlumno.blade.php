@@ -20,22 +20,24 @@ Caja y Facturación
         <form method="post" action="store">
 
         <div class="well carousel-search hidden-sm">
+        <div class="well carousel-search hidden-sm">
         <div class="form-inline">
             <p>
             <div class="col-xs-3">
-              <input type="text" class="form-control" placeholder="" value="N° 0001" disabled>
+              <input type="text" class="form-control" placeholder="" value="N° 0001" >
             </div>
 
           <div class="col-xs-3">
-            <input type="text" class="form-control" placeholder="" value="Serie: 0001" disabled>
+            <input  name="nro_serie" type="text" class="form-control" placeholder="" value="001">
           </div>
 
             <div class="col-xs-3">
-              <input type="text" class="form-control" placeholder="" value="Fecha: 1-12-2014" disabled>         
+              <input name="fecha" type="text" class="form-control" placeholder="" value="2014-12-13">         
             </div>
 
             </p>
         </div>
+      </div>
       </div>
       <br>
       <p>
@@ -46,15 +48,16 @@ Caja y Facturación
        @if (!empty($alumno))
         <p>
         <label>Codigo:</label>
-        <input type="text" name="id" value="{{ $alumno->id}}" class="form-control" required>
+
+         <input name="id_alumno" type="text" class="form-control" placeholder="100512" value="100512">
         </p>
         <p>
         <label>Nombres:</label>
-        <input type="text" name="id" value="{{ $alumno->nombre}}" class="form-control" required>
+        <input type="text" name="nombres" value="{{ $alumno->nombre}}" class="form-control" required>
         </p>
         <p>
         <label>Apellidos:</label>
-        <input type="text" name="id" value="{{ $alumno->apellidos}}" class="form-control" required>
+        <input type="text" name="apellidos" value="{{ $alumno->apellidos}}" class="form-control" required>
         </p>
         @else
         <p>
@@ -63,7 +66,7 @@ Caja y Facturación
         @endif
         </div>
         <div class="form-group">
-      {{ Form::label('modalidad_id','Modalidad de Pago :',array('class'=>'col-sm-2 control-label')) }}
+      {{ Form::label('modalidad_id','Modalidad de Pago :',array('class'=>'col-sm-5 control-label')) }}
       <div class="col-sm-6 col-md-4">
       {{ Form::select('modalidad_id',$modalidad,null,array('class'=>'form-control'))}}
       </div>
@@ -71,17 +74,33 @@ Caja y Facturación
       function agregar_detalle()
       {
 
-        var Nro="1";
+        var num="1";
         var inp = document.getElementById("modalidad_id").value;
         var concpt= "pago certificado";
-        nro.innerHTML=Nro;
+        //var concpt= document.getElementById("modalidad_id");
+        //var con = <?php echo "hola"; ?>
+        nro.innerHTML=num;
         concepto.innerHTML=concpt;
         inport.innerHTML=inp;
         total_pago.value=inp;
+        mostrar.innerHTML="Mostrar";
+        editar.innerHTML="Editar";
+        eliminar.innerHTML="Eliminar";
 
       }
     </script>
-
+    <script type="text/javascript">
+      function eliminar_detalle()
+      {
+        nro.innerHTML="";
+        concepto.innerHTML="";
+        inport.innerHTML="";
+        total_pago.value="";
+        mostrar.innerHTML="";
+        editar.innerHTML="";
+        eliminar.innerHTML="";
+      }
+    </script>
     <input name="agrega_detil" type="button" onclick="agregar_detalle()" value="agregar detalle" />
             </div>
     <table id="detalle_pago" class="table table-striped">
@@ -99,16 +118,17 @@ Caja y Facturación
               <td id="concepto"></td>
               <td id="inport"></td>
               <td>
-                <a href=""><span class="label label-success">Mostrar</span></a>
-                <a href=""><span class="label label-info">Editar</span></a>
-                <a href=""><span class="label label-danger">Borrar</span></a>
+                <a href=""><span id="mostrar" class="label label-success"></span></a>
+                <a href=""><span id="editar" class="label label-info"></span></a>
+                <a onclick="eliminar_detalle()"><span id="eliminar" class="label label-danger"></span></a>
               </td>
             </tr>
         </tbody>
     </table>
      <p>
         <label>TOTAL:</label>
-        <input type="text" id="total_pago" class="form-control">
+        <input type="text" name="total" class="form-control" id="total_pago">
+        <br>
         <input type="submit" value="guardar" class="btn btn-success">
         </p>  
       </table>

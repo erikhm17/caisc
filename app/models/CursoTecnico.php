@@ -12,8 +12,6 @@ class CursoTecnico extends Eloquent {
 			'id'=>array('required','max:10'),
 			'nombre'=>array('required','max:30'),
 			'modulo'=>array('required','max:2'),
-			'estado'=>array('required','max:1'),
-			'codCarrera'=>array('required','max:10'),
 		);
 		$validador = Validator::make($input,$reglas);
 		if($validador->fails())

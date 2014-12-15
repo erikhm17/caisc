@@ -23,7 +23,7 @@ MATENIMIENTO DE GRUPO
             		<section class="content">
                 		<ul>
                 			{{ Form::open(array('url' => 'grupo')) }}
-                			{{ Form::text('nombre') }} <br/>
+                			 <input title="Se necesita un nuevo Grupo" type="text" name="nombre" pattern="^[a-zA-Z]*$" required/> <br/>
                 			<br/>
                 			{{ Form::submit('Guardar')}}
                             &nbsp;&nbsp;&nbsp;&nbsp;

@@ -23,7 +23,7 @@ MATENIMIENTO DE TURNO
                 <section class="content">
                     <ul>
                   {{ Form::open(array('url' => 'turno/' . $turno->id, 'method' =>'put')) }}
-                  {{ Form::text('nombre', $turno->nombre) }} <br/>
+                   <input title="Se necesita un nuevo turno" type="text" name="nombre" pattern="^[a-zA-Z]*$" required/> <br/>
                   <br/>
                   {{ Form::submit('Modificar')}} 
                   &nbsp;&nbsp;&nbsp;&nbsp;
