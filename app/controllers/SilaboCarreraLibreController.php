@@ -66,9 +66,9 @@ class SilaboCarreraLibreController extends BaseController {
 
 	public function get_eliminar()
 	{
-		$datos = CursoLibre::where('estado','=','1')->orderBy('id','DESC')->paginate(10);
-		$curso_cl = CursoLibre::where('estado','=','1')->orderBy('id','DESC')->get();
-		return View::make('Cursos_Carrera_Libre.delete',compact("datos"),array('id'=>$curso_cl));
+		$datos = SilaboCursoLibre::where('estado','=','1')->orderBy('id','DESC')->paginate(10);
+		$curso_cl = SilaboCursoLibre::where('estado','=','1')->orderBy('id','DESC')->get();
+		return View::make('Cursos_Carrera_Libre.SilaboCL.delete',compact("datos"),array('id'=>$curso_cl));
 
 	}
 	public function post_eliminar($id=null)
