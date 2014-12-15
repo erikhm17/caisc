@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS users(
     `tipoUsuario` VARCHAR(120) NOT NULL,
     `nroId` INT NOT NULL,
     `estado` INT(2) DEFAULT '1',
+    `remember_token` VARCHAR(100) NULL,
     `updated_at` DATETIME NOT NULL,
     `created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
