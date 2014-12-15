@@ -8,6 +8,10 @@ INSERT INTO users (email,password,tipoUsuario,nroId) VALUES("admin@gmail.com","$
 
 INSERT INTO `docente` (`id`, `nombre`, `apellidos`, `dni`, `direccion`, `urlImagen`, `telefono`, `email`, `password`, `estado`, `updated_at`, `created_at`) VALUES
 (1, 'Gerardo', 'Mamani', '45544334', 'Av. Grau', NULL, '234435', 'Correo@gmail.com', '132456', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+INSERT INTO `carrera` (`id`, `nombre`, `descripcion`) VALUES
+('IN', 'INFORMATICA', 'Informatica 1993');
+
 INSERT INTO `curso_ct` (`id`, `nombre`, `modulo`, `estado`, `codCarrera`, `updated_at`, `created_at`) VALUES
 ('C001', 'Programacion', 1, 1, 'IN', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
