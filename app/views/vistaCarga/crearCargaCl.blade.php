@@ -30,6 +30,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
     display: inline;
 
 }
+
 </style>
 <body>
     <header id="inicio">
@@ -343,7 +344,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
         <p>{{Form::submit('Registrar')}}</p>
         {{ Form::close() }}
         
-        <td>{{ HTML::link(URL::to('/mostrarDatosCursoLibre'), 'Mostrar Datos') }}</td>
+        <td>{{ HTML::link(URL::to('/MostrarOpciones'), 'Verificar Horarios') }}</td>
         
     </section>
 </body>

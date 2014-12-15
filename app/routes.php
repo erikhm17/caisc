@@ -208,13 +208,18 @@ Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaContr
 // carga academica
 
 
+// carga academica
 Route::get('/crearCargaCt','CargaControllerCt@CargarIndexCargaCt');
 Route::post('/recogerDatos','CargaControllerCt@AgregarDatos');
-Route::get('/mostrarDatos','CargaControllerCt@MostrarDatos');
+Route::post('/horarios','CargaControllerCt@mostrarHorarios');
+Route::get('/MostrarOpciones','CargaControllerCt@MostrarOpciones');
 Route::get('/eliminarCarga/{id}', 'CargaControllerCt@eliminarElementoCarga');
 
 Route::get('/crearCargaCl','CargaControllerCl@CargarIndexCargaCl');
 Route::post('/recogerDatosCl','CargaControllerCl@AgregarDatos');
+Route::get('/mostrarDatos','CargaControllerCt@MostrarDatos');
+Route::get('/eliminarCarga/{id}', 'CargaControllerCt@eliminarElementoCarga');
+
 
 
 
