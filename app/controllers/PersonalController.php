@@ -50,21 +50,31 @@ class PersonalController extends BaseController
 	}
 	public function update($id = null)
 	{
-		if(is_null($id))
+		$respuesta = Docente::editar(Input::all());
+		if($respuesta['error']==true)
 		{
-			Redirect::to('404.html');
-		} else {
-			$personal = Personal::where('id','=',$id)->firstOrFail();
-			if(is_object($personal))
+			return Redirect::to('personal/edit/'.$id)->withErrors($respuesta['mensaje'] )->withInput();
+		}
+		else
+		{
+			if(is_null($id))
 			{
-				$personal->nombre = Input::get('nombre');
-				$personal->apellidos = Input::get('apellidos');
-				$personal->email = Input::get('email');
-				$personal->telefono = Input::get('telefono');
-				$personal->save();
-				return Redirect::to('personal');
+				Redirect::to('404.html');
 			} else {
-				Redirect::to('500.html');
+				$personal = Personal::where('id','=',$id)->firstOrFail();
+				if(is_object($personal))
+				{
+					$personal->nombre = Input::get('nombre');
+					$personal->apellidos = Input::get('apellidos');
+					$personal->dni = Input::get('dni');
+					$personal->direccion = Input::get('direccion');
+					$personal->telefono = Input::get('telefono');
+					$personal->email = Input::get('email');
+					$personal->save();
+					return Redirect::to('personal/profile/'.$id);
+				} else {
+					Redirect::to('500.html');
+				}
 			}
 		}
 	}
