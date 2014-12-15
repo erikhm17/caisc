@@ -24,6 +24,7 @@ class Docente extends Eloquent {
 			$respuesta['error'] = true;
 		} else
 		{
+			$input['password'] = Hash::make($input['password']);
 			$docente = static::create($input);
 			$respuesta['mensaje'] = 'Docente Creado';
 			$respuesta['error'] = false;

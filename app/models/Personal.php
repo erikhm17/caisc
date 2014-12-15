@@ -3,7 +3,7 @@
 class Personal extends Eloquent {
 
 	protected $table = 'personal';
-	protected $fillable = array('nombre','apellidos','dni','direccion','email','password','telefono');
+	protected $fillable = array('nombre','apellidos','dni','direccion','email','password','telefono','cargo_id');
 
 	public static function agregar($input)
 	{
@@ -15,7 +15,6 @@ class Personal extends Eloquent {
 			'direccion'=>array('required','min:10'),
 			'telefono'=>array('required','numeric'),
 			'email'=>array('required','email','unique:personal'),
-			'cargo_id'=>array('required','exists:cargo,id'),
 			'password'=>array('required','min:6','confirmed')
 		);
 		$validador = Validator::make($input,$reglas);
@@ -25,6 +24,7 @@ class Personal extends Eloquent {
 			$respuesta['error'] = true;
 		} else
 		{
+			$input['password'] = Hash::make($input['password']);
 			$personal = static::create($input);
 			$respuesta['mensaje'] = 'Personal Creado';
 			$respuesta['error'] = false;
