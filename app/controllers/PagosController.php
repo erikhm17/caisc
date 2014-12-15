@@ -28,7 +28,7 @@ class PagosController extends \BaseController {
 	{
 		$pagos = new Pagos;
 
-		$pagos->id = Input::get('id');
+		//$pagos->id = Input::get('');
 		$pagos->nro_serie = Input::get('nro_serie');
 		$pagos->id_alumno = Input::get('id_alumno');
 		$pagos->fecha = Input::get('fecha');
@@ -141,6 +141,8 @@ class PagosController extends \BaseController {
 			if (is_object($alumno))
 			{
 				return View::make('pagos.showAlumno',array('alumno'=>$alumno,'modalidad'=>$modalidad));
+				//return Redirect::to('pagos/create')->withErrors($respuesta['mensaje'] )->withInput();
+				//return Redirect::to('pagos/create/',array('alumno'=>$alumno,'modalidad'=>$modalidad));
 			} else {
 				return Redirect::to('404.html');
 			}

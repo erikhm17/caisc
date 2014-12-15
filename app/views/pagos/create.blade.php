@@ -31,7 +31,7 @@ Caja y Facturación
 					</div>
 
 				  	<div class="col-xs-3">
-				  		<input name="fecha" type="text" class="form-control" placeholder="" value="1-12-2014">		    	
+				  		<input name="fecha" type="text" class="form-control" placeholder="" value="2014-12-13">		    	
 				  	</div>
 
 				  	</p>
@@ -43,9 +43,9 @@ Caja y Facturación
 				<div class="form-inline">			  	
 				  	<div class="form-group">
 
-				    	<input name="id_alumno" type="text" class="form-control" placeholder="100504" value="100504">
+				    	<input name="id_alumno" type="text" class="form-control" placeholder="" value="">
 				  	</div>
-				  	<a  href="./showAlumno/100504"><span class="glyphicon glyphicon-search" id="buscar" aria-hidden="true"  >Buscar</span></a>
+				  	<a  href="./showAlumno/100512"><span class="glyphicon glyphicon-search" id="buscar" aria-hidden="true"  >Buscar</span></a>
 
 					<button type="button" class="btn btn-default btn-sm">
 					  	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar
@@ -56,15 +56,15 @@ Caja y Facturación
 		 <p>
         <label>Nombres:</label>
 
-        <input type="text" id="nombres" placeholder="" class="form-control" required value="nombre de alumno">
+        <input type="text" id="nombres" placeholder="" class="form-control" required value="">
       	</p>
       	<p>
         <label>Apellidos:</label>
-        <input type="text" id="apellidos" placeholder="" class="form-control" required value="apellido de alumno">
+        <input type="text" id="apellidos" placeholder="" class="form-control" required value="">
       	</p>	
 		<div class="well carousel-search hidden-sm">
 		<div class="form-group">
-			{{ Form::label('modalidad_id','Modalidad de Pago :',array('class'=>'col-sm-2 control-label')) }}
+			{{ Form::label('modalidad_id','Modalidad de Pago :',array('class'=>'col-sm-5 control-label')) }}
 			<div class="col-sm-6 col-md-4">
 			{{ Form::select('modalidad_id',$modalidad,null,array('class'=>'form-control'))}}
 			</div>
@@ -86,7 +86,6 @@ Caja y Facturación
 
 		</script>
 		<input name="agrega_detil" type="button" onclick="agregar_detalle()" value="agregar detalle" />
-		<input type="submit" value="guardar" class="btn btn-success">
 				    </div>
 		<table id="detalle_pago" class="table table-striped">
 				<thead>
@@ -98,21 +97,11 @@ Caja y Facturación
 					</tr>
 				</thead>
 				<tbody>
-						<tr id="rows">
-							<td id="nro"></td>
-							<td id="concepto"></td>
-							<td id="inport"></td>
-							<td>
-								<a href=""><span class="label label-success">Mostrar</span></a>
-								<a href=""><span class="label label-info">Editar</span></a>
-								<a href=""><span class="label label-danger">Borrar</span></a>
-							</td>
-						</tr>
 				</tbody>
 		</table>
 		 <p>
         <label>TOTAL:</label>
-        <input type="text" id="total_pago" class="form-control">
+        <input type="text" name="total" class="form-control" id="total_pago">
       	</p>
 		</form>
 		</div>
