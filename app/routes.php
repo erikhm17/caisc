@@ -39,6 +39,8 @@ Route::get('docente/logout.html',array('uses'=>'DocenteController@logout'));
 Route::get('docente/edit/{id}',array('uses'=>'DocenteController@edit'))->where('id','[0-9]+');
 Route::post('docente/update/{id}',array('uses'=>'DocenteController@update'))->where('id','[0-9]+');
 Route::post('docente/insert.html',array('uses'=>'DocenteController@insert'));
+Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
+Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changepass'))->where('id','[0-9]+');
 
 // Alumno
 Route::get('alumnos',array('uses'=>'AlumnoController@index'));
@@ -57,8 +59,7 @@ Route::group(['before' => 'auth'], function()
 
 
 
-Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
-Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changepass'))->where('id','[0-9]+');
+
 
 // Personal
 
