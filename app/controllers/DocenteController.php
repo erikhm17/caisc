@@ -140,15 +140,18 @@ class DocenteController extends BaseController
 	}
 	public function uploadImage($id=null)
 	{
-		$file = Input::file("foto");
-		$fileName = Input::file('foto')->getClientOriginalName();
-		$docente = Docente::where('id','=',$id)->firstOrFail();
-		$docente->foto = md5($id."-".$fileName);
 		$mensaje = "Ocurrio Error";
-		if($docente->save())
+		if(Input::file("foto")->isValid())
 		{
-			Input::file('foto')->move('assets/foto',$docente->foto);
-			$mensaje = "Imagen actualizado";
+			$file = Input::file("foto");
+			$fileName = Input::file('foto')->getClientOriginalName();
+			$docente = Docente::where('id','=',$id)->firstOrFail();
+			$docente->foto = md5($id."-".$fileName).'.'.Input::file('foto')->getClientOriginalExtension();
+			if($docente->save())
+			{
+				Input::file('foto')->move('assets/foto',$docente->foto);
+				$mensaje = "Imagen actualizado";
+			}
 		}
 		return Redirect::to('docente/profile/'.$id)->withErrors($mensaje);
 	}

@@ -69,16 +69,19 @@ Route::post('docente/imagen/{id}',array('uses'=>'DocenteController@uploadImage')
 Route::group(['before' => 'auth'], function()
 {
 	Route::get('personal',array('uses'=>'PersonalController@index'));
-Route::get('personal/cargos',array('uses'=>'CargoController@index'));
-Route::get('personal/cargo/add.html',array('uses'=>'CargoController@add'));
-Route::post('personal/cargo/insert.html',array('uses'=>'CargoController@insert'));
-Route::get('personal/add.html',array('uses'=>'PersonalController@add'));
-Route::post('personal/insert.html',array('uses'=>'PersonalController@insert'));
-Route::get('personal/profile/{id}',array('uses'=>'PersonalController@profile'))->where('id','[0-9]+');
-Route::get('personal/edit/{id}',array('uses'=>'PersonalController@edit'))->where('id','[0-9]+');
-Route::post('personal/update/{id}',array('uses'=>'PersonalController@update'))->where('id','[0-9]+');
-Route::get('personal/change-pass-personal/{id}',array('uses'=>'PersonalController@changePassPersonal'))->where('id','[0-9]+');
-Route::get('personal/delete/{id}',array('uses'=>'PersonalController@delete'))->where('id','[0-9]+');
+    Route::get('personal/cargos',array('uses'=>'CargoController@index'));
+    Route::get('personal/cargo/add.html',array('uses'=>'CargoController@add'));
+    Route::post('personal/cargo/insert.html',array('uses'=>'CargoController@insert'));
+    Route::get('personal/add.html',array('uses'=>'PersonalController@add'));
+    Route::post('personal/insert.html',array('uses'=>'PersonalController@insert'));
+    Route::get('personal/profile/{id}',array('uses'=>'PersonalController@profile'))->where('id','[0-9]+');
+    Route::get('personal/edit/{id}',array('uses'=>'PersonalController@edit'))->where('id','[0-9]+');
+    Route::post('personal/update/{id}',array('uses'=>'PersonalController@update'))->where('id','[0-9]+');
+    Route::get('personal/change-pass-personal/{id}',array('uses'=>'PersonalController@changePassPersonal'))->where('id','[0-9]+');
+    Route::get('personal/delete/{id}',array('uses'=>'PersonalController@delete'))->where('id','[0-9]+');
+    Route::get('personal/imagen/{id}',array('uses'=>'PersonalController@imagen'))->where('id','[0-9]+');
+    Route::post('personal/imagen/{id}',array('uses'=>'PersonalController@uploadImage'))->where('id','[0-9]+');
+
 });
 
 

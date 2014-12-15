@@ -9,8 +9,9 @@ Perfil <small>PERSONAL</small>
 @section('content')
 <div class="row">
 	<div class="col-lg-3">
-		{{ HTML::image('assets/img/avatar2.png','User Image',array('class'=>'')) }}
+		{{ HTML::image('assets/foto/'.$personal->foto,'User Image',array('class'=>'')) }}
 		<p align="center"><b>código:</b>{{ $personal->id }}</p>
+		<p align="center">{{ HTML::link('personal/imagen/'.$personal->id,'Cambiar Imagen') }} </p>
 	</div>
 	<div class="col-lg-7">
 		<p>{{ HTML::link('personal/edit/'.$personal->id,'Editar') }} {{ HTML::link('personal/delete/'.$personal->id,'Eliminar') }}</p>

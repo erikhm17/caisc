@@ -98,4 +98,31 @@ class PersonalController extends BaseController
 			}
 		}
 	}
+
+	public function imagen($id=null)
+	{
+		if(is_null($id) or ! is_numeric($id))
+		{
+			return Redirect::to('404.html');
+		} else {
+			$personal = Personal::where('id','=',$id)->firstOrFail();
+			return View::make('personal.imagen',array('personal'=>$personal));
+		}
+	}
+	public function uploadImage($id=null)
+	{
+		$mensaje = "Ocurrio Error";
+		if(Input::file("foto")->isValid())
+		{
+			$fileName = Input::file('foto')->getClientOriginalName();
+			$personal = Personal::where('id','=',$id)->firstOrFail();
+			$personal->foto = md5($id."-".$fileName).'.'.Input::file('foto')->getClientOriginalExtension();
+			if($personal->save())
+			{
+				Input::file('foto')->move('assets/foto',$personal->foto);
+				$mensaje = "Imagen actualizado";
+			}
+		}
+		return Redirect::to('personal/profile/'.$id)->withErrors($mensaje);
+	}
 }
