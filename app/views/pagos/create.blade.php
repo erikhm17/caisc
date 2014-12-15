@@ -31,12 +31,9 @@ Caja y Facturación
 					</div>
 
 				  	<div class="col-xs-3">
-<<<<<<< HEAD
-				  		<input name="fecha" type="text" class="form-control" placeholder="" value="2014-12-13">		    	
-=======
-				  		<input type="text" class="form-control" placeholder="" value="Fecha: 1-12-2014" disabled>		    	
-				    	
->>>>>>> bd6a383dc3e7ed1c518dd83db70bcd2ea99519b8
+
+				  		<input name="fecha" type="text" class="form-control" placeholder="" value="2014-12-13" disabled>		  	
+
 				  	</div>
 					
 
@@ -125,6 +122,7 @@ Caja y Facturación
 			{{ Form::select('modalidad_id',$modalidad,null,array('class'=>'form-control'))}}
 			</div>
 		</div>
+
 		<script type="text/javascript">
 			function agregar_detalle()
 			{
@@ -141,13 +139,14 @@ Caja y Facturación
 	
 
 		</script>
-<<<<<<< HEAD
-		<input name="agrega_detil" type="button" onclick="agregar_detalle()" value="agregar detalle" />
-=======
+
+		
+
 		<input name="agrega_detil" type="button" onclick="agregar_detalle()" value="agregar detalle" class="btn btn-success">
+		
 		<input type="submit" value="guardar" class="btn btn-success">
->>>>>>> bd6a383dc3e7ed1c518dd83db70bcd2ea99519b8
-				    </div>
+
+		</div>
 		<table id="detalle_pago" class="table table-striped">
 				<thead>
 					<tr>
