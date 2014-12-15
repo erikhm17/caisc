@@ -23,7 +23,7 @@ MATENIMIENTO DE MODULO
                     <section class="content">
                         <ul>
                             {{ Form::open(array('url' => 'modulo')) }}
-                            {{ Form::text('nombre') }} <br/>
+                             <input title="Se necesita un nuevo modulo" type="text" name="nombre" pattern="^[a-zA-Z]*$" required/> <br/>
                             <br/>
                             {{ Form::submit('Guardar')}}
                             &nbsp;&nbsp;&nbsp;&nbsp;

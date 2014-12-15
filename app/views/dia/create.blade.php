@@ -1,6 +1,6 @@
 @extends('layouts.base_admin')
 @section('title')
-MATENIMIENTO DE DIA
+MATENIMIENTO DE Dia
 @stop
 
 @section('breadcrumb')
@@ -20,17 +20,17 @@ MATENIMIENTO DE DIA
                     <div class="panel-default" align="center">
                         <h3 class="text-muted" align="center">Nuevo Dia</h3>
                     </div>
-            		<section class="content">
-                		<ul>
-                			{{ Form::open(array('url' => 'dia')) }}
-                			{{ Form::text('nombre') }} <br/>
-                			<br/>
-                			{{ Form::submit('Guardar')}}
+                    <section class="content">
+                        <ul>
+                            {{ Form::open(array('url' => 'dia')) }}
+                            <input title="Se necesita un nuevo dia" type="text" name="nombre" pattern="^[a-zA-Z]*$" required/> <br/>
+                            <br/>
+                            {{ Form::submit('Guardar')}}
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             {{HTML::linkAction('DiaController@index', 'Cancelar')}}
-                			{{ Form::close()}} 
-                		</ul>
-            		</section><!-- /.content -->
+                            {{ Form::close()}} 
+                        </ul>
+                    </section><!-- /.content -->
                 </div>
             </div>
         </div>
