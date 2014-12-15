@@ -73,6 +73,8 @@ BEGIN
     INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioI,diaI,codCargaAcademica_ctI,null);
 END
 
+-- --------------------------------------------------------------------------------
+-- Routine DDL
 -- Note: comments before and after the routine body will not be stored by the server
 -- --------------------------------------------------------------------------------
 DELIMITER $$
@@ -119,7 +121,11 @@ BEGIN
      case when car1.codAula = 'A103'  then car1.nombres else 0 end as "Aula103",
      case when car1.codAula = 'A104'  then car1.nombres else 0 end as "Aula104",
      case when car1.codAula = 'A105'  then car1.nombres else 0 end as "Aula105",
-     case when car1.codAula = 'A106'  then car1.nombres else 0 end as "Aula106"
+     case when car1.codAula = 'A106'  then car1.nombres else 0 end as "Aula106",
+     case when car1.codAula = 'A107'  then car1.nombres else 0 end as "Aula107",
+     case when car1.codAula = 'A108'  then car1.nombres else 0 end as "Aula108",
+     case when car1.codAula = 'A109'  then car1.nombres else 0 end as "Aula109",
+     case when car1.codAula = 'A110'  then car1.nombres else 0 end as "Aula110"     
     from AuxCargaAcademicaCA car1    
     where dia=diaCA
     order by horario DESC;
