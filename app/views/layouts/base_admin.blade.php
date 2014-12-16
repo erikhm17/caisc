@@ -21,7 +21,7 @@
         {{ HTML::style('assets/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}
         <!-- Theme style -->
         {{ HTML::style('assets/css/AdminLTE.css') }}
-        
+
         {{ HTML::script('assets/js/jquery.min.js') }}
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -199,7 +199,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>Juan <i class="caret"></i></span>
+                                <span>{{Auth::user()->email}} <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
@@ -360,7 +360,7 @@
                                 <li>{{ HTML::link('alumnos','Listar Alumnos') }}</li>
                             </ul>
                         </li>
-                        
+
                         <!-- modulo Asistencias -->
                         <li class="treeview">
                             <a href="RegistroAsistencias">
@@ -385,7 +385,7 @@
                         </li>
                         <li class="treeview">
                             <a href="pagos">
-                                <i class="glyphicon glyphicon-euro"></i> <span>Caja y Facturación</span>                                
+                                <i class="glyphicon glyphicon-euro"></i> <span>Caja y Facturación</span>
                             </a>
                             <ul class="treeview-menu">
                                 <li><i class="glyphicon glyphicon-plus"></i> {{ HTML::link('/pagos/create','Realizar Pago') }}</li>
@@ -393,7 +393,7 @@
                                 <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('/pagos','Listar') }}</li>
                             </ul>
                         </li>
-                        
+
 
                         <li class="treeview">
                             <a href="#">
@@ -408,7 +408,7 @@
                                 <li>{{HTML::linkAction('TurnoController@index', 'Turno')}}</li>
                             </ul>
                         </li>
-                        
+
 
                         <li class="treeview">
                             <a href="#">
@@ -467,7 +467,7 @@
                                 <li>{{ HTML::link('404.html','404 Error') }}</li>
                                 <li>{{ HTML::link('500.html','500 Error') }}</li>
                                 <li>{{ HTML::link('blank.html','Blank Page') }}</li>
-                                
+
                             </ul>
                         </li>
                     </ul>
