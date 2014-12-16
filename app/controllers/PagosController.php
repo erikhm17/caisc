@@ -148,6 +148,31 @@ class PagosController extends \BaseController {
 			}
 		}
 	}
+
+	public function search()
+	{
+		$modalidad = Modalidad::lists('id','monto');
+
+		$id = Input::get('id_alumno');
+
+
+		
+		if (is_null($id) or ! is_numeric($id))
+		{
+			return Redirect::to('404.html');
+		} else {
+			$alumno = Alumno::where('id','=',$id)->firstOrFail();
+			if (is_object($alumno))
+			{
+				return View::make('pagos.showAlumno',array('alumno'=>$alumno,'modalidad'=>$modalidad));
+				//return Redirect::to('pagos/create')->withErrors($respuesta['mensaje'] )->withInput();
+				//return Redirect::to('pagos/create/',array('alumno'=>$alumno,'modalidad'=>$modalidad));
+			} else {
+				return Redirect::to('404.html');
+			}
+		}
+	}
+
 	public function add()
 	{
 		$modalidad = Modalidad::lists('id','monto');

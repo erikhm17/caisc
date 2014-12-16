@@ -4,6 +4,10 @@ Caja y Facturación
 @stop
 @section('content')
 
+<?php
+    $date = Date("Y-m-d")
+?>
+
   <nav class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -19,26 +23,27 @@ Caja y Facturación
       <div class="panel-body" >
         <form method="post" action="store">
 
-        <div class="well carousel-search hidden-sm">
-        <div class="well carousel-search hidden-sm">
-        <div class="form-inline">
-            <p>
-            <div class="col-xs-3">
-              <input type="text" class="form-control" placeholder="" value="N° 0001" >
+            <div class="well carousel-search hidden-sm">
+                <div class="form-inline">
+                    <p>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" placeholder="" value="N° 0001" >
+                    </div>
+
+                    <div class="col-xs-3">
+                        <input  name="nro_serie" type="text" class="form-control" placeholder="" value="0001">
+                    </div>
+
+                    <div class="col-xs-3">
+
+                        <input name="fecha" type="text" class="form-control" placeholder="" value=<?php echo $date?> >          
+
+                    </div>
+                    
+
+                    </p>
+                </div>
             </div>
-
-          <div class="col-xs-3">
-            <input  name="nro_serie" type="text" class="form-control" placeholder="" value="001">
-          </div>
-
-            <div class="col-xs-3">
-              <input name="fecha" type="text" class="form-control" placeholder="" value="2014-12-13">         
-            </div>
-
-            </p>
-        </div>
-      </div>
-      </div>
       <br>
       <p>
         <div class="form-inline">         
@@ -49,7 +54,7 @@ Caja y Facturación
         <p>
         <label>Codigo:</label>
 
-         <input name="id_alumno" type="text" class="form-control" placeholder="100512" value="100512">
+         <input name="id_alumno" type="text"  value="{{ $alumno->id}}" class="form-control" >
         </p>
         <p>
         <label>Nombres:</label>
@@ -65,44 +70,45 @@ Caja y Facturación
         </p>
         @endif
         </div>
+
         <div class="form-group">
-      {{ Form::label('modalidad_id','Modalidad de Pago :',array('class'=>'col-sm-5 control-label')) }}
-      <div class="col-sm-6 col-md-4">
-      {{ Form::select('modalidad_id',$modalidad,null,array('class'=>'form-control'))}}
-      </div>
-      <script type="text/javascript">
-      function agregar_detalle()
-      {
+              {{ Form::label('modalidad_id','Modalidad de Pago :',array('class'=>'col-sm-5 control-label')) }}
+              <div class="col-sm-6 col-md-4">
+              {{ Form::select('modalidad_id',$modalidad,null,array('class'=>'form-control'))}}
+              </div>
+              <script type="text/javascript">
+              function agregar_detalle()
+              {
 
-        var num="1";
-        var inp = document.getElementById("modalidad_id").value;
-        var concpt= "pago certificado";
-        //var concpt= document.getElementById("modalidad_id");
-        //var con = <?php echo "hola"; ?>
-        nro.innerHTML=num;
-        concepto.innerHTML=concpt;
-        inport.innerHTML=inp;
-        total_pago.value=inp;
-        mostrar.innerHTML="Mostrar";
-        editar.innerHTML="Editar";
-        eliminar.innerHTML="Eliminar";
+                var num="1";
+                var inp = document.getElementById("modalidad_id").value;
+                var concpt= "pago certificado";
+                //var concpt= document.getElementById("modalidad_id");
+                //var con = <?php echo "hola"; ?>
+                nro.innerHTML=num;
+                concepto.innerHTML=concpt;
+                inport.innerHTML=inp;
+                total_pago.value=inp;
+                mostrar.innerHTML="Mostrar";
+                editar.innerHTML="Editar";
+                eliminar.innerHTML="Eliminar";
 
-      }
-    </script>
-    <script type="text/javascript">
-      function eliminar_detalle()
-      {
-        nro.innerHTML="";
-        concepto.innerHTML="";
-        inport.innerHTML="";
-        total_pago.value="";
-        mostrar.innerHTML="";
-        editar.innerHTML="";
-        eliminar.innerHTML="";
-      }
-    </script>
-    <input name="agrega_detil" type="button" onclick="agregar_detalle()" value="agregar detalle" />
-            </div>
+              }
+            </script>
+            <script type="text/javascript">
+              function eliminar_detalle()
+              {
+                nro.innerHTML="";
+                concepto.innerHTML="";
+                inport.innerHTML="";
+                total_pago.value="";
+                mostrar.innerHTML="";
+                editar.innerHTML="";
+                eliminar.innerHTML="";
+              }
+            </script>
+            <input name="agrega_detil" type="button" onclick="agregar_detalle()" value="agregar detalle" class="btn btn-info"/>
+        </div>
     <table id="detalle_pago" class="table table-striped">
         <thead>
           <tr>
