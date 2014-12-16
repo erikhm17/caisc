@@ -32,5 +32,28 @@ class Personal extends Eloquent {
 		}
 		return $respuesta;
 	}
+	public static function editar($input)
+	{
+		$respuesta = array();
+		$reglas = array(
+			'nombre'=>array('required','alpha','min:3'),
+			'apellidos'=>array('required','alpha','min:3'),
+			'dni'=>array('required','numeric','digits:8'),
+			'direccion'=>array('required','min:10'),
+			'telefono'=>array('required','numeric'),
+			'email'=>array('required','email'),
+		);
+		$validador = Validator::make($input,$reglas);
+		if($validador->fails())
+		{
+			$respuesta['mensaje'] = $validador;
+			$respuesta['error'] = true;
+		} else
+		{
+			$respuesta['mensaje'] = 'Personal Actualizado';
+			$respuesta['error'] = false;
+		}
+		return $respuesta;
+	}
 }
 

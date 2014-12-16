@@ -3,10 +3,10 @@ class CargaControllerCt extends \BaseController {
 	
 	public function CargarIndexCargaCt(){
 
-		$elementosComboCodCurso_ct = CursoTecnico::all()->lists('id','id');
-		$elementosComboCodDocente = Docente::all()->lists('id','id');
+		$elementosComboCodCurso_ct = CursoTecnico::all()->lists('nombre','id');
+		$elementosComboCodDocente = Docente::all()->lists('nombre','id');
 		$elementosComboSemestre = Semestre::all()->lists('id','id');
-		$elementosComboTurno = Turno::all()->lists('id','id');
+		$elementosComboTurno = Turno::all()->lists('nombre','id');
 		$elementosComboGrupo = Grupo::all()->lists('id','id');
 		$elementosComboCodAula = Aula::all()->lists('codAula','codAula');
 		
@@ -46,6 +46,7 @@ class CargaControllerCt extends \BaseController {
 		$restrict=false;
 		$restrictFinal=false;
 
+		
 		if (Input::get('rbHorariosLunes')) {
 			$horaLunes=$_POST['rbHorariosLunes'];
 			$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaLunes,'lunes'));
@@ -57,9 +58,7 @@ class CargaControllerCt extends \BaseController {
 					$restrict=true;
 				
 			}
-		    
 		} 
-
 		if (Input::get('rbHorariosMartes')) {
 		   $horaMartes=$_POST['rbHorariosMartes'];
 		   $validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaMartes,'martes'));
@@ -120,7 +119,6 @@ class CargaControllerCt extends \BaseController {
 				
 			}
 		} 
-		
 		if ($restrict==false) {
 			$restrictFinal ==false;
 			if (Input::get('rbHorariosLunes')) {
@@ -140,7 +138,6 @@ class CargaControllerCt extends \BaseController {
 					$restrict=true;
 				}
 			}
-		    
 		} 
 
 		if (Input::get('rbHorariosMartes')) {
@@ -236,13 +233,18 @@ class CargaControllerCt extends \BaseController {
 	}
 	public $restful=true;
 	
-	public function MostrarDatos(){
-		$elementosCarga = DB::table('tcargaacademica')->get();
-	    return View::make('vistaCarga.datosRegistrados')->with('elementosCarga',$elementosCarga);
+	public function MostrarOpciones(){
+
+	/*	$elementosCarga = DB::table('carga_academica_ct')->get();
+	    return View::make('vistaCarga.datosRegistrados')->with('elementosCarga',$elementosCarga);*/
+		$elementosComboSemestre = Semestre::all()->lists('id','id');
+		return View::make('vistaCarga.datosRegistrados',array(
+			'varElementosComboSemestre'=>$elementosComboSemestre,
+			));
 	}
 	public function eliminarElementoCarga($id){
 			
-		$elemento = DB::delete('DELETE FROM tcargaacademica WHERE codCargaAcademica_ct = ? ', array($id) );
+		$elemento = DB::delete('DELETE FROM carga_academica_ct WHERE codCargaAcademica_ct = ? ', array($id) );
         if($elemento)
         {
             echo "elemento eliminado";
@@ -250,5 +252,14 @@ class CargaControllerCt extends \BaseController {
             echo "el elemento no se pudo eliminar";
         }
 	}
+	public function mostrarHorarios(){
+		$semestre = $_POST['comboSemestres'];
+		$dia=$_POST['comboDias'];
+		//$elementosHorario = DB::select('SELECT * FROM carga_academica_ct WHERE 1');
+		$elementosHorario = DB::select('call HorarioCargaAcademica(?,?)',array($semestre,$dia));		
+		return View::make('vistaCarga.horarios')->with('elementosHorario',$elementosHorario);
 
+		
+
+	}
 }

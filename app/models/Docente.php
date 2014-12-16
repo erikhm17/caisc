@@ -51,10 +51,26 @@ class Docente extends Eloquent {
 			$respuesta['error'] = true;
 		} else
 		{
-			$docente = static::create($input);
-			$respuesta['mensaje'] = 'Docente Creado';
+			$respuesta['mensaje'] = 'Docente Actualizado';
 			$respuesta['error'] = false;
-			$respuesta['data'] = $docente;
+		}
+		return $respuesta;
+	}
+
+	public static function Cambiar($input)
+	{
+		$respuesta = array();
+		$reglas = array(
+			'password'=>array('required','min:6','confirmed')
+		);
+		$validador = Validator::make($input,$reglas);
+		if($validador->fails())
+		{
+			$respuesta['mensaje'] = $validador;
+			$respuesta['error'] = true;
+		} else
+		{
+			$respuesta['error'] = false;
 		}
 		return $respuesta;
 	}

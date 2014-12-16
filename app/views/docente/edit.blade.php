@@ -1,6 +1,7 @@
 @extends('layouts.base_admin')
 @section('title')
-Editar Docente <small> {{$docente->nombre}} </small>
+Editar Docente <small> {{$docente->nombre}}  </small>
+{{$docente-> dni}}
 @stop
 @section('breadcrumb')
 <li>{{ HTML::link('docentes','Docentes')}} </li>
@@ -9,8 +10,9 @@ Editar Docente <small> {{$docente->nombre}} </small>
 @stop
 @section('content')
 <div class="ccol-xs-12 col-sm-12">
+
 {{ Form::model($docente,array('url'=>array('docente/update',$docente->id),'method'=> 'POST','class'=>'form-horizontal','role'=>'form'))}}
-	<div class="form-group">
+		<div class="form-group">
 		{{ Form::label('nombre','Nombre(s):',array('class'=>'col-sm-2 control-label')) }}
 		<div class="col-sm-6 col-md-4">
 			{{ Form::text('nombre',$docente->nombre,array('class'=>'form-control','placeholder'=>'Juan'))}}
@@ -89,12 +91,6 @@ Editar Docente <small> {{$docente->nombre}} </small>
 			@endif
 		</div>
 	</div>
-	<!--div class="form-group">
-		{{ Form::label('password','Password:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::password('password',array('class'=>'form-control'))}}
-		</div>
-	</div-->
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-3">
 			<button class="btn btn-info btn-block" type="reset">Cancelar</button>

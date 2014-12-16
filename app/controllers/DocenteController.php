@@ -1,3 +1,5 @@
+
+
 <?php
 
 class DocenteController extends BaseController
@@ -65,6 +67,7 @@ class DocenteController extends BaseController
 				{
 					$docente->nombre = Input::get('nombre');
 					$docente->apellidos = Input::get('apellidos');
+					$docente->dni = Input::get('dni');
 					$docente->email = Input::get('email');
 					$docente->telefono = Input::get('telefono');
 					$docente->save();
@@ -102,31 +105,22 @@ class DocenteController extends BaseController
 			return Redirect::to('docente/profile/'.$docente->codDocente);
 		}
 	}
-	public function loginInit()
-	{
-
-	}
-	public function logout()
-	{
-		// Destruir sessión
-		// Redirigir a Login
-		return Redirect::to('docente/login.html');
-	}
-
 	public function changePass($id = null)
 	{
-		if (is_null($id) or ! is_numeric($id))
+        if (is_null($id) or ! is_numeric($id))
 		{
 			return Redirect::to('404.html');
 		} else {
 			$docente = Docente::where('id','=',$id)->firstOrFail();
 			if (is_object($docente))
 			{
+				$docente->pasword = Input::get('password');
 				return View::make('docente.change_pass',array('docente'=>$docente));
 			} else {
 				return Redirect::to('404.html');
 			}
 		}
+
 	}
 	public function imagen($id=null)
 	{

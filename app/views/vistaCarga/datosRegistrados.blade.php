@@ -10,62 +10,27 @@ Agregar Personal <small> NUEVO PERSONAL </small>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>principal</title>
-	<title>principal</title>
-	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
-	<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.js"></script>
-	{{HTML::style('css/styleCargaIndex.css')}}
-	{{HTML::style('css/styleCargaIndex.css')}}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-
-	
-	<table id="table_id" class="display">
-		 <thead>
-		        <tr>
-		            <th>Codigo de la carga</th>
-		            <th>Codigo del curso</th>
-		            <th>Codigo del docente</th>
-		            <th>Semestre</th>
-		            <th>Turno</th>
-		            <th>Grupo</th>
-		            <th>Aula</th>
-		            <th>hora</th>
-		            <th>Dia</th>
-		            <th>Controles</th>
-		        </tr>
-		    </thead>
-		    <tbody>
-		   	    @if ($elementosCarga)
-			    	@foreach ($elementosCarga as $user)
-			        <tr>
-			            <td> {{ ($user->codCargaAcademica_ct);}}</td>
-			            <td> {{ ($user->codCurso_ct);		  }}</td>
-			            <td> {{ ($user->docente_id);		  }}</td>
-			            <td> {{ ($user->semestre);			  }}</td>
-			            <td> {{ ($user->turno); 			  }}</td>
-			            <td> {{ ($user->grupo);			      }}</td>
-			            <td> {{ ($user->aula);				  }}</td>
-			            <td> {{ ($user->hora);      		  }}</td>
-			            <td> {{ ($user->dia);		          }}</td>
-			            <td>{{ HTML::link(URL::to('/eliminarCarga/'.$user->codCargaAcademica_ct), 'Eliminar') }}</td>
-			        </tr>
-
-			        @endforeach
-		        @else
-				    <p> No hay usuarios cargados </p>
-				@endif
-			</tbody>
-	</table>
+	{{ Form::open(array('url' => '/horarios')) }}
+	<p class="lbls">{{Form::label('lblSemestre','Semestre:')}}</p>
+    <div class="inputs">{{ Form::select('comboSemestres', $varElementosComboSemestre) }}</div>
+    <p class="lbls">{{Form::label('lblDia','Dia:')}}</p>
+	<div class="inputs">{{Form::select('comboDias', array('lunes' => 'lunes', 'martes' => 'martes','miercoles'=>'miercoles','jueves'=>'jueves','viernes'=>'viernes','sabado'=>'sabado'))}}</div>
+	<p>{{Form::submit('Ver horarios')}}</p>
+	{{ Form::close()}}
+	<div lass="table-responsive">	
+   
 			{{ HTML::link(URL::to('/crearCargaCt'), 'Regresar') }}
+			
 
-	<script type="text/javascript">
-		$(document).ready( function () {
-	    $('#table_id').DataTable();
-	} );
-	</script>
+	</div>
+			
+	
 	
 </body>
 </html>

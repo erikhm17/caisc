@@ -6,10 +6,9 @@ Agregar Personal <small> NUEVO PERSONAL </small>
 <li>Agregar</li>
 @stop
 @section('content')
-    <!DOCTYPE html>
 <html>
 <head>
-    <title>principal</title>
+    
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
@@ -306,7 +305,7 @@ Agregar Personal <small> NUEVO PERSONAL </small>
         <p>{{Form::submit('Registrar')}}</p>
         {{ Form::close() }}
         
-        <td>{{ HTML::link(URL::to('/mostrarDatos'), 'Mostrar Datos') }}</td>
+        <td>{{ HTML::link(URL::to('/MostrarOpciones'), 'Verificar Horarios') }}</td>
         
     </section>
 </body>

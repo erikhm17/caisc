@@ -8,34 +8,38 @@ Cambiar Contraseña <small> {{$docente->nombre}} </small>
 <li>Editar</li>
 @stop
 @section('content')
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-{{ Form::open(array('method'=> 'POST','url'=> '','class'=>'form-horizontal','role'=>'form')) }}
-	<p> {{$docente->nombre}} </p>
-	<p>{{$docente->apellidos}}</p>
-	
+<div class="col-xs-12 col-sm-12">
+{{ Form::model($docente,array('method'=> 'POST','url'=>array('docente/update',$docente->id),'class'=>'form-horizontal','role'=>'form')) }}
 	<div class="form-group">
-		{{ Form::label('password','Password-Anterior:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
+		{{ Form::label('apellidos','Password-Anterior:',array('class'=>'col-sm-2 control-label')) }}
+		<div class="col-sm-6 col-md-4">
+			{{ Form::password('pAnterior',array('class'=>'form-control'))}}
+		</div>
+	</div>
+	<div class="form-group">
+		{{ Form::label('password','Password:',array('class'=>'col-sm-2 control-label')) }}
+		<div class="col-sm-6 col-md-4">
 			{{ Form::password('password',array('class'=>'form-control'))}}
 		</div>
 	</div>
 	<div class="form-group">
-		{{ Form::label('password','Password New:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::password('password',array('class'=>'form-control'))}}
+		{{ Form::label('password_confirmation','Confirme-Password:',array('class'=>'col-sm-2 control-label')) }}
+		<div class="col-sm-6 col-md-4">
+			{{ Form::password('password_confirmation',array('class'=>'form-control'))}}
+		</div>
+		<div class="errores">
+			@if ( $errors->has('password'))
+		       	@foreach ($errors->get('password') as $error)
+			   	<div class="alert alert-danger">* {{ $error }}</div>
+		    	@endforeach
+			@endif
 		</div>
 	</div>
 	<div class="form-group">
-		{{ Form::label('repassword','Confirme-Password-New:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-8">
-			{{ Form::password('repassword',array('class'=>'form-control'))}}
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-xs-12 col-sm-6 col-md-6">
+		<div class="col-xs-12 col-sm-3">
 			<button class="btn btn-info btn-block" type="reset">Cancelar</button>
 		</div>
-		<div class="col-xs-12 col-sm-6 col-md-6">
+		<div class="col-xs-12 col-sm-3">
 			<button class="btn btn-primary btn-block" type="submit">Guardar</button>
 		</div>
 	</div>

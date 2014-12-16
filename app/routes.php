@@ -39,6 +39,8 @@ Route::get('docente/logout.html',array('uses'=>'DocenteController@logout'));
 Route::get('docente/edit/{id}',array('uses'=>'DocenteController@edit'))->where('id','[0-9]+');
 Route::post('docente/update/{id}',array('uses'=>'DocenteController@update'))->where('id','[0-9]+');
 Route::post('docente/insert.html',array('uses'=>'DocenteController@insert'));
+Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
+Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changepass'))->where('id','[0-9]+');
 
 // Alumno
 Route::get('alumnos',array('uses'=>'AlumnoController@index'));
@@ -55,16 +57,12 @@ Route::group(['before' => 'auth'], function()
     Route::get('docente/profile/{id}',array('uses'=>'DocenteController@profile'))->where('id','[0-9]+');
 });
 
-
-
 Route::get('docente/delete/{id}',array('uses'=>'DocenteController@delete'))->where('id','[0-9]+');
 Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changepass'))->where('id','[0-9]+');
 Route::get('docente/imagen/{id}',array('uses'=>'DocenteController@imagen'))->where('id','[0-9]+');
 Route::post('docente/imagen/{id}',array('uses'=>'DocenteController@uploadImage'))->where('id','[0-9]+');
 
 // Personal
-
-
 
 Route::group(['before' => 'auth'], function()
 {
@@ -83,9 +81,6 @@ Route::group(['before' => 'auth'], function()
     Route::post('personal/imagen/{id}',array('uses'=>'PersonalController@uploadImage'))->where('id','[0-9]+');
 
 });
-
-
-
 
 //Modulos mantenimiento
 Route::get('modulo',array('uses'=>'ModuloController@index'));
@@ -107,12 +102,15 @@ Route::post('modalidad/index','ModalidadController@index');
 Route::controller('modalidad','ModalidadController');
 
 //Route::post('pagos/update/{id}','PagosController@update');
+Route::post('pagos/store','PagosController@store');
+
 Route::get('pagos/destroy/{id}','PagosController@destroy');
 Route::post('pagos/index','PagosController@index');
 Route::get('pagos/create',array('uses'=>'PagosController@add'));
 //Route::post('pagos/showAlumno/{id}','PagosController@getAlumno');
 Route::get('pagos/showAlumno/{id}',array('uses'=>'PagosController@profile'))->where('id','[0-9]+');
-//Route::post('pagos/create',array('uses' => 'PagosController@store'));
+Route::post('pagos/create',array('uses' => 'PagosController@store'));
+Route::post('pagos/showAlumno/store','PagosController@store');
 
 Route::controller('pagos','PagosController');
 /*End Caja y Facturacion*/
@@ -209,16 +207,17 @@ Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaContr
 // carga academica
 
 
+// carga academica
 Route::get('/crearCargaCt','CargaControllerCt@CargarIndexCargaCt');
 Route::post('/recogerDatos','CargaControllerCt@AgregarDatos');
-Route::get('/mostrarDatos','CargaControllerCt@MostrarDatos');
+Route::post('/horarios','CargaControllerCt@mostrarHorarios');
+Route::get('/MostrarOpciones','CargaControllerCt@MostrarOpciones');
 Route::get('/eliminarCarga/{id}', 'CargaControllerCt@eliminarElementoCarga');
 
 Route::get('/crearCargaCl','CargaControllerCl@CargarIndexCargaCl');
 Route::post('/recogerDatosCl','CargaControllerCl@AgregarDatos');
-
-
-
+Route::get('/mostrarDatos','CargaControllerCt@MostrarDatos');
+Route::get('/eliminarCarga/{id}', 'CargaControllerCt@eliminarElementoCarga');
 
 
 Route::get('ingresonotas/inicioCT','IngresoNotasController@inicioCT');

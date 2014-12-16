@@ -6,9 +6,9 @@ class CargaControllerCl extends \BaseController {
 	}
 	public function CargarIndexCargaCl(){
 
-		$elementosComboCodCurso_cl = CursoLibre::all()->lists('id','id');
-		$elementosComboCodDocente = Docente::all()->lists('id','id');
-		$elementosComboTurno = Turno::all()->lists('id','id');
+		$elementosComboCodCurso_cl = CursoLibre::all()->lists('nombre','id');
+		$elementosComboCodDocente = Docente::all()->lists('nombre','id');
+		$elementosComboTurno = Turno::all()->lists('nombre','id');
 		$elementosComboGrupo = Grupo::all()->lists('id','id');
 		$elementosComboSemestre = Semestre::all()->lists('id','id');
 		$elementosComboCodAula = Aula::all()->lists('codAula','codAula');
@@ -153,8 +153,7 @@ class CargaControllerCl extends \BaseController {
 					if ($restrictFinal==false) {
 					DB::select('call insertarCargaAcademica_cl(?,?,?,?,?,?,?,?,?,?,?,?)'
 			    	,array($codCursoCl,$codDocente,$turno,$grupo,$semestre,$fechaInicio,$fechaFin,$estado,$minimo,$aula,$horaLunes,'lunes'));		
-			    	
-					echo "Lunes a las : ".$horaLunes." , ";
+			    	echo "Lunes a las : ".$horaLunes." , ";
 			    }
 
 					
