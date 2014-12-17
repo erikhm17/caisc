@@ -34,17 +34,25 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                 <th>Aula-104</th>
                 <th>Aula-105</th>
                 <th>Aula-106</th>
+                <th>Aula-107</th>
+                <th>Aula-108</th>
+                <th>Aula-109</th>
+                <th>Aula-110</th>
             </tr>
         </thead>
 			@foreach ($elementosHorario as $user)
 			<tr>
-				<td>{{($user->horario);}} </td> 
+				<td>{{($user->horario);}}</td> 
 				<td>{{($user->Aula101);}}</td>			
 				<td>{{($user->Aula102);}}</td>			
 				<td>{{($user->Aula103);}}</td>			
 				<td>{{($user->Aula104);}}</td>			
 				<td>{{($user->Aula105);}}</td>			
 				<td>{{($user->Aula106);}}</td>			
+				<td>{{($user->Aula107);}}</td>			
+				<td>{{($user->Aula108);}}</td>			
+				<td>{{($user->Aula109);}}</td>			
+				<td>{{($user->Aula110);}}</td>			
 			</tr>
 			@endforeach
 		</table>

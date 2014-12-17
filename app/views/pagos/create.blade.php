@@ -3,7 +3,9 @@
 Caja y Facturación
 @stop
 @section('content')
-
+<?php
+    $date = Date("Y-m-d")
+?>
 	<nav class="navbar navbar-default" role="navigation">
   		<div class="container-fluid">
     		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -17,7 +19,7 @@ Caja y Facturación
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
   		<div class="panel-body" >
-  			<form method="post" action="store">
+  			<form method="post" action="search">
 
   			<div class="well carousel-search hidden-sm">
 			 	<div class="form-inline">
@@ -32,7 +34,7 @@ Caja y Facturación
 
 				  	<div class="col-xs-3">
 
-				  		<input name="fecha" type="text" class="form-control" placeholder="" value="2014-12-13" disabled>		  	
+				  		<input name="fecha" type="text" class="form-control" placeholder="" value=<?php echo $date?> disabled>		  	
 
 				  	</div>
 					
@@ -40,36 +42,6 @@ Caja y Facturación
 				  	</p>
 				</div>
 			</div>
-
-
-  			
-			<br>
-			<!--<div class="well carousel-search hidden-sm">
-			<div class="form-inline">
-       				
-				    <div class="input-group">
-				      <div class="input-group-addon">Numero:</div>
-				      <input type="text" class="form-control" placeholder="" value="0001" disabled>
-				    </div>
-				    <div class="input-group">				    	
-				      <div class="input-group-addon">Fecha:</div>
-				      <input type="text" class="form-control" placeholder="" value="1-12-2014" disabled>				      	  
-				    </div>
-				
-			</div>				
-			</div>-->
-
-			
-  			
-			<!--<div class="form-horizontal" >
-				<div class="form-group">
-			    	<label  class="col-sm-2 ">Código:</label>
-				    <div class="col-sm-7">
-				    	<input type="text" class="form-control" id="" >
-				    </div>
-			  	</div>
-			</div>-->
-
 
 			<br>
 
@@ -80,29 +52,18 @@ Caja y Facturación
 
 				    	<input name="id_alumno" type="text" class="form-control" placeholder="" value="">
 				  	</div>
-				  	<a  href="./showAlumno/100512"><span class="glyphicon glyphicon-search" id="buscar" aria-hidden="true"  >Buscar</span></a>
-
+				  
+					<button type="submit" class="btn btn-default btn-sm">
+					  	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Buscar
+					</button>
 
 					<button type="button" class="btn btn-default btn-sm">
 					  	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar
 					</button>
+
 				</div>
 
 			</p>
-
-
-
-
-			<!--<div class="well carousel-search hidden-sm">
-			 	<label>Modalidad de Pago:</label>
-		        <div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Modalidades <span class="caret"></span></a>
-		            <ul class="dropdown-menu">
-		                <li><a href="#">Matricula</a></li>
-		                <li><a href="#">Certificado</a></li>                
-		            </ul>
-		        </div>
-			</div>-->
-
 
 			</form>
 
@@ -115,57 +76,75 @@ Caja y Facturación
         <label>Apellidos:</label>
         <input type="text" id="apellidos" placeholder="" class="form-control" required value="">
       	</p>	
-		<div class="well carousel-search hidden-sm">
 		<div class="form-group">
-			{{ Form::label('modalidad_id','Modalidad de Pago :',array('class'=>'col-sm-5 control-label')) }}
-			<div class="col-sm-6 col-md-4">
-			{{ Form::select('modalidad_id',$modalidad,null,array('class'=>'form-control'))}}
-			</div>
-		</div>
+              {{ Form::label('modalidad_id','Modalidad de Pago :',array('class'=>'col-sm-5 control-label')) }}
+              <div class="col-sm-6 col-md-4">
+              {{ Form::select('modalidad_id',$modalidad,null,array('class'=>'form-control'))}}
+              </div>
+              <script type="text/javascript">
+              function agregar_detalle()
+              {
 
-		<script type="text/javascript">
-			function agregar_detalle()
-			{
+                var num="1";
+                var inp = document.getElementById("modalidad_id").value;
+                var concpt= "pago certificado";
+                //var concpt= document.getElementById("modalidad_id");
+                //var con = <?php echo "hola"; ?>
+                nro.innerHTML=num;
+                concepto.innerHTML=concpt;
+                inport.innerHTML=inp;
+                total_pago.value=inp;
+                mostrar.innerHTML="Mostrar";
+                editar.innerHTML="Editar";
+                eliminar.innerHTML="Eliminar";
 
-				var Nro="1";
-				var inp = document.getElementById("modalidad_id").value;
-				var concpt= "pago certificado";
-				nro.innerHTML=Nro;
-				concepto.innerHTML=concpt;
-				inport.innerHTML=inp;
-				total_pago.value=inp;
-
-			}
-	
-
-		</script>
-
-		
-
-		<input name="agrega_detil" type="button" onclick="agregar_detalle()" value="agregar detalle" class="btn btn-success">
-		
-		<input type="submit" value="guardar" class="btn btn-success">
-
-		</div>
-		<table id="detalle_pago" class="table table-striped">
-				<thead>
-					<tr>
-						<th>Nro</th>
-						<th>Concepto</th>
-						<th>Importe</th>
-						<th>Acciones</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-		</table>
-		 <p>
+              }
+            </script>
+            <script type="text/javascript">
+              function eliminar_detalle()
+              {
+                nro.innerHTML="";
+                concepto.innerHTML="";
+                inport.innerHTML="";
+                total_pago.value="";
+                mostrar.innerHTML="";
+                editar.innerHTML="";
+                eliminar.innerHTML="";
+              }
+            </script>
+            <input name="agrega_detil" type="button" onclick="agregar_detalle()" value="agregar detalle" class="btn btn-info" />
+        </div>
+    <table id="detalle_pago" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nro</th>
+            <th>Concepto</th>
+            <th>Importe</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr id="rows">
+              <td id="nro"></td>
+              <td id="concepto"></td>
+              <td id="inport"></td>
+              <td>
+                <a href=""><span id="mostrar" class="label label-success"></span></a>
+                <a href=""><span id="editar" class="label label-info"></span></a>
+                <a onclick="eliminar_detalle()"><span id="eliminar" class="label label-danger"></span></a>
+              </td>
+            </tr>
+        </tbody>
+    </table>
+     <p>
         <label>TOTAL:</label>
         <input type="text" name="total" class="form-control" id="total_pago">
-      	</p>
-		</form>
+        <br>
+        <input type="submit" value="guardar" class="btn btn-success">
+        </p>  
+      </table>
 
-		</div>
+	</div>
 		@if(Session::has('message'))
 			<div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>
 		@endif

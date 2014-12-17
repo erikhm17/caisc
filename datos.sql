@@ -30,3 +30,16 @@ INSERT INTO `silabus_cl` (`id`, `codCargaAcademica_cl`) VALUES
 
 INSERT INTO `silabus_ct` (`id`, `codCargaAcademica_ct`) VALUES
 (2, 1);
+
+-- Insertando aulas
+
+INSERT INTO `aula`(`codAula`, `capacidad`) VALUES ('A101',40);
+INSERT INTO `aula`(`codAula`, `capacidad`) VALUES ('A102',55);
+INSERT INTO `aula`(`codAula`, `capacidad`) VALUES ('A103',40);
+INSERT INTO `aula`(`codAula`, `capacidad`) VALUES ('A104',40);
+INSERT INTO `aula`(`codAula`, `capacidad`) VALUES ('A105',45);
+INSERT INTO `aula`(`codAula`, `capacidad`) VALUES ('A106',45);
+INSERT INTO `aula`(`codAula`, `capacidad`) VALUES ('A107',45);
+INSERT INTO `aula`(`codAula`, `capacidad`) VALUES ('A108',40);
+INSERT INTO `aula`(`codAula`, `capacidad`) VALUES ('A109',45);
+INSERT INTO `aula`(`codAula`, `capacidad`) VALUES ('A110',40);
