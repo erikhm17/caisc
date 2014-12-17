@@ -5,6 +5,7 @@ INSERT INTO cargo (nombre,privilegios,descripcion) VALUES("Administrador","Gener
 INSERT INTO personal (nombre,apellidos,dni,direccion,telefono,email,password,cargo_id) VALUES("NameAdmin","ApellidoAdmin","12345678","UNSAAC","123456","admin@gmail.com","$2y$10$fY.z..RdDITDo5/0LcLqNuE9Ij1GuncP1IyJwNMdKSfQFmCSd0s/u",1);
 -- Insertando Usuario Administrador
 INSERT INTO users (email,password,tipoUsuario,nroId) VALUES("admin@gmail.com","$2y$10$fY.z..RdDITDo5/0LcLqNuE9Ij1GuncP1IyJwNMdKSfQFmCSd0s/u","Personal",214);
+INSERT INTO users (email,password,tipoUsuario,nroId) VALUES("admin1@gmail.com","$2y$10$fY.z..RdDITDo5/0LcLqNuE9Ij1GuncP1IyJwNMdKSfQFmCSd0s/u","Docente",123);
 
 INSERT INTO `docente` (`id`, `nombre`, `apellidos`, `dni`, `direccion`, `foto`, `telefono`, `email`, `password`, `estado`, `updated_at`, `created_at`) VALUES
 (1, 'Gerardo', 'Mamani', '45544334', 'Av. Grau', NULL, '234435', 'Correo@gmail.com', '132456', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
