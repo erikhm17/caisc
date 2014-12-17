@@ -21,8 +21,9 @@ class SilabusCL extends Eloquent {
 		else
 		{
 			$silabo = new SilabusCL;
-			$silabo->id = Input::get('id');
 			$silabo->codCargaAcademica_cl = Input::get('codCargaAcademica_cl');
+			$silabo->created_at= time();
+			$silabo->updated_at = time();
 			//$curso->save();
 			if ($silabo->save()) 
 			{

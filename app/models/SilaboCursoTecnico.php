@@ -3,7 +3,7 @@
 class SilaboCursoTecnico extends Eloquent {
 
 	protected $table = 'detalle_silabus_ct';
-	protected $fillable = array('id','codSilabus_ct','titulo','descripcion','orden','estado','updated_at','created_at');
+	protected $fillable = array('id','codSilabus_ct','capitulo','titulo','objetivos','descripcion','numeroclases','orden','estado','updated_at','created_at');
 	
 	public static function agregar($input)
 	{
@@ -22,11 +22,14 @@ class SilaboCursoTecnico extends Eloquent {
 		else
 		{
 			$silabo = new SilaboCursoTecnico;
-			$silabo->codSilabus_ct = Input::get('codSilabus_ct');
+			$silabo->codSilabus_cl = Input::get('codSilabus_cl');
+			$silabo->capitulo = Input::get('capitulo');
 			$silabo->titulo = Input::get('titulo');
+			$silabo->objetivos = Input::get('objetivos');
+			
 			$silabo->descripcion = Input::get('descripcion');
+			$silabo->numeroclases = Input::get('numeroclases');
 			$silabo->orden = Input::get('orden');
-			$silabo->estado = 1;
 			$silabo->created_at= time();
 			$silabo->updated_at = time();
 			//$silabo->save();

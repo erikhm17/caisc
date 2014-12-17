@@ -21,8 +21,9 @@ class SilabusCT extends Eloquent {
 		else
 		{
 			$silabo = new SilabusCT;
-			$silabo->id = Input::get('id');
 			$silabo->codCargaAcademica_ct = Input::get('codCargaAcademica_ct');
+			$silabo->created_at= time();
+			$silabo->updated_at = time();
 			if ($silabo->save()) 
 			{
 				$respuesta['mensaje'] = 'Silabo Creado';
