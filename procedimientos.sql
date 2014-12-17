@@ -47,14 +47,44 @@ END
 DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCargaAcademica_cl`(codCurso_clI varchar(10),
-docente_idI int,turnoI varchar(10),grupoI int,semestreI varchar(10),fecha_inicioI date,fecha_finI date,estadoI bit,minimoI int,codAulaI varchar(10),horarioI varchar(10),diaI varchar(10))
+docente_idI int,turnoI varchar(10),grupoI int,semestreI varchar(10),fecha_inicioI date,fecha_finI date,estadoI bit,minimoI int,codAulaI varchar(10),horarioLunesI varchar(10),LunesI varchar(1),horarioMartesI varchar(10),MartesI varchar(1),horarioMiercolesI varchar(10),MiercolesI varchar(1),horarioJuevesI varchar(10),JuevesI varchar(1),horarioViernesI varchar(10),ViernesI varchar(1),horarioSabadoI varchar(10),SabadoI varchar(1))
 BEGIN
     Declare codCargaAcademica_clI varchar(10);
     Declare aleartorio int;
     select 10+(RAND() * 1000) into aleartorio;
     select Date_format(now(),'%m%d%H%i%s')+aleartorio into codCargaAcademica_clI;
     INSERT INTO `carga_academica_cl`(`codCargaAcademica_cl`, `codCurso_cl`, `docente_id`, `turno`, `grupo`, `semestre`, `fecha_inicio`, `fecha_fin`, `estado`, `minimo`) VALUES (codCargaAcademica_clI,codCurso_clI,docente_idI,turnoI,grupoI,semestreI,fecha_inicioI,fecha_finI,estadoI,minimoI);
-    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioI,diaI,null,codCargaAcademica_clI);
+    
+    if(LunesI="x")
+    then    
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioLunesI,"Lunes",null,codCargaAcademica_clI);
+    end if;
+    
+    if(MartesI="x")
+    then   
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioMartesI,"Martes",null,codCargaAcademica_clI);
+    end if;
+    
+    if(MiercolesI="x")
+    then   
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioMiercolesI,"Miercoles",null,codCargaAcademica_clI);
+   end if;
+    
+    if(JuevesI="x")
+    then   
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioJuevesI,"Jueves",null,codCargaAcademica_clI);
+    end if;
+    
+    if(ViernesI="x")
+    then   
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioViernesI,"Viernes",null,codCargaAcademica_clI);
+    end if;
+    
+    if(SabadoI="x")
+    then   
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioSabadoI,"Sabado",null,codCargaAcademica_clI);
+    end if;
+    
 END
 
 -- --------------------------------------------------------------------------------
@@ -63,14 +93,43 @@ END
 -- --------------------------------------------------------------------------------
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCargaAcademica_ct`(codCurso_ctI varchar(10),docente_idI int,semestreI varchar(10),turnoI varchar(10),grupoI int,codAulaI varchar(10),horarioI varchar(10),diaI varchar(10))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarCargaAcademica_ct`(codCurso_ctI varchar(10),docente_idI int,semestreI varchar(10),turnoI varchar(10),grupoI int,codAulaI varchar(10),horarioLunesI varchar(10),LunesI varchar(1),horarioMartesI varchar(10),MartesI varchar(1),horarioMiercolesI varchar(10),MiercolesI varchar(1),horarioJuevesI varchar(10),JuevesI varchar(1),horarioViernesI varchar(10),ViernesI varchar(1),horarioSabadoI varchar(10),SabadoI varchar(1))
 BEGIN
     Declare codCargaAcademica_ctI varchar(10);
     Declare aleartorio int;
     select 10+(RAND() * 1000) into aleartorio;
     select Date_format(now(),'%m%d%H%i%s')+aleartorio into codCargaAcademica_ctI;
     INSERT INTO `carga_academica_ct`(`codCargaAcademica_ct`, `codCurso_ct`, `docente_id`, `semestre`, `turno`, `grupo`) VALUES (codCargaAcademica_ctI,codCurso_ctI,docente_idI,semestreI,turnoI,grupoI);
-    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioI,diaI,codCargaAcademica_ctI,null);
+    
+    if(LunesI="x")
+    then
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioLunesI,"Lunes",codCargaAcademica_ctI,null);
+    end if;
+     
+    if(MartesI="x")
+    then
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioMartesI,"Martes",codCargaAcademica_ctI,null);
+    end if;
+    
+    if(MiercolesI="x")
+    then
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioMiercolesI,"Miercoles",codCargaAcademica_ctI,null);
+    end if;
+    
+    if(JuevesI="x")
+    then
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioJuevesI,"Jueves",codCargaAcademica_ctI,null);
+    end if;
+    
+    if(ViernesI="x")
+    then
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioViernesI,"Viernes",codCargaAcademica_ctI,null);
+    end if;
+    
+    if(SabadoI="x")
+    then
+    INSERT INTO `horario_aula`(`codAula`, `horario`, `dia`, `codCargaAcademica_ct`, `codCargaAcademica_cl`) VALUES (codAulaI ,horarioSabadoI,"Sabado",codCargaAcademica_ctI,null);
+    end if;
 END
 
 -- --------------------------------------------------------------------------------
