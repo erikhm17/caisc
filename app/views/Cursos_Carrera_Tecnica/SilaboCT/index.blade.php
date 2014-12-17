@@ -23,19 +23,17 @@ Lista <small>SILABO CARRERA TECNICA </small>
                         </select> records per page</label>
                     </div>
                 </div>
-                <div class="col-xs-6">
-                    <div id="example1_filter" class="dataTables_filter">
-                        <label>Search: <input aria-controls="example1" type="text"></label>
-                        {{ HTML::link('SilaboCarreraTecnica/create.html','Agregar Silabo') }}
-                    </div>
-                </div>
+        
             </div>
             <table aria-describedby="example1_info" id="example1" class="table table-bordered table-striped dataTable">
                 <thead>
                     <tr role="row">
-                        <th aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 80px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" role="columnheader" class="sorting_asc">Nro de Silabus</th>
+                        <th aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 80px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" role="columnheader" class="sorting_asc">Cod Silabo</th>
+                        <th aria-label="Browser: activate to sort column ascending" style="width: 283px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" role="columnheader" class="sorting">Capitulo</th>
                         <th aria-label="Browser: activate to sort column ascending" style="width: 283px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" role="columnheader" class="sorting">titulo del Silabo</th>
+<th aria-label="Browser: activate to sort column ascending" style="width: 283px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" role="columnheader" class="sorting">objetivos</th>
                         <th aria-label="Platform(s): activate to sort column ascending" style="width: 244px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" role="columnheader" class="sorting">descripcion</th>
+                        <th aria-label="Browser: activate to sort column ascending" style="width: 283px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" role="columnheader" class="sorting">numero de clases</th>
                         <th aria-label="Platform(s): activate to sort column ascending" style="width: 244px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" role="columnheader" class="sorting">orden</th>
                         <th aria-label="CSS grade: activate to sort column ascending" style="width: 114px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" role="columnheader" class="sorting">Actions</th>
                     </tr>
@@ -44,11 +42,14 @@ Lista <small>SILABO CARRERA TECNICA </small>
                 @foreach( $datos as $dato)
                 <tr class="odd">
                         <td class=" "><b>{{ $dato->id }}</b></td>
+                        <td class=" ">{{ $dato->capitulo }}</td>
                         <td class=" ">{{ $dato->titulo }}</td>
-                        <td class=" ">{{ $dato->descripcion}}</td>
+                        <td class=" ">{{ $dato->objetivos }}</td>
+                        <td class=" " width="10000" >{{ $dato->descripcion}}</td>
+                        <td class=" ">{{ $dato->numeroclases }}</td>
                         <td class=" ">{{ $dato->orden}}</td>
                         <td class=" ">
-                            {{ HTML::link('SilaboCarreraTecnica/updatecID/'.$dato->id,'Actualizar') }}
+                         {{ HTML::link('SilaboCarreraTecnica/updatecID/'.$dato->id,'Actualizar') }}
                             {{ HTML::link('SilaboCarreraTecnica/post_delete/'.$dato->id,'Eliminar') }}
                         </td>
                 </tr>

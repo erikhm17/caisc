@@ -19,9 +19,23 @@ Actualizar <small> SILABO </small>
 	</div>
 
 	<div class="form-group">
+		{{ Form::label('capitulo','Capitulo :',array('class'=>'col-sm-4 control-label')) }}
+		<div class="col-sm-8">
+			{{ Form::number('capitulo',$silabocurso_cl->capitulo,array('class'=>'form-control','placeholder'=>'','required'))}}
+		</div>
+	</div>
+
+	<div class="form-group">
 		{{ Form::label('titulo','Titulo del Silabo:',array('class'=>'col-sm-4 control-label')) }}
 		<div class="col-sm-8">
 			{{ Form::text('titulo',$silabocurso_cl->titulo,array('class'=>'form-control','placeholder'=>'isc-01','required'))}}
+		</div>
+	</div>
+
+	<div class="form-group">
+		{{ Form::label('objetivos','Objetivos:',array('class'=>'col-sm-4 control-label')) }}
+		<div class="col-sm-8">
+			{{ Form::textarea('objetivos',$silabocurso_cl->objetivos,array('class'=>'form-control','placeholder'=>'','required'))}}
 		</div>
 	</div>
 
@@ -31,6 +45,14 @@ Actualizar <small> SILABO </small>
 			{{ Form::textarea('descripcion',$silabocurso_cl->descripcion,array('class'=>'form-control','placeholder'=>'Programacion en Android','required'))}}
 		</div>
 	</div>
+
+	<div class="form-group">
+		{{ Form::label('numeroclases','Numero de clases requeridas :',array('class'=>'col-sm-4 control-label')) }}
+		<div class="col-sm-8">
+			{{ Form::text('numeroclases',$silabocurso_cl->numeroclases,array('class'=>'form-control','placeholder'=>'','required'))}}
+		</div>
+	</div>
+
 	<div class="form-group">
 		{{ Form::label('orden','Orden del silabus:',array('class'=>'col-sm-4 control-label')) }}
 		<div class="col-sm-8">

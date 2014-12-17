@@ -292,7 +292,9 @@
                             <ul class="treeview-menu">
                                 <li>{{ HTML::link('docente/add.html','Agregar') }}</li>
                                 <li>{{ HTML::link('docente/change-pass/2141','Cambiar Contraseña') }}</li>
-                                <li>{{ HTML::link('docentes','Listar Docentes') }}</li>
+                                <li>{{ HTML::link('docentes','Listar Docentes') }}</li>                        
+                                <li>{{ HTML::link('/ListarCursos/','Mis Cursos Libres') }}</li>
+                                <li>{{ HTML::link('/ListarCursosCarreras/','Mis Cursos de Carrera') }}</li>
                             </ul>
                         </li>
 
@@ -331,20 +333,7 @@
                             </a>
                             <ul class="treeview-menu">
 
-                                 <li class="treeview">
-                            <a href="SilaboCarreraLibre/create.html">
-                                <i class="fa fa-folder"></i> <span>Silabo</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>{{ HTML::link('SilaboCarreraLibre/index.html','Ver Silabo') }}</li>
-                                <li>{{ HTML::link('SilaboCarreraLibre/create.html','Agregar Silabo') }}</li>
-                                <li>{{ HTML::link('SilaboCarreraLibre/delete.html', 'Eliminar Silabo')}}</li>
-                            </ul>
-                        </li>
-
-
-                                 <li>{{HTML::link('CursosLibres/index.html','Ver Cursos Libres') }}</li>
+                                <li>{{HTML::link('CursosLibres/index.html','Ver Cursos Libres') }}</li>
                                 <li>{{ HTML::link('CursosLibres/create.html','Agregar Curso') }}</li>
                                 <li>{{ HTML::link('CursosLibres/delete.html', 'Eliminar Curso')}}</li>
                             </ul>
@@ -455,6 +444,9 @@
                                 <li>{{ HTML::link('ingresonotas/registroCL','Ver Notas Curso Libre') }}</li>
                             </ul>
                         </li>
+                        
+                       
+
 
                         <li class="treeview">
                             <a href="#">

@@ -12,33 +12,53 @@ Actualizar <small> SILABO </small>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 {{ Form::open(array('method'=> 'POST','url'=> 'SilaboCarreraTecnica/post_update.html','class'=>'form-horizontal','role'=>'form')) }}
 	<div class="form-group">
-		{{ Form::label('id','Codigo detalle del Silabo:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-3">
+		{{ Form::label('id','Codigo Detalle del Silabo:',array('class'=>'col-sm-4 control-label')) }}
+		<div class="col-sm-8">
 			{{ Form::text('id',$silabocurso_ct->id,array('class'=>'form-control','placeholder'=>'isc-01','required','readonly'=>'readonly'))}}
 		</div>
 	</div>
 
 	<div class="form-group">
+		{{ Form::label('capitulo','Capitulo :',array('class'=>'col-sm-4 control-label')) }}
+		<div class="col-sm-8">
+			{{ Form::number('capitulo',$silabocurso_ct->capitulo,array('class'=>'form-control','placeholder'=>'','required'))}}
+		</div>
+	</div>
+
+	<div class="form-group">
 		{{ Form::label('titulo','Titulo del Silabo:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-6">
+		<div class="col-sm-8">
 			{{ Form::text('titulo',$silabocurso_ct->titulo,array('class'=>'form-control','placeholder'=>'isc-01','required'))}}
 		</div>
 	</div>
 
 	<div class="form-group">
+		{{ Form::label('objetivos','Objetivos:',array('class'=>'col-sm-4 control-label')) }}
+		<div class="col-sm-8">
+			{{ Form::textarea('objetivos',$silabocurso_ct->objetivos,array('class'=>'form-control','placeholder'=>'','required'))}}
+		</div>
+	</div>
+
+	<div class="form-group">
 		{{ Form::label('descripcion','Descripcion  del Silabo:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-6">
+		<div class="col-sm-8">
 			{{ Form::textarea('descripcion',$silabocurso_ct->descripcion,array('class'=>'form-control','placeholder'=>'Programacion en Android','required'))}}
 		</div>
 	</div>
+
+	<div class="form-group">
+		{{ Form::label('numeroclases','Numero de clases requeridas :',array('class'=>'col-sm-4 control-label')) }}
+		<div class="col-sm-8">
+			{{ Form::number('numeroclases',$silabocurso_ct->numeroclases,array('class'=>'form-control','placeholder'=>'','required'))}}
+		</div>
+	</div>
+
 	<div class="form-group">
 		{{ Form::label('orden','Orden del silabus:',array('class'=>'col-sm-4 control-label')) }}
-		<div class="col-sm-6">
+		<div class="col-sm-8">
 			{{ Form::number('orden',$silabocurso_ct->orden,array('class'=>'form-control','placeholder'=>'30','required'))}}
 		</div>
 	</div>
-	
-	
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-6 col-md-6">
 			<button class="btn btn-info btn-block" type="reset">Cancelar</button>

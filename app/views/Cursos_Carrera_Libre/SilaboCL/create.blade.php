@@ -13,15 +13,28 @@ Agregar <small> NUEVO SILAB0 </small>
 {{ Form::open(array('method'=> 'POST','url'=> 'SilaboCarreraLibre/insert.html','class'=>'form-horizontal','role'=>'form')) }}
 	
 	<div class="form-group">
-		{{ Form::label('codSilabus_cl','Carga academica del Silabo:',array('class'=>'col-sm-4 control-label')) }}
+	<div class="col-sm-1">
+		{{ Form::number('codCargaAcademica_cl',$id,array('class'=>'form-control','placeholder'=>'','required','readonly'=>'readonly'))}}
+	</div></div>
+
+	<div class="form-group">
+		{{ Form::label('capitulo','Capitulo :',array('class'=>'col-sm-4 control-label')) }}
 		<div class="col-sm-8">
-			{{ Form::select('codSilabus_cl',$codSilabo,null,array('class'=>'form-control','required'))}}
+			{{ Form::number('capitulo','',array('class'=>'form-control','placeholder'=>'','required'))}}
 		</div>
 	</div>
+
 	<div class="form-group">
 		{{ Form::label('titulo','Titulo del Silabo:',array('class'=>'col-sm-4 control-label')) }}
 		<div class="col-sm-8">
 			{{ Form::text('titulo','',array('class'=>'form-control','placeholder'=>'','required'))}}
+		</div>
+	</div>
+
+<div class="form-group">
+		{{ Form::label('objetivos','Objetivos:',array('class'=>'col-sm-4 control-label')) }}
+		<div class="col-sm-8">
+			{{ Form::textarea('objetivos','',array('class'=>'form-control','placeholder'=>'','required'))}}
 		</div>
 	</div>
 
@@ -31,10 +44,18 @@ Agregar <small> NUEVO SILAB0 </small>
 			{{ Form::textarea('descripcion','',array('class'=>'form-control','placeholder'=>'','required'))}}
 		</div>
 	</div>
+
+	<div class="form-group">
+		{{ Form::label('numeroclases','Numero de clases requeridas :',array('class'=>'col-sm-4 control-label')) }}
+		<div class="col-sm-8">
+			{{ Form::text('numeroclases','',array('class'=>'form-control','placeholder'=>'','required'))}}
+		</div>
+	</div>
+
 	<div class="form-group">
 		{{ Form::label('orden','Orden del silabus:',array('class'=>'col-sm-4 control-label')) }}
 		<div class="col-sm-8">
-			{{ Form::text('orden','',array('class'=>'form-control','placeholder'=>'','required'))}}
+			{{ Form::number('orden','',array('class'=>'form-control','placeholder'=>'','required'))}}
 		</div>
 	</div>
 		
@@ -43,7 +64,7 @@ Agregar <small> NUEVO SILAB0 </small>
 			<button class="btn btn-info btn-block" type="reset">Cancelar</button>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6">
-			<button class="btn btn-primary btn-block" type="submit">Guardar</button>
+			<button class="btn btn-primary btn-block" type="submit"> Guardar</button>
 		</div>
 	</div>
 {{Form::close()}}
