@@ -50,8 +50,13 @@ class SilabusCTController extends BaseController {
 			if(is_object($silabo))
 			{
 				///falta
+				codSilabus_ct
+				$silabo->codSilabus_ct = Input::get('codSilabus_ct');
+				$silabo->capitulo = Input::get('capitulo');
 				$silabo->titulo = Input::get('titulo');
+				$silabo->objetivos = Input::get('objetivos');
 				$silabo->descripcion = Input::get('descripcion');
+				$silabo->numeroclases = Input::get('numero de clases');
 				$silabo->orden = Input::get('orden');
 				$silabo->updated_at = time();
 				$silabo->save();

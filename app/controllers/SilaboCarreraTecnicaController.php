@@ -2,23 +2,42 @@
 
 class SilaboCarreraTecnicaController extends BaseController {
 
-	public function nuevo()
+	public function nuevo($id)
 	{
-		$codSilabo = SilabusCT::lists('codCargaAcademica_ct','id');
-		return View::make('Cursos_Carrera_Tecnica.SilaboCT.create',array('codSilabo'=>$codSilabo));
+		return View::make('Cursos_Carrera_Tecnica.SilaboCT.create',array('id'=>$id));
 	}
 	public function insertar()
 	{	
-		$respuesta = SilaboCursoTecnico::agregar(Input::all());
-
-		if($respuesta['error']==true)
+		//$respuesta = SilaboCursoTecnico::agregar(Input::all());
+		$silabo = SilabusCT::agregar(Input::all());
+		$nombre = SilabusCT::get()->last();	
+		$a = $nombre->id;
+		if($silabo['error']==true)
 		{
-			return Redirect::to('SilaboCarreraTecnica/create.html')->with('mensaje',$respuesta['mensaje']);
-		} 
-		else 
-		{
-			return Redirect::to('SilaboCarreraTecnica/index.html')->with('mensaje',$respuesta['mensaje']);
+			return Redirect::to('SilaboCarreraTecnica/create/')->with('mensaje',$silabo['mensaje']);
 		}
+		else
+		 {		 		
+			$silaboaux = new SilaboCursoTecnico;
+			$silaboaux->codSilabus_ct =$a;
+			$silaboaux->capitulo = Input::get('capitulo');
+			$silaboaux->titulo = Input::get('titulo');
+			$silaboaux->objetivos = Input::get('objetivos');			
+			$silaboaux->descripcion = Input::get('descripcion');
+			$silaboaux->numeroclases = Input::get('numeroclases');
+			$silaboaux->orden = Input::get('orden');
+
+			$silaboaux->save();
+		 	//$respuesta = SilaboCursoLibre::agregar($silaboaux);
+			//if($respuesta['error']==true)
+			//{
+			//	return Redirect::to('SilaboCarreraLibre/create/')->with('mensaje',$respuesta['mensaje']);
+			//} 
+			//else 
+			//{
+			return Redirect::to('SilaboCarreraTecnica/index.html')->with('mensaje','se creo el silabo');
+			//}
+		}		
 	}
 
 	public function ActualizarBuscandoNombre()
@@ -49,8 +68,10 @@ class SilaboCarreraTecnicaController extends BaseController {
 			$silabo = SilaboCursoTecnico::where('id','=',$cod)->firstOrFail();
 			if(is_object($silabo))
 			{
-				///falta
+				$silabo->capitulo = Input::get('capitulo');
 				$silabo->titulo = Input::get('titulo');
+				$silabo->objetivos = Input::get('objetivos');	
+				$silabo->numeroclases = Input::get('numeroclases');
 				$silabo->descripcion = Input::get('descripcion');
 				$silabo->orden = Input::get('orden');
 				$silabo->updated_at = time();
