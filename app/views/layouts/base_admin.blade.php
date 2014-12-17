@@ -407,6 +407,8 @@
                             <ul class="treeview-menu">
                                 <li>{{ HTML::link('/crearCargaCt','Carga Academica CT') }}</li>
                                 <li>{{ HTML::link('/crearCargaCl','Carga Academica CL') }}</li>
+                                <li>{{ HTML::link('/horarioDocente','Horario Por Docente') }}</li>
+                                <li>{{ HTML::link('/horarioPorCurso','Horario Por Curso') }}</li>
                             </ul>
                         </li>
 

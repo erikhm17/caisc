@@ -24,27 +24,21 @@ class CargaControllerCl extends \BaseController {
 			));
 	}
 	public function AgregarDatos(){
-			$codCursoCl=$_POST['cmbCodCursos'];
+			    $codCursoCl=$_POST['cmbCodCursos'];
 				$codDocente=$_POST['cmbIdDocentes'];
 				$turno=$_POST['cmbTurnos'];
 				$grupo=$_POST['cmbGrupos'];
 				$semestre=$_POST['cmbSemestres'];
 				$aula=$_POST['cmbAulas'];
-
-				$dias_inicio= $_POST['cmbDiasInicio'];
-				$meses_inicio=$_POST['cmbMesesInicio'];
-				$anios_inicio=$_POST['cmbAniosInicio'];
-				
-				$dias_fin= $_POST['cmbDiasFin'];
-				$meses_fin=$_POST['cmbMesesFin'];
-				$anios_fin=$_POST['cmbAniosFin'];
-				
 				$estado=$_POST['cmbEstado'];
 				$minimo=$_POST['txtMinimo'];
-				
+
 				// convertir 
-				$auxInicio = date_create(''.$anios_inicio.'-'.$meses_inicio.'-'.$dias_inicio);
-				$auxFin = date_create(''.$anios_fin.'-'.$meses_fin.'-'.$dias_fin);
+				$varFechaInicio = Input::get('txtFechaInicio');
+				$varFechaFin = Input::get('txtFechaFin');
+
+				$auxInicio = date_create($varFechaInicio);
+				$auxFin = date_create($varFechaFin);
 
 				$fechaInicio =date_format($auxInicio, 'Y-m-d H:i:s');
 				$fechaFin =date_format($auxFin, 'Y-m-d H:i:s');
@@ -56,245 +50,141 @@ class CargaControllerCl extends \BaseController {
 				global $horaViernes;
 				global $horaSabado;
 
+				$StringLunes="";
+				$StringMartes="";
+				$StringMiercoles="";
+				$StringJueves="";
+				$StringViernes="";
+				$StringSabado="";
+
+				$diaLunes="";
+				$diaMartes="";
+				$diaMiercoles="";
+				$diaJueves="";
+				$diaViernes="";
+				$diaSabado="";
+
 				$restrict=false;
 				$restrictFinal=false;
-			
 
-			if (Input::get('rbHorariosLunes')) {
-				$horaLunes=$_POST['rbHorariosLunes'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaLunes,'lunes'));
-				$obj = $validador[0];
-			
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						echo "Lunes a las : ".$horaLunes." no esta disponible ";
-						$restrict=true;
-					   }
-			}
+		if ($minimo=="") {
+			return Redirect::to('/crearCargaCl')->with('mensaje','ingresa un minimo');		 		
+		} 
+		else
+		{
 
-			if (Input::get('rbHorariosMartes')) {
-				$horaMartes=$_POST['rbHorariosMartes'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaMartes,'Martes'));
-				//$validador = array('Carlos','Daniel','Xavier','Gonzalo','Karla');
-				//$stringValidador=implode($validador,"");
-				//print_r($validador[0]);
-				$obj = $validador[0];
-				//echo  $obj->temp; 
+				if ((Input::get('rbHorariosLunes')==false)and(Input::get('rbHorariosMartes')==false)and(Input::get('rbHorariosMiercoles')==false)and(Input::get('rbHorariosJueves')==false)and(Input::get('rbHorariosViernes')==false)and(Input::get('rbHorariosSabado')==false)) {$restrictFinal=true;}
 
-			
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						echo "Martes a las : ".$horaMartes." no esta disponible ";
-						$restrict=true;
-					   }
-			}
-
-			if (Input::get('rbHorariosMiercoles')) {
-
-				$horaMiercoles=$_POST['rbHorariosMiercoles'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaMiercoles,'Miercoles'));
-				$obj = $validador[0];
-			
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						echo "Miercoles a las : ".$horaMiercoles." no esta disponible ";
-						$restrict=true;
+				if (Input::get('rbHorariosLunes')) {
+					$horaLunes=$_POST['rbHorariosLunes'];
+					$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaLunes,'lunes'));
+					$obj = $validador[0];
+				
+						if ($obj->temp !== "Disponible") {
+							$StringLunes="El lunes a las".$horaLunes." ";
+							$restrict=true;
+							$restrictFinal=true;
+						   }
 				}
-			    
-			}
-
-			if (Input::get('rbHorariosJueves')) {
-				$horaJueves=$_POST['rbHorariosJueves'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaJueves,'Jueves'));
-				$obj = $validador[0];
-				
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						echo "Jueves a las : ".$horaJueves." no esta disponible ";
-						$restrict=true;
-					}
-				
-			    
-			} 
-
-			if (Input::get('rbHorariosViernes')) {
-				$horaViernes=$_POST['rbHorariosViernes'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaViernes,'Viernes'));
-				$obj = $validador[0];
-				
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						echo "Viernes a las : ".$horaViernes." no esta disponible ";
-						$restrict=false;
-					 }  
-			
-			} 
-			if (Input::get('rbHorariosSabado')) {
-				$horaSabado=$_POST['rbHorariosSabado'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaSabado,'Sabado'));
-				$obj = $validador[0];
-				
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						echo "Sabado a las : ".$horaSabado." no esta disponible ";
-						$restrict=true;
-					}
-				
-			    
-			} 
-
-		if ($restrict==false) {
-			$restrictFinal ==false;
-			if (Input::get('rbHorariosLunes')) {
-				$horaLunes=$_POST['rbHorariosLunes'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaLunes,'lunes'));
-				$obj = $validador[0];
-				if ($obj->temp=="Disponible" and $restrict==false ) {
-					if ($restrictFinal==false) {
-					DB::select('call insertarCargaAcademica_cl(?,?,?,?,?,?,?,?,?,?,?,?)'
-			    	,array($codCursoCl,$codDocente,$turno,$grupo,$semestre,$fechaInicio,$fechaFin,$estado,$minimo,$aula,$horaLunes,'lunes'));		
-			    	echo "Lunes a las : ".$horaLunes." , ";
-			    }
-
-					
-				} else {
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						$restrict=true;
-					   }
-
+				if (Input::get('rbHorariosMartes')) {
+					$horaMartes=$_POST['rbHorariosMartes'];
+					$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaMartes,'Martes'));
+					$obj = $validador[0];
+						if ($obj->temp !== "Disponible") {
+							$StringMartes="El Martes a las".$horaMartes." ";
+							$restrict=true;
+							$restrictFinal=true;
+						   }
 				}
-			}
-
-			if (Input::get('rbHorariosMartes')) {
-				$horaMartes=$_POST['rbHorariosMartes'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaMartes,'Martes'));
-				//$validador = array('Carlos','Daniel','Xavier','Gonzalo','Karla');
-				//$stringValidador=implode($validador,"");
-				//print_r($validador[0]);
-				$obj = $validador[0];
-				//echo  $obj->temp; 
-
-				if ($obj->temp=="Disponible" and $restrict==false ) {
-					if ($restrictFinal==false) {
-					DB::select('call insertarCargaAcademica_cl(?,?,?,?,?,?,?,?,?,?,?,?)'
-			    	,array($codCursoCl,$codDocente,$turno,$grupo,$semestre,$fechaInicio,$fechaFin,$estado,$minimo,$aula,$horaMartes,'Martes'));		
-			    	
-					echo "Martes a las : ".$horaMartes." , ";
-						}
-			    	
-				} else {
-					
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						$restrict=true;
-					   }
-				}
-			    
-			}
-
-			if (Input::get('rbHorariosMiercoles')) {
-
-				$horaMiercoles=$_POST['rbHorariosMiercoles'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaMiercoles,'Miercoles'));
-				$obj = $validador[0];
-				if ($obj->temp=="Disponible" and $restrict==false ) {
-					
-					
-			    if ($restrictFinal==false) {
-						DB::select('call insertarCargaAcademica_cl(?,?,?,?,?,?,?,?,?,?,?,?)'
-			    	,array($codCursoCl,$codDocente,$turno,$grupo,$semestre,$fechaInicio,$fechaFin,$estado,$minimo,$aula,$horaMiercoles,'Miercoles'));		
-			    	
-					echo "El Miercoles a las : ".$horaMiercoles." , ";
-						}
-
-				} else {
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						$restrict=true;
-					 
+				if (Input::get('rbHorariosMiercoles')) {
+					$horaMiercoles=$_POST['rbHorariosMiercoles'];
+					$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaMiercoles,'Miercoles'));
+					$obj = $validador[0];
+				
+						if ($obj->temp !== "Disponible") {
+							$StringMiercoles="El Miercoles a las".$horaMiercoles.' ';
+							$restrict=true;
+							$restrictFinal=true;
 					}
 				}
-			    
-			}
+				if (Input::get('rbHorariosJueves')) {
+					$horaJueves=$_POST['rbHorariosJueves'];
+					$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaJueves,'Jueves'));
+					$obj = $validador[0];
+					
+						if ($obj->temp !== "Disponible") {
+							$StringJueves="El Jueves a las ".$horaJueves.' ';
+							$restrict=true;
+							$restrictFinal=true;
+						}
+				} 
+				if (Input::get('rbHorariosViernes')) {
+					$horaViernes=$_POST['rbHorariosViernes'];
+					$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaViernes,'Viernes'));
+					$obj = $validador[0];
+						if ($obj->temp !== "Disponible") {
+							$StringViernes="El Viernes a las ".$horaViernes.' ';
+							$restrict=false;
+							$restrictFinal=true;
+						}  
+				} 
+				if (Input::get('rbHorariosSabado')) {
+					$horaSabado=$_POST['rbHorariosSabado'];
+					$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaSabado,'Sabado'));
+					$obj = $validador[0];
+					
+						if ($obj->temp !== "Disponible") {
+							$StringSabado="El Sabado a las ".$horaSabado.' ';
+							$restrict=true;
+							$restrictFinal=true;
+						}
+				} 
 
-			if (Input::get('rbHorariosJueves')) {
-				$horaJueves=$_POST['rbHorariosJueves'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaJueves,'Jueves'));
-				$obj = $validador[0];
-				if ($obj->temp=="Disponible" and $restrict==false ) {
-					
-					
-				if ($restrictFinal==false) {
-						DB::select('call insertarCargaAcademica_cl(?,?,?,?,?,?,?,?,?,?,?,?)'
-			    	,array($codCursoCl,$codDocente,$turno,$grupo,$semestre,$fechaInicio,$fechaFin,$estado,$minimo,$aula,$horaJueves,'Jueves'));		
-			    	echo "Jueves a las : ".$horaJueves." , ";
-						}
-			    	
-				} else {
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						$restrict=true;
-					}
-				}
-			    
+			if ($restrict==true) {
+				return Redirect::to('/crearCargaCl')->with('mensaje',$StringLunes.''.$StringMartes.''.$StringMiercoles.''.$StringJueves.''.$StringViernes.''.$StringSabado. 'NO ESTA DISPONIBLE NO SE PUDO INSERTAR');		 	
 			} 
 
-			if (Input::get('rbHorariosViernes')) {
-				$horaViernes=$_POST['rbHorariosViernes'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaViernes,'Viernes'));
-				$obj = $validador[0];
-				if ($obj->temp=="Disponible" and $restrict==false ) {
-				
-			    	if ($restrictFinal==false) {
-						DB::select('call insertarCargaAcademica_cl(?,?,?,?,?,?,?,?,?,?,?,?)'
-			    	,array($codCursoCl,$codDocente,$turno,$grupo,$semestre,$fechaInicio,$fechaFin,$estado,$minimo,$aula,$horaViernes,'Viernes'));		
-			    	echo "Viernes a las : ".$horaViernes." , ";
-						}
-				} else {
-					if ($obj->temp !== "Disponible") {
-					//	echo "no esta disponible";
-						$restrict=false;
-					 }  
+			if ($restrict==false and $restrictFinal ==false) {
+				if (Input::get('rbHorariosLunes')) {
+					$StringLunes="Lunes de ".$horaLunes.' ';	
+				    $diaLunes="x";
 				}
-			    
-			} 
-			if (Input::get('rbHorariosSabado')) {
-				$horaSabado=$_POST['rbHorariosSabado'];
-				$validador = DB::select('select validarCarga(?,?,?) as temp',array($aula,$horaSabado,'Sabado'));
-				$obj = $validador[0];
-				if ($obj->temp=="Disponible" and $restrict==false ) {
-					
-			    	if ($restrictFinal==false) {
-						DB::select('call insertarCargaAcademica_cl(?,?,?,?,?,?,?,?,?,?,?,?)'
-				    	,array($codCursoCl,$codDocente,$turno,$grupo,$semestre,$fechaInicio,$fechaFin,$estado,$minimo,$aula,$horaSabado,'Sabado'));		
-				    	echo "Sabado a las : ".$horaSabado." , ";
-						}
-				} else {
-					if ($obj->temp !== "Disponible") {
-						//echo "no esta disponible";
-						$restrict=true;
-					}
+
+				if (Input::get('rbHorariosMartes')) {
+	                $StringMartes="Martes de ".$horaMartes.' ';	
+				    $diaMartes="x";
 				}
-			    
-			} 
-	
-		} else {
-			echo "no se Puede  insertar";
-		}
+
+				if (Input::get('rbHorariosMiercoles')) {
+					$StringMiercoles="Miercoles de ".$horaMiercoles.' ';	
+				    $diaMiercoles="x";
+				}
+
+				if (Input::get('rbHorariosJueves')) {
+					$StringJueves="Jueves de ".$horaJueves.' ';	
+				    $diaJueves="x";	
+				} 
+
+				if (Input::get('rbHorariosViernes')) {
+					$StringViernes="Viernes de ".$horaViernes.' ';	
+					$diaViernes="x";
+				} 
+				if (Input::get('rbHorariosSabado')) {
+				    $StringSabado="Sabado de ".$horaSabado.' ';	
+					$diaSabado="x";	
+				} 
+				DB::select('call insertarCargaAcademica_cl(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'
+					    	,array($codCursoCl,$codDocente,$turno,$grupo,$semestre,
+					    		   $fechaInicio,$fechaFin,$estado,$minimo,$aula,
+					    		   $horaLunes,$diaLunes,$horaMartes,$diaMartes,$horaMiercoles,
+					    		   $diaMiercoles,$horaJueves,$diaJueves,$horaViernes,$diaViernes,
+					    		   $horaSabado,$diaSabado));	
 		
-
-		return View::make('vistaCarga.datoInsertado');
-		
-
-	/*	$horaLunes=$_POST['rbHorariosLunes'];
-		$horaMartes=$_POST['rbHorariosMartes'];
-		$horaMiercoles=$_POST['rbHorariosMiercoles'];
-		$horaJueves=$_POST['rbHorariosJueves'];
-		$horaViernes=$_POST['rbHorariosViernes'];
-		$horaSabado=$_POST['rbHorariosSabado'];
-	*/
-		
+			} else {
+				return Redirect::to('/crearCargaCl')->with('mensaje',"ERROR INGRESA UN CAMPO CHECK");		 	
+			}
+				return Redirect::to('/crearCargaCl')->with('mensaje',"SE INSERTO EXITOSAMENTE");
+		}	
 	}
 	public $restful=true;
 	
@@ -303,7 +193,7 @@ class CargaControllerCl extends \BaseController {
 	    return View::make('vistaCarga.datosRegistrados')->with('elementosCarga',$elementosCarga);
 	}
 	public function eliminarElementoCarga($id){
-			
+		// no disponible	
 		$elemento = DB::delete('DELETE FROM tcargaacademica WHERE codCargaAcademica_ct = ? ', array($id) );
         if($elemento)
         {

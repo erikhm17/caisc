@@ -214,16 +214,18 @@ Route::post('SilaboCarreraTecnica/eliminar.html','SilaboCarreraTecnicaController
 Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'));
 
 // carga academica
-Route::get('/crearCargaCt','CargaControllerCt@CargarIndexCargaCt');
-Route::post('/recogerDatos','CargaControllerCt@AgregarDatos');
-Route::post('/horarios','CargaControllerCt@mostrarHorarios');
-Route::get('/MostrarOpciones','CargaControllerCt@MostrarOpciones');
-Route::get('/eliminarCarga/{id}', 'CargaControllerCt@eliminarElementoCarga');
+Route::get('crearCargaCt','CargaControllerCt@CargarIndexCargaCt');
+Route::post('recogerDatos','CargaControllerCt@AgregarDatos');
+Route::post('horarios','CargaControllerCt@mostrarHorarios');
+Route::get('MostrarOpciones','CargaControllerCt@MostrarOpciones');
+Route::get('eliminarCarga/{id}', 'CargaControllerCt@eliminarElementoCarga');
+Route::get('crearCargaCl','CargaControllerCl@CargarIndexCargaCl');
+Route::post('recogerDatosCl','CargaControllerCl@AgregarDatos');
+Route::get('mostrarDatos','CargaControllerCt@MostrarDatos');
+Route::get('eliminarCarga/{id}', 'CargaControllerCt@eliminarElementoCarga');
 
-Route::get('/crearCargaCl','CargaControllerCl@CargarIndexCargaCl');
-Route::post('/recogerDatosCl','CargaControllerCl@AgregarDatos');
-Route::get('/mostrarDatos','CargaControllerCt@MostrarDatos');
-Route::get('/eliminarCarga/{id}', 'CargaControllerCt@eliminarElementoCarga');
+Route::get('horarioDocente', 'CargaControllerCt@mostrarPorDocente');
+Route::get('horarioPorCurso', 'CargaControllerCt@mostrarPorCurso');
 
 
 Route::get('ingresonotas/inicioCT','IngresoNotasController@inicioCT');

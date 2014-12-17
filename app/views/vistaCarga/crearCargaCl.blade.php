@@ -1,103 +1,70 @@
 @extends('layouts.base_admin')
 @section('title')
-Agregar Personal <small> NUEVO PERSONAL </small>
+<small> CREAR CARGA CURSO LIBRE </small>
 @stop
 @section('breadcrumb')
-<li>Agregar</li>
 @stop
 @section('content')
-    <!DOCTYPE html>
 <html>
 <head>
-    <title>principal</title>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
-{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')}}
-{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css')}}
-{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')}}
-
+    <title>Crear carga cl</title>
 </head>
-<style type="text/css">
-    table tr td,th {
-        text-align: center;
-        border: 1px solid;
-        border-color: #5882FA;
-    }
-.inputs,.lbls{
-    display: inline;
-
-}
-
-</style>
 <body>
     <header id="inicio">
-        <h2>Tipo Curso libre</h2>
+        <h2 class="lead" align="center" style="font-size: 27px">Tipo Curso libre</h2>
     </header>
     <section id="formularioCarga" role="form">
-        {{ Form::open(array('url' => '/recogerDatosCl')) }}
+        @if(Session::has('mensaje'))
+        <div class="alert-box success">
+           <p> <strong> {{ Session::get('mensaje') }} </strong> </p>
+        </div>   
+        @endif
+        {{ Form::open(array('url' => '/recogerDatosCl','class'=>'form-horizontal','role'=>'form')) }}
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
             
-            <div>{{Form::label('titulo','Tipo Curso libre')}}</div>
+            <div class="form-group">{{Form::label('lblCodCurso','Curso',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6">{{ Form::select('cmbCodCursos', $varElementosComboCursos,null,array('class'=>'form-control','required'))}}</div>
+            </div>
 
-            <p class="lbls">{{Form::label('lblCodCurso','Curso')}}</p>
-            <div class="inputs">{{ Form::select('cmbCodCursos', $varElementosComboCursos)}}</div>
+            <div class="form-group">{{Form::label('lblIdDocente','Docente:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6">{{ Form::select('cmbIdDocentes', $varElementosComboIdDocentes,null,array('class'=>'form-control','required')) }}</div>
+            </div>
 
-            <p class="lbls">{{Form::label('lblIdDocente','Docente:')}}</p>
-            <div class="inputs">{{ Form::select('cmbIdDocentes', $varElementosComboIdDocentes) }}</div>
-            
-            <p class="lbls">{{Form::label('lblTurno','Turno:')}}</p>
-            <div class="inputs">{{ Form::select('cmbTurnos', $varElementosComboTurnos) }}</div>
-            
-            <p class="lbls">{{Form::label('lblGrupo','Grupo:')}}</p>
-            <div class="inputs">{{ Form::select('cmbGrupos', $varElementosComboGrupos)}}</div>
+            <div class="form-group">{{Form::label('lblTurno','Turno:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6">{{ Form::select('cmbTurnos', $varElementosComboTurnos,null,array('class'=>'form-control','required')) }}</div>
+            </div>
 
-            <p class="lbls">{{Form::label('lblSemestre','Semestre:')}}</p>
-            <div class="inputs">{{ Form::select('cmbSemestres', $varElementosComboSemestres) }}</div>
-            
-            <p class="lbls">{{Form::label('lblAula','Aula:')}}</p>
-            <div class="inputs">{{ Form::select('cmbAulas', $varElementosComboCodAula)}}</div>
+            <div class="form-group">{{Form::label('lblGrupo','Grupo:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6">{{ Form::select('cmbGrupos', $varElementosComboGrupos,null,array('class'=>'form-control','required'))}}</div>
+            </div>
+       
+            <div  class="form-group">{{Form::label('lblSemestre','Semestre:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6">{{ Form::select('cmbSemestres', $varElementosComboSemestres,null,array('class'=>'form-control','required')) }}</div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div  class="form-group">{{Form::label('lblAula','Aula:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6">{{ Form::select('cmbAulas', $varElementosComboCodAula,null,array('class'=>'form-control','required'))}}</div>
+            </div>
+            <div  class="form-group">{{Form::label('lblFechaInicio','Fecha Inicio:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6"><input  class = "form-control " type="date" name="txtFechaInicio" name="FechaInicio"></div>
+            </div>
 
-            <p class="lbls">{{Form::label('lblFechaInicio','Fecha Inicio:')}}</p>
-            <p class="lbls">{{Form::label('lblDiaInicio','Dia:')}}</p>
-            <div class="inputs">{{Form::select('cmbDiasInicio', array('1' => '1', '2' => '2','3' => '3', '4' => '4','5'=>'5',
-                                                                '6' => '6', '7' => '7','8' => '8', '9' => '9','10'=>'10',
-                                                                '11' => '11', '12' => '12','13' => '13', '14' => '14','15'=>'15',
-                                                                '16' => '16', '17' => '17','18' => '18', '19' => '19','20'=>'20',
-                                                                '21' => '21', '22' => '22','23' => '23', '24' => '24','25'=>'25',
-                                                                '26' => '26', '27' => '27','28' => '28', '29' => '29','30'=>'30','31'=>'31'))}}</div>
-            <p class="lbls">{{Form::label('lblMesInicio','Mes:')}}</p>
-            <div class="inputs">{{Form::select('cmbMesesInicio', array('1' => '1', '2' => '2','3' => '3', '4' => '4','5'=>'5',
-                                                                '6' => '6', '7' => '7','8' => '8', '9' => '9','10'=>'10',
-                                                                '11' => '11', '12'=>'12'))}}</div>
-            <p class="lbls">{{Form::label('lblAnioInicio','Año:')}}</p>
-            <div class="inputs">{{Form::select('cmbAniosInicio', array('2014' => '2014', '2015' => '2015','2016' => '2016', '2017' => '2017','2018' => '2018', '2019' => '2019','2020' => '2020', '2021' => '2021'))}}</div>
+            <div  class="form-group">{{Form::label('lblFechaFin','Fecha Fin:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6"><input  class = "form-control " type="date" name="txtFechaFin" name="FechaFin"></div>
+            </div>
+          
+            <div  class="form-group">{{Form::label('lblEstado','Estado:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6">{{Form::select('cmbEstado', array('0' => '0', '1' => '1'),null,array('class'=>'form-control','required'))}}</div>
+            </div>
 
+            <div  class="form-group">{{Form::label('lblMinimo','Minimo:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div  class="col-sm-6">{{Form::text('txtMinimo',null,array('class'=>'form-control','required'))}}</div>     
+            </div>
+         </div>
 
-            <p class="lbls">{{Form::label('lblFechaFin','Fecha Fin:')}}</p>
-            <p class="lbls">{{Form::label('lblDiaFin','Dia:')}}</p>
-            <div class="inputs">{{Form::select('cmbDiasFin', array('1' => '1', '2' => '2','3' => '3', '4' => '4','5'=>'5',
-                                                                '6' => '6', '7' => '7','8' => '8', '9' => '9','10'=>'10',
-                                                                '11' => '11', '12' => '12','13' => '13', '14' => '14','15'=>'15',
-                                                                '16' => '16', '17' => '17','18' => '18', '19' => '19','20'=>'20',
-                                                                '21' => '21', '22' => '22','23' => '23', '24' => '24','25'=>'25',
-                                                                '26' => '26', '27' => '27','28' => '28', '29' => '29','30'=>'30','31'=>'31'))}}</div>
-            <p class="lbls">{{Form::label('lblMesFin','Mes:')}}</p>
-            <div class="inputs">{{Form::select('cmbMesesFin', array('1' => '1', '2' => '2','3' => '3', '4' => '4','5'=>'5',
-                                                                '6' => '6', '7' => '7','8' => '8', '9' => '9','10'=>'10',
-                                                                '11' => '11', '12'=>'12'))}}</div>
-            <p class="lbls">{{Form::label('lblAnioFin','Año:')}}</p>
-            <div class="inputs">{{Form::select('cmbAniosFin', array('2014' => '2014', '2015' => '2015','2016' => '2016', '2017' => '2017','2018' => '2018', '2019' => '2019','2020' => '2020', '2021' => '2021'))}}</div>
-
-            <p class="lbls">{{Form::label('lblEstado','Estado:')}}</p>
-            <div class="inputs">{{Form::select('cmbEstado', array('0' => '0', '1' => '1'))}}</div>
-
-            <p class="lbls">{{Form::label('lblMinimo','Minimo:')}}</p>
-            <p class="inputs">{{Form::text('txtMinimo')}}</p>     
-
-            <div class="table-responsive">
-                <table class="table table-hover">
+         <div>
+                <table class="table table-bordered table-hover">
                     <thead>
                         <tr class="warning">
                             <th>Hora</th>
@@ -340,11 +307,12 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                         </td>
                     </tr>
                 </table>
-            </div>
-        <p>{{Form::submit('Registrar')}}</p>
+         </div>
+
+        <div class="col-xs-12 col-sm-3 col-md-3">{{Form::submit('Registrar',array('class'=>'btn btn-info btn-block'))}}</div>
         {{ Form::close() }}
         
-        <td>{{ HTML::link(URL::to('/MostrarOpciones'), 'Verificar Horarios') }}</td>
+        <div class="col-xs-12 col-sm-3 col-md-3">{{ HTML::link(URL::to('/MostrarOpciones'), 'Verificar Horarios',array('class'=>'btn btn-info btn-block')) }}</div>
         
     </section>
 </body>

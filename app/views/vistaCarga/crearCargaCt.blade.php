@@ -1,6 +1,6 @@
 @extends('layouts.base_admin')
 @section('title')
-Agregar Personal <small> NUEVO PERSONAL </small>
+<small> CREAR CARGA CARRERA TECNICA </small>
 @stop
 @section('breadcrumb')
 <li>Agregar</li>
@@ -9,58 +9,47 @@ Agregar Personal <small> NUEVO PERSONAL </small>
 <html>
 <head>
     
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')}}
-{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css')}}
-{{HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')}}
 </head>
-<style type="text/css">
-    table tr td,th {
-        text-align: center;
-        border: 1px solid;
-        border-color: #5882FA;
-    }
-.inputs,.lbls{
-    display: inline;
-
-}
-</style>
 <body>
     <header id="inicio">
-        <h2>Tipo Carrera Tecnica</h2>
+        <h1 class="lead" align="center" style="font-size: 27px">Tipo Carrera Tecnica</h1>
     </header>
     <section id="formularioCarga" role="form">
-        {{ Form::open(array('url' => '/recogerDatos')) }}
-            
-            <div>{{Form::label('lblTipo','Tipo: Carrera Tecnica')}}</div>
+        @if(Session::has('mensaje'))
+         <!--  <p> <strong> {{ Session::get('mensaje') }} </strong> </p>-->
+        @endif
+        {{ Form::open(array('url' => '/recogerDatos','class'=>'form-horizontal','role'=>'form')) }}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="form-group">{{Form::label('lblSemestre','Semestre',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6">{{ Form::select('cmbSemestre', $varElementosComboSemestre,null,array('class'=>'form-control','required'))}}</div>
+            </div>
+            <div class="form-group">{{Form::label('lblCurso','Curso:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6">{{ Form::select('cmbCursos', $varElementosComboCodCurso_ct,null,array('class'=>'form-control','required')) }}</div>
+            </div>
 
-       <!-- <p class="lbls">{{Form::label('lblCargaCodigo','Carga Codigo')}}</p>
-            <p class="inputs">{{Form::text('txtCodCargaAcademica_ct')}}</p>     
-        -->
-            <p class="lbls">{{Form::label('lblSemestre','Semestre')}}</p>
-            <!--<p class="inputs">{{Form::text('txtSemestre')}}</p> --> 
-            <div class="inputs">{{ Form::select('cmbSemestre', $varElementosComboSemestre)}}</div>
+            <div class="form-group">{{Form::label('lblDocente','Docente:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div class="col-sm-6">{{ Form::select('cmbDocentes', $varElementosComboCodDocente,null,array('class'=>'form-control','required')) }}</div>
+            </div>
+    </div>
 
-            <p class="lbls">{{Form::label('lblCurso','Curso:')}}</p>
-            <div class="inputs">{{ Form::select('cmbCursos', $varElementosComboCodCurso_ct) }}</div>
-            
-            <p class="lbls">{{Form::label('lblDocente','Docente:')}}</p>
-            <div class="inputs">{{ Form::select('cmbDocentes', $varElementosComboCodDocente) }}</div>
-            
-            <p class="lbls">{{Form::label('lblAula','Aula:')}}</p>
-            <div class="inputs">{{ Form::select('cmbAulas', $varElementosComboCodAula)}}</div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="form-group">{{Form::label('lblAula','Aula:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div  class="col-sm-8">{{ Form::select('cmbAulas', $varElementosComboCodAula,null,array('class'=>'form-control','required'))}}</div>
+            </div>
 
-            <p class="lbls">{{Form::label('lblTurno','Turno:')}}</p>
-            <div class="inputs">{{ Form::select('cmbTurnos', $varElementosComboTurno) }}</div>
-            
-            <p class="lbls">{{Form::label('lblGrupo','Grupo:')}}</p>
-            <div class="inputs">{{ Form::select('cmbGrupos', $varElementosComboGrupo) }}</div>
+            <div class="form-group">{{Form::label('lblTurno','Turno:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div  class="col-sm-8">{{ Form::select('cmbTurnos', $varElementosComboTurno,null,array('class'=>'form-control','required')) }}</div>
+            </div>
+
+            <div class="form-group">{{Form::label('lblGrupo','Grupo:',array('class'=>'col-sm-3 control-label lead'))}}
+                <div  class="col-sm-8">{{ Form::select('cmbGrupos', $varElementosComboGrupo,null,array('class'=>'form-control','required')) }}</div>
+            </div>
+    </div>
+        
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table  class="table table-bordered table-hover">
                     <thead>
-                        <tr class="warning">
+                        <tr class="info">
                             <th>Hora</th>
                             <th>Lunes</th>
                             <th>Martes</th>
@@ -302,12 +291,15 @@ Agregar Personal <small> NUEVO PERSONAL </small>
                     </tr>
                 </table>
             </div>
-        <p>{{Form::submit('Registrar')}}</p>
+            
+        <div class="col-xs-12 col-sm-3 col-md-3">{{Form::submit('Registrar',array('class'=>'btn btn-info btn-block'))}}</div>
         {{ Form::close() }}
         
-        <td>{{ HTML::link(URL::to('/MostrarOpciones'), 'Verificar Horarios') }}</td>
+        <div class="col-xs-12 col-sm-3 col-md-3">{{ HTML::link(URL::to('/MostrarOpciones'), 'Verificar Horarios',array('class'=>'btn btn-info btn-block')) }}</div>
+        
         
     </section>
+   
 </body>
 </html>
 
