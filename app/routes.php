@@ -176,7 +176,12 @@ Route::get('CursosTecnica/post_delete/{id}',array('uses'=>'CursosCarreraTecnicaC
 Route::post('CursosTecnica/eliminar.html','CursosCarreraTecnicaController@eliminando');
 
 //Modulo silabo de carrera libre
-Route::get('SilaboCarreraLibre/create.html','SilaboCarreraLibreController@nuevo');
+
+// Listar cursos por docente
+Route::post('/ListarCursos/create/{id}','ListarCursosController@create');
+Route::controller('ListarCursos','ListarCursosController');
+
+Route::get('SilaboCarreraLibre/create/{id}','SilaboCarreraLibreController@nuevo');
 Route::get('SilaboCarreraLibre/index.html','SilaboCarreraLibreController@listar');
 Route::post('SilaboCarreraLibre/insert.html','SilaboCarreraLibreController@insertar');
 
@@ -189,7 +194,12 @@ Route::get('SilaboCarreraLibre/post_delete/{id}',array('uses'=>'SilaboCarreraLib
 Route::post('SilaboCarreraLibre/eliminar.html','SilaboCarreraLibreController@eliminando');
 
 //Modulo silabo de carrera tecnica
-Route::get('SilaboCarreraTecnica/create.html','SilaboCarreraTecnicaController@nuevo');
+
+// Listar cursos de carrera por docente
+Route::post('/ListarCursosCarrera/create/{id}','ListarCursosController@create');
+Route::controller('ListarCursosCarreras','ListarCursosCTController');
+
+Route::get('SilaboCarreraTecnica/create/{id}','SilaboCarreraTecnicaController@nuevo');
 Route::get('SilaboCarreraTecnica/index.html','SilaboCarreraTecnicaController@listar');
 Route::post('SilaboCarreraTecnica/insert.html','SilaboCarreraTecnicaController@insertar');
 
@@ -201,11 +211,6 @@ Route::get('SilaboCarreraTecnica/delete.html','SilaboCarreraTecnicaController@ge
 Route::get('SilaboCarreraTecnica/post_delete/{id}',array('uses'=>'SilaboCarreraTecnicaController@post_eliminar'));
 Route::post('SilaboCarreraTecnica/eliminar.html','SilaboCarreraTecnicaController@eliminando');
 Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'));
-
-
-// carga academica
-// carga academica
-
 
 // carga academica
 Route::get('/crearCargaCt','CargaControllerCt@CargarIndexCargaCt');
@@ -231,7 +236,6 @@ Route::post('ingresonotas/ingresoCL','IngresoNotasController@cursoCL');
 Route::post('ingresonotas/ingresoNotaCL','IngresoNotasController@ingresoCL');
 Route::post('ingresonotas/consolidadoCL','IngresoNotasController@consolidadoCL');
 Route::get('ingresonotas/registroCL','IngresoNotasController@registroCL');
-
 
 //Pago en planilla docentes
 Route::get('Planilla',array('uses'=>'PlanillaController@index'));
