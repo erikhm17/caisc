@@ -5,7 +5,15 @@ Lista de Cursos Nuevos
 @section('breadcrumb')
 @stop
 @section('content')
-<div class="box">
+<style>
+    span a{
+        color: white;
+    }
+</style>
+<div class="box-header">
+        <p align="center"><h3 class="box-title"><b>Código Alumno:</b>{{ $cod }}</h3></p>
+</div>
+<div class="box">    
     <div class="box-body table-responsive">
         <table aria-describedby="example1_info" id="example1" class="table table-bordered table-striped dataTable">
             <thead>
@@ -29,7 +37,7 @@ Lista de Cursos Nuevos
                         <td class=" ">{{ $curso->turno }}</td>
                         <td class=" ">{{ $curso->grupo }}</td>
                         <td class=" ">
-                            {{ HTML::link('/'.$curso->codCurso,'detalles') }}
+                            <span class="label label-primary">{{ HTML::link('matriculas_cl/matricular/'.$curso->codCargaAcademica_ct,'matricular') }}</span>
                         </td>
                 </tr>
                 @endforeach

@@ -7,7 +7,7 @@ Registrar Matricula
 @stop
 @section('content')
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-    {{ Form::open(array('method'=> 'POST','url'=> 'matriculas/listaMatricula.html','class'=>'form-horizontal','role'=>'form')) }}
+    {{ Form::open(array('method'=> 'POST','url'=> 'matriculas_ct/listaMatricula.html','class'=>'form-horizontal','role'=>'form')) }}
         <div class="form-group">
             {{ Form::label('codAlumno','Ingrese Codigo Alumno:',array('class'=>'col-sm-4 control-label')) }}
             <div class="col-sm-4">
@@ -19,10 +19,6 @@ Registrar Matricula
                 <button class="btn btn-primary btn-block" type="submit">Buscar</button>
             </div>
         </div>
-    {{Form::close()}}
-    
-    {{ HTML::link('matriculas/listacursos','Ver lista de cursos') }}<br>
-    {{ HTML::link('matriculas/listaMatri','Ver registro de matricula del alumno') }}
-    
+    {{Form::close()}}    
 </div>
 @stop
