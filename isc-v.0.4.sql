@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS carrera(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS alumno(
-	`codAlumno` VARCHAR(10) NOT NULL,
+	`id` INT AUTO_INCREMENT NOT NULL,
 	`nombre` VARCHAR(50) NOT NULL,
 	`apellidos` VARCHAR(50) NOT NULL,
 	`dni` VARCHAR(8) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS alumno(
 	`modulo` INT(2) DEFAULT null,
 	`estado` INT(2) null,
 	`codCarrera` VARCHAR(10) DEFAULT null,
-	PRIMARY KEY (`codAlumno`),
+	PRIMARY KEY (`id`),
 	FOREIGN KEY (`codCarrera`) REFERENCES carrera(`id`)
 ) CHARSET=utf8;
 
@@ -133,14 +133,15 @@ CREATE TABLE IF NOT EXISTS detalle_silabus_ct(
 
 CREATE TABLE IF NOT EXISTS matricula_ct(
 	`id` INT AUTO_INCREMENT NOT NULL,
-	`codAlumno` VARCHAR(10) NOT NULL,
+	`codAlumno` INT NOT NULL,
 	`codCargaAcademica_ct` INT NOT NULL,
 	`modulo` INT NOT NULL,
 	`updated_at` DATETIME NOT NULL,
     `created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`codAlumno`) REFERENCES alumno(`codAlumno`),
-	FOREIGN KEY(`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`)
+	FOREIGN KEY (`codAlumno`) REFERENCES alumno(`id`),
+	FOREIGN KEY(`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`),
+	FOREIGN KEY('modulo') REFERENCES modulo('id')
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS nota_ct(
@@ -207,12 +208,12 @@ CREATE TABLE IF NOT EXISTS detalle_silabus_cl(
 
 CREATE TABLE IF NOT EXISTS matricula_cl(
 	`id` INT AUTO_INCREMENT NOT NULL,
-	`codAlumno` VARCHAR(10) NOT NULL,
+	`codAlumno` INT NOT NULL,
 	`codCargaAcademica_cl` INT NOT NULL,
 	`updated_at` DATETIME NOT NULL,
     `created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`codAlumno`) REFERENCES alumno(`codAlumno`),
+	FOREIGN KEY (`codAlumno`) REFERENCES alumno(`id`),
 	FOREIGN KEY(`codCargaAcademica_cl`) REFERENCES carga_academica_cl(`codCargaAcademica_cl`)
 ) CHARSET=utf8;
 
