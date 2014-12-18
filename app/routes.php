@@ -151,6 +151,7 @@ Route::get('matriculas_cl/delete/{cod}',array('uses'=>'MatriculaCLController@del
 Route::get('matriculas_cl/edit/{cod}',array('uses'=>'MatriculaCLController@edit'));
 Route::post('matriculas_cl/update.html',array('uses'=>'MatriculaCLController@update'));
 //***
+Route::get('matriculas_cl/inicioCL','MatriculaCLController@inicioCL');
 Route::get('matriculas_cl/add.html',array('uses'=>'MatriculaCLController@add'));
 
 //Modulo Cursos de Carrera Libre
