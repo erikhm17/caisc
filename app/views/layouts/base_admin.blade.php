@@ -271,6 +271,26 @@
                             </a>
                         </li>
 
+                        <li class="treeview">
+                            <a href="matriculas_ct">
+                                <i class="glyphicon glyphicon-book"></i> <span>Matriculas Carrera Técnica</span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><i class="glyphicon glyphicon-plus"></i>{{ HTML::link('matriculas_ct/registro','Registrar Matricula') }}</li>
+                                <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('matriculas_ct/listaMatriculas','Listar Matriculas') }}</li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="matriculas_cl">
+                                <i class="glyphicon glyphicon-book"></i> <span>Matriculas Curso Libre</span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('matriculas_cl/lista_cursos','Listar Cursos Disponibles') }}</li>
+                                <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('matriculas_curso_libre','Listar Matriculas') }}</li>
+                            </ul>
+                        </li>
+                        
 						<li class ="treeview">
                             <a href="personal">
                                 <i class="fa fa-folder"></i> <span>Personal</span>
@@ -413,28 +433,6 @@
                         </li>
 
                         <li class="treeview">
-                            <a href="matriculas">
-                                <i class="fa fa-folder"></i> <span>Matriculas Carrera Técnica</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>{{ HTML::link('matriculas','Registrar Matricula') }}</li>
-                                <li>{{ HTML::link('matriculas/lista','Listar') }}</li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
-                            <a href="matriculas">
-                                <i class="fa fa-folder"></i> <span>Matriculas Curso Libre</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>{{ HTML::link('matriculascl/add.html','Agregar') }}</li>
-                                <li>{{ HTML::link('matriculascl','Listar') }}</li>
-                            </ul>
-                        </li>
-
-                        <li class="treeview">
                             <a href="ingresonotas">
                                 <i class="fa fa-folder"></i> <span>Ingreso De Notas</span>
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -446,9 +444,6 @@
                                 <li>{{ HTML::link('ingresonotas/registroCL','Ver Notas Curso Libre') }}</li>
                             </ul>
                         </li>
-                        
-                       
-
 
                         <li class="treeview">
                             <a href="#">
