@@ -131,6 +131,12 @@ CREATE TABLE IF NOT EXISTS detalle_silabus_ct(
 	FOREIGN KEY(`codSilabus_ct`) REFERENCES silabus_ct(`id`)
 ) CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS modulo(
+	`id` INT AUTO_INCREMENT NOT NULL,
+	`nombre` VARCHAR(10),
+	PRIMARY KEY (`id`)
+) CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS matricula_ct(
 	`id` INT AUTO_INCREMENT NOT NULL,
 	`codAlumno` INT NOT NULL,
@@ -141,7 +147,7 @@ CREATE TABLE IF NOT EXISTS matricula_ct(
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`codAlumno`) REFERENCES alumno(`id`),
 	FOREIGN KEY(`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`),
-	FOREIGN KEY('modulo') REFERENCES modulo('id')
+	FOREIGN KEY(`modulo`) REFERENCES modulo(`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS nota_ct(
@@ -326,12 +332,6 @@ CREATE TABLE IF NOT EXISTS dia(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS semestre(
-	`id` INT AUTO_INCREMENT NOT NULL,
-	`nombre` VARCHAR(10),
-	PRIMARY KEY (`id`)
-) CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS modulo(
 	`id` INT AUTO_INCREMENT NOT NULL,
 	`nombre` VARCHAR(10),
 	PRIMARY KEY (`id`)
