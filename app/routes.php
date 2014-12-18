@@ -219,16 +219,17 @@ Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaContr
 // carga academica
 Route::get('crearCargaCt','CargaControllerCt@CargarIndexCargaCt');
 Route::post('recogerDatos','CargaControllerCt@AgregarDatos');
-Route::post('horarios','CargaControllerCt@mostrarHorarios');
-Route::get('MostrarOpciones','CargaControllerCt@MostrarOpciones');
 Route::get('eliminarCarga/{id}', 'CargaControllerCt@eliminarElementoCarga');
 Route::get('crearCargaCl','CargaControllerCl@CargarIndexCargaCl');
 Route::post('recogerDatosCl','CargaControllerCl@AgregarDatos');
 Route::get('mostrarDatos','CargaControllerCt@MostrarDatos');
 Route::get('eliminarCarga/{id}', 'CargaControllerCt@eliminarElementoCarga');
-
-Route::get('horarioDocente', 'CargaControllerCt@mostrarPorDocente');
-Route::get('horarioPorCurso', 'CargaControllerCt@mostrarPorCurso');
+Route::post('mostrarHorariosPorAula','CargaControllerCt@MostrarHorariosPorAula');
+Route::get('MostrarOpcionesPorAula','CargaControllerCt@MostrarOpcionesPorAula');
+Route::post('MostrarHorariosPorDocente', 'CargaControllerCt@MostrarHorariosPorDocente');
+Route::get('MostrarOpcionesDocente', 'CargaControllerCt@MostrarOpcionesDocente');
+Route::post('mostrarHorariosPorCurso', 'CargaControllerCt@MostrarHorariosPorCurso');
+Route::get('MostrarOpcionesPorCurso', 'CargaControllerCt@MostrarOpcionesPorCurso');
 
 
 Route::get('ingresonotas/inicioCT','IngresoNotasController@inicioCT');

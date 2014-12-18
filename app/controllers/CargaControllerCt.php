@@ -5,7 +5,7 @@ class CargaControllerCt extends \BaseController {
 
 		$elementosComboCodCurso_ct = CursoTecnico::all()->lists('nombre','id');
 		$elementosComboCodDocente = Docente::all()->lists('nombre','id');
-		$elementosComboSemestre = Semestre::all()->lists('id','id');
+		$elementosComboSemestre = Semestre::all()->lists('nombre','id');
 		$elementosComboTurno = Turno::all()->lists('nombre','id');
 		$elementosComboGrupo = Grupo::all()->lists('id','id');
 		$elementosComboCodAula = Aula::all()->lists('codAula','codAula');
@@ -20,12 +20,9 @@ class CargaControllerCt extends \BaseController {
 		));
 	}
 	public function AgregarDatos(){
-		/*	DB::select('call insertarCargaAcademica_ct(?,?,?,?,?,?,?,?)',
-				array('1','2141','1','1','1','A101','14-15','Lunes'));*/
-
+	
 		$codCurso_ct= $_POST['cmbCursos'];
 		$docente_id=$_POST['cmbDocentes'];
-		//$semestre = Input::get('txtSemestre');
 		$semestre = $_POST['cmbSemestre'];
 		$turno=$_POST['cmbTurnos'];
 		$grupo=$_POST['cmbGrupos'];
@@ -88,8 +85,6 @@ class CargaControllerCt extends \BaseController {
 			$obj = $validador[0];
 			
 				if ($obj->temp !== "Disponible") {
-					//echo "no esta disponible";
-					//echo "El Miercoles a las : ".$horaMiercoles." no esta disponible ";
 					$restrict=true;
 					$restrictFinal=true;
 					$StringMiercoles="El Miercoles a las".$horaMiercoles.' ';
@@ -103,8 +98,6 @@ class CargaControllerCt extends \BaseController {
 			$obj = $validador[0];
 			
 				if ($obj->temp !== "Disponible") {
-					//echo "no esta disponible";
-					//echo "El Jueves a las : ".$horaJueves." no esta disponible ";
 					$restrict=true;
 					$restrictFinal=true;
 					$StringJueves="El Jueves a las ".$horaJueves.' ';
@@ -118,8 +111,6 @@ class CargaControllerCt extends \BaseController {
 			$obj = $validador[0];
 			
 				if ($obj->temp !== "Disponible") {
-					//echo "no esta disponible";
-					//echo "el Viernes a las : ".$horaViernes." no esta disponible ";
 					$restrict=true;
 					$restrictFinal=true;
 					$StringViernes="El Viernes a las ".$horaViernes.' ';
@@ -133,8 +124,6 @@ class CargaControllerCt extends \BaseController {
 			$obj = $validador[0];
 			
 				if ($obj->temp !== "Disponible") {
-					//echo "no esta disponible";
-					//echo "Sabado a las : ".$horaSabado." no esta disponible ";
 					$restrict=true;
 					$restrictFinal=true;
 					$StringSabado="El Sabado a las ".$horaSabado.' ';
@@ -183,13 +172,6 @@ class CargaControllerCt extends \BaseController {
 	}
 	public $restful=true;
 	
-	public function MostrarOpciones(){
-
-		$elementosComboSemestre = Semestre::all()->lists('id','id');
-		return View::make('vistaCarga.datosRegistrados',array(
-			'varElementosComboSemestre'=>$elementosComboSemestre,
-			));
-	}
 	public function eliminarElementoCarga($id){
 			
 		$elemento = DB::delete('DELETE FROM carga_academica_ct WHERE codCargaAcademica_ct = ? ', array($id) );
@@ -200,18 +182,76 @@ class CargaControllerCt extends \BaseController {
             echo "el elemento no se pudo eliminar";
         }
 	}
-	public function mostrarHorarios(){
+	public function MostrarOpcionesPorAula(){
+
+		$elementosComboSemestre = Semestre::all()->lists('nombre','id');
+		return View::make('vistaCarga.opcionesPorAula',array(
+			'varElementosComboSemestre'=>$elementosComboSemestre,
+			));
+	}
+	
+	public function MostrarHorariosPorAula(){
+		$elementosComboSemestre = Semestre::all()->lists('nombre','id');
 		$semestre = $_POST['comboSemestres'];
 		$dia=$_POST['comboDias'];
 		//$elementosHorario = DB::select('SELECT * FROM carga_academica_ct WHERE 1');
 		$elementosHorario = DB::select('call HorarioCargaAcademica(?,?)',array($semestre,$dia));		
-		return View::make('vistaCarga.horarios')->with('elementosHorario',$elementosHorario);
-	}
-	public function mostrarPorDocente(){
-		return View::make('vistaCarga.verPorDocente');	
-	}
-	public function mostrarPorCurso(){
-		return View::make('vistaCarga.verPorCurso');
+		return View::make('vistaCarga.horarioPorAula',array(
+			'varElementosComboSemestre'=>$elementosComboSemestre,
+			))->with('elementosHorario',$elementosHorario);
 	}
 
+	public function MostrarOpcionesDocente(){
+
+		$elementosComboDocente = Docente::orderBy('id','DESC')->get();
+		$elementosComboSemestre = Semestre::all()->lists('nombre','id');
+		$elementosComboApellido = Docente::all()->lists('apellidos','id');
+
+		return View::make('vistaCarga.opcionesPorDocente',array(
+			'varElementosComboSemestre'=>$elementosComboSemestre,
+			'varElementosComboDocente'=>$elementosComboDocente,
+			'varElementosComboApellido'=>$elementosComboApellido,
+			));
+	}
+	
+	public function MostrarHorariosPorDocente(){
+		$elementosComboDocente = Docente::orderBy('id','DESC')->get();
+		$elementosComboSemestre = Semestre::all()->lists('nombre','id');
+		$elementosComboApellido = Docente::all()->lists('apellidos','id');
+
+		$semestre = $_POST['comboSemestre'];
+		$nombreCompleto = $_POST['nombreCompleto'];
+		$HorarioPorDocente = DB::select('call HorarioXDocente(?,?)',array($semestre,$nombreCompleto));		
+
+		return View::make('vistaCarga.horarioPorDocente',array(
+			'varElementosComboSemestre'=>$elementosComboSemestre,
+			'varElementosComboDocente'=>$elementosComboDocente,
+			'varElementosComboApellido'=>$elementosComboApellido,
+			))->with('HorarioPorDocente',$HorarioPorDocente);
+	}
+	public function MostrarOpcionesPorCurso(){
+
+		$elementosComboSemestre = Semestre::all()->lists('nombre','id');
+		$elementosComboCodCurso_ct = CursoTecnico::all()->lists('nombre','nombre');
+		
+		return View::make('vistaCarga.opcionesPorCurso',array(
+			'varElementosComboSemestre'=>$elementosComboSemestre,
+			'varElementosComboCodCurso_ct'=>$elementosComboCodCurso_ct,
+			));
+	}
+	
+	public function MostrarHorariosPorCurso(){
+		$elementosComboSemestre = Semestre::all()->lists('nombre','id');
+		$elementosComboCodCurso_ct = CursoTecnico::all()->lists('nombre','nombre');
+
+		$semestre = $_POST['comboSemestres'];
+		$codCurso_ct = $_POST['comboCursos'];
+
+     	$HorarioPorCurso = DB::select('call HorarioXCurso(?,?)',array($semestre,$codCurso_ct));		
+		return View::make('vistaCarga.horarioPorCurso',array(
+			'varElementosComboSemestre'=>$elementosComboSemestre,
+			'varElementosComboCodCurso_ct'=>$elementosComboCodCurso_ct,
+			))->with('HorarioPorCurso',$HorarioPorCurso);
+	}
+// codeado por erik hammer grupo 2B y fahed en los procedimientos
 }

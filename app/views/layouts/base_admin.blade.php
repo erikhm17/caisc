@@ -399,16 +399,16 @@
                         </li>
 
 
-                        <li class="treeview">
+                       <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-folder"></i> <span>Carga Academica</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
-                            <ul class="treeview-menu">
+                           <ul class="treeview-menu">
                                 <li>{{ HTML::link('/crearCargaCt','Carga Academica CT') }}</li>
                                 <li>{{ HTML::link('/crearCargaCl','Carga Academica CL') }}</li>
-                                <li>{{ HTML::link('/horarioDocente','Horario Por Docente') }}</li>
-                                <li>{{ HTML::link('/horarioPorCurso','Horario Por Curso') }}</li>
+                                <li>{{ HTML::link('/MostrarOpcionesDocente','Horario Por Docente') }}</li>
+                                <li>{{ HTML::link('/MostrarOpcionesPorCurso','Horario Por Curso') }}</li>
                             </ul>
                         </li>
 

@@ -9,8 +9,8 @@ class CargaControllerCl extends \BaseController {
 		$elementosComboCodCurso_cl = CursoLibre::all()->lists('nombre','id');
 		$elementosComboCodDocente = Docente::all()->lists('nombre','id');
 		$elementosComboTurno = Turno::all()->lists('nombre','id');
-		$elementosComboGrupo = Grupo::all()->lists('id','id');
-		$elementosComboSemestre = Semestre::all()->lists('id','id');
+		$elementosComboGrupo = Grupo::all()->lists('nombre','id');
+		$elementosComboSemestre = Semestre::all()->lists('nombre','id');
 		$elementosComboCodAula = Aula::all()->lists('codAula','codAula');
 		
 		return View::make('vistaCarga.crearCargaCl',array(

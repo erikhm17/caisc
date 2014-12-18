@@ -61,48 +61,48 @@
                     </thead>
                     <tr>
                         <td>
-                            7:00-8:30
+                            07:00-08:30
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosLunes', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosLunes', '07:00-08:30', false);}}
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosMartes', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosMartes', '07:00-08:30', false);}}
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosMiercoles', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '07:00-08:30', false);}}
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosJueves', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosJueves', '07:00-08:30', false);}}
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosViernes', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosViernes', '07:00-08:30', false);}}
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosSabado', '7:00-8:30', false);}}
+                            {{Form::radio('rbHorariosSabado', '07:00-08:30', false);}}
                         </td>
                     </tr>
                     <tr class="success">
                         <td>
-                            8:30-10:00
+                            08:30-10:00
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosLunes', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosLunes', '08:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosMartes', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosMartes', '08:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosMiercoles', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosMiercoles', '08:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosJueves', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosJueves', '08:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosViernes', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosViernes', '08:30-10:00', false);}}
                         </td>
                         <td>
-                            {{Form::radio('rbHorariosSabado', '8:30-10:00', false);}}
+                            {{Form::radio('rbHorariosSabado', '08:30-10:00', false);}}
                         </td>
                     </tr>
                     <tr>
@@ -295,7 +295,7 @@
         <div class="col-xs-12 col-sm-3 col-md-3">{{Form::submit('Registrar',array('class'=>'btn btn-info btn-block'))}}</div>
         {{ Form::close() }}
         
-        <div class="col-xs-12 col-sm-3 col-md-3">{{ HTML::link(URL::to('/MostrarOpciones'), 'Verificar Horarios',array('class'=>'btn btn-info btn-block')) }}</div>
+        <div class="col-xs-12 col-sm-3 col-md-3">{{ HTML::link(URL::to('/MostrarOpcionesPorAula'), 'Verificar Horarios',array('class'=>'btn btn-info btn-block')) }}</div>
         
         
     </section>
