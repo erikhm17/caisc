@@ -8,10 +8,8 @@ class MatriculaCL extends Eloquent {
 	public static function agregar($input) {
 		$respuesta = array();
 		$reglas = array(
-			'id'=>array('required','max:10'),
 			'codAlumno'=>array('required','max:10'),
 			'codCargaAcademica_cl'=>array('required','max:10')
-			
 			);
 		$validador = Validator::make($input,$reglas);
 		if($validador->fails())
@@ -27,5 +25,3 @@ class MatriculaCL extends Eloquent {
 		return $respuesta;
 	}
 }
-
-
