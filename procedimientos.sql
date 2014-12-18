@@ -133,6 +133,7 @@ BEGIN
 END
 
 -- --------------------------------------------------------------------------------
+-- --------------------------------------------------------------------------------
 -- Routine DDL
 -- Note: comments before and after the routine body will not be stored by the server
 -- --------------------------------------------------------------------------------
@@ -145,6 +146,7 @@ BEGIN
     DROP TABLE IF EXISTS AuxClCA;
     DROP TABLE IF EXISTS AuxCl2CA;
     DROP TABLE IF EXISTS AuxCargaAcademicaCA;
+    DROP TABLE IF EXISTS horarioAula;
     
     
     create temporary table AuxCtCA
@@ -174,20 +176,148 @@ BEGIN
     UNION ALL
     select * from AuxCl2CA;
     
+    create temporary table horarioAula
     select horario,
-     case when car1.codAula = 'A101'  then car1.nombres else 0 end as "Aula101",
-     case when car1.codAula = 'A102'  then car1.nombres else 0 end as "Aula102",
-     case when car1.codAula = 'A103'  then car1.nombres else 0 end as "Aula103",
-     case when car1.codAula = 'A104'  then car1.nombres else 0 end as "Aula104",
-     case when car1.codAula = 'A105'  then car1.nombres else 0 end as "Aula105",
-     case when car1.codAula = 'A106'  then car1.nombres else 0 end as "Aula106",
-     case when car1.codAula = 'A107'  then car1.nombres else 0 end as "Aula107",
-     case when car1.codAula = 'A108'  then car1.nombres else 0 end as "Aula108",
-     case when car1.codAula = 'A109'  then car1.nombres else 0 end as "Aula109",
-     case when car1.codAula = 'A110'  then car1.nombres else 0 end as "Aula110"     
+     case when car1.codAula = 'A101'  then car1.nombres else '' end as "Aula101",
+     case when car1.codAula = 'A102'  then car1.nombres else '' end as "Aula102",
+     case when car1.codAula = 'A103'  then car1.nombres else '' end as "Aula103",
+     case when car1.codAula = 'A104'  then car1.nombres else '' end as "Aula104",
+     case when car1.codAula = 'A105'  then car1.nombres else '' end as "Aula105",
+     case when car1.codAula = 'A106'  then car1.nombres else '' end as "Aula106",
+     case when car1.codAula = 'A107'  then car1.nombres else '' end as "Aula107",
+     case when car1.codAula = 'A108'  then car1.nombres else '' end as "Aula108",
+     case when car1.codAula = 'A109'  then car1.nombres else '' end as "Aula109",
+     case when car1.codAula = 'A110'  then car1.nombres else '' end as "Aula110"     
     from AuxCargaAcademicaCA car1    
     where dia=diaCA
     order by horario DESC;
     
+    select horario,MAX(Aula101) as "Aula101",MAX(Aula102) as "Aula102",MAX(Aula103) as "Aula103",MAX(Aula104) as "Aula104",MAX(Aula105) as "Aula105",MAX(Aula106) as "Aula106",MAX(Aula107) as "Aula107",MAX(Aula108) as "Aula108",MAX(Aula109) as "Aula109",MAX(Aula110) as "Aula110"
+    from horarioAula
+    group by horario;
+END
+
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `HorarioXDocente`(semestreCA varchar(10),nombreCA varchar(50))
+BEGIN
+    DROP TABLE IF EXISTS AuxCtCA;
+    DROP TABLE IF EXISTS AuxCt2CA;
+    DROP TABLE IF EXISTS AuxClCA;
+    DROP TABLE IF EXISTS AuxCl2CA;
+    DROP TABLE IF EXISTS AuxCargaAcademicaCA;
+    DROP TABLE IF EXISTS horario;
+    
+    
+    create temporary table AuxCtCA
+    select h1.codAula,h1.horario,h1.dia,ca1.docente_id
+    from horario_aula h1 inner join carga_academica_ct ca1 
+    on h1.codCargaAcademica_ct=ca1.codCargaAcademica_ct    
+    where ca1.semestre=semestreCA;
+    
+    create temporary table AuxCt2CA
+    select A1.codAula,A1.horario,A1.dia,CONCAT(d1.nombre,' ',d1.apellidos) as nombres
+    from AuxCtCA A1 inner join docente d1
+    on A1.docente_id=d1.id;
+    
+    create temporary table AuxClCA
+    select h1.codAula,h1.horario,h1.dia,ca2.docente_id
+    from horario_aula h1 inner join carga_academica_cl ca2 
+    on h1.codCargaAcademica_cl=ca2.codCargaAcademica_cl    
+    where ca2.semestre=semestreCA;
+    
+    create temporary table AuxCl2CA
+    select A1.codAula,A1.horario,A1.dia,CONCAT(d1.nombre,' ',d1.apellidos) as nombres
+    from AuxClCA A1 inner join docente d1
+    on A1.docente_id=d1.id;
+    
+    create temporary table AuxCargaAcademicaCA
+    select * from AuxCt2CA
+    UNION ALL
+    select * from AuxCl2CA;
+    
+    
+    create temporary table horario
+    select distinct horario,
+     case when car1.dia = 'Lunes'  then car1.codAula else '' end as "Lunes",
+     case when car1.dia = 'Martes'  then car1.codAula else '' end as "Martes",
+     case when car1.dia = 'Miercoles'  then car1.codAula else '' end as "Miercoles",
+     case when car1.dia = 'Jueves'  then car1.codAula else '' end as "Jueves",
+     case when car1.dia = 'Viernes'  then car1.codAula else '' end as "Viernes",
+     case when car1.dia = 'Sabado'  then car1.codAula else '' end as "Sabado"
+    from AuxCargaAcademicaCA car1    
+    where nombres=nombreCA 
+    order by horario DESC;
+    
+    select horario,MAX(Lunes) as "Lunes",MAX(Martes) as "Martes",MAX(Miercoles) as "Miercoles",MAX(Jueves) as "Jueves",MAX(Viernes) as "Viernes",MAX(Sabado) as "Sabado"
+    from horario
+    group by horario;
+    
+    
+END
+
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `HorarioXCurso`(semestreCA varchar(10),cursoCA varchar(50))
+BEGIN
+    DROP TABLE IF EXISTS AuxCtCA;
+    DROP TABLE IF EXISTS AuxCt2CA;
+    DROP TABLE IF EXISTS AuxClCA;
+    DROP TABLE IF EXISTS AuxCl2CA;
+    DROP TABLE IF EXISTS AuxCargaAcademicaCA;
+    DROP TABLE IF EXISTS horarioCurso;
+    
+    
+    create temporary table AuxCtCA
+    select h1.codAula,h1.horario,h1.dia,ca1.codCurso_ct
+    from horario_aula h1 inner join carga_academica_ct ca1 
+    on h1.codCargaAcademica_ct=ca1.codCargaAcademica_ct    
+    where ca1.semestre=semestreCA;
+    
+    create temporary table AuxCt2CA
+    select A1.codAula,A1.horario,A1.dia,d1.nombre
+    from AuxCtCA A1 inner join curso_ct d1
+    on A1.codCurso_ct=d1.id;
+    
+    create temporary table AuxClCA
+    select h1.codAula,h1.horario,h1.dia,ca2.codCurso_cl
+    from horario_aula h1 inner join carga_academica_cl ca2 
+    on h1.codCargaAcademica_cl=ca2.codCargaAcademica_cl    
+    where ca2.semestre=semestreCA;
+    
+    create temporary table AuxCl2CA
+    select A1.codAula,A1.horario,A1.dia,d1.nombre
+    from AuxClCA A1 inner join curso_ct d1
+    on A1.codCurso_cl=d1.id;
+    
+    create temporary table AuxCargaAcademicaCA
+    select * from AuxCt2CA
+    UNION ALL
+    select * from AuxCl2CA;
+    
+    create temporary table horarioCurso
+    select distinct horario,
+     case when car1.dia = 'Lunes'  then car1.codAula else '' end as "Lunes",
+     case when car1.dia = 'Martes'  then car1.codAula else '' end as "Martes",
+     case when car1.dia = 'Miercoles'  then car1.codAula else '' end as "Miercoles",
+     case when car1.dia = 'Jueves'  then car1.codAula else '' end as "Jueves",
+     case when car1.dia = 'Viernes'  then car1.codAula else '' end as "Viernes",
+     case when car1.dia = 'Sabado'  then car1.codAula else '' end as "Sabado"
+    from AuxCargaAcademicaCA car1    
+    where nombre=cursoCA 
+    order by horario DESC;
+    
+    select horario,MAX(Lunes) as "Lunes",MAX(Martes) as "Martes",MAX(Miercoles) as "Miercoles",MAX(Jueves) as "Jueves",MAX(Viernes) as "Viernes",MAX(Sabado) as "Sabado"
+    from horarioCurso
+    group by horario;
+
 END
 
