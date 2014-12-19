@@ -143,6 +143,7 @@ Route::get('matriculas_ct/lista',array('uses'=>'MatriculaCTController@lista'));
 Route::get('matriculas_ct/add.html',array('uses'=>'MatriculaCTController@add'));
 
 // MANTENIMIENTO MATRICULA CURSOS LIBRES
+Route::post('matriculas_cl/listarMatriculas.html',array('uses'=>'MatriculaCLController@listarMatriculas'));
 Route::get('matriculas_curso_libre',array('uses'=>'MatriculaCLController@index'));
 Route::get('matriculas_cl/lista_cursos',array('uses'=>'MatriculaCLController@listaCursos'));
 Route::get('matriculas_cl/registrar/{cod}',array('uses'=>'MatriculaCLController@registrar'));
@@ -150,8 +151,9 @@ Route::post('matriculas_cl/insert.html',array('uses'=>'MatriculaCLController@ins
 Route::get('matriculas_cl/delete/{cod}',array('uses'=>'MatriculaCLController@delete'));
 Route::get('matriculas_cl/edit/{cod}',array('uses'=>'MatriculaCLController@edit'));
 Route::post('matriculas_cl/update.html',array('uses'=>'MatriculaCLController@update'));
+Route::get('matriculas_cl/ingresar','MatriculaCLController@recibir');
 //***
-Route::get('matriculas_cl/inicioCL','MatriculaCLController@inicioCL');
+
 Route::get('matriculas_cl/add.html',array('uses'=>'MatriculaCLController@add'));
 
 //Modulo Cursos de Carrera Libre

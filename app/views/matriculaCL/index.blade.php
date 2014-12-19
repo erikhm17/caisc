@@ -1,6 +1,6 @@
 @extends('layouts.base_admin')
 @section('title')
-Lista de Matriculas a Cursos Libres
+Lista de Matriculas <small>
 @stop
 @section('breadcrumb')
 @stop
@@ -41,7 +41,7 @@ Lista de Matriculas a Cursos Libres
                     </tr>
                 </thead>
                 <tbody aria-relevant="all" aria-live="polite" role="alert">
-                    @foreach( $datos as $matricula)
+                    @foreach( $matriculas as $matricula)
                     <tr class="odd">
                         <td class=" "><b>{{ $matricula->id }}</b></td>
                         <td class=" "><b>{{ $matricula->codAlumno }}</b></td>
@@ -54,9 +54,7 @@ Lista de Matriculas a Cursos Libres
                     @endforeach
                 </tbody>
             </table>
-                Pagina Actual:{{ $datos->getCurrentPage()}}
             </div>
-                {{ $datos->links()}}
         </div>
     </div><!-- /.box-body -->
 @stop

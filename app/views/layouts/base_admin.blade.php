@@ -287,8 +287,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('matriculas_cl/lista_cursos','Listar Cursos Disponibles') }}</li>
-                                <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('matriculas_curso_libre','Listar Matriculas') }}</li>
-                                <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('matriculas_cl/inicioCL','Listar test') }}</li>
+                                <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('matriculas_cl/ingresar','Listar Matriculas') }}</li>
                             </ul>
                         </li>
                         

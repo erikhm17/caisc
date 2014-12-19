@@ -2,12 +2,18 @@
 
 class MatriculaCLController extends BaseController
 {
-	public function inicioCL(){
+	public function recibir(){
 		$cursos = DB::table('carga_academica_cl')
             		->join('curso_cl', 'carga_academica_cl.codCurso_cl', '=', 'curso_cl.id')
             		->select('carga_academica_cl.codCargaAcademica_cl', 'carga_academica_cl.codCurso_cl', 'curso_cl.nombre')
             		->get();
-        return View::make("matriculaCL/listaXcurso", compact('cursos'));
+        return View::make("matriculaCL/seleccionarCurso", compact('cursos'));
+	}
+
+	public function listarMatriculas(){
+		$cod=Input::get('codigo');
+		$matriculas = MatriculaCL::where('codCargaAcademica_cl','=',$cod)->get();
+		return View::make('matriculaCL.index',compact("datos"),array('matriculas'=>$matriculas));
 	}
 
 	public function index($registros=5){
