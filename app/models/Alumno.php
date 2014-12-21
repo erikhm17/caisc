@@ -1,160 +1,36 @@
 <?php
-
-class AlumnoController extends BaseController
-{
-	public function index($registros=20)
-	{
-		//$cod="1";
-		//$datos = Alumno::paginate($registros);
-		$carreras = Carrera::all();
-		$alumnos=Alumno::all();
-		//$alumnos = Alumno::where('codCarrera','=',$cod)->get();
-		$datos = DB::table('alumno')
-        				->leftJoin('carrera', 'alumno.codCarrera', '=', 'carrera.id')
-        				->select('alumno.id', 'alumno.apellidos', 'alumno.nombre', 'carrera.nombre as carr', 'alumno.dni', 'alumno.estado')
-        				->get();
-		return View::make('alumno.index',compact("datos","carreras"),array('alumnos'=>$alumnos));
-	}
-
-	public function indexcarrera()
-	{
-		//$cod="1";
-		//$datos = Alumno::paginate($registros);
-		$codigo = Input::get('codCarrera');
-		$cod = (int)($codigo);
-		$carreras = Carrera::all();
-		$alumnos=Alumno::all();
-		//$alumnos = Alumno::where('codCarrera','=',$cod)->get();
-		$datos = DB::table('alumno')
-						->where('alumno.codCarrera', '=', $cod)
-        				->leftJoin('carrera', 'alumno.codCarrera', '=', 'carrera.id')
-        				->select('alumno.id', 'alumno.apellidos', 'alumno.nombre', 'carrera.nombre as carr', 'alumno.dni', 'alumno.estado')
-        				->get();
-		return View::make('alumno.listacarrera',compact("datos","carreras"),array('alumnos'=>$alumnos));
-	}
-
-	public function add()
-	{
-		$carreras = Carrera::all();
-		$modulos = Modulo::all();
-		return View::make('alumno.add', compact('carreras','modulos'));
-	}
-
-	public function insert()
-	{
-		$respuesta = Alumno::agregar(Input::all());
+	class Alumno extends Eloquent{
 		
-		if($respuesta['error']==true)
+	protected $table = 'alumno';
+	public $timestamps = false;
+	protected $fillable = array('nombre','apellidos','dni','direccion','telefono','email','password','modulo', 'estado', 'codCarrera');
+
+	public static function agregar($input)
+	{
+		$respuesta = array();
+		$reglas = array(
+			'nombre'=>array('required','min:4'),
+			'apellidos'=>array('required','min:4'),
+			'dni'=>array('required','numeric','unique:alumno','digits:8'),
+			'direccion'=>array('required','min:10'),
+			'telefono'=>array('required','numeric'),
+			'email'=>array('required','email'),
+			'password'=>array('required','min:6','confirmed')
+		);
+		$validador = Validator::make($input,$reglas);
+		if($validador->fails())
 		{
-			return Redirect::to('alumno/add.html')->withErrors($respuesta['mensaje'] )->withInput();
-		} else {
-			return Redirect::to('alumnos')->with('mensaje',$respuesta['mensaje']);
-		}
-	}
-	public function edit($cod)
-	{
-		$alumno = Alumno::where('id','=',$cod)->firstOrFail();
-		return View::make('alumno.edit',array('alumno'=>$alumno));
-	}
-	
-	public function deshabilitar($cod)
-	{
-		DB::table('alumno')
-        		->where('id', $cod)
-        		->update(array('estado' => 0));
-		return Redirect::to('alumnos');
-	}
-
-	public function habilitar($cod)
-	{
-		DB::table('alumno')
-        		->where('id', $cod)
-        		->update(array('estado' => 1));
-		return Redirect::to('alumnos');
-	}
-
-	public function update($cod)
-	{
-		$alumno = Alumno::where('id','=',$cod)->firstOrFail();
-		if(is_object($alumno))
+			$respuesta['mensaje'] = $validador;
+			$respuesta['error'] = true;
+		} else
 		{
-			$alumno->nombre = Input::get('nombre');
-			$alumno->apellidos = Input::get('apellidos');
-			$alumno->dni = Input::get('dni');
-			$alumno->direccion = Input::get('direccion');
-			$alumno->telefono = Input::get('telefono');
-			$alumno->email = Input::get('email');
-			$alumno->save();
-			return Redirect::to('alumnos');
-		} else {
-			Redirect::to('500.html');
+			$input['password'] = Hash::make($input['password']);
+			$alumno = static::create($input);
+			$respuesta['mensaje'] = 'Alumno Creado';
+			$respuesta['error'] = false;
+			$respuesta['data'] = $alumno;
 		}
-	}
-
-	public function updatePass($cod){
-		$alumno = Alumno::where('id', '=',$cod)->firstOrFail();
-		$pass_old = Input::get('pAnterior');
-		$pass = Input::get('password');
-		if(is_object($alumno))
-		{
-			$alumno->password = $pass;
-			$alumno->save();
-			return Redirect::to('alumnos');
-		} else {
-			Redirect::to('500.html');
-		}
-	}
-
-	public function profile($cod)
-	{
-		$alumno = alumno::where('id','=',$cod)->firstOrFail();
-		if (is_object($alumno))
-		{
-			return View::make('alumno.profile',array('alumno'=>$alumno));
-		} else {
-			return Redirect::to('404.html');
-		}
-	}
-
-	public function imagen($id)
-	{
-			$alumno = Alumno::where('id','=',$id)->firstOrFail();
-			return View::make('alumno.imagen',array('alumno'=>$alumno));
-	}
-
-	public function uploadImage($id)
-	{
-		$mensaje = "Ocurrio Error";
-		if(Input::file("foto")->isValid())
-		{
-			$file = Input::file("foto");
-			$fileName = Input::file('foto')->getClientOriginalName();
-			$alumno = Alumno::where('id','=',$id)->firstOrFail();
-			$alumno->foto = md5($id."-".$fileName).'.'.Input::file('foto')->getClientOriginalExtension();
-			if($alumno->save())
-			{
-				Input::file('foto')->move('assets/foto',$alumno->foto);
-				$mensaje = "Imagen actualizado";
-			}
-		}
-		return Redirect::to('alumno/profile/'.$id)->withErrors($mensaje);
-	}
-
-	public function changePass($id = null)
-	{
-        if (is_null($id) or ! is_numeric($id))
-		{
-			return Redirect::to('404.html');
-		} else {
-			$alumno = Alumno::where('id','=',$id)->firstOrFail();
-			if (is_object($alumno))
-			{
-				$alumno->pasword = Input::get('password');
-				return View::make('alumno.change_pass',array('alumno'=>$alumno));
-			} else {
-				return Redirect::to('404.html');
-			}
-		}
-
+		return $respuesta;
 	}
 }
+?>
