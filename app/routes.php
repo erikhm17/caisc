@@ -45,11 +45,17 @@ Route::get('docente/change-pass/{id}',array('uses'=>'DocenteController@changepas
 // Alumno
 Route::get('alumnos',array('uses'=>'AlumnoController@index'));
 Route::get('alumno/add.html',array('uses'=>'AlumnoController@add'));
-Route::get('alumno/edit/{id}',array('uses'=>'AlumnoController@edit'))->where('id','[0-9]+');
-Route::post('alumno/update/{id}',array('uses'=>'AlumnoController@update'))->where('id','[0-9]+');
+Route::get('alumno/edit/{id}',array('uses'=>'AlumnoController@edit'));
+Route::get('alumno/deshabilitar/{id}',array('uses'=>'AlumnoController@deshabilitar'));
+Route::get('alumno/habilitar/{id}',array('uses'=>'AlumnoController@habilitar'));
+Route::post('alumno/update/{id}',array('uses'=>'AlumnoController@update'));
 Route::post('alumno/insert.html',array('uses'=>'AlumnoController@insert'));
-
-
+Route::get('alumno/profile/{id}',array('uses'=>'AlumnoController@profile'));
+Route::get('alumno/imagen/{id}',array('uses'=>'AlumnoController@imagen'));
+Route::post('alumno/imagen/{id}',array('uses'=>'AlumnoController@uploadImage'));
+Route::get('alumno/change-pass/{id}',array('uses'=>'AlumnoController@changepass'));
+Route::post('alumno/updatePass/{id}',array('uses'=>'AlumnoController@updatePass'));
+Route::get('alumnosXcarrera',array('uses'=>'AlumnoController@indexcarrera'));
 
 
 Route::group(['before' => 'auth'], function()
