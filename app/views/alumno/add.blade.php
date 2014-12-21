@@ -6,13 +6,13 @@ Agregar Alumno <small> NUEVO ALUMNO </small>
 <div class="col-xs-12 col-sm-12">
 {{ Form::open(array('method'=> 'POST','url'=> 'alumno/insert.html','class'=>'form-horizontal','role'=>'form')) }}
 	<div class="form-group">
-		{{ Form::label('codAlumno','Id',array('class'=>'col-sm-2 control-label')) }}
+		{{ Form::label('id','Código Alumno',array('class'=>'col-sm-2 control-label')) }}
 		<div class="col-sm-6 col-md-4">
-			{{ Form::text('codAlumno','',array('class'=>'form-control','placeholder'=>'Juan'))}}
+			{{ Form::text('id','',array('class'=>'form-control','placeholder'=>'123456'))}}
 		</div>
 		<div class="errores">
-			@if ( $errors->has('codAlumno'))
-		       	@foreach ($errors->get('codAlumno') as $error)
+			@if ( $errors->has('id'))
+		       	@foreach ($errors->get('id') as $error)
 			   	<div class="alert alert-danger">* {{ $error }}</div>
 		    	@endforeach
 			@endif
@@ -47,7 +47,7 @@ Agregar Alumno <small> NUEVO ALUMNO </small>
 	<div class="form-group">
 		{{ Form::label('dni','DNI:',array('class'=>'col-sm-2 control-label')) }}
 		<div class="col-sm-6 col-md-4">
-			{{ Form::number('dni','',array('class'=>'form-control','placeholder'=>'12345678'))}}
+			{{ Form::text('dni','',array('class'=>'form-control','placeholder'=>'12345678'))}}
 		</div>
 		<div class="errores">
 			@if ( $errors->has('dni'))
@@ -116,38 +116,19 @@ Agregar Alumno <small> NUEVO ALUMNO </small>
 			@endif
 		</div>
 	</div>
-	<div class="form-group">
-		<label class = 'col-sm-2 control-label'>Modulo : </label>
-		<div class="col-sm-6 col-md-4">
-			<select name='modulo' id='modulo'>
-	        	<option>Seleccionar Modulo</option>;
-	        	@foreach( $modulos as $modulo)
-					<option value='{{ $modulo->id }}'>{{ $modulo->nombre }}</option>;
-			    @endforeach
-	        </select>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class = 'col-sm-2 control-label'>Estado : </label>
-		<div class="col-sm-6 col-md-4">
-			<select name='estado' id='estado'>
-	        	<option>Seleccionar Estado</option>;
-				<option value='0'>Inactivo</option>;
-				<option value='1'>Activo</option>;
-	        </select>
-		</div>
-	</div>
+	
 	<div class="form-group">
 		<label class = 'col-sm-2 control-label'>Carrera : </label>
 		<div class="col-sm-6 col-md-4">
 			<select name='codCarrera' id='codCarrera'>
-	        	<option>Seleccionar Carrear</option>;
+				<option>Seleccione Carrera</option>;
 	        	@foreach( $carreras as $carrera)
-					<option value='{{ $carrera->codCarrera }}'>{{ $carrera->nombre }}</option>;
+					<option value='{{ $carrera->id }}'>{{ $carrera->nombre }}</option>;
 			    @endforeach
 	        </select>
 		</div>
 	</div>
+
 	<div class="form-group">
 		<div class="col-xs-12 col-sm-3">
 			<button class="btn btn-info btn-block" type="reset">Cancelar</button>
