@@ -2,11 +2,14 @@
 @section('title')
 Perfil <small>Alumno</small>
 @stop
+@section('breadcrumb')
+<li>{{$alumno->nombre}}</li>
 @section('content')
 <div class="row">
 	<div class="col-lg-3">
-		{{ HTML::image('assets/img/avatar4.png','User Image',array('class'=>'')) }}
+		{{ HTML::image('assets/foto/'.$alumno->foto,'User Image',array('class'=>'')) }}
 		<p align="center"><b>código:</b>{{ $alumno->codAlumno }}</p>
+		<p>{{ HTML::link('alumno/imagen/'.$alumno->id,'Cambiar Imagen') }}</p>
 	</div>
 	<div class="col-lg-7">
 		<p><b>DNI:</b>{{ $alumno->dni }}</p>
