@@ -10,4 +10,8 @@ FOR EACH ROW
 INSERT INTO users(email,password,tipoUsuario,nroId,estado,created_at) 
 values (NEW.email,NEW.password,'Personal',NEW.id,NEW.estado,NOW());
 
-
+CREATE TRIGGER agregar_usuario_alumno
+AFTER INSERT ON alumno
+FOR EACH ROW
+INSERT INTO users(email,password,tipoUsuario,nroId,estado,created_at) 
+values (NEW.email,NEW.password,'Alumno',NEW.id,NEW.estado,NOW());
