@@ -25,7 +25,7 @@ Consulta Caja y Facturación
         <div class="form-inline">         
             <div class="form-group">
 
-              <input name="fecha" type="text" class="form-control" placeholder="yyyy-m-d" value="">
+              <input name="fecha" type="date" class="form-control" placeholder="yyyy-m-d" value="">
             </div>
           
           <button type="submit" class="btn btn-default btn-sm">
