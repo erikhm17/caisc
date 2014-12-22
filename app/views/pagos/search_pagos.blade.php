@@ -33,6 +33,8 @@ Consulta Caja y Facturación
           </button>
 
         </div>
+
+        
         </form>
           
     <table id="detalle_pago" class="table table-striped">

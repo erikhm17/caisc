@@ -152,11 +152,10 @@ class PagosController extends \BaseController {
 	public function search()
 	{
 		$modalidad = Modalidad::lists('id','monto');
+		$pago = Pagos::max('id');
 
 		$id = Input::get('id_alumno');
 
-
-		
 		if (is_null($id) or ! is_numeric($id))
 		{
 			return Redirect::to('404.html');
@@ -164,7 +163,7 @@ class PagosController extends \BaseController {
 			$alumno = Alumno::where('id','=',$id)->firstOrFail();
 			if (is_object($alumno))
 			{
-				return View::make('pagos.showAlumno',array('alumno'=>$alumno,'modalidad'=>$modalidad));
+				return View::make('pagos.showAlumno',array('alumno'=>$alumno,'modalidad'=>$modalidad,'pago'=>$pago));
 				//return Redirect::to('pagos/create')->withErrors($respuesta['mensaje'] )->withInput();
 				//return Redirect::to('pagos/create/',array('alumno'=>$alumno,'modalidad'=>$modalidad));
 			} else {
@@ -178,6 +177,7 @@ class PagosController extends \BaseController {
 		$modalidad = Modalidad::lists('id','monto');
 		return View::make('pagos.create',array('modalidad'=>$modalidad));
 	}
+
 	public function search_pagos()
 	{
 
