@@ -421,17 +421,19 @@
 
                        <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-folder"></i> <span>Carga Academica</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <i class="glyphicon glyphicon-fire"></i> <span>Carga Academica</span>
+                                <!--<i class="glyphicon glyphicon-fire pull-right "></i><!--wrench bookmark-->
                             </a>
                            <ul class="treeview-menu">
-                                <li>{{ HTML::link('/crearCargaCt','Carga Academica CT') }}</li>
-                                <li>{{ HTML::link('/crearCargaCl','Carga Academica CL') }}</li>
-                                <li>{{ HTML::link('/MostrarOpcionesDocente','Horario Por Docente') }}</li>
-                                <li>{{ HTML::link('/MostrarOpcionesPorCurso','Horario Por Curso') }}</li>
+                                <li>{{ HTML::link('/crearCargaCt','- Carga Academica CT') }}</i></li>
+                                <li>{{ HTML::link('/crearCargaCl','- Carga Academica CL') }}</li>
+                                <li>{{ HTML::link('/MostrarOpcionesDocente','- Horario Por Docente') }}</li>
+                                <li>{{ HTML::link('/MostrarOpcionesPorCurso','- Horario Por Curso') }}</li>
+                                <li>{{ HTML::link('/MostrarOpcionesPorAula','- Horario Por Aula') }}</li>
+                                
                             </ul>
                         </li>
-
+                        
                         <li class="treeview">
                             <a href="ingresonotas">
                                 <i class="fa fa-folder"></i> <span>Ingreso De Notas</span>
