@@ -445,6 +445,18 @@
                             </ul>
                         </li>
 
+                       <!-- Modulo Carrera Profesional -->
+                       <li class="treeview">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-home"></i> <span>Carrera Profesional</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('CarreraProfesional/add.html','Agregar Carrera') }}</li>
+                                <li>{{ HTML::link('CarreraProfesional','Listar Carreras') }}</li>
+                            </ul>
+                        </li>
+
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-folder"></i> <span>Examples</span>
