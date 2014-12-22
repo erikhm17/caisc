@@ -12,7 +12,7 @@ Perfil <small>Carrera Profesional</small>
 		<p align="center"><b>código:</b>{{ $carrera->id }}</p>
 	</div>
 	<div class="col-lg-7">
-		<p>{{ HTML::link('CarreraProfesional/updatecID/'.$carrera->id,'Editar') }} {{ HTML::link('CarreraProfesional/delete/'.$carrera->id,'Eliminar') }} </p>
+		<p>{{ HTML::link('CarreraProfesional/updatecID/'.$carrera->id,'Editar') }} {{ HTML::link('CarreraProfesional/post_eliminar/'.$carrera->id,'Eliminar') }} </p>
 		<p><b>ID:</b>{{ $carrera->id }}</p>
 		<p><b>Nombre:</b> {{ $carrera->nombre }}</p>
 		<p><b>Descripcion:</b> {{ $carrera->descripcion }}</p>
