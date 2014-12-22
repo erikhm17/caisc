@@ -118,6 +118,7 @@ Route::get('pagos/showAlumno/{id}',array('uses'=>'PagosController@profile'))->wh
 Route::post('pagos/create',array('uses' => 'PagosController@store'));
 Route::post('pagos/showAlumno/store','PagosController@store');
 Route::post('pagos/search',array('uses'=>'PagosController@search'));
+Route::get('pagos/search_pagos',array('uses'=>'PagosController@search_pagos'));
 
 Route::controller('pagos','PagosController');
 /*End Caja y Facturacion*/

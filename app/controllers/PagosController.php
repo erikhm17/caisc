@@ -178,5 +178,24 @@ class PagosController extends \BaseController {
 		$modalidad = Modalidad::lists('id','monto');
 		return View::make('pagos.create',array('modalidad'=>$modalidad));
 	}
+	public function search_pagos()
+	{
 
+		$id = Input::get('fecha');
+		
+		if (is_null($id))
+		{
+			return View::make('pagos.search_pagos');
+		} else {
+			$pagos = Pagos::where('fecha','=',$id)->get();
+			if (is_object($pagos))
+			{
+				return View::make('pagos.search_pagos',array('pagos'=>$pagos));
+				//return Redirect::to('pagos/create')->withErrors($respuesta['mensaje'] )->withInput();
+				//return Redirect::to('pagos/create/',array('alumno'=>$alumno,'modalidad'=>$modalidad));
+			} else {
+				return Redirect::to('404.html');
+			}
+		}
+	}
 }
