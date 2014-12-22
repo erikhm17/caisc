@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS alumno(
 	`direccion` VARCHAR(120) NOT NULL,
 	`telefono` VARCHAR(120) NOT NULL,
 	`email` VARCHAR(120) NOT NULL,
-	`pasword` VARCHAR(120) NOT NULL,
+	`password` VARCHAR(120) NOT NULL,
 	`modulo` INT(2) DEFAULT '0',
 	`estado` INT(2) DEFAULT '1',
 	`codCarrera` VARCHAR(10) DEFAULT null,
