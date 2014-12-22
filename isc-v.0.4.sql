@@ -142,13 +142,11 @@ CREATE TABLE IF NOT EXISTS matricula_ct(
 	`id` INT AUTO_INCREMENT NOT NULL,
 	`codAlumno` INT NOT NULL,
 	`codCargaAcademica_ct` INT NOT NULL,
-	`modulo` INT NOT NULL,
 	`updated_at` DATETIME NOT NULL,
     `created_at` DATETIME NOT NULL,
 	PRIMARY KEY (`id`),
 	FOREIGN KEY (`codAlumno`) REFERENCES alumno(`id`),
-	FOREIGN KEY(`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`),
-	FOREIGN KEY(`modulo`) REFERENCES modulo(`id`)
+	FOREIGN KEY(`codCargaAcademica_ct`) REFERENCES carga_academica_ct(`codCargaAcademica_ct`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS nota_ct(

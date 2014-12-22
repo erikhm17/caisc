@@ -141,7 +141,7 @@ Route::get('matriculas_ct/edit/{cod}',array('uses'=>'MatriculaCTController@edit'
 Route::post('matriculas_ct/update.html',array('uses'=>'MatriculaCTController@update'));
 Route::get('matriculas_ct/delete/{cod}',array('uses'=>'MatriculaCTController@delete'));
 Route::post('matriculas_ct/listaMatricula.html',array('uses'=>'MatriculaCTController@listacursosSemestreNuevo'));
-Route::get('matriculas_cl/matricular/{cod}',array('uses'=>'MatriculaCTController@registroMatricula'));
+Route::get('matriculas_ct/matricular/{cod}',array('uses'=>'MatriculaCTController@registroMatricula'));
 Route::post('matriculas_ct/insert.html',array('uses'=>'MatriculaCTController@insert'));
 //*******
 Route::get('matriculas_ct/listacursos',array('uses'=>'MatriculaCTController@listacursos'));
