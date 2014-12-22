@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS curso_ct(
 	`id` VARCHAR(10) NOT NULL,
 	`nombre` VARCHAR(30) NOT NULL,
 	`modulo` INT(2) DEFAULT null,
+	`horas_academicas` VARCHAR(30) DEFAULT null,
 	`estado` tinyint(1) DEFAULT '1',
 	`codCarrera` VARCHAR(10) NOT NULL,
 	`updated_at` DATETIME NOT NULL,
