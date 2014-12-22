@@ -54,7 +54,7 @@ Caja y Facturación
 				  	</div>
 				  
 					<button type="submit" class="btn btn-default btn-sm">
-					  	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Buscar
+					  	<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar
 					</button>
 
 					<button type="button" class="btn btn-default btn-sm">
