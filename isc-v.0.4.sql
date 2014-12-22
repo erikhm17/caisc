@@ -14,11 +14,14 @@ CREATE TABLE IF NOT EXISTS users(
 	PRIMARY KEY (`id`)
 ) CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS carrera(
-	`id` VARCHAR(10) NOT NULL,
-	`nombre` VARCHAR(50) NOT NULL,
-	`descripcion` text NOT NULL,
-	PRIMARY KEY (`id`)
+CREATE TABLE IF NOT EXISTS carrera (
+  `id` varchar(10) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS alumno(
