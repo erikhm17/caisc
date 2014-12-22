@@ -118,6 +118,7 @@ Route::get('pagos/showAlumno/{id}',array('uses'=>'PagosController@profile'))->wh
 Route::post('pagos/create',array('uses' => 'PagosController@store'));
 Route::post('pagos/showAlumno/store','PagosController@store');
 Route::post('pagos/search',array('uses'=>'PagosController@search'));
+Route::get('pagos/search_pagos',array('uses'=>'PagosController@search_pagos'));
 
 Route::controller('pagos','PagosController');
 /*End Caja y Facturacion*/
@@ -256,3 +257,13 @@ Route::get('ingresonotas/registroCL','IngresoNotasController@registroCL');
 //Pago en planilla docentes
 Route::get('Planilla',array('uses'=>'PlanillaController@index'));
 Route::get('Planilla/detalle_Planilla/{id}',array('uses'=>'PlanillaController@detalle_Planilla'))->where('id','[0-9]+');
+//Carrera Profesional 
+Route::get('CarreraProfesional',array('uses'=>'CarreraProfesionalController@index'));
+Route::get('CarreraProfesional/add.html',array('uses'=>'CarreraProfesionalController@add'));
+Route::post('CarreraProfesional/post_update.html',array('uses'=>'CarreraProfesionalController@post_actualizar'));
+Route::get('CarreraProfesional/updatecID/{id}',array('uses'=>'CarreraProfesionalController@ActualizarConID'));
+Route::post('CarreraProfesional/update/{id}',array('uses'=>'CarreraProfesionalController@update'));
+Route::post('CarreraProfesional/insert.html',array('uses'=>'CarreraProfesionalController@insert'));
+Route::post('CarreraProfesional/delete',array('uses'=>'CarreraProfesionalController@eliminando'));
+Route::get('CarreraProfesional/profile/{id}',array('uses'=>'CarreraProfesionalController@profile'));
+Route::get('CarreraProfesional/post_eliminar/{id}',array('uses'=>'CarreraProfesionalController@post_eliminar'));

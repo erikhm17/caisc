@@ -138,11 +138,19 @@ Caja y Facturación
     </table>
      <p>
         <label>TOTAL:</label>
-        <input type="text" name="total" class="form-control" id="total_pago">
-        <br>
-        <input type="submit" value="guardar" class="btn btn-success">
-        </p>  
+        <input type="text" name="total" class="form-control" id="total_pago">        
+      </p>  
       </table>
+
+    <div class="form-group">
+        <div class="col-xs-12 col-sm-3">
+            <input type="submit" value="guardar" class="btn btn-success">
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <button class="btn btn-primary" type="reset">Imprimir</button>
+        </div>
+        
+    </div>
 
 	</div>
 		@if(Session::has('message'))

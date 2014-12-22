@@ -398,7 +398,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><i class="glyphicon glyphicon-plus"></i> {{ HTML::link('/pagos/create','Realizar Pago') }}</li>
-                                <li><i class="glyphicon glyphicon-search"></i>{{ HTML::link('#','Buscar') }}</li>
+                                <li><i class="glyphicon glyphicon-search"></i>{{ HTML::link('/pagos/search_pagos','Buscar') }}</li>
                                 <li><i class="glyphicon glyphicon-list-alt"></i>{{ HTML::link('/pagos','Listar') }}</li>
                             </ul>
                         </li>
@@ -442,6 +442,18 @@
                                 <li>{{ HTML::link('ingresonotas/registroCT','Ver Notas Carrera Tecnica') }}</li>
                                 <li>{{ HTML::link('ingresonotas/inicioCL','Ingreso De Notas Curso Libre') }}</li>
                                 <li>{{ HTML::link('ingresonotas/registroCL','Ver Notas Curso Libre') }}</li>
+                            </ul>
+                        </li>
+
+                       <!-- Modulo Carrera Profesional -->
+                       <li class="treeview">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-home"></i> <span>Carrera Profesional</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>{{ HTML::link('CarreraProfesional/add.html','Agregar Carrera') }}</li>
+                                <li>{{ HTML::link('CarreraProfesional','Listar Carreras') }}</li>
                             </ul>
                         </li>
 
