@@ -167,8 +167,7 @@ CREATE TABLE IF NOT EXISTS nota_ct(
  -- CURSOS LIBRES
 CREATE TABLE IF NOT EXISTS curso_cl(
 	`id`  VARCHAR(10) NOT NULL,
-	`codigo` VARCHAR(10) NOT NULL,	
-	`nombre` VARCHAR(30) NOT NULL,
+        `nombre` VARCHAR(30) NOT NULL,
 	`horas_academicas` VARCHAR(30) DEFAULT null,
 	`estado` tinyint(1) DEFAULT '1',
 	`updated_at` DATETIME NOT NULL,
