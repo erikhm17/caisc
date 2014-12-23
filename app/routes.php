@@ -206,6 +206,8 @@ Route::post('SilaboCarreraLibre/post_update.html',array('uses'=>'SilaboCarreraLi
 Route::get('SilaboCarreraLibre/delete.html','SilaboCarreraLibreController@get_eliminar');
 Route::get('SilaboCarreraLibre/post_delete/{id}',array('uses'=>'SilaboCarreraLibreController@post_eliminar'));
 Route::post('SilaboCarreraLibre/eliminar.html','SilaboCarreraLibreController@eliminando');
+Route::get('SilaboCarreraLibre/detalle/{id}',array('uses'=>'SilaboCarreraLibreController@detalle'));
+
 
 //Modulo silabo de carrera tecnica
 
@@ -224,6 +226,8 @@ Route::post('SilaboCarreraTecnica/post_update.html',array('uses'=>'SilaboCarrera
 Route::get('SilaboCarreraTecnica/delete.html','SilaboCarreraTecnicaController@get_eliminar');
 Route::get('SilaboCarreraTecnica/post_delete/{id}',array('uses'=>'SilaboCarreraTecnicaController@post_eliminar'));
 Route::post('SilaboCarreraTecnica/eliminar.html','SilaboCarreraTecnicaController@eliminando');
+Route::get('SilaboCarreraTecnica/detalle/{id}',array('uses'=>'SilaboCarreraTecnicaController@detalle'));
+
 Route::get('CursosTecnica/post_delete/',array('uses'=>'CursosCarreraTecnicaController@post_eliminar'));
 
 // carga academica
