@@ -42,8 +42,7 @@ CREATE TABLE IF NOT EXISTS alumno(
 ) CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS curso_ct(
-	`id` int AUTO_INCREMENT NOT NULL,
-	`codigo` VARCHAR(10) NOT NULL,	
+	`id`  VARCHAR(10) NOT NULL,
 	`nombre` VARCHAR(30) NOT NULL,
 	`modulo` INT(2) DEFAULT null,
 	`horas_academicas` VARCHAR(30) DEFAULT null,
@@ -102,7 +101,7 @@ CREATE TABLE IF NOT EXISTS personal(
 
 CREATE TABLE IF NOT EXISTS carga_academica_ct(
 	`codCargaAcademica_ct` INT AUTO_INCREMENT NOT NULL,
-	`codCurso_ct` INT NOT NULL,
+	`codCurso_ct` VARCHAR(10) NOT NULL,
 	`docente_id` INT NOT NULL,
 	`semestre` VARCHAR(10) NOT NULL,
 	`turno` VARCHAR(10) NOT NULL,
@@ -111,6 +110,7 @@ CREATE TABLE IF NOT EXISTS carga_academica_ct(
 	FOREIGN KEY (`codCurso_ct`) REFERENCES curso_ct(`id`),
 	FOREIGN KEY (`docente_id`) REFERENCES docente(`id`)
 ) CHARSET=utf8 ;
+
 
 CREATE TABLE IF NOT EXISTS silabus_ct(
 	`id` int AUTO_INCREMENT NOT NULL,
@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS nota_ct(
 
  -- CURSOS LIBRES
 CREATE TABLE IF NOT EXISTS curso_cl(
-	`id` int AUTO_INCREMENT NOT NULL,
+	`id`  VARCHAR(10) NOT NULL,
 	`codigo` VARCHAR(10) NOT NULL,	
 	`nombre` VARCHAR(30) NOT NULL,
 	`horas_academicas` VARCHAR(30) DEFAULT null,
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS curso_cl(
 
 CREATE TABLE IF NOT EXISTS carga_academica_cl(
 	`codCargaAcademica_cl` INT AUTO_INCREMENT NOT NULL,
-	`codCurso_cl` INT NOT NULL,
+	`codCurso_cl` VARCHAR(10) NOT NULL,
 	`docente_id` INT NOT NULL,
 	`turno` VARCHAR(10) NOT NULL,
 	`grupo` VARCHAR(10) NOT NULL,
